@@ -1,0 +1,53 @@
+// Variables
+@import "../app";
+
+body,html {
+  background-color: #FFF;
+  height: 100%;
+
+
+
+    main{
+      min-height: 300px;
+      height: calc(100vh - 200px);
+
+      &.f-box-display{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1{
+        color: #7f9d2d;
+      }
+
+      button {
+        display: block;
+        background-color: $brand-primary;
+        color: $brand-info;
+        width: 100%;
+      }
+
+      input{
+        display: block;
+      }
+
+      img {
+        border-radius: 50%;
+      }
+    }
+
+    footer {
+      text-align: center;
+      ul{
+        text-align: left;
+        display: inline-block;
+        
+        .warning{
+          color: $brand-danger;
+        }
+      }
+    }
+
+}

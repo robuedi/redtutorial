@@ -14,26 +14,20 @@
 @section('stylesheets')
 @stop
 
+@section('heading')
+    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+        <h1 class="page-title txt-color-blueDark"><i class="fa fa-calendar fa-fw "></i>
+            Dashboard
+        </h1>
+    </div>
+@stop
+
 @section('content')
 
     <div class="row">
-        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark">
-                <i class="fa fa-fw fa-home"></i>
-                Dashboard
-            </h1>
-        </div>
-    </div>
 
-    <section id="widget-grid" class="">
-    </section>
+        <div class="col-xs1"></div>
 
-    <div class="row">
-        <div class="col-md-6">
-            {{date('Y-m-d')}}
-        </div>
-        <div class="col-md-6">
-        </div>
     </div>
 
 @stop

@@ -16,10 +16,18 @@ Route::get('/', function () {
 });
 
 
-/* ADMIN ROUTES */
+/* Admin */
 Route::group(array('namespace' => 'admin', 'prefix' => 'admin'), function(){
 
-    Route::get('/', 'DashboardController@index');
+    //Authentication
+    Route::get('/', 'AuthenticationController@login');
+    Route::post('/login', 'AuthenticationController@doLogin');
+    Route::get('/logout', 'AuthenticationController@logout');
 
+    //Require authentication
+    Route::group(array('before' => 'auth'), function()
+    {
+        Route::get('/dashboard', 'DashboardController@index');
+    });
 
 });
