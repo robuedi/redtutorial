@@ -8,8 +8,7 @@ body,html {
 
 
     main{
-      min-height: 300px;
-      height: calc(100vh - 200px);
+      min-height: calc(100vh - 100px);
 
       &.f-box-display{
         display: flex;
@@ -18,8 +17,15 @@ body,html {
         align-items: center;
       }
 
+      .row {
+        width: 350px;
+        max-width: 90vw;
+      }
+
       h1{
-        color: #7f9d2d;
+        color: $brand-second;
+        margin: 50px 0px;
+        text-align: center;
       }
 
       button {
@@ -27,19 +33,63 @@ body,html {
         background-color: $brand-primary;
         color: $brand-info;
         width: 100%;
+        border: none;
+        border-radius: 25px;
+        padding: 5px 10px;
+        font-size: 18px;
+        font-weight: 800;
+        margin-top: 50px;
+        text-transform: uppercase;
+
+        &:hover {
+          animation: submit-hover .3s forwards;
+        }
+
       }
 
-      input{
-        display: block;
+      .input-container {
+        padding: 1vh;
+
+        &_username {
+          margin-top: 40px;
+        }
+
+        input{
+          position: relative;
+          display: block;
+          border: none;
+          margin: 15px 0px 25px;
+          width: 100%;
+          border-bottom: 2px solid $brand-info;
+          &:focus {
+            animation: input-active .7s forwards;
+          }
+        }
       }
 
-      img {
-        border-radius: 50%;
+      .img-container{
+        text-align: center;
+
+        img {
+          margin: 0 auto;
+          text-align: center;
+          border-radius: 50%;
+          height: 100px;
+          width: auto;
+        }
       }
     }
 
     footer {
+      height: 100px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      max-width: 100vw;
+      padding: 30px 10px 10px;
+
       ul{
         text-align: left;
         display: inline-block;
@@ -50,4 +100,22 @@ body,html {
       }
     }
 
+}
+
+@keyframes input-active {
+  0% {
+    border-bottom: 2px solid $brand-info;
+  }
+  100% {
+    border-bottom: 2px solid $brand-second;
+  }
+}
+
+@keyframes submit-hover {
+  from {
+    background-color: $brand-primary;
+  }
+  to {
+    background-color:  $brand-second;
+  }
 }

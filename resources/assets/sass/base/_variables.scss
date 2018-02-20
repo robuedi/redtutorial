@@ -13,6 +13,7 @@ $panel-inner-border: $laravel-border-color;
 
 // Brands
 $brand-primary: #2f435e;
+$brand-second: #7f9d2d;
 $brand-info: #ececec;
 $brand-success: #44566c;
 $brand-warning: #201b22;
@@ -41,3 +42,23 @@ $panel-default-heading-bg: #fff;
 
 //c3423d 4b5e65
 //#2f435e, #44566c, #ececec, #201b22
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);

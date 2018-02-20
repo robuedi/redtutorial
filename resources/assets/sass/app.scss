@@ -8,3 +8,6 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+textarea:focus, input:focus, button:focus{
+  outline: none;
+}

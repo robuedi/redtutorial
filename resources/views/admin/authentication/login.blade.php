@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=yes">
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets')}}/css/lib/bootstrap4.0.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets')}}/css/app.css">
+    {{--<link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets')}}/css/app.css">--}}
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets')}}/css/admin-login.css">
 </head>
 <body>
@@ -14,10 +14,20 @@
 
         <section class="row">
             <div class="col">
+
                 <h1>Welcome</h1>
-                <img class="user-img" src="/assets/img/user_placeholderw150h150.png" alt="User Image">
-                <input type="text" name="email" placeholder="Email address">
-                <input type="password" name="password" placeholder="Password">
+
+                <div class="img-container">
+                    <img class="user-img" src="/assets/img/user_placeholderw150h150.png" alt="User Image">
+                </div>
+
+                <div class="input-container input-container_username">
+                    <input type="text" name="email" placeholder="Email address">
+                </div>
+                <div class="input-container">
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+
                 <button>Login</button>
             </div>
         </section>
