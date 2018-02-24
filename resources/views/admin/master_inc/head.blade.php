@@ -8,16 +8,19 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!-- Basic Styles -->
-    <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/admin/')}}/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/admin/')}}/css/font-awesome.min.css">
-
     <!-- Caution! DO NOT change the order -->
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/admin/')}}/css/smartadmin-production-plugins.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/admin/')}}/css/smartadmin-production.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/admin/')}}/css/smartadmin-skins.min.css">
 
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/admin/')}}/css/smartadmin-rtl.min.css">
+
+
+    <!-- Basic Styles -->
+    <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/admin/')}}/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/admin/')}}/css/font-awesome.min.css">
+
+    <!-- Own CSS-->
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/admin/')}}/css/your_style.css">
 
     @yield('stylesheets')
@@ -61,6 +64,16 @@
         if (!window.jQuery.ui) {
             document.write('<script src="{{URL::to('/assets/admin/')}}/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
         }
+    </script>
+    <script >
+        $(function () {
+            //set unique ids to jarvis in order to remember the colors
+            var path_name_jarvis = window.location.pathname;
+            var page_id = "unique_site_id_"+page_id+"_"+path_name_jarvis.replace(/\W/g, '');
+           $('.jarviswidget').each(function (index) {
+              $(this).attr('id', page_id+"_"+String(index));
+           });
+        });
     </script>
 
 </head>

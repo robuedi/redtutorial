@@ -13,7 +13,8 @@ use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
-    function index(){
+    function index()
+    {
         return View::make('admin.dashboard.index');
     }
 }

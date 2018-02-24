@@ -8404,12 +8404,13 @@ html main button {
   color: #ececec;
   width: 100%;
   border: none;
-  border-radius: 25px;
+  border-radius: 0;
   padding: 5px 10px;
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 400;
   margin-top: 50px;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 body main button:hover,
@@ -8420,7 +8421,7 @@ html main button:hover {
 
 body main .input-container,
 html main .input-container {
-  padding: 1vh;
+  padding: 1vh 0vh;
 }
 
 body main .input-container_username,
@@ -8453,7 +8454,7 @@ body main .img-container img,
 html main .img-container img {
   margin: 0 auto;
   text-align: center;
-  border-radius: 50%;
+  border-radius: 10%;
   height: 100px;
   width: auto;
 }

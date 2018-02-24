@@ -11,10 +11,21 @@ return array(
         ),
         array(
             "name"      => "Courses",
-            "url"       => "admin/courses",
+            "url"       => "#",
             "aliases"   => array(),
             "class"     => "fa-book",
-            "submenus"  => array(),
+            "submenus"  => array(
+                "1" => array(
+                    "name"  => "All courses",
+                    "url"   => "admin/courses",
+                    "aliases"   => array('admin\/courses\/[a-zA-Z0-9]+\/edit'),
+                ),
+                "2" => array(
+                    "name"  => "Add new course",
+                    "url"   => "admin/courses/create",
+                    "aliases"   => array('admin\/courses\/create'),
+                )
+            ),
         ),
         array(
             "name"      => "Chapters",

@@ -30,3 +30,23 @@ header #logo img {
 #main[role="main"] {
     min-height: calc( 100vh - 101px );
 }
+.label.toggle-inline {
+    display: inline-block;
+}
+label.toggle-inline  + .toggle  {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+label.toggle-inline  + .toggle > i {
+    display: inline-block;
+    position: relative;
+}
+
+.smart-form .label {
+    margin: 0;
+    padding: .2em .6em .3em;
+    color: #fff;
+    text-align: center;
+    border-radius: 0;
+}

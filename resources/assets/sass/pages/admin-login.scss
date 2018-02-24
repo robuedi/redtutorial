@@ -34,12 +34,13 @@ body,html {
         color: $brand-info;
         width: 100%;
         border: none;
-        border-radius: 25px;
+        border-radius: 0;
         padding: 5px 10px;
-        font-size: 18px;
-        font-weight: 800;
+        font-size: 15px;
+        font-weight: 400;
         margin-top: 50px;
         text-transform: uppercase;
+        letter-spacing: 1px;
 
         &:hover {
           animation: submit-hover .3s forwards;
@@ -48,7 +49,7 @@ body,html {
       }
 
       .input-container {
-        padding: 1vh;
+        padding: 1vh 0vh;
 
         &_username {
           margin-top: 40px;
@@ -73,7 +74,7 @@ body,html {
         img {
           margin: 0 auto;
           text-align: center;
-          border-radius: 50%;
+          border-radius: 10%;
           height: 100px;
           width: auto;
         }
