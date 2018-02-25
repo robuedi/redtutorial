@@ -8397,8 +8397,8 @@ html main h1 {
   text-align: center;
 }
 
-body main button,
-html main button {
+body main button.submit,
+html main button.submit {
   display: block;
   background-color: #2f435e;
   color: #ececec;
@@ -8413,8 +8413,8 @@ html main button {
   letter-spacing: 1px;
 }
 
-body main button:hover,
-html main button:hover {
+body main button.submit:hover,
+html main button.submit:hover {
   -webkit-animation: submit-hover .3s forwards;
           animation: submit-hover .3s forwards;
 }
@@ -8489,6 +8489,57 @@ html footer ul {
 body footer ul .warning,
 html footer ul .warning {
   color: #c3423d;
+}
+
+.alert {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: #675100;
+  border-width: 0;
+  border-left-width: 5px;
+  padding: 10px 25px 10px 10px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 13px;
+  line-height: 1.42857143;
+  position: relative;
+}
+
+.alert.alert-danger {
+  border-color: #953b39;
+  color: #fff;
+  background: #c26565;
+  text-shadow: none;
+}
+
+.alert.alert-dismissible .close {
+  top: 0;
+  width: 25px;
+  right: 0px;
+  line-height: 20px;
+  position: absolute;
+  color: inherit;
+  padding: 0 2px;
+  cursor: pointer;
+  background: none !important;
+  border: 0;
+  vertical-align: middle;
+  font-size: 19.5px;
+  font-weight: 700;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 1;
+  -webkit-tap-highlight-color: rgba(169, 3, 41, 0.5);
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+}
+
+.alert.alert-dismissible .close [aria-hidden]:hover {
+  opacity: 0.7;
 }
 
 @-webkit-keyframes input-active {

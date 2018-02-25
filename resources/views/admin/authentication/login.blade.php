@@ -11,7 +11,6 @@
 <body>
 
     <main class="container f-box-display">
-
         <section class="row">
             <div class="col">
 
@@ -20,15 +19,27 @@
                 <div class="img-container">
                     <img class="user-img" src="/assets/img/user_placeholderw150h150.png" alt="User Image">
                 </div>
+                @if ($errors->any())
+                    <div >
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            @foreach ($errors->all(':message') as $message)
+                                {{ $message }}
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+                <form action="/admin/login" id="login_form" method="POST">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <div class="input-container input-container_username">
+                        <input type="text" name="email" placeholder="Email address" autocomplete="off" >
+                    </div>
+                    <div class="input-container">
+                        <input type="password" name="password" placeholder="Password" autocomplete="off">
+                    </div>
 
-                <div class="input-container input-container_username">
-                    <input type="text" name="email" placeholder="Email address">
-                </div>
-                <div class="input-container">
-                    <input type="password" name="password" placeholder="Password">
-                </div>
-
-                <button>Login</button>
+                    <button class="submit">Login</button>
+                </form>
             </div>
         </section>
 
@@ -49,5 +60,41 @@
     </script>
     <script src="{{URL::to('/assets')}}/js/lib/bootstrap.bundle.min.js"></script>
 
+    <script type="text/javascript">
+
+        $(function() {
+            // Validation
+            $("#login_form").validate({
+                // Rules for form validation
+                rules : {
+                    email : {
+                        required : true,
+                        email : true
+                    },
+                    password : {
+                        required : true,
+                        minlength : 3,
+                        maxlength : 50
+                    }
+                },
+
+                // Messages for form validation
+                messages : {
+                    email : {
+                        required : 'Please enter your email address',
+                        email : 'Please enter a VALID email address'
+                    },
+                    password : {
+                        required : 'Please enter your password'
+                    }
+                },
+
+                // Do not change code below
+                errorPlacement : function(error, element) {
+                    error.insertAfter(element.parent());
+                }
+            });
+        });
+    </script>
 </body>
 </html>

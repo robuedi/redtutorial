@@ -37,7 +37,7 @@ you can add as many as you like
 			<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
 				<img src="{{URL::to('/assets/admin/')}}/img/avatars/male.png" alt="me" class="online" />
 				<span>
-					eduard.robu
+					{{Sentinel::getUser()->first_name}} {{Sentinel::getUser()->last_name}} 
 				</span>
 				<i class="fa fa-angle-down"></i>
 			</a>

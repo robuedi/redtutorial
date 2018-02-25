@@ -26,7 +26,7 @@
             </h1>
         </div>
 
-        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-6 text-right">
+        <div class="col-xs-12 col-sm-5 col-lg-6 text-right">
             <div class="btn-group">
                 <button name="save" class="btn btn-lg bg-color-blueDark txt-color-white" value="da">Save</button>
                 <button class="btn btn-lg bg-color-blueDark txt-color-white dropdown-toggle" data-toggle="dropdown">
@@ -66,12 +66,14 @@
                             </section>
 
                             <section>
-                                <label class="label">Description<span class="req">*</span></label>
-                                <textarea type="text" name="description" placeholder="Description" class="form-control input-sm" value=""></textarea>
+                                    <label class="label">Description</label>
+                                    <label class="textarea textarea-resizable">
+                                        <textarea rows="3" type="text" name="description" placeholder="Description" class="custom-scroll" ></textarea>
+                                    </label>
                             </section>
 
                             <section>
-                                <label class="label toggle-inline">Is public<span class="req">*</span></label>
+                                <label class="label toggle-inline">Is public <span class="req">*</span></label>
                                 <label class="toggle" >
                                     <input type="checkbox" name="is_public" >
                                     <i data-swchon-text="YES" data-swchoff-text="NO"></i>
@@ -79,7 +81,7 @@
                             </section>
 
                             <section>
-                                <label class="label">Order weight<span class="req">*</span></label>
+                                <label class="label">Order weight <span class="req">*</span></label>
                                 <label class="input">
                                     <input type="text" name="order_weight" placeholder="Order weight" class="form-control input-sm" value="{{$new_course->order_weight}}">
                                 </label>

@@ -25,10 +25,10 @@ Route::group(array('namespace' => 'admin', 'prefix' => 'admin'), function(){
     Route::get('/logout', 'AuthenticationController@logout');
 
     //Require authentication
-//    Route::group(array('before' => 'auth'), function()
-//    {
+    Route::group(array('middleware' => 'admin_section'), function()
+    {
         Route::get('/dashboard', 'DashboardController@index');
         Route::resource('/courses', 'CoursesController');
-//    });
+    });
 
 });

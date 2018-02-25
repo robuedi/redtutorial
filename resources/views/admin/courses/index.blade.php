@@ -65,7 +65,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 filter-buttons">
+                                    <div class="col-md-3 filter-buttons text-right">
                                         <button class="btn btn-primary" type="submit">Submit</button>
                                         <a class="btn btn-default" type="reset" href="{{ URL::current() }}">Reset</a>
                                     </div>

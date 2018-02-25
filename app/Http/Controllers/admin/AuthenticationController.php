@@ -11,6 +11,12 @@ namespace App\Http\Controllers\admin;
 use View;
 use App\Http\Controllers\Controller;
 use Sentinel;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+use App\Models\Login;
+use Request;
+use Session;
 
 
 class AuthenticationController extends Controller
@@ -37,7 +43,6 @@ class AuthenticationController extends Controller
             $validator = Validator::make($input, $rules);
 
             if ($validator->fails()) {
-                ///
                 return Redirect::back()->withInput()->withErrors($validator);
             }
 
@@ -61,7 +66,7 @@ class AuthenticationController extends Controller
                 // store in session the current login history id
                 Session::put('login_history_id', $login_history_id);
 
-                return Redirect::intended('backend/dashboard');
+                return Redirect::intended('admin/dashboard');
             }
 
             $errors = 'Invalid login or password.';
@@ -93,6 +98,6 @@ class AuthenticationController extends Controller
             }
         }
 
-        return Redirect::to('backend/');
+        return Redirect::to('admin/');
     }
 }

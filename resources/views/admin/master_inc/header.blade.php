@@ -4,7 +4,7 @@
 			<div id="logo-group">
 
 				<!-- PLACE YOUR LOGO HERE -->
-				<span id="logo"> <img src="{{URL::to('/assets/admin/')}}/img/logo.png" height="50" alt="SmartAdmin"> </span>
+				<span id="logo"> <img src="{{URL::to('/assets/admin/')}}/img/logo.png" height="50" alt="{{config('app.name')}}"> </span>
 				<!-- END LOGO PLACEHOLDER -->
 
 				<!-- Note: The activity badge color changes when clicked and resets the number to 0
@@ -92,7 +92,7 @@
 				<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
 					<li class="">
 						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-							<img src="{{URL::to('/assets/admin/')}}/img/avatars/male.png" alt="Eduard Robu" class="online" />
+							<img src="{{URL::to('/assets/admin/')}}/img/avatars/male.png" alt="{{Sentinel::getUser()->first_name}} {{Sentinel::getUser()->last_name}} " class="online" />
 						</a>
 						<ul class="dropdown-menu pull-right">
 							<li>
@@ -112,7 +112,7 @@
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="login.php" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
+								<a href="/admin/logout" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
 							</li>
 						</ul>
 					</li>
@@ -120,7 +120,7 @@
 
 				<!-- logout button -->
 				<div id="logout" class="btn-header transparent pull-right">
-					<span> <a href="/login.php" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+					<span> <a href="/admin/logout" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
 				</div>
 				<!-- end logout button -->
 
