@@ -5,7 +5,7 @@
 
 @section('breadcrumbs')
     <li><a href="{{URL::to('/')}}">Home</a></li>
-    <li>Courses</li>
+    <li>{{ucfirst($section_obj_name_pl)}}</li>
 @stop
 
 @section('scripts')
@@ -18,13 +18,15 @@
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
             <h1 class="page-title txt-color-blueDark"><i class="fa fa-calendar fa-fw "></i>
-                Courses
+                {{ucfirst($section_obj_name_pl)}}
             </h1>
         </div>
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8 text-right pull-right">
-            <a href="{{url('admin/courses/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Add new</a>
+            <a href="{{url('admin/'.$section_obj_name_pl.'/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Add new</a>
         </div>
     </div>
+
+    {!! \App\Libraries\REC\UIMessage::get() !!}
 
     <form action="{{ URL::current() }}" enctype="application/x-www-form-urlencoded" method="get">
 
@@ -84,13 +86,13 @@
 
                         <header>
                             <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                            <h2>Courses</h2>
+                            <h2>{{ucfirst($section_obj_name_pl)}}</h2>
                         </header>
 
                         <!-- widget div-->
                         <div>
                             <!-- widget content -->
-                            <div class="widget-body widget-listing no-padding">
+                            <div class="widget-body widget-listing no-padding alert-margin">
 
                                 @if(count($results))
                                     <table class="table table-striped table-bordered table-listing table-hover smart-form ">
@@ -115,9 +117,9 @@
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>
                                                 <td class="format-momentjs">{{ $r->updated_at }}</td>
                                                 <td style="text-align:center;">
-                                                    <a href="{{url('admin/courses/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
+                                                    <a href="{{url('admin/'.$section_obj_name_pl.'/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
                                                     @if(empty ($r->code_page ))
-                                                        <a href="{{url('admin/courses/'.$r->id)}}/delete" class="btn btn-sm btn-danger btn-delete apply-tooltip" title="Delete" data-warning="Are you sure?"><i class="glyphicon glyphicon-trash"></i></a>
+                                                        <a href="javascript:deleteRouteObject('{{url('admin/'.$section_obj_name_pl.'/'.$r->id)}}')" class="btn btn-sm btn-danger btn-delete apply-tooltip" data-method="DELETE" title="Delete" data-warning="Are you sure?"><i class="glyphicon glyphicon-trash"></i></a>
                                                     @endif
                                                 </td>
                                             </tr>

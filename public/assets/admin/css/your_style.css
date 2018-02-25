@@ -62,7 +62,22 @@ label.toggle-inline  + .toggle > i {
     min-height: 60px;
 }
 
+.widget-body.widget-listing.alert-margin .alert.alert-info {
+    margin: 13px;
+    border: 1px solid #9cb4c5 !important;
+    border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+}
 
-
-
+button.btn.btn-lg, a.btn.btn-lg {
+    border-radius: 0px !important;
+}
+.smart-style-5 .page-footer, .smart-style-5.fixed-header #header {
+    background: url(../img/glass.jpg) no-repeat center top fixed;
+    background-size: cover;
+}
+.smart-style-5 .login-info img {
+    border-radius: 0 !important;
+}
 

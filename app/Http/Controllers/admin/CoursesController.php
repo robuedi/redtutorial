@@ -9,15 +9,20 @@
 namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
-use View;
 use Illuminate\Support\Facades\Input;
-use App\Http\Controllers\Controller;
-use App\Libraries\AdminLib\Listing;
+use App\Libraries\REC\Listing;
 use App\Course;
-use Log;
+use Validator;
+use View;
+use App\Libraries\REC\UIMessage;
 
-class CoursesController extends Controller
+class CoursesController extends ListingController
 {
+    public function __construct()
+    {
+        parent::__construct('course', 'courses');
+    }
+
     function index()
     {
         if ($clean_query_string = Listing::cleanQueryString())
@@ -50,7 +55,7 @@ class CoursesController extends Controller
         $results = $listing->results();
 
         // display
-        return View::make('admin.courses.index', array(
+        return View::make('admin.'.$this->section_name_pl.'.index', array(
             'results' => $results,
             'listing' => $listing,
         ));
@@ -63,19 +68,123 @@ class CoursesController extends Controller
         $max_order_number = Course::max('order_weight');
         $new_course->order_weight = (int)$max_order_number+1;
 
-        return View::make('admin.courses.create_edit', ['new_course' => $new_course]);
+        return View::make('admin.'.$this->section_name_pl.'.create_edit', ['section_obj' => $new_course]);
+    }
+
+    function edit($id)
+    {
+        $course = Course::findOrFail($id);
+        return View::make('admin.'.$this->section_name_pl.'.create_edit', ['section_obj' => $course]);
     }
 
     function store(Request $request)
     {
-        $new_course = new Course();
-        $new_course->title = $request->input('title');
-        $new_course->description = $request->input('description');
-        $new_course->is_public = $request->input('is_public') ? 1 : 0;
-        $new_course->order_weight = $request->input('order_weight');
-        $new_course->save();
+        // validate
+        $rules = array(
+            'title'        => 'required',
+            'order_weight' => 'required'
+        );
 
-        return redirect('admin/courses');
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails())
+        {
+            UIMessage::set('danger', $validator->messages()->all());
+            return redirect()->back()->withErrors($validator)->withInput(Input::all());
+        }
+        else
+        {
+            //save course
+            $course = new Course();
+            $course->title = $request->input('title');
+            $course->description = $request->input('description');
+            $course->is_public = $request->input('is_public') ? 1 : 0;
+            $course->order_weight = $request->input('order_weight');
+            $course->save();
+
+            //send user back
+            UIMessage::set('success', "Course created successfully.");
+            if (Input::get('save_and_continue')) //redirect to the same page
+            {
+                return redirect('admin/'.$this->section_name_pl.'/'.$course->id.'/edit');
+            }
+            elseif (Input::get('save_and_add_new'))
+                return redirect('admin/'.$this->section_name_pl.'/create'); // save and add new
+            else
+                return redirect('admin/'.$this->section_name_pl); //redirect to listing
+
+        }
+    }
+
+    function update($id, Request $request)
+    {
+        $course = Course::findOrFail($id);
+
+        // validate
+        $rules = array(
+            'title'        => 'required',
+            'order_weight' => 'required'
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails())
+        {
+            UIMessage::set('danger', $validator->messages()->all());
+            return Redirect::back()->withErrors($validator)->withInput(Input::all());
+        }
+        else
+        {
+            //save course
+            $course->title = $request->input('title');
+            $course->description = $request->input('description');
+            $course->is_public = $request->input('is_public') ? 1 : 0;
+            $course->order_weight = $request->input('order_weight');
+            $course->save();
+
+            //send user back
+            UIMessage::set('success', ucfirst($this->section_name_sg)." updated successfully.");
+            if (Input::get('save_and_continue')) //redirect to the same page
+            {
+                return redirect('admin/'.$this->section_name_pl.'/'.$course->id.'/edit');
+            }
+            elseif (Input::get('save_and_add_new'))
+                return redirect('admin/'.$this->section_name_pl.'/create'); // save and add new
+            else
+                return redirect('admin/'.$this->section_name_pl); //redirect to listing
+        }
+
+    }
+
+    public function destroy($id)
+    {
+        $course = Course::find($id);
+
+        // if the record is not found, redirect to listing with an message
+        if(!$course)
+        {
+            UIMessage::set('warning', "Invalid course ID.");
+            return redirect()->back();
+        }
+
+        //delete course
+        $course->delete();
+
+        //update weight
+        $courses = Course::orderBy('order_weight')->get();
+        $i = 1;
+        foreach ($courses as $course)
+        {
+            $course->order_weight = $i;
+            $course->update();
+            $i++;
+        }
+
+        // still here? delete the field
+        UIMessage::set('success', ucfirst($this->section_name_sg)." deleted successfully. Order weight updated.");
+
+
+        return redirect('admin/'.$this->section_name_pl);
     }
 
 }

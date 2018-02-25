@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libraries\AdminLib;
+namespace App\Libraries\REC;
 
 
 use Illuminate\Support\Facades\Input;

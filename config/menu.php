@@ -93,7 +93,13 @@ return array(
             "url"       => "admin/configuration",
             "aliases"   => array(),
             "class"     => "fa-wrench",
-            "submenus"  => array(),
+            "submenus"  => array(
+                '1' => array(
+                    "name"      => "Themes",
+                    "url"       => "admin/themes",
+                    "aliases"   => array(),
+                ),
+            ),
 
         ),
     ),

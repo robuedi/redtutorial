@@ -41,12 +41,12 @@
 <!-- FastClick: For mobile devices -->
 <script src="{{URL::to('/assets/admin/')}}/js/plugin/fastclick/fastclick.min.js"></script>
 
+<!-- MomentJS: For date related js -->
+<script src="{{URL::to('/assets/admin/')}}/js/plugin/moment/moment.min.js"></script>
+
 <!--[if IE 8]>
 	<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
 <![endif]-->
-
-<!-- Demo purpose only -->
-<script src="{{URL::to('/assets/admin/')}}/js/demo.min.js"></script>
 
 <!-- MAIN APP JS FILE -->
 <script src="{{URL::to('/assets/admin/')}}/js/app.min.js"></script>
@@ -58,6 +58,9 @@
 <!-- SmartChat UI : plugin -->
 <script src="{{URL::to('/assets/admin/')}}/js/smart-chat-ui/smart.chat.ui.min.js"></script>
 <script src="{{URL::to('/assets/admin/')}}/js/smart-chat-ui/smart.chat.manager.min.js"></script>
+
+<!-- Main custom js -->
+<script src="{{URL::to('/assets/admin/')}}/js/main.js"></script>
 
 <script type="text/javascript">
 	// DO NOT REMOVE : GLOBAL FUNCTIONS!
