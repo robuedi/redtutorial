@@ -27,7 +27,7 @@ class AuthenticationController extends Controller
         if (Sentinel::check() && (Sentinel::hasAccess('admin')))
             return Redirect::intended('admin/dashboard');
         else
-            return View::make('admin.authentication.login');
+            return View::make('_admin.authentication.login');
     }
 
     public function doLogin()

@@ -55,7 +55,7 @@ class CoursesController extends ListingController
         $results = $listing->results();
 
         // display
-        return View::make('admin.'.$this->section_name_pl.'.index', array(
+        return View::make('_admin.'.$this->section_name_pl.'.index', array(
             'results' => $results,
             'listing' => $listing,
         ));
@@ -68,13 +68,13 @@ class CoursesController extends ListingController
         $max_order_number = Course::max('order_weight');
         $new_course->order_weight = (int)$max_order_number+1;
 
-        return View::make('admin.'.$this->section_name_pl.'.create_edit', ['section_obj' => $new_course]);
+        return View::make('_admin.'.$this->section_name_pl.'.create_edit', ['section_obj' => $new_course]);
     }
 
     function edit($id)
     {
         $course = Course::findOrFail($id);
-        return View::make('admin.'.$this->section_name_pl.'.create_edit', ['section_obj' => $course]);
+        return View::make('_admin.'.$this->section_name_pl.'.create_edit', ['section_obj' => $course]);
     }
 
     function store(Request $request)

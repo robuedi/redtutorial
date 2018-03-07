@@ -12,10 +12,12 @@
 
         <!-- Styles -->
         <style>
+            *{
+                font-family: "Open Sans", Sans-Serif;
+            }
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
@@ -83,6 +85,7 @@
                 </div>
 
                 <div class="links">
+                    <a href="/testing">Testing</a>
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>

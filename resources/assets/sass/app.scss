@@ -1,7 +1,3 @@
-
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
 // Variables
 @import "base/variables";
 
@@ -10,4 +6,111 @@
 
 textarea:focus, input:focus, button:focus{
   outline: none;
+}
+
+@font-face {
+  font-family: 'BOLDFONT';
+  src: url(/fonts/Pacifi-Serif-Bold.ttf) format("ttf");
+}
+
+#page_wrapper {
+  min-height: 100vh;
+
+  #main_navigation {
+    color: #333;
+    text-align: center;
+    height: 70px;
+    position: relative;
+    background-color: #F7F7F7;
+    overflow: visible;
+
+    .main-logo {
+      max-height: 70px;
+      padding: 5px;
+      display: inline-block;
+      float: left;
+    }
+
+    .title {
+      display: inline-block;
+      float: left;
+      line-height: 70px;
+      vertical-align: middle;
+      margin: 0;
+      font-weight: 800;
+      font-size: 10px;
+    }
+
+    .main-menu-list {
+      .menu-list {
+        padding: 0;
+        list-style-type: none;
+        font-weight: 700;
+        font-size: 29px;
+
+        li{
+          cursor: pointer;
+          display: inline;
+          padding: 0 20px;
+          margin-right: -8px;
+
+          &:not(:last-child){
+            border-right: 1px solid #ccc;
+          }
+
+          a{
+            line-height: 70px;
+            color: #333;
+
+            span {
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+
+    .navigation-sidebar{
+      cursor: pointer;
+      overflow: visible;
+      float: right;
+
+      .menu-sidebar {
+        top: 70px;
+        display: block;
+        position: absolute;
+        max-width: 0vw !important;
+        width: 500px;
+        height: calc(100vh - 70px);
+        right: 0;
+        transition: max-width 1s ease;
+        overflow: hidden;
+
+        .menu-items {
+          list-style-type: none;
+          max-height: 0px;
+          overflow: hidden;
+          opacity: 0;
+          transition: all 3s ease;
+
+
+        }
+      }
+    }
+  }
+}
+
+#page_wrapper.show-menu {
+  height: 100vh;
+  #main_navigation .navigation-sidebar .menu-sidebar {
+    max-width: 100vw !important;
+    .menu-items{
+      opacity: 1;
+      max-height: 100%;
+    }
+  }
+}
+
+.text-center{
+  text-align: center;
 }

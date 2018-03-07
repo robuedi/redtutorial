@@ -1,0 +1,51 @@
+SEO
+
+>>> title
+<!-- 50-60 characters, max 60 best under 50 -->
+Code sample
+<head>
+  <title>Example Title</title>
+</head>
+Optimal format
+Primary Keyword - Secondary Keyword | Brand Name
+8-foot Green Widgets - Widgets & Tools | Widget World
+
+>>> description
+unique description or no description on all pages
+<!-- 50-300 characters -->
+<head>
+  <meta name="description" content="This is an example of a meta description. This will often show up in search results.">
+</head>
+
+>>> ima alt attr - max 150
+Okay alt text: <img src="escalator.jpg" alt="man on escalator">
+Better alt text: <img src="escalator.jpg" alt="man walking on escalator">
+Best alt text: <img src="escalator.jpg" alt="man wearing backpack walking down escalator">
+
+>>> No SEO indexation -- only on admin
+<meta name="robots" content="noindex,follow">
+
+>>> duplicate Content
+What is duplicate content?
+Duplicate content is content that appears on the Internet in more than one place.
+That “one place” is defined as a location with a unique website address (URL) - so,
+if the same content appears at more than one web address, you’ve got duplicate content.
+
+While not technically a penalty, duplicate content can still sometimes impact search engine
+rankings. When there are multiple pieces of, as Google calls it, "appreciably similar" content
+in more than one location on the Internet, it can be difficult for search engines to decide
+which version is more relevant to a given search query.
+
+>>> Schema.org Markup
+Schema.org (often called Schema) is a semantic vocabulary of tags (or microdata) that you can add to your HTML to improve the way search engines read and represent your page in SERPs.
+Code Sample
+<div itemscope itemtype="https://schema.org/Book">
+  <span itemprop="name"> Inbound Marketing and SEO: Insights from the Moz Blog</span>
+  <span itemprop="author">Rand Fishkin</span>
+</div>
+
+>>> Robots.txt
+What is robots.txt?
+Robots.txt is a text file webmasters create to instruct web robots (typically search engine robots) how to crawl pages on their website. The robots.txt file is part of the the robots exclusion protocol (REP), a group of web standards that regulate how robots crawl the web, access and index content, and serve that content up to users. The REP also includes directives like meta robots, as well as page-, subdirectory-, or site-wide instructions for how search engines should treat links (such as “follow” or “nofollow”).
+
+In practice, robots.txt files indicate whether certain user agents (web-crawling software) can or cannot crawl parts of a website. These crawl instructions are specified by “disallowing” or “allowing” the behavior of certain (or all) user agents.

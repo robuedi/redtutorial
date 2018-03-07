@@ -1,9 +1,13 @@
 // Variables
-@import "../app";
+@import "../base/variables";
 
 body,html {
   background-color: #FFF;
   height: 100%;
+
+  * {
+    font-family: "MySans";
+  }
 
 
 

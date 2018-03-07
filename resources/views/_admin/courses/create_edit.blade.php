@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('_admin.master')
 
 @section('title') {{ucfirst($section_obj_name_pl)}} - @parent @stop
 

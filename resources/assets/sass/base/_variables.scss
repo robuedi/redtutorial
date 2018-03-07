@@ -2,7 +2,7 @@
 // Main theme color
 
 // Body
-$body-bg: #ececec;
+$body-bg: #FFF;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -20,8 +20,7 @@ $brand-warning: #201b22;
 $brand-danger: #c3423d;
 
 // Typography
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "Raleway", sans-serif;
+$font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
 $text-color: #201b22;

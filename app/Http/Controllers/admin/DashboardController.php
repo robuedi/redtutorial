@@ -15,6 +15,6 @@ class DashboardController extends Controller
 {
     function index()
     {
-        return View::make('admin.dashboard.index');
+        return View::make('_admin.dashboard.index');
     }
 }

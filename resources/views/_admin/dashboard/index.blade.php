@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('_admin.master')
 
 @section('title') Dashboard - @parent @stop
 

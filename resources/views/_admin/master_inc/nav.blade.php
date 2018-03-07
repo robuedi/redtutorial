@@ -35,7 +35,7 @@ you can add as many as you like
 		<span> <!-- User image size is adjusted inside CSS, it should stay as is -->
 
 			<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-				<img src="{{URL::to('/assets/admin/')}}/img/avatars/male.png" alt="me" class="online" />
+				<img src="{{URL::to('/assets/_admin/')}}/img/avatars/male.png" alt="me" class="online" />
 				<span>
 					{{Sentinel::getUser()->first_name}} {{Sentinel::getUser()->last_name}}
 				</span>
