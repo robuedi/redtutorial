@@ -13,7 +13,8 @@
         <meta name="author" content="{{config('app.name')}}">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="/assets/css/lib/grid4.css">
+        {{--<link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap-grid.min.css">--}}
+        <link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="/assets/css/lib/normalize8.css">
         <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
 
@@ -43,12 +44,12 @@
         <div id="page_wrapper">
             <nav id="main_navigation" class="container-fluid">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-auto">
                         <img class="main-logo" src="/assets/img/logo.png" alt="Main website logo">
                         <p class="title">WebCode Tutorial</p>
                     </div>
 
-                    <div class="main-menu-list col-md-8">
+                    <div class="main-menu-list col-md-8 hidden-xs-up">
                         <ul class="menu-list">
                             <li><a>LEARN HTML5</a></li>
                             <li><a>SEARCH</a></li>
@@ -56,7 +57,7 @@
                         </ul>
                     </div>
 
-                    <div class="col-md-2 navigation-sidebar">
+                    <div class="col-md-2 navigation-sidebar ">
                         <span>
                             Menu
                         </span>
