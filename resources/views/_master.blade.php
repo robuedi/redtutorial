@@ -44,12 +44,11 @@
         <div id="page_wrapper">
             <nav id="main_navigation" class="container-fluid">
                 <div class="row">
-                    <div class="col-md-auto">
-                        <img class="main-logo" src="/assets/img/logo.png" alt="Main website logo">
-                        <p class="title">WebCode Tutorial</p>
+                    <div class="col-md-2">
+                        <p class="title"><span class="red">RED</span> <span class="tutorial">Tutorial</span></p>
                     </div>
 
-                    <div class="main-menu-list col-md-8 hidden-xs-up">
+                    <div class="main-menu-list col-md-10 ">
                         <ul class="menu-list">
                             <li><a>LEARN HTML5</a></li>
                             <li><a>SEARCH</a></li>
@@ -57,7 +56,7 @@
                         </ul>
                     </div>
 
-                    <div class="col-md-2 navigation-sidebar ">
+                    <div class="col-md-2 navigation-sidebar hidden ">
                         <span>
                             Menu
                         </span>

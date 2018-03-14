@@ -1,3 +1,15 @@
+/*
+#f05256
+#2f4050
+#516f79
+
+#e3eaf4
+#d8d8d8
+#ebebeb
+
+#fafafa
+*/
+
 body,
 html {
   background-color: #FFF;
@@ -39,7 +51,7 @@ html main .row {
 
 body main h1,
 html main h1 {
-  color: #7f9d2d;
+  color: #2f4050;
   margin: 50px 0px;
   text-align: center;
 }
@@ -47,8 +59,8 @@ html main h1 {
 body main button.submit,
 html main button.submit {
   display: block;
-  background-color: #2f435e;
-  color: #ececec;
+  background-color: #f05256;
+  color: #2f4050;
   width: 100%;
   border: none;
   border-radius: 0;
@@ -83,7 +95,7 @@ html main .input-container input {
   border: none;
   margin: 15px 0px 25px;
   width: 100%;
-  border-bottom: 2px solid #ececec;
+  border-bottom: 2px solid #2f4050;
 }
 
 body main .input-container input:focus,
@@ -135,7 +147,7 @@ html footer ul {
 
 body footer ul .warning,
 html footer ul .warning {
-  color: #c3423d;
+  color: #f05256;
 }
 
 .alert {
@@ -191,41 +203,41 @@ html footer ul .warning {
 
 @-webkit-keyframes input-active {
   0% {
-    border-bottom: 2px solid #ececec;
+    border-bottom: 2px solid #2f4050;
   }
 
   100% {
-    border-bottom: 2px solid #7f9d2d;
+    border-bottom: 2px solid #2f4050;
   }
 }
 
 @keyframes input-active {
   0% {
-    border-bottom: 2px solid #ececec;
+    border-bottom: 2px solid #2f4050;
   }
 
   100% {
-    border-bottom: 2px solid #7f9d2d;
+    border-bottom: 2px solid #2f4050;
   }
 }
 
 @-webkit-keyframes submit-hover {
   from {
-    background-color: #2f435e;
+    background-color: #f05256;
   }
 
   to {
-    background-color: #7f9d2d;
+    background-color: #2f4050;
   }
 }
 
 @keyframes submit-hover {
   from {
-    background-color: #2f435e;
+    background-color: #f05256;
   }
 
   to {
-    background-color: #7f9d2d;
+    background-color: #2f4050;
   }
 }
 

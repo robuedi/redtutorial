@@ -35,7 +35,7 @@ body,html {
       button.submit {
         display: block;
         background-color: $brand-primary;
-        color: $brand-info;
+        color: $brand-second;
         width: 100%;
         border: none;
         border-radius: 0;
@@ -65,7 +65,7 @@ body,html {
           border: none;
           margin: 15px 0px 25px;
           width: 100%;
-          border-bottom: 2px solid $brand-info;
+          border-bottom: 2px solid $brand-second;
           &:focus {
             animation: input-active .7s forwards;
           }
@@ -100,7 +100,7 @@ body,html {
         display: inline-block;
         
         .warning{
-          color: $brand-danger;
+          color: $brand-primary;
         }
       }
     }
@@ -154,7 +154,7 @@ body,html {
 }
 @keyframes input-active {
   0% {
-    border-bottom: 2px solid $brand-info;
+    border-bottom: 2px solid $brand-second;
   }
   100% {
     border-bottom: 2px solid $brand-second;

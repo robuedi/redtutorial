@@ -1,26 +1,17 @@
-.tutorial-content {
+.tutorials-container {
   padding: 60px 0px;
   overflow: hidden;
   position: relative;
   min-height: 50vh;
 }
 
-.tutorial-content .tutorial-main-title {
-  text-align: center;
-  margin-bottom: 20px;
+.tutorials-container .center-tutorial-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.tutorial-content .tutorial-main-title h2 {
-  font-size: 18px;
-}
-
-.tutorial-content .tutorial-main-title p {
-  font-size: 15px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.tutorial-content .main-tutorial-btn-container {
+.tutorials-container .main-tutorial-btn-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -33,7 +24,29 @@
   padding: 20px 0px;
 }
 
-.tutorial-content:before {
+.tutorials-container .tutorial-row .tutorial-description-container {
+  text-align: right;
+}
+
+.tutorials-container .tutorial-row.justify-content-end .tutorial-description-container {
+  text-align: left;
+}
+
+.tutorials-container .tutorial-description-container {
+  text-align: center;
+}
+
+.tutorials-container .tutorial-description-container .tutorial-description {
+  padding: 0px 40px;
+  max-width: 400px;
+  display: inline-block;
+}
+
+.tutorials-container .tutorial-description-container .tutorial-description h3.title {
+  margin: 15px 0px 5px;
+}
+
+.tutorials-container:before {
   left: 0;
   height: 500px;
   border-width: 222px 0 0 732px;
@@ -48,7 +61,7 @@
   opacity: 0.05;
 }
 
-.tutorial-content:after {
+.tutorials-container:after {
   height: 0;
   right: 0;
   border-width: 580px 170px 0 0;
@@ -60,27 +73,5 @@
   width: 0;
   top: 50%;
   opacity: 0.05;
-}
-
-.tutorial-content .skills-container {
-  padding: 0px 50px;
-}
-
-.tutorial-content .skills-container .skill-level-container {
-  padding: 0px 10px;
-  font-size: 18px;
-}
-
-.tutorial-content .skills-container .skill-level-container .title {
-  font-size: 30px;
-}
-
-.search-section {
-  padding: 100px 0px;
-}
-
-.search-section h2.main-title {
-  font-size: 30px;
-  font-weight: 700;
 }
 

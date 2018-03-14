@@ -21,7 +21,7 @@ textarea:focus, input:focus, button:focus{
     text-align: center;
     height: 70px;
     position: relative;
-    background-color: #F7F7F7;
+    background: transparent;
     overflow: visible;
 
     .main-logo {
@@ -33,15 +33,28 @@ textarea:focus, input:focus, button:focus{
 
     .title {
       display: inline-block;
-      float: left;
       line-height: 70px;
       vertical-align: middle;
       margin: 0;
       font-weight: 800;
-      font-size: 10px;
+      font-size: 20px;
+      padding-left: 25px;
+      float: left;
+
+      .red{
+        color: $brand-primary;
+        border: 1px solid $brand-primary;
+        padding: 2px 5px;
+      }
+
+      .tutorial {
+        color: $brand-second;
+        padding: 2px 5px;
+      }
     }
 
     .main-menu-list {
+      text-align: right;
       .menu-list {
         padding: 0;
         list-style-type: none;
