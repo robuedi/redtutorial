@@ -50,7 +50,9 @@
 
                     <div class="main-menu-list col-md-10 ">
                         <ul class="menu-list">
-                            <li><a>LEARN HTML5</a></li>
+                            @foreach($sections as $link => $name)
+                                <li><a href="{{$link}}">{{$name}}</a></li>
+                            @endforeach
                             <li><a>SEARCH</a></li>
                             <li><a>PLAYGROUND</a></li>
                         </ul>

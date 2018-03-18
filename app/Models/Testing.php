@@ -13,14 +13,14 @@ class Testing
 {
     static function getSections()
     {
-        $courses = ['learn-html-tutorial' => 'HTML', 'learn-css-tutorial' => 'CSS', 'learn-js-javascript-tutorial' => 'JS'];
+        $courses = ['learn-html-tutorial' => 'HTML', 'learn-css-tutorial' => 'CSS', 'learn-js-javascript-tutorial' => 'JavaScript', 'learn-php-tutorial' => 'PHP'];
 
         return $courses;
     }
 
     static function getSectionsURL()
     {
-        $courses = ['learn-html-tutorial', 'learn-css-tutorial', 'learn-js-javascript-tutorial'];
+        $courses = ['learn-html-tutorial', 'learn-css-tutorial', 'learn-js-javascript-tutorial', 'learn-php-javascript-tutorial'];
 
         return $courses;
     }

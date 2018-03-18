@@ -8492,50 +8492,68 @@ button:focus {
 }
 
 .big-rounded-btn {
-  margin: 20px;
-  border-radius: 50%;
   height: 200px;
   width: 200px;
-  border: none;
   position: relative;
   overflow: hidden;
   display: inline-block;
+  background: #fafafa;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .big-rounded-btn.html-tutorial-btn .inner-container {
-  background-image: url("/assets/img/html-background.jpeg");
+  background-image: url("/assets/img/html-background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
+.big-rounded-btn.html-tutorial-btn .inner-container.css-tut {
+  background-image: url("/assets/img/css-background.jpg");
+}
+
 .big-rounded-btn.html-tutorial-btn .inner-container a {
-  color: #FFF;
+  color: #f05256;
 }
 
 .big-rounded-btn:hover .inner-shadow {
   background-color: #fdfdfd;
 }
 
-.big-rounded-btn .inner-shadow1 {
+.big-rounded-btn .inner-container {
   height: 100%;
   width: 100%;
   position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #777;
-  z-index: 0;
-}
-
-.big-rounded-btn .inner-container {
-  height: 195px;
-  width: 195px;
-  position: absolute;
-  border-radius: 50%;
-  top: 5px;
+  top: 0px;
   right: 0px;
   z-index: 1;
   cursor: pointer;
+}
+
+.big-rounded-btn .inner-container a {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  font-size: 30px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+}
+
+.big-rounded-btn .inner-container a:hover {
+  text-decoration: none;
+}
+
+.big-rounded-btn .inner-container a .desc-title {
+  display: inline-block;
+  height: 70px;
+  background-color: #fafafa;
+  padding: 0px 10px;
+  min-width: 150px;
+  line-height: 70px;
+  vertical-align: bottom;
 }
 
 .big-rounded-btn .inner-container:before {
@@ -8565,20 +8583,5 @@ button:focus {
   width: 0;
   top: 50%;
   opacity: 0.05;
-}
-
-.big-rounded-btn a {
-  color: #333;
-  display: block;
-  text-align: center;
-  line-height: 200px;
-  font-weight: 700;
-  font-size: 30px;
-  z-index: 2;
-  position: relative;
-}
-
-.big-rounded-btn a:hover {
-  text-decoration: none;
 }
 

@@ -1,3 +1,15 @@
+/*
+#f05256
+#2f4050
+#516f79
+
+#e3eaf4
+#d8d8d8
+#ebebeb
+
+#fafafa
+*/
+
 .tutorials-container {
   padding: 60px 0px;
   overflow: hidden;
@@ -5,13 +17,16 @@
   min-height: 50vh;
 }
 
-.tutorials-container .center-tutorial-btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.tutorials-container .tutorials-main-top-title {
+  text-align: center;
+  margin: 15px 0px 90px;
 }
 
-.tutorials-container .main-tutorial-btn-container {
+.tutorials-container .tutorial-symbol-container {
+  display: inline-block;
+}
+
+.tutorials-container .tutorial-symbol-container .main-tutorial-btn-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,29 +36,42 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 20px 0px;
 }
 
-.tutorials-container .tutorial-row .tutorial-description-container {
-  text-align: right;
-}
-
-.tutorials-container .tutorial-row.justify-content-end .tutorial-description-container {
-  text-align: left;
-}
-
-.tutorials-container .tutorial-description-container {
+.tutorials-container .tutorial-row > div {
   text-align: center;
 }
 
-.tutorials-container .tutorial-description-container .tutorial-description {
-  padding: 0px 40px;
-  max-width: 400px;
+.tutorials-container .tutorial-row .main-tut-container {
+  max-width: 200px;
   display: inline-block;
 }
 
-.tutorials-container .tutorial-description-container .tutorial-description h3.title {
+.tutorials-container .tutorial-row .main-tut-container .tutorial-description-container .tutorial-description {
+  padding: 0px;
+  max-width: 600px;
+}
+
+.tutorials-container .tutorial-row .main-tut-container .tutorial-description-container .tutorial-description h3.title {
   margin: 15px 0px 5px;
+}
+
+.tutorials-container .tutorial-row .main-tut-container .tutorial-description-container .tutorial-description .tutorial-txt-desc {
+  font-size: 17px;
+}
+
+.tutorials-container .tutorial-row .main-tut-container .tutorial-description-container .tutorial-description .tutorial-levels a {
+  color: #2f4050;
+}
+
+.tutorials-container .tutorial-row .main-tut-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tutorials-container .tutorial-row .main-tut-container ul li {
+  display: inline-block;
+  padding: 0 20px;
 }
 
 .tutorials-container:before {

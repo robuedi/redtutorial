@@ -49,7 +49,7 @@ Route::get('/{section_slug}', function($section_slug) {
     $sections_slugs = \App\Models\Testing::getSectionsURL();
 
     if ( in_array($section_slug, $sections_slugs) ){
-        $controller = new \App\Http\Controllers\TestingController();
+        $controller = new \App\Http\Controllers\CoursesController();
         return $controller->getSection($section_slug);
     }
 
@@ -61,7 +61,7 @@ Route::get('/{section_slug}/{course}', function($section_slug, $course) {
     $courses_slugs = \App\Models\Testing::getCoursesURL();
 
     if ( in_array($course, $courses_slugs) ){
-        $controller = new \App\Http\Controllers\TestingController();
+        $controller = new \App\Http\Controllers\CoursesController();
         return $controller->getCourse($course);
     }
 

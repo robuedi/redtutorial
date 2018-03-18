@@ -1,3 +1,6 @@
+
+@import "resources/assets/sass/base/variables";
+
 #page_wrapper{
 
 
@@ -9,36 +12,63 @@
   position: relative;
   min-height: 50vh;
 
+  .tutorials-main-top-title{
+    text-align: center;
+    margin: 15px 0px 90px;
+  }
 
-  .center-tutorial-btn {
-    display: flex;
+  .tutorial-symbol-container {
+    display: inline-block;
+
+    .main-tutorial-btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
-  .main-tutorial-btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0px;
-  }
+
 
   .tutorial-row  {
-    .tutorial-description-container {
-      text-align: right;
-    }
-    &.justify-content-end .tutorial-description-container{
-      text-align: left;
-    }
-  }
 
-  .tutorial-description-container {
-    text-align: center;
+    > div {
+      text-align: center;
+    }
 
-    .tutorial-description {
-      padding: 0px 40px;
-      max-width: 400px;
+    .main-tut-container{
+      max-width: 200px;
       display: inline-block;
 
-      h3.title {
-        margin: 15px 0px 5px;
+      .tutorial-description-container {
+
+        .tutorial-description {
+          padding: 0px ;
+          max-width: 600px;
+
+          h3.title {
+            margin: 15px 0px 5px;
+          }
+          .tutorial-txt-desc{
+            font-size: 17px;
+
+          }
+          
+          .tutorial-levels {
+            a{
+              color: $brand-second;
+
+            }
+          }
+        }
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li{
+          display: inline-block;
+          padding: 0 20px;
+        }
       }
     }
   }

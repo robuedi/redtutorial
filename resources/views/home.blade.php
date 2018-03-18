@@ -14,65 +14,51 @@
 
 
     <div class="container-fluid tutorials-container">
-        @foreach( range(1, 4) as $key)
-        <div class="row tutorial-row @if($key%2 == 0)justify-content-end @endif">
+        <div class="row">
+            <div class="col">
+                <h1 class="tutorials-main-top-title" >Tutorials</h1>
+            </div>
+        </div>
+        <div class="row tutorial-row ">
 
-            @if($key%2 == 0)
-                <div class="col-md-2 center-tutorial-btn ">
-                    <div class=" main-tutorial-btn-container ">
-                        <div class="big-rounded-btn html-tutorial-btn">
-                            <div class="inner-shadow1"></div>
-                            <div class="inner-container">
-                                <a href="#">HTML</a>
+        @foreach( [1=>'HTML', 2=>'CSS', 3=> 'JavaScript', 4 => 'PHP'] as $key => $value)
+            <div class="col-3">
+                <div class="main-tut-container">
+                    <div class="tutorial-symbol-container">
+                        <div class=" main-tutorial-btn-container ">
+                            <div class="big-rounded-btn html-tutorial-btn">
+                                <div class="inner-container {{strtolower($value)}}-tut">
+                                    <a href="#"><span class="desc-title" >{{$value}}</span></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endif
 
-            <div class="col-md-5 tutorial-description-container">
-                <div class="tutorial-description">
-                    <h2 >HTML Tutorial</h2>
-                    <p>
-                        Phasellus nisi dolor, sollicitudin at eros id, sollicitudin efficitur lorem.
-                        Aenean euismod, mi eu dapibus dignissim.
-                    </p>
-                    <div>
-                        <h3 class="title">Beginner</h3>
-                        <p class="description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    <div class="tutorial-description-container ">
+                    <div class="tutorial-description">
+                        <p class="tutorial-txt-desc">
+                            Phasellus nisi dolor, sollicitudin at eros id, sollicitudin efficitur lorem.
+                            Aenean euismod, mi eu dapibus dignissim.
                         </p>
+                        <ul class="tutorial-levels">
+                            <li>
+                                <h3 class="title"><a href="#" >Beginner</a></h3>
+                            </li>
+                            <li>
+                                <h3 class="title"><a href="#" >Intermediary</a></h3>
+                            </li>
+                            <li>
+                                <h3 class="title"><a href="#" >Advanced</a></h3>
+                            </li>
+                        </ul>
                     </div>
-                    <div>
-                        <h3 class="title">Intermediary</h3>
-                        <p class="description">
-                            Nam pretium, orci commodo consequat dictum, dui purus convallis
-                        </p>
-                    </div>
-                    <div>
-                        <h3 class="title">Advanced</h3>
-                        <p class="description">
-                            Praesent at lacus semper, tincidunt urna facilisis, pulvinar magna
-                        </p>
-                    </div>
-                </div>
 
+                </div>
+                </div>
             </div>
 
-            @if($key%2 != 0)
-                <div class="col-md-2 center-tutorial-btn">
-                    <div class=" main-tutorial-btn-container ">
-                        <div class="big-rounded-btn html-tutorial-btn">
-                            <div class="inner-shadow1"></div>
-                            <div class="inner-container">
-                                <a href="#">HTML</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endif
-        </div>
         @endforeach
+        </div>
 
         </div>
     </div>

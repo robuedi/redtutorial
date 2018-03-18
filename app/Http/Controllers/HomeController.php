@@ -9,15 +9,19 @@
 namespace App\Http\Controllers;
 
 use View;
+use App\Models\Testing;
 
 class HomeController extends Controller
 {
     function index(){
 
         $meta = [
-            'description' => 'Learn HTML'
+            'description' => 'Learn HTML, CSS, JavaScript, PHP'
         ];
 
-        return View::make('home', ['meta'=>$meta]);
+
+        $sections = Testing::getSections();
+
+        return View::make('home', ['meta'=>$meta, 'sections' => $sections]);
     }
 }
