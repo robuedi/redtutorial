@@ -7,60 +7,52 @@
 @stop
 
 @section('scripts')
+    <script src="/assets/js/libs/vue.min.js"></script>
 @stop
 
 @section('content')
 <main>
 
-
-    <div class="container-fluid tutorials-container">
-        <div class="row">
-            <div class="col">
-                <h1 class="tutorials-main-top-title" >Tutorials</h1>
+    <section class="tutorials-container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <h1 class="tutorials-main-top-title" >Select your tutorial</h1>
+                </div>
             </div>
-        </div>
-        <div class="row tutorial-row ">
-
-        @foreach( [1=>'HTML', 2=>'CSS', 3=> 'JavaScript', 4 => 'PHP'] as $key => $value)
-            <div class="col-3">
-                <div class="main-tut-container">
-                    <div class="tutorial-symbol-container">
-                        <div class=" main-tutorial-btn-container ">
-                            <div class="big-rounded-btn html-tutorial-btn">
-                                <div class="inner-container {{strtolower($value)}}-tut">
-                                    <a href="#"><span class="desc-title" >{{$value}}</span></a>
+            <div class="row">
+                @foreach( [1=>'HTML', 2=>'CSS', 3=> 'JS', 4 => 'PHP'] as $key => $value)
+                    <article class="col-md-3 tutorial-item">
+                        <div class="tutorial-item-container">
+                            <header style="background-image: url(/assets/img/{{strtolower($value)}}-background.png)">
+                                <h2>{{$value}}</h2>
+                            </header>
+                            <section>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Ut dapibus dolor vel lacus condimentum, at sagittis augue feugiat.
+                                    Proin non dapibus odio.
+                                </p>
+                            </section>
+                            <footer>
+                                <div class="horizontal-ln">
                                 </div>
-                            </div>
+                                <a href="#">
+                                    Beginner
+                                </a>
+                                <a href="#">
+                                    Intermediary
+                                </a>
+                                <a href="#">
+                                    Advanced
+                                </a>
+                            </footer>
                         </div>
-                    </div>
-
-                    <div class="tutorial-description-container ">
-                    <div class="tutorial-description">
-                        <p class="tutorial-txt-desc">
-                            Phasellus nisi dolor, sollicitudin at eros id, sollicitudin efficitur lorem.
-                            Aenean euismod, mi eu dapibus dignissim.
-                        </p>
-                        <ul class="tutorial-levels">
-                            <li>
-                                <h3 class="title"><a href="#" >Beginner</a></h3>
-                            </li>
-                            <li>
-                                <h3 class="title"><a href="#" >Intermediary</a></h3>
-                            </li>
-                            <li>
-                                <h3 class="title"><a href="#" >Advanced</a></h3>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-                </div>
+                    </article>
+                @endforeach
             </div>
-
-        @endforeach
         </div>
+    </section>
 
-        </div>
-    </div>
 </main>
 @stop
