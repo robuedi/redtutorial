@@ -34,18 +34,29 @@ return array(
             "class"     => "fa-list-alt",
             "submenus"  => array(
                 '1' => array(
-                    "name"      => "Courses Skill Level",
-                    "url"       => "admin/curses-skills",
+                    "name"      => "All chapters",
+                    "url"       => "admin/chapters",
                     "aliases"   => array(),
                 ),
             ),
         ),
         array(
-            "name"      => "Chapters Sections",
-            "url"       => "admin/chapters-section",
+            "name"      => "Lessons",
+            "url"       => "#",
             "aliases"   => array(),
             "class"     => "fa-bookmark-o",
-            "submenus"  => array(),
+            "submenus"  => array(
+                "1" => array(
+                    "name"  => "All lessons",
+                    "url"   => "admin/lessons",
+                    "aliases"   => array('admin\/lessons\/[a-zA-Z0-9]+\/edit'),
+                ),
+                "2" => array(
+                    "name"  => "Add new lesson",
+                    "url"   => "admin/lessons/create",
+                    "aliases"   => array('admin\/lessons\/create'),
+                )
+            ),
         ),
         array(
             "name"      => "Users Management",

@@ -1,0 +1,35 @@
+/*
+#f05256
+#2f4050
+#516f79
+
+#e3eaf4
+#d8d8d8
+#ebebeb
+
+#fafafa
+*/
+
+.main-course-container {
+  margin-top: 70px;
+}
+
+.main-course-container .title-container {
+  text-align: center;
+}
+
+.main-course-container .title-container .tutorial-symbol-container {
+  display: inline-block;
+}
+
+.main-course-container .page-header {
+  text-align: center;
+  margin: 0px 0px 40px;
+  border: none;
+}
+
+.main-course-container .stages .stages-list {
+  width: 33%;
+  display: inline-block;
+}
+

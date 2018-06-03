@@ -15,19 +15,23 @@
 
     <section class="tutorials-container">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col">
-                    <h1 class="tutorials-main-top-title" >Select your tutorial</h1>
-                </div>
-            </div>
+            {{--<div class="row">--}}
+                {{--<div class="col">--}}
+                    {{--<h1 class="tutorials-main-top-title" >Select your tutorial</h1>--}}
+                {{--</div>--}}
+            {{--</div>--}}
             <div class="row">
                 @foreach( [1=>'HTML', 2=>'CSS', 3=> 'JS', 4 => 'PHP'] as $key => $value)
                     <article class="col-md-3 tutorial-item">
                         <div class="tutorial-item-container">
                             <header style="background-image: url(/assets/img/{{strtolower($value)}}-background.png)">
+
                                 <h2>{{$value}}</h2>
+                                <h2 class="v2">{{$value}}</h2>
                             </header>
                             <section>
+
+{{--                                <h2>{{$value}}</h2>--}}
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Ut dapibus dolor vel lacus condimentum, at sagittis augue feugiat.

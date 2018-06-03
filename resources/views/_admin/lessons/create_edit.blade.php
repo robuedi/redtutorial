@@ -1,12 +1,12 @@
 @extends('_admin.master')
 
-@section('title') {{ucfirst($section_obj_name_pl)}} - @parent @stop
+@section('title') @lang('admin_lessons.lessons') - @parent @stop
 
 
 @section('breadcrumbs')
-    <li><a href="{{URL::to('/')}}">Home</a></li>
-    <li><a href="{{URL::to('/admin/'.$section_obj_name_pl)}}">{{ucfirst($section_obj_name_pl)}}</a></li>
-    <li>@if($section_obj->id) Edit @else Create @endif</li>
+    <li><a href="{{URL::to('/')}}">@lang('admin_general.home')</a></li>
+    <li><a href="{{URL::to('/admin/lessons')}}">@lang('admin_lessons.lessons')</a></li>
+    <li>@if($main_object->id) @lang('admin_general.edit') @else @lang('admin_general.creates') @endif</li>
 @stop
 
 @section('scripts')
@@ -17,30 +17,30 @@
 
 @section('content')
 
-<form action="{{url('admin/'.$section_obj_name_pl).'/'.$section_obj->id}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
+<form action="{{url('admin/lessons/'.$main_object->id)}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-6">
             <h1 class="page-title txt-color-blueDark">
                 <i class="fa fa-fw fa-pencil-square-o"></i>
-                {{ucfirst($section_obj_name_pl)}} <span>&gt; @if($section_obj->id) Edit @else Create @endif </span>
+                @lang('admin_lessons.lessons') <span>&gt; @if($main_object->id) @lang('admin_general.edit') @else @lang('admin_general.create') @endif </span>
             </h1>
         </div>
 
         <div class="col-xs-12 col-sm-5 col-lg-6 text-right">
             <div class="btn-group">
-                <button name="save" class="btn btn-lg bg-color-blueDark txt-color-white" value="da">Save</button>
+                <button name="save" class="btn btn-lg bg-color-blueDark txt-color-white" value="da">@lang('admin_general.save')</button>
                 <button class="btn btn-lg bg-color-blueDark txt-color-white dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="javascript:void(0);" id="save-and-add">Save and Add New</a>
+                        <a href="javascript:void(0);" id="save-and-add">@lang('admin_general.save_and_add_new')</a>
                         <input type="hidden" autocomplete="off" id="save-and-add-input" name="save_and_add_new" value="" />
                     </li>
                 </ul>
             </div>
-            <button type="submit" name="save_and_continue" value="1" class=" btn btn-lg btn-primary">Save and Continue</button>
-            @if($section_obj->id)
+            <button type="submit" name="save_and_continue" value="1" class=" btn btn-lg btn-primary">@lang('admin_general.save_and_continue')</button>
+            @if($main_object->id)
                 <input name="_method" type="hidden" value="PUT" >
             @endif
             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -56,7 +56,7 @@
                 <div class="jarviswidget" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
                     <header>
                         <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                        <h2>Details </h2>
+                        <h2>@lang('admin_general.details_title') </h2>
 
                     </header>
 

@@ -32,6 +32,7 @@
 <!-- JQUERY SELECT2 INPUT -->
 <script src="{{URL::to('/assets/_admin/')}}/js/plugin/select2/select2.min.js"></script>
 
+{{--<script src="{{URL::to('/assets/_admin/')}}/js/libs/select2.full.min.js"></script>--}}
 <!-- JQUERY UI + Bootstrap Slider -->
 <script src="{{URL::to('/assets/_admin/')}}/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
 

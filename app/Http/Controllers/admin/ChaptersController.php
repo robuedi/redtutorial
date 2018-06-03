@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eduard
- * Date: 24/02/18
- * Time: 14:18
- */
 
 namespace App\Http\Controllers\admin;
 
@@ -15,13 +9,10 @@ use App\Course;
 use Validator;
 use View;
 use App\Libraries\REC\UIMessage;
+use App\Http\Controllers\Controller;
 
-class CoursesController extends ListingController
+class ChaptersController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct('course', 'courses');
-    }
 
     function index()
     {
@@ -31,7 +22,7 @@ class CoursesController extends ListingController
         // settings
         $query_data = array(
 
-            'fields' => "co.id, co.title, co.is_public, co.created_at, co.updated_at, co.order_weight, co.slug",
+            'fields' => "co.id, co.title, co.is_public, co.created_at, co.updated_at, co.order_weight",
 
             'body' => "FROM courses co
                         WHERE(1) {filters}",
@@ -55,9 +46,9 @@ class CoursesController extends ListingController
         $results = $listing->results();
 
         // display
-        return View::make('_admin.'.$this->section_name_pl.'.index', array(
+        return View::make('_admin.chapters.index', array(
             'results' => $results,
-            'listing' => $listing,
+            'listing' => $listing
         ));
     }
 
@@ -67,14 +58,19 @@ class CoursesController extends ListingController
         //get current max order;
         $max_order_number = Course::max('order_weight');
         $new_course->order_weight = (int)$max_order_number+1;
+        $courses = Course::where('is_draft', 0)->get();
 
-        return View::make('_admin.'.$this->section_name_pl.'.create_edit', ['section_obj' => $new_course]);
+        return View::make('_admin.chapters.create_edit', [
+            'section_obj'   => $new_course,
+            'courses'       => $courses,
+            'create_action' => true
+        ]);
     }
 
     function edit($id)
     {
         $course = Course::findOrFail($id);
-        return View::make('_admin.'.$this->section_name_pl.'.create_edit', ['section_obj' => $course]);
+        return View::make('_admin.chapters.create_edit', ['section_obj' => $course]);
     }
 
     function store(Request $request)
@@ -100,19 +96,18 @@ class CoursesController extends ListingController
             $course->description = $request->input('description');
             $course->is_public = $request->input('is_public') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');
-            $course->slug = $request->input('slug');
             $course->save();
 
             //send user back
             UIMessage::set('success', "Course created successfully.");
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/'.$this->section_name_pl.'/'.$course->id.'/edit');
+                return redirect('admin/chapters/'.$course->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
-                return redirect('admin/'.$this->section_name_pl.'/create'); // save and add new
+                return redirect('admin/chapters/create'); // save and add new
             else
-                return redirect('admin/'.$this->section_name_pl); //redirect to listing
+                return redirect('admin/chapters'); //redirect to listing
 
         }
     }
@@ -124,8 +119,7 @@ class CoursesController extends ListingController
         // validate
         $rules = array(
             'title'        => 'required',
-            'order_weight' => 'required',
-            'slug'         => 'required'
+            'order_weight' => 'required'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -142,19 +136,18 @@ class CoursesController extends ListingController
             $course->description = $request->input('description');
             $course->is_public = $request->input('is_public') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');
-            $course->slug = $request->input('slug');
             $course->save();
 
             //send user back
             UIMessage::set('success', ucfirst($this->section_name_sg)." updated successfully.");
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/'.$this->section_name_pl.'/'.$course->id.'/edit');
+                return redirect('admin/chapters/'.$course->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
-                return redirect('admin/'.$this->section_name_pl.'/create'); // save and add new
+                return redirect('admin/chapters/create'); // save and add new
             else
-                return redirect('admin/'.$this->section_name_pl); //redirect to listing
+                return redirect('admin/chapters'); //redirect to listing
         }
 
     }
@@ -187,7 +180,7 @@ class CoursesController extends ListingController
         UIMessage::set('success', ucfirst($this->section_name_sg)." deleted successfully. Order weight updated.");
 
 
-        return redirect('admin/'.$this->section_name_pl);
+        return redirect('admin/chapters');
     }
 
 }

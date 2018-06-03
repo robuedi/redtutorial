@@ -1,12 +1,12 @@
 @extends('_admin.master')
 
-@section('title') {{ucfirst($section_obj_name_pl)}} - @parent @stop
+@section('title') {{trans('listing.chapters.capitalize')}} - @parent @stop
 
 
 @section('breadcrumbs')
     <li><a href="{{URL::to('/')}}">Home</a></li>
-    <li><a href="{{URL::to('/admin/'.$section_obj_name_pl)}}">{{ucfirst($section_obj_name_pl)}}</a></li>
-    <li>@if($section_obj->id) Edit @else Create @endif</li>
+    <li><a href="{{URL::to('/admin/'.trans('listing.chapters.lower'))}}">{{trans('listing.chapters.capitalize')}}</a></li>
+    <li>@if(!isset($create_action)) Edit @else Create @endif</li>
 @stop
 
 @section('scripts')
@@ -17,12 +17,12 @@
 
 @section('content')
 
-<form action="{{url('admin/'.$section_obj_name_pl).'/'.$section_obj->id}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
+<form action="{{url('admin/'.trans('listing.chapters.lower')).'/'.$section_obj->id}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-6">
             <h1 class="page-title txt-color-blueDark">
                 <i class="fa fa-fw fa-pencil-square-o"></i>
-                {{ucfirst($section_obj_name_pl)}} <span>&gt; @if($section_obj->id) Edit @else Create @endif </span>
+                {{trans('listing.chapters.capitalize')}} <span>&gt; @if(!isset($create_action)) Edit @else Create @endif </span>
             </h1>
         </div>
 
@@ -40,7 +40,7 @@
                 </ul>
             </div>
             <button type="submit" name="save_and_continue" value="1" class=" btn btn-lg btn-primary">Save and Continue</button>
-            @if($section_obj->id)
+            @if(!isset($create_action))
                 <input name="_method" type="hidden" value="PUT" >
             @endif
             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -86,19 +86,22 @@
                             </section>
 
                             <section>
-                                <label class="label">Course order weight <span class="req">*</span></label>
+                                <label class="label">Order weight <span class="req">*</span></label>
                                 <label class="input">
                                     <input type="text" name="order_weight" placeholder="Order weight" class="form-control input-sm" value="{{$section_obj->order_weight}}">
                                 </label>
                             </section>
 
                             <section>
-                                <label class="label">Slug <span class="req">*</span></label>
+                                <label class="label">Course <span class="req">*</span></label>
                                 <label class="input">
-                                    <input type="text" name="slug" placeholder="slug" class="form-control input-sm" value="{{$section_obj->slug}}">
+                                    <select name="course" class="select2">
+                                        @foreach($courses as $course)
+                                            <option value="{{$course->id}}" >{{$course->title}}</option>
+                                        @endforeach
+                                    </select >
                                 </label>
                             </section>
-
                         </div>
                     </div>
 

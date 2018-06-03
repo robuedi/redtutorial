@@ -5,7 +5,7 @@
 
 @section('breadcrumbs')
     <li><a href="{{URL::to('/')}}">Home</a></li>
-    <li>{{ucfirst($section_obj_name_pl)}}</li>
+    <li>@lang('listing.chapters.capitalize')</li>
 @stop
 
 @section('scripts')
@@ -18,11 +18,11 @@
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
             <h1 class="page-title txt-color-blueDark"><i class="fa fa-calendar fa-fw "></i>
-                {{ucfirst($section_obj_name_pl)}}
+                {{trans('listing.chapters.capitalize')}}
             </h1>
         </div>
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8 text-right pull-right">
-            <a href="{{url('admin/'.$section_obj_name_pl.'/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Add new</a>
+            <a href="{{url('admin/'.trans('listing.chapters.lower').'/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Add new</a>
         </div>
     </div>
 
@@ -86,7 +86,7 @@
 
                         <header>
                             <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                            <h2>{{ucfirst($section_obj_name_pl)}}</h2>
+                            <h2>{{trans('listing.chapters.capitalize')}}</h2>
                         </header>
 
                         <!-- widget div-->
@@ -99,7 +99,7 @@
                                         <thead>
                                         <tr>
                                             <th><a class="{{ $listing->sortDir("title") }}" href="{{ $listing->sortLink("title") }}"><span>Title</span></a></th>
-                                            <th style="width: 100px"><a class="{{ $listing->sortDir("is_public") }}" href="{{ $listing->sortLink("is_public") }}"><span>Is Public</span></a></th>
+                                            <th style="width: 100px"><a class="{{ $listing->sortDir("is_public") }}" href="{{ $listing->sortLink("is_public") }}"><span>Is Active</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("order_weight") }}" href="{{ $listing->sortLink("order_weight") }}"><span>Order Weight</span></a></th>
                                             <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>Date Created</span></a></th>
                                             <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>Date Updated</span></a></th>
@@ -117,9 +117,9 @@
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>
                                                 <td class="format-momentjs">{{ $r->updated_at }}</td>
                                                 <td style="text-align:center;">
-                                                    <a href="{{url('admin/'.$section_obj_name_pl.'/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
+                                                    <a href="{{url('admin/'.trans('listing.chapters.lower').'/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
                                                     @if(empty ($r->code_page ))
-                                                        <a href="javascript:deleteRouteObject('{{url('admin/'.$section_obj_name_pl.'/'.$r->id)}}')" class="btn btn-sm btn-danger btn-delete apply-tooltip" data-method="DELETE" title="Delete" data-warning="Are you sure?"><i class="glyphicon glyphicon-trash"></i></a>
+                                                        <a href="javascript:deleteRouteObject('{{url('admin/'.trans('listing.chapters.lower').'/'.$r->id)}}')" class="btn btn-sm btn-danger btn-delete apply-tooltip" data-method="DELETE" title="Delete" data-warning="Are you sure?"><i class="glyphicon glyphicon-trash"></i></a>
                                                     @endif
                                                 </td>
                                             </tr>

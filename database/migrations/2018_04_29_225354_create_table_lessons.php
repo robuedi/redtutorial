@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableCourses extends Migration
+class CreateTableLessons extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateTableCourses extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function(Blueprint $table)
+        Schema::create('lessons', function(Blueprint $table)
         {
             $table->increments('id')->index();
+            $table->integer('course')->index()->nullable();
+            $table->integer('subcategory')->index()->nullable();
+            $table->string('subcategory_type', 255)->index();
             $table->string('title', 255);
             $table->text('description')->nullable();
+            $table->text('body')->nullable();
             $table->double('order_weight', 6, 2)->index();
             $table->tinyInteger('is_public')->default(0)->index();
             $table->tinyInteger('is_draft')->default(1)->index();
@@ -33,6 +37,6 @@ class CreateTableCourses extends Migration
      */
     public function down()
     {
-        Schema::drop('courses');
+        Schema::drop('lessons');
     }
 }

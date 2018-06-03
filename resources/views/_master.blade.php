@@ -21,7 +21,7 @@
         @yield('stylesheets')
 
         <!-- Main Font -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Courgette|Tajawal:300,400,800" rel="stylesheet">
 
         <!--[if lt IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -45,8 +45,15 @@
             <nav id="main_navigation" class="container-fluid">
                 <div class="row">
                     <div class="col-md-2">
-                        <a href="/"><p class="title"><span class="red">RED</span> <span class="tutorial">Tutorial</span></p></a>
+                        <a class="title" href="/">
+                            <p >
+                                <span class="red">RED</span>
+                                <span class="tutorial">tutorial</span>
+                            </p>
+                        </a>
                     </div>
+                </div>
+                <div class="row">
 
                     <div class="main-menu-list col-md-10 ">
                         <ul class="menu-list">

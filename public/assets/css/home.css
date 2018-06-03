@@ -10,8 +10,42 @@
 #fafafa
 */
 
+body:before,
+body:after {
+  z-index: -1;
+  position: absolute;
+  font-weight: 900;
+  font-size: 900px;
+  color: #f05256;
+  top: 0;
+  opacity: 0.02;
+}
+
+body:before {
+  left: 0;
+  height: 70vh;
+  border-width: 70vh 0 0 50vw;
+  border-color: transparent transparent transparent #f0f0f0;
+  border-style: solid;
+  margin-top: -60px;
+  z-index: 0;
+  content: '';
+  position: absolute;
+  width: 0;
+  top: 30vh;
+  opacity: 0.55;
+  font-size: 300px;
+  color: #f05256;
+}
+
+body:after {
+  line-height: 1;
+  content: 'RED';
+  right: 0;
+}
+
 .tutorials-container {
-  padding: 60px 50px;
+  padding: 120px 50px;
   overflow: hidden;
   position: relative;
   min-height: 50vh;
@@ -22,40 +56,15 @@
   margin: 15px 0px 90px;
 }
 
-.tutorials-container:before,
-.tutorials-container:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 0;
-  top: 50%;
-  opacity: 0.05;
-  border-style: solid;
-}
-
-.tutorials-container:before {
-  left: 0;
-  height: 500px;
-  border-width: 222px 0 0 732px;
-  border-color: transparent transparent transparent #aaa;
-  margin-top: -60px;
-}
-
-.tutorials-container:after {
-  height: 0;
-  right: 0;
-  border-width: 580px 170px 0 0;
-  border-color: transparent #aaa transparent transparent;
-}
-
 .tutorials-container .tutorial-item {
   padding: 0px 20px;
 }
 
 .tutorials-container .tutorial-item .tutorial-item-container {
-  -webkit-box-shadow: 0px 0px 2px 2px #ededed;
-          box-shadow: 0px 0px 2px 2px #ededed;
-  background-color: #fbfbfb;
+  -webkit-box-shadow: 0px 0px 2px 2px #f2f2f2;
+          box-shadow: 0px 0px 2px 2px #f2f2f2;
+  background-color: white;
+  border: 3px solid #000;
 }
 
 .tutorials-container .tutorial-item .tutorial-item-container > header {
@@ -66,31 +75,51 @@
   height: 350px;
   width: 100%;
   z-index: 0;
-  overflow: hidden;
 }
 
 .tutorials-container .tutorial-item .tutorial-item-container > header h2 {
-  background-color: #fbfbfb;
-  font-weight: 700;
-  padding: 8px 40px;
   position: absolute;
-  bottom: 0px;
-  text-decoration: underline;
-  left: 0px;
-  right: 0px;
-  margin: 0;
-  color: transparent;
+  left: 57px;
+  bottom: -69px;
+  font-size: 130px;
+  color: #FFF;
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.tutorials-container .tutorial-item .tutorial-item-container > header h2.v2 {
+  position: absolute;
+  left: 40px;
+  bottom: -73px;
+  font-size: 130px;
+  color: #f05256;
+  font-weight: 700;
 }
 
 .tutorials-container .tutorial-item .tutorial-item-container > section {
+  overflow: hidden;
+  margin-top: 0px;
   position: relative;
   z-index: 1;
-  padding: 25px 40px 25px;
+  padding: 35px 40px 25px;
   min-height: 135px;
+}
+
+.tutorials-container .tutorial-item .tutorial-item-container > section h2 {
+  font-weight: 700;
+  text-decoration: underline;
+  margin: 0px 0px 10px;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #f05256;
+          text-decoration-color: #f05256;
+  margin-top: -30px;
+  margin-bottom: 40px;
+  font-size: 130px;
 }
 
 .tutorials-container .tutorial-item .tutorial-item-container > section p {
   margin: 0;
+  font-size: 18px;
 }
 
 .tutorials-container .tutorial-item .tutorial-item-container > footer {
@@ -98,19 +127,18 @@
 }
 
 .tutorials-container .tutorial-item .tutorial-item-container > footer .horizontal-ln {
-  margin-left: -30px;
+  margin-left: -40px;
   width: 75%;
   height: 1px;
-  background-color: #ededed;
+  background-color: #e9e9e9;
   margin-bottom: 25px;
 }
 
 .tutorials-container .tutorial-item .tutorial-item-container > footer a {
   text-decoration: none !important;
-  font-weight: 300;
+  font-weight: 400;
   background-color: transparent;
-  font-size: 15px;
-  letter-spacing: 1px;
+  font-size: 18px;
   text-transform: uppercase;
   margin-right: 10px;
 }

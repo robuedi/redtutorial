@@ -1,11 +1,11 @@
 @extends('_admin.master')
 
-@section('title') Dashboard - @parent @stop
+@section('title') @lang('admin_lessons.lessons') - @parent @stop
 
 
 @section('breadcrumbs')
-    <li><a href="{{URL::to('/')}}">Home</a></li>
-    <li>{{ucfirst($section_obj_name_pl)}}</li>
+    <li><a href="{{URL::to('/')}}">@lang('admin_general.home')</a></li>
+    <li>@lang('admin_lessons.lessons')</li>
 @stop
 
 @section('scripts')
@@ -18,11 +18,11 @@
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
             <h1 class="page-title txt-color-blueDark"><i class="fa fa-calendar fa-fw "></i>
-                {{ucfirst($section_obj_name_pl)}}
+                @lang('admin_lessons.lessons')
             </h1>
         </div>
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8 text-right pull-right">
-            <a href="{{url('admin/'.$section_obj_name_pl.'/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Add new</a>
+            <a href="{{url('admin/lessons/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> @lang('admin_general.add_new')</a>
         </div>
     </div>
 
@@ -37,7 +37,7 @@
                     <div data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false"  class="widget-filters jarviswidget jarviswidget-color-darken">
                         <header>
                             <span class="widget-icon"> <i class="fa fa-filter"></i> </span>
-                            <h2>Filters</h2>
+                            <h2>@lang('admin_general.filters')</h2>
                         </header>
 
                         <!-- widget div-->
@@ -50,14 +50,14 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label>Title</label>
+                                                    <label>@lang('admin_general.filters_title')</label>
                                                     <input class="form-control" type="text" name="title" value="{{ Illuminate\Support\Facades\Input::get('title') }}">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label>Is Active</label>
+                                                    <label>@lang('admin_general.filters_is_public')</label>
                                                     <select name="is_public" class="select2" style="width: 100%">
                                                         <option value=""></option>
                                                         <option value="1" @if(Illuminate\Support\Facades\Input::get('is_public') == "1") selected @endif>YES</option>
@@ -68,8 +68,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 filter-buttons text-right">
-                                        <button class="btn btn-primary" type="submit">Submit</button>
-                                        <a class="btn btn-default" type="reset" href="{{ URL::current() }}">Reset</a>
+                                        <button class="btn btn-primary" type="submit">@lang('admin_general.filters_submit')</button>
+                                        <a class="btn btn-default" type="reset" href="{{ URL::current() }}">@lang('admin_general.filters_reset')</a>
                                     </div>
                                 </div>
 
@@ -86,7 +86,7 @@
 
                         <header>
                             <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                            <h2>{{ucfirst($section_obj_name_pl)}}</h2>
+                            <h2>@lang('admin_lessons.lessons')</h2>
                         </header>
 
                         <!-- widget div-->
@@ -98,11 +98,11 @@
                                     <table class="table table-striped table-bordered table-listing table-hover smart-form ">
                                         <thead>
                                         <tr>
-                                            <th><a class="{{ $listing->sortDir("title") }}" href="{{ $listing->sortLink("title") }}"><span>Title</span></a></th>
-                                            <th style="width: 100px"><a class="{{ $listing->sortDir("is_public") }}" href="{{ $listing->sortLink("is_public") }}"><span>Is Public</span></a></th>
-                                            <th style="width: 100px"><a class="{{ $listing->sortDir("order_weight") }}" href="{{ $listing->sortLink("order_weight") }}"><span>Order Weight</span></a></th>
-                                            <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>Date Created</span></a></th>
-                                            <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>Date Updated</span></a></th>
+                                            <th><a class="{{ $listing->sortDir("title") }}" href="{{ $listing->sortLink("title") }}"><span>@lang('admin_lessons.listing_title')</span></a></th>
+                                            <th style="width: 100px"><a class="{{ $listing->sortDir("is_public") }}" href="{{ $listing->sortLink("is_public") }}"><span>@lang('admin_lessons.listing_is_public')</span></a></th>
+                                            <th style="width: 100px"><a class="{{ $listing->sortDir("order_weight") }}" href="{{ $listing->sortLink("order_weight") }}"><span>@lang('admin_lessons.listing_order_weight')</span></a></th>
+                                            <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>@lang('admin_lessons.listing_date_created')</span></a></th>
+                                            <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>@lang('admin_lessons.listing_date_updated')</span></a></th>
                                             <th style="width:120px; text-align:center"><span>Actions</span></th>
                                         </tr>
                                         </thead>
@@ -128,7 +128,7 @@
                                     </table>
                                 @else
                                     <div class="alert alert-info">
-                                        This search returned no results.
+                                        @lang('admin_general.listing_no_results')
                                     </div>
                             @endif
 
@@ -136,7 +136,7 @@
                                 <div class="widget-footer">
                                     <div class="row">
                                         <div class="col-sm-6 hidden-xs text-left">
-                                            <span class="info">Per page</span>
+                                            <span class="info">@lang('admin_general.listing_per_page')</span>
                                             <div class="btn-group">
                                                 @foreach(array(5, 10, 20, 50, 100) as $rpp)
                                                     <button class="btn btn-sm @if($rpp == $results->perPage()) btn-primary @else btn-default @endif" type="submit" name="rpp" value="{{$rpp}}">{{ $rpp }}</button>

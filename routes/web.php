@@ -31,6 +31,8 @@ Route::group(array('namespace' => 'admin', 'prefix' => 'admin'), function(){
     {
         Route::get('/dashboard', 'DashboardController@index');
         Route::resource('/courses', 'CoursesController');
+        Route::resource('/chapters', 'ChaptersController');
+        Route::resource('/lessons', 'LessonsController');
     });
 
 });

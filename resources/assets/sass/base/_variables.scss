@@ -14,7 +14,7 @@
 */
 
 // Body
-$body-bg: #fafafa;
+$body-bg: #FFF;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -25,12 +25,12 @@ $panel-inner-border: $laravel-border-color;
 
 // Brands
 $brand-primary: #f05256;
-$brand-second: #2f4050;
+$brand-second: #000;
 
 $brand-blue-brighter: #516f79;
 
 $brand-grey1: #e3eaf4;
-$brand-grey2: #d8d8d8;
+$brand-grey2: #e9e9e9;
 $brand-grey3: #ebebeb;
 //$brand-info: #ececec;
 //$brand-success: #44566c;
@@ -38,13 +38,13 @@ $brand-grey3: #ebebeb;
 //$brand-danger: #c3423d;
 
 // Typography
-$font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif: "Tajawal", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
-$text-color: #2f4050;
+$text-color: #000;
 
 // Navbar
-$navbar-default-bg: #2f4050;
+$navbar-default-bg: #000;
 
 // Buttons
 $btn-default-color: $text-color;
