@@ -38,6 +38,11 @@ return array(
                     "url"       => "admin/chapters",
                     "aliases"   => array(),
                 ),
+                "2" => array(
+                    "name"  => "Add new chapter",
+                    "url"   => "admin/chapters/create",
+                    "aliases"   => array('admin\/chapters\/create'),
+                )
             ),
         ),
         array(

@@ -22,19 +22,24 @@ class ChaptersController extends Controller
         // settings
         $query_data = array(
 
-            'fields' => "co.id, co.title, co.is_public, co.created_at, co.updated_at, co.order_weight",
+            'fields' => "co.id, co.title, co.is_public, co.is_draft, co.level, co.created_at, co.updated_at, co.order_weight",
 
             'body' => "FROM courses co
-                        WHERE(1) {filters}",
+                        WHERE parent_id IS NOT NULL {filters}",
 
             'filters' => array(
                 'title' => "AND title LIKE '%{title}%'",
-                'is_public' => "AND is_public = {is_public}"
+                'is_public' => "AND is_public = {is_public}",
+                'is_draft' => "AND is_draft = {is_draft}",
+                'level' => "AND level = {level}",
+                'slug' => "AND slug = '%{slug}%'"
             ),
 
             'sortables' => array(
                 'title'         => '',
                 'is_public'     => '',
+                'is_draft'      => '',
+                'level'         => '',
                 'created_at'    => '',
                 'updated_at'    => '',
                 'order_weight'  => 'asc'
@@ -45,10 +50,19 @@ class ChaptersController extends Controller
         $listing = new Listing($query_data);
         $results = $listing->results();
 
+        //get chapters levels
+        $levels = Course::whereNotNull('parent_id')
+                        ->pluck('level');
+
+        $courses_chapters = Course::get();
+
+
+
         // display
         return View::make('_admin.chapters.index', array(
-            'results' => $results,
-            'listing' => $listing
+            'results'   => $results,
+            'levels'    => $levels,
+            'listing'   => $listing
         ));
     }
 

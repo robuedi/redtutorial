@@ -66,36 +66,71 @@
                             <section>
                                 <label class="label">Title</label>
                                 <label class="input">
-                                    <input type="text" name="title" placeholder="Title" class="form-control input-sm" value="{{$section_obj->title}}">
+                                    <input type="text" name="title" placeholder="Title" class="form-control input-sm" value="{{$main_object->title}}">
                                 </label>
                             </section>
 
                             <section>
                                     <label class="label">Description</label>
                                     <label class="textarea textarea-resizable">
-                                        <textarea rows="3" type="text" name="description" placeholder="Description" class="custom-scroll" >{{$section_obj->description}}</textarea>
+                                        <textarea rows="3" type="text" name="description" placeholder="Description" class="custom-scroll" >{{$main_object->description}}</textarea>
                                     </label>
-                            </section>
-
-                            <section>
-                                <label class="label toggle-inline">Is public <span class="req">*</span></label>
-                                <label class="toggle" >
-                                    <input type="checkbox" name="is_public" @if($section_obj->is_public) checked="checked" @endif>
-                                    <i data-swchon-text="YES" data-swchoff-text="NO"></i>
-                                </label>
                             </section>
 
                             <section>
                                 <label class="label">Course order weight <span class="req">*</span></label>
                                 <label class="input">
-                                    <input type="text" name="order_weight" placeholder="Order weight" class="form-control input-sm" value="{{$section_obj->order_weight}}">
+                                    <input type="text" name="order_weight" placeholder="Order weight" class="form-control input-sm" value="{{$main_object->order_weight}}">
+                                </label>
+                            </section>
+
+                            <section>
+                                <label class="label">Category<span class="req">*</span></label>
+                                <label class="input">
+                                    <input type="text" name="order_weight" placeholder="Order weight" class="form-control input-sm" value="{{$main_object->order_weight}}">
+                                </label>
+                            </section>
+
+                            <section>
+                                <label class="label toggle-inline">Is public <span class="req">*</span></label>
+                                <label class="toggle" >
+                                    <input type="checkbox" name="is_public" @if($main_object->is_public) checked="checked" @endif>
+                                    <i data-swchon-text="YES" data-swchoff-text="NO"></i>
                                 </label>
                             </section>
 
                             <section>
                                 <label class="label">Slug <span class="req">*</span></label>
                                 <label class="input">
-                                    <input type="text" name="slug" placeholder="slug" class="form-control input-sm" value="{{$section_obj->slug}}">
+                                    <input type="text" name="slug" placeholder="slug" class="form-control input-sm" value="{{$main_object->slug}}">
+                                </label>
+                            </section>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="jarviswidget" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>@lang('admin_lessons.content') </h2>
+
+                    </header>
+
+                    <div role="content" >
+                        <div class="widget-body smart-form ">
+
+                            <section>
+                                <label class="textarea textarea-resizable">
+                                    <textarea rows="3" type="text" name="description" placeholder="Description" class="custom-scroll" >{{$main_object->content}}</textarea>
                                 </label>
                             </section>
 

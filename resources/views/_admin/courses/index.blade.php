@@ -5,7 +5,7 @@
 
 @section('breadcrumbs')
     <li><a href="{{URL::to('/')}}">Home</a></li>
-    <li>{{ucfirst($section_obj_name_pl)}}</li>
+    <li>@lang('admin_chapters_courses.courses')</li>
 @stop
 
 @section('scripts')
@@ -18,11 +18,11 @@
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
             <h1 class="page-title txt-color-blueDark"><i class="fa fa-calendar fa-fw "></i>
-                {{ucfirst($section_obj_name_pl)}}
+                @lang('admin_chapters_courses.courses')
             </h1>
         </div>
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8 text-right pull-right">
-            <a href="{{url('admin/'.$section_obj_name_pl.'/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Add new</a>
+            <a href="{{url('admin/courses/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> @lang('admin_general.add_new')</a>
         </div>
     </div>
 
@@ -37,7 +37,7 @@
                     <div data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false"  class="widget-filters jarviswidget jarviswidget-color-darken">
                         <header>
                             <span class="widget-icon"> <i class="fa fa-filter"></i> </span>
-                            <h2>Filters</h2>
+                            <h2>@lang('admin_general.filters')</h2>
                         </header>
 
                         <!-- widget div-->
@@ -51,17 +51,27 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Title</label>
-                                                    <input class="form-control" type="text" name="title" value="{{ Illuminate\Support\Facades\Input::get('title') }}">
+                                                    <input class="form-control" type="text" name="title" placeholder="Title" value="{{ Illuminate\Support\Facades\Input::get('title') }}">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Is Active</label>
-                                                    <select name="is_public" class="select2" style="width: 100%">
+                                                    <select name="is_public" class="select2" data-placeholder="Please select" style="width: 100%">
                                                         <option value=""></option>
                                                         <option value="1" @if(Illuminate\Support\Facades\Input::get('is_public') == "1") selected @endif>YES</option>
                                                         <option value="0" @if(Illuminate\Support\Facades\Input::get('is_public') == "0") selected @endif>NO</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Is Draft</label>
+                                                    <select name="is_draft" class="select2" data-placeholder="Please select" style="width: 100%">
+                                                        <option value=""></option>
+                                                        <option value="1" @if(Illuminate\Support\Facades\Input::get('is_draft') == "1") selected @endif>YES</option>
+                                                        <option value="0" @if(Illuminate\Support\Facades\Input::get('is_draft') == "0") selected @endif>NO</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -86,7 +96,7 @@
 
                         <header>
                             <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                            <h2>{{ucfirst($section_obj_name_pl)}}</h2>
+                            <h2>@lang('admin_chapters_courses.courses')</h2>
                         </header>
 
                         <!-- widget div-->
@@ -100,9 +110,10 @@
                                         <tr>
                                             <th><a class="{{ $listing->sortDir("title") }}" href="{{ $listing->sortLink("title") }}"><span>Title</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("is_public") }}" href="{{ $listing->sortLink("is_public") }}"><span>Is Public</span></a></th>
+                                            <th style="width: 100px"><a class="{{ $listing->sortDir("is_draft") }}" href="{{ $listing->sortLink("is_draft") }}"><span>Is Draft</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("order_weight") }}" href="{{ $listing->sortLink("order_weight") }}"><span>Order Weight</span></a></th>
                                             <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>Date Created</span></a></th>
-                                            <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>Date Updated</span></a></th>
+                                            <th style="width:200px"><a class="{{ $listing->sortDir("updated_at") }}" href="{{ $listing->sortLink("updated_at") }}"><span>Date Updated</span></a></th>
                                             <th style="width:120px; text-align:center"><span>Actions</span></th>
                                         </tr>
                                         </thead>
@@ -113,13 +124,14 @@
 
                                                 <td>{{ $r->title }}</td>
                                                 <td><span class="label {{ $r->is_public ? 'label-success': 'label-info' }}">{{ $r->is_public ? 'YES': 'NO' }}</span></td>
+                                                <td><span class="label {{ $r->is_draft ? 'label-success': 'label-info' }}">{{ $r->is_draft ? 'YES': 'NO' }}</span></td>
                                                 <td>{{ $r->order_weight }}</td>
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>
                                                 <td class="format-momentjs">{{ $r->updated_at }}</td>
                                                 <td style="text-align:center;">
-                                                    <a href="{{url('admin/'.$section_obj_name_pl.'/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
+                                                    <a href="{{url('admin/courses/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
                                                     @if(empty ($r->code_page ))
-                                                        <a href="javascript:deleteRouteObject('{{url('admin/'.$section_obj_name_pl.'/'.$r->id)}}')" class="btn btn-sm btn-danger btn-delete apply-tooltip" data-method="DELETE" title="Delete" data-warning="Are you sure?"><i class="glyphicon glyphicon-trash"></i></a>
+                                                        <a href="javascript:deleteRouteObject('{{url('admin/courses/'.$r->id)}}')" class="btn btn-sm btn-danger btn-delete apply-tooltip" data-method="DELETE" title="Delete" data-warning="Are you sure?"><i class="glyphicon glyphicon-trash"></i></a>
                                                     @endif
                                                 </td>
                                             </tr>

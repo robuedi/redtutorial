@@ -4,13 +4,15 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Listing Language Lines
+    | Admin General Language Lines
     |--------------------------------------------------------------------------
     |
     */
 
-    'lesson' =>  'Lesson',
-    'lessons' => 'Lessons',
-    'content' => 'Content',
+    //Chapters
+    'chapters' => 'Chapters',
+
+    //Courses
+    'courses' => 'Courses',
 
 ];

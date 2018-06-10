@@ -5,7 +5,7 @@
 
 @section('breadcrumbs')
     <li><a href="{{URL::to('/')}}">Home</a></li>
-    <li>@lang('listing.chapters.capitalize')</li>
+    <li>@lang('admin_chapters_courses.chapters')</li>
 @stop
 
 @section('scripts')
@@ -18,11 +18,11 @@
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
             <h1 class="page-title txt-color-blueDark"><i class="fa fa-calendar fa-fw "></i>
-                {{trans('listing.chapters.capitalize')}}
+                @lang('admin_chapters_courses.chapters')
             </h1>
         </div>
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8 text-right pull-right">
-            <a href="{{url('admin/'.trans('listing.chapters.lower').'/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Add new</a>
+            <a href="{{url('admin/chapters/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> @lang('admin_general.add_new')</a>
         </div>
     </div>
 
@@ -48,23 +48,55 @@
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label>Title</label>
-                                                    <input class="form-control" type="text" name="title" value="{{ Illuminate\Support\Facades\Input::get('title') }}">
-                                                </div>
-                                            </div>
 
                                             <div class="col-md-3">
                                                 <div class="form-group">
+                                                    <label>Title</label>
+                                                    <input class="form-control" type="text" name="title" placeholder="Title" value="{{ Illuminate\Support\Facades\Input::get('title') }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
                                                     <label>Is Active</label>
-                                                    <select name="is_public" class="select2" style="width: 100%">
+                                                    <select name="is_public" class="select2" data-placeholder="Please select" style="width: 100%">
                                                         <option value=""></option>
                                                         <option value="1" @if(Illuminate\Support\Facades\Input::get('is_public') == "1") selected @endif>YES</option>
                                                         <option value="0" @if(Illuminate\Support\Facades\Input::get('is_public') == "0") selected @endif>NO</option>
                                                     </select>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Is Draft</label>
+                                                    <select name="is_public" class="select2" data-placeholder="Please select" style="width: 100%">
+                                                        <option value=""></option>
+                                                        <option value="1" @if(Illuminate\Support\Facades\Input::get('is_draft') == "1") selected @endif>YES</option>
+                                                        <option value="0" @if(Illuminate\Support\Facades\Input::get('is_draft') == "0") selected @endif>NO</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Levels</label>
+                                                    <select name="level" class="select2" data-placeholder="Please select" style="width: 100%">
+                                                        <option value=""></option>
+                                                        @foreach($levels as $level)
+                                                            <option value="{{$level}}" @if(Illuminate\Support\Facades\Input::get('level') == $level) selected @endif>{{$level}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Slug</label>
+                                                    <input class="form-control" type="text" name="slug" placeholder="Slug" value="{{ Illuminate\Support\Facades\Input::get('slug') }}">
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="col-md-3 filter-buttons text-right">
@@ -86,7 +118,7 @@
 
                         <header>
                             <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                            <h2>{{trans('listing.chapters.capitalize')}}</h2>
+                            <h2>@lang('admin_chapters_courses.chapters')</h2>
                         </header>
 
                         <!-- widget div-->
@@ -100,9 +132,11 @@
                                         <tr>
                                             <th><a class="{{ $listing->sortDir("title") }}" href="{{ $listing->sortLink("title") }}"><span>Title</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("is_public") }}" href="{{ $listing->sortLink("is_public") }}"><span>Is Active</span></a></th>
+                                            <th style="width: 100px"><a class="{{ $listing->sortDir("is_draft") }}" href="{{ $listing->sortLink("is_draft") }}"><span>Is Draft</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("order_weight") }}" href="{{ $listing->sortLink("order_weight") }}"><span>Order Weight</span></a></th>
+                                            <th style="width: 100px"><a class="{{ $listing->sortDir("level") }}" href="{{ $listing->sortLink("level") }}"><span>Level</span></a></th>
                                             <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>Date Created</span></a></th>
-                                            <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>Date Updated</span></a></th>
+                                            <th style="width:200px"><a class="{{ $listing->sortDir("updated_at") }}" href="{{ $listing->sortLink("updated_at") }}"><span>Date Updated</span></a></th>
                                             <th style="width:120px; text-align:center"><span>Actions</span></th>
                                         </tr>
                                         </thead>
@@ -113,7 +147,9 @@
 
                                                 <td>{{ $r->title }}</td>
                                                 <td><span class="label {{ $r->is_public ? 'label-success': 'label-info' }}">{{ $r->is_public ? 'YES': 'NO' }}</span></td>
+                                                <td><span class="label {{ $r->is_draft ? 'label-success': 'label-info' }}">{{ $r->is_draft ? 'YES': 'NO' }}</span></td>
                                                 <td>{{ $r->order_weight }}</td>
+                                                <td>{{ $r->level }}</td>
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>
                                                 <td class="format-momentjs">{{ $r->updated_at }}</td>
                                                 <td style="text-align:center;">

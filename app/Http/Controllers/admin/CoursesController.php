@@ -14,14 +14,12 @@ use App\Libraries\REC\Listing;
 use App\Course;
 use Validator;
 use View;
+use App\Http\Controllers\Controller;
+use App\Lesson;
 use App\Libraries\REC\UIMessage;
 
-class CoursesController extends ListingController
+class CoursesController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct('course', 'courses');
-    }
 
     function index()
     {
@@ -31,19 +29,21 @@ class CoursesController extends ListingController
         // settings
         $query_data = array(
 
-            'fields' => "co.id, co.title, co.is_public, co.created_at, co.updated_at, co.order_weight, co.slug",
+            'fields' => "co.id, co.title, co.is_public, co.is_draft, co.created_at, co.updated_at, co.order_weight, co.slug",
 
             'body' => "FROM courses co
-                        WHERE(1) {filters}",
+                        WHERE parent_id IS NULL {filters}",
 
             'filters' => array(
                 'title' => "AND title LIKE '%{title}%'",
+                'is_draft' => "AND is_draft = {is_draft}",
                 'is_public' => "AND is_public = {is_public}"
             ),
 
             'sortables' => array(
                 'title'         => '',
                 'is_public'     => '',
+                'is_draft'     => '',
                 'created_at'    => '',
                 'updated_at'    => '',
                 'order_weight'  => 'asc'
@@ -55,7 +55,7 @@ class CoursesController extends ListingController
         $results = $listing->results();
 
         // display
-        return View::make('_admin.'.$this->section_name_pl.'.index', array(
+        return View::make('_admin.courses.index', array(
             'results' => $results,
             'listing' => $listing,
         ));
@@ -68,13 +68,20 @@ class CoursesController extends ListingController
         $max_order_number = Course::max('order_weight');
         $new_course->order_weight = (int)$max_order_number+1;
 
-        return View::make('_admin.'.$this->section_name_pl.'.create_edit', ['section_obj' => $new_course]);
+        return View::make('_admin.courses.create_edit', ['course' => $new_course]);
     }
 
     function edit($id)
     {
-        $course = Course::findOrFail($id);
-        return View::make('_admin.'.$this->section_name_pl.'.create_edit', ['section_obj' => $course]);
+        //get course
+        $course = Course::where('id', $id)->whereNull('parent_id')
+                    ->first();
+
+        //check if exist
+        if(!$course)
+            abort(404);
+
+        return View::make('_admin.courses.create_edit', ['course' => $course]);
     }
 
     function store(Request $request)
@@ -82,7 +89,8 @@ class CoursesController extends ListingController
         // validate
         $rules = array(
             'title'        => 'required',
-            'order_weight' => 'required'
+            'order_weight' => 'required',
+            'slug'         => 'required|max:100'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -101,18 +109,20 @@ class CoursesController extends ListingController
             $course->is_public = $request->input('is_public') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');
             $course->slug = $request->input('slug');
+            $course->level = 0;
+            $course->parent_id = null;
             $course->save();
 
             //send user back
             UIMessage::set('success', "Course created successfully.");
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/'.$this->section_name_pl.'/'.$course->id.'/edit');
+                return redirect('admin/courses/'.$course->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
-                return redirect('admin/'.$this->section_name_pl.'/create'); // save and add new
+                return redirect('admin/courses/create'); // save and add new
             else
-                return redirect('admin/'.$this->section_name_pl); //redirect to listing
+                return redirect('admin/courses'); //redirect to listing
 
         }
     }
@@ -125,7 +135,7 @@ class CoursesController extends ListingController
         $rules = array(
             'title'        => 'required',
             'order_weight' => 'required',
-            'slug'         => 'required'
+            'slug'         => 'required|max:100'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -146,27 +156,49 @@ class CoursesController extends ListingController
             $course->save();
 
             //send user back
-            UIMessage::set('success', ucfirst($this->section_name_sg)." updated successfully.");
+            UIMessage::set('success', 'Course updated successfully.');
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/'.$this->section_name_pl.'/'.$course->id.'/edit');
+                return redirect('admin/courses/'.$course->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
-                return redirect('admin/'.$this->section_name_pl.'/create'); // save and add new
+                return redirect('admin/courses/create'); // save and add new
             else
-                return redirect('admin/'.$this->section_name_pl); //redirect to listing
+                return redirect('admin/courses'); //redirect to listing
         }
 
     }
 
     public function destroy($id)
     {
-        $course = Course::find($id);
+        $course = Course::where('id', $id)->whereNull('parent_id')
+            ->first();
 
-        // if the record is not found, redirect to listing with an message
+        //check if exist
         if(!$course)
+            abort(404);
+
+        //check if chapters or lessons linked with the course
+        $linked_chapters = Course::where('parent_id', $id)
+                                ->count();
+
+        $linked_lesson = Lesson::where('course_id', $id)
+                                ->count();
+
+        //check
+        if($linked_chapters || $linked_lesson)
         {
-            UIMessage::set('warning', "Invalid course ID.");
+            $warning = 'There are chapter(s) and lesson(s) linked to the course.';
+            if($linked_chapters && !$linked_lesson)
+            {
+                $warning = 'There is a chapter(s) already linked to the course';
+            }
+            elseif($linked_lesson)
+            {
+                $warning = 'There is a lesson(s) already linked to the course';
+            }
+
+            UIMessage::set('warning', $warning);
             return redirect()->back();
         }
 
@@ -174,7 +206,11 @@ class CoursesController extends ListingController
         $course->delete();
 
         //update weight
-        $courses = Course::orderBy('order_weight')->get();
+        $courses = Course::whereNull('parent_id')
+                            ->where('level', 1)
+                            ->orderBy('order_weight')
+                            ->get();
+
         $i = 1;
         foreach ($courses as $course)
         {
@@ -184,10 +220,9 @@ class CoursesController extends ListingController
         }
 
         // still here? delete the field
-        UIMessage::set('success', ucfirst($this->section_name_sg)." deleted successfully. Order weight updated.");
+        UIMessage::set('success', "Course deleted successfully. Order weight updated.");
 
-
-        return redirect('admin/'.$this->section_name_pl);
+        return redirect('admin/courses');
     }
 
 }

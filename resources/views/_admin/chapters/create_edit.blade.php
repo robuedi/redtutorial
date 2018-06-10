@@ -1,15 +1,47 @@
 @extends('_admin.master')
 
-@section('title') {{trans('listing.chapters.capitalize')}} - @parent @stop
+@section('title') @lang('admin_chapters_courses.chapters') - @parent @stop
 
 
 @section('breadcrumbs')
     <li><a href="{{URL::to('/')}}">Home</a></li>
-    <li><a href="{{URL::to('/admin/'.trans('listing.chapters.lower'))}}">{{trans('listing.chapters.capitalize')}}</a></li>
+    <li><a href="{{URL::to('/admin/chapters')}}">@lang('admin_chapters_courses.chapters')</a>
     <li>@if(!isset($create_action)) Edit @else Create @endif</li>
 @stop
 
 @section('scripts')
+    <script>
+        var data = [
+            {id: "2", name: "2 - Gastos", children: [
+                    {id: "2.1", name: "2.1 - DESPESA OPERACIONAL FIXA", children: [
+                            {id: "2.1.1", name: "2.1.1 - PESSOAL", children: [
+                                    {id: "2.1.0", name: "2.1.1 - PESSOAL"},
+                                    {id: "2.1.1.1", name: "2.1.1.1 - GERENCIA/ADMINSTRATIVO", children: [
+                                            {id: "2.1.1.1.1", name: "2.1.1.1.1 - SALÁRIOS"},
+                                            {id: "2.1.1.1.2", name: "2.1.1.1.2 - DIVIDENDOS / COMISSÕES /BONUS"},
+                                            {id: "2.1.1.1.3", name: "2.1.1.1.3 - INSS"},
+                                            {id: "2.1.1.1.4", name: "2.1.1.1.4 - FGTS"}
+                                        ]}
+                                ]}
+                        ]}
+                ]}
+        ];
+        $('#txtConta').select2({
+            allowClear: true,
+            width: 'resolve',
+            dropdownAutoWidth: true,
+            width: '400px',
+            data: {results: data, text: "name"},
+            formatSelection: function(item) {
+                return item.name
+            },
+            formatResult: function(item) {
+                return item.name
+            }
+        });
+        // $("#txtConta").select2('val','2.1.0');
+
+    </script>
 @stop
 
 @section('stylesheets')
@@ -17,12 +49,12 @@
 
 @section('content')
 
-<form action="{{url('admin/'.trans('listing.chapters.lower')).'/'.$section_obj->id}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
+<form action="{{url('admin/chapters/'.$section_obj->id)}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-6">
             <h1 class="page-title txt-color-blueDark">
                 <i class="fa fa-fw fa-pencil-square-o"></i>
-                {{trans('listing.chapters.capitalize')}} <span>&gt; @if(!isset($create_action)) Edit @else Create @endif </span>
+                @lang('admin_chapters_courses.chapters') <span>&gt; @if(!isset($create_action)) Edit @else Create @endif </span>
             </h1>
         </div>
 
@@ -63,6 +95,9 @@
                     <div role="content" >
                         <div class="widget-body smart-form ">
 
+                            <input name="txtConta" id="txtConta" data-placeholder="Selecione a conta" />
+
+
                             <section>
                                 <label class="label">Title</label>
                                 <label class="input">
@@ -89,6 +124,13 @@
                                 <label class="label">Order weight <span class="req">*</span></label>
                                 <label class="input">
                                     <input type="text" name="order_weight" placeholder="Order weight" class="form-control input-sm" value="{{$section_obj->order_weight}}">
+                                </label>
+                            </section>
+
+                            <section>
+                                <label class="label">Slug <span class="req">*</span></label>
+                                <label class="input">
+                                    <input type="text" name="slug" placeholder="Slug" class="form-control input-sm" value="{{$section_obj->title}}">
                                 </label>
                             </section>
 

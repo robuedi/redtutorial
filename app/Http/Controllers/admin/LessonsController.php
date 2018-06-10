@@ -12,6 +12,8 @@ use App\Http\Controllers\Controller;
 use App\Libraries\REC\Listing;
 use View;
 use App\Lesson;
+use App\Course;
+use App\Chapter;
 
 
 class LessonsController extends Controller
@@ -62,8 +64,13 @@ class LessonsController extends Controller
         //get current max order;
         $max_order_number = Lesson::max('order_weight');
         $new_lesson->order_weight = (int)$max_order_number+1;
-        $courses = Course::where('is_draft', 0)->get();
-        $chapters = Chapter::where('is_draft', 0)->get();
+        $courses_list = Course::where('is_draft', 0)->get()->keyBy('id');
+
+        $courses = clone $courses_list;
+        $courses_ids = clone $courses_list;
+        ->pluck('word_two')->toArray();
+
+        $chapters = Chapter::where('is_draft', 0)->whereI->get();
 
         return View::make('_admin.lessons.create_edit', [
             'main_object'   => $new_lesson,

@@ -16,16 +16,14 @@ class CreateTableLessons extends Migration
         Schema::create('lessons', function(Blueprint $table)
         {
             $table->increments('id')->index();
-            $table->integer('course')->index()->nullable();
-            $table->integer('subcategory')->index()->nullable();
-            $table->string('subcategory_type', 255)->index();
+            $table->integer('course_id')->index()->nullable();
             $table->string('title', 255);
             $table->text('description')->nullable();
-            $table->text('body')->nullable();
+            $table->text('content')->nullable();
             $table->double('order_weight', 6, 2)->index();
             $table->tinyInteger('is_public')->default(0)->index();
             $table->tinyInteger('is_draft')->default(1)->index();
-            $table->string('slug', 255)->unique()->index();
+            $table->string('slug', 100)->index();
             $table->timestamps();
         });
     }
