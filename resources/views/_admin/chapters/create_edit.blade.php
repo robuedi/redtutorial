@@ -11,35 +11,26 @@
 
 @section('scripts')
     <script>
-        var data = [
-            {id: "2", name: "2 - Gastos", children: [
-                    {id: "2.1", name: "2.1 - DESPESA OPERACIONAL FIXA", children: [
-                            {id: "2.1.1", name: "2.1.1 - PESSOAL", children: [
-                                    {id: "2.1.0", name: "2.1.1 - PESSOAL"},
-                                    {id: "2.1.1.1", name: "2.1.1.1 - GERENCIA/ADMINSTRATIVO", children: [
-                                            {id: "2.1.1.1.1", name: "2.1.1.1.1 - SALÁRIOS"},
-                                            {id: "2.1.1.1.2", name: "2.1.1.1.2 - DIVIDENDOS / COMISSÕES /BONUS"},
-                                            {id: "2.1.1.1.3", name: "2.1.1.1.3 - INSS"},
-                                            {id: "2.1.1.1.4", name: "2.1.1.1.4 - FGTS"}
-                                        ]}
-                                ]}
-                        ]}
-                ]}
-        ];
-        $('#txtConta').select2({
-            allowClear: true,
-            width: 'resolve',
-            dropdownAutoWidth: true,
-            width: '400px',
-            data: {results: data, text: "name"},
-            formatSelection: function(item) {
-                return item.name
-            },
-            formatResult: function(item) {
-                return item.name
-            }
-        });
-        // $("#txtConta").select2('val','2.1.0');
+
+        $(function () {
+            $('.curses-hierarchy').select2({
+                allowClear: true,
+                width: 'resolve',
+                dropdownAutoWidth: true,
+                // width: '400px',
+                data: {
+                    results: JSON.parse($('[data-curses-hierarchy]').attr('data-curses-hierarchy')),
+                    text: "name"
+                },
+                formatSelection: function(item) {
+                    return item.name
+                },
+                formatResult: function(item) {
+                    return item.name
+                }
+            });
+            // $("#txtConta").select2('val','2.1.0');
+        })
 
     </script>
 @stop
@@ -95,13 +86,10 @@
                     <div role="content" >
                         <div class="widget-body smart-form ">
 
-                            <input name="txtConta" id="txtConta" data-placeholder="Selecione a conta" />
-
-
                             <section>
-                                <label class="label">Title</label>
+                                <label class="label">Name</label>
                                 <label class="input">
-                                    <input type="text" name="title" placeholder="Title" class="form-control input-sm" value="{{$section_obj->title}}">
+                                    <input type="text" name="name" placeholder="Name" class="form-control input-sm" value="{{$section_obj->name}}">
                                 </label>
                             </section>
 
@@ -130,18 +118,15 @@
                             <section>
                                 <label class="label">Slug <span class="req">*</span></label>
                                 <label class="input">
-                                    <input type="text" name="slug" placeholder="Slug" class="form-control input-sm" value="{{$section_obj->title}}">
+                                    <input type="text" name="slug" placeholder="Slug" class="form-control input-sm" value="{{$section_obj->slug}}">
                                 </label>
                             </section>
 
                             <section>
-                                <label class="label">Course <span class="req">*</span></label>
+                                <label class="label">Course/Chapter <span class="req">*</span></label>
                                 <label class="input">
-                                    <select name="course" class="select2">
-                                        @foreach($courses as $course)
-                                            <option value="{{$course->id}}" >{{$course->title}}</option>
-                                        @endforeach
-                                    </select >
+                                    <input name="course" class="curses-hierarchy">
+                                    <span class="hidden" data-curses-hierarchy='{!! $curses_hierarchy !!}' ></span>
                                 </label>
                             </section>
                         </div>

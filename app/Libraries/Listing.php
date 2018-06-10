@@ -188,8 +188,8 @@ class Listing {
 
         // obtine intregistrarile
         $sql = "SELECT SQL_CALC_FOUND_ROWS ".$data['fields'].' '.$query_body." ORDER BY $sortf $sortd LIMIT $offset, $rpp";
-        \Log::info('sql', array($sql));
-        Log::info($sql);
+        //Log::info('sql', array($sql));
+        //Log::info($sql);
         $results_array = DB::select($sql);
 
         // obtine totalul inregistrarilor
@@ -197,7 +197,7 @@ class Listing {
         $count_result = DB::select($sql_count);
 
         $total = isset($count_result[0]) ? $count_result[0]->total : 0;
-        Log::info($results_array);
+        //Log::info($results_array);
         // paginare
         $paginator = new LengthAwarePaginator($results_array, $total, $rpp);
 

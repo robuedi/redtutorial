@@ -10,6 +10,7 @@ use Validator;
 use View;
 use App\Libraries\REC\UIMessage;
 use App\Http\Controllers\Controller;
+use Log;
 
 class ChaptersController extends Controller
 {
@@ -22,13 +23,13 @@ class ChaptersController extends Controller
         // settings
         $query_data = array(
 
-            'fields' => "co.id, co.title, co.is_public, co.is_draft, co.level, co.created_at, co.updated_at, co.order_weight",
+            'fields' => "co.id, co.name, co.is_public, co.is_draft, co.level, co.created_at, co.updated_at, co.order_weight",
 
             'body' => "FROM courses co
                         WHERE parent_id IS NOT NULL {filters}",
 
             'filters' => array(
-                'title' => "AND title LIKE '%{title}%'",
+                'name' => "AND name LIKE '%{name}%'",
                 'is_public' => "AND is_public = {is_public}",
                 'is_draft' => "AND is_draft = {is_draft}",
                 'level' => "AND level = {level}",
@@ -36,7 +37,7 @@ class ChaptersController extends Controller
             ),
 
             'sortables' => array(
-                'title'         => '',
+                'name'         => '',
                 'is_public'     => '',
                 'is_draft'      => '',
                 'level'         => '',
@@ -73,25 +74,31 @@ class ChaptersController extends Controller
         $max_order_number = Course::max('order_weight');
         $new_course->order_weight = (int)$max_order_number+1;
         $courses = Course::where('is_draft', 0)->get();
+        $curses_hierarchy = Course::getHierarchicalList();
 
         return View::make('_admin.chapters.create_edit', [
-            'section_obj'   => $new_course,
-            'courses'       => $courses,
-            'create_action' => true
+            'section_obj'       => $new_course,
+            'courses'           => $courses,
+            'curses_hierarchy'  => json_encode($curses_hierarchy),
+            'create_action'     => true
         ]);
     }
 
     function edit($id)
     {
         $course = Course::findOrFail($id);
-        return View::make('_admin.chapters.create_edit', ['section_obj' => $course]);
+        $curses_hierarchy = Course::getHierarchicalList();
+        return View::make('_admin.chapters.create_edit', [
+            'section_obj'       => $course,
+            'curses_hierarchy'  => json_encode($curses_hierarchy)
+        ]);
     }
 
     function store(Request $request)
     {
         // validate
         $rules = array(
-            'title'        => 'required',
+            'name'        => 'required',
             'order_weight' => 'required'
         );
 
@@ -106,7 +113,7 @@ class ChaptersController extends Controller
         {
             //save course
             $course = new Course();
-            $course->title = $request->input('title');
+            $course->name = $request->input('name');
             $course->description = $request->input('description');
             $course->is_public = $request->input('is_public') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');
@@ -132,7 +139,7 @@ class ChaptersController extends Controller
 
         // validate
         $rules = array(
-            'title'        => 'required',
+            'name'        => 'required',
             'order_weight' => 'required'
         );
 
@@ -146,7 +153,7 @@ class ChaptersController extends Controller
         else
         {
             //save course
-            $course->title = $request->input('title');
+            $course->name = $request->input('name');
             $course->description = $request->input('description');
             $course->is_public = $request->input('is_public') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');

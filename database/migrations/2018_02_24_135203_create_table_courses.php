@@ -17,7 +17,7 @@ class CreateTableCourses extends Migration
         {
             $table->increments('id')->index();
             $table->integer('parent_id')->nullable();
-            $table->string('title', 255);
+            $table->string('name', 255);
             $table->text('description')->nullable();
             $table->integer('level')->default(0);
             $table->double('order_weight', 6, 2)->index();

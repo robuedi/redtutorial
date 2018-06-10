@@ -29,19 +29,19 @@ class CoursesController extends Controller
         // settings
         $query_data = array(
 
-            'fields' => "co.id, co.title, co.is_public, co.is_draft, co.created_at, co.updated_at, co.order_weight, co.slug",
+            'fields' => "co.id, co.name, co.is_public, co.is_draft, co.created_at, co.updated_at, co.order_weight, co.slug",
 
             'body' => "FROM courses co
                         WHERE parent_id IS NULL {filters}",
 
             'filters' => array(
-                'title' => "AND title LIKE '%{title}%'",
+                'name' => "AND name LIKE '%{name}%'",
                 'is_draft' => "AND is_draft = {is_draft}",
                 'is_public' => "AND is_public = {is_public}"
             ),
 
             'sortables' => array(
-                'title'         => '',
+                'name'         => '',
                 'is_public'     => '',
                 'is_draft'     => '',
                 'created_at'    => '',
@@ -88,7 +88,7 @@ class CoursesController extends Controller
     {
         // validate
         $rules = array(
-            'title'        => 'required',
+            'name'        => 'required',
             'order_weight' => 'required',
             'slug'         => 'required|max:100'
         );
@@ -104,7 +104,7 @@ class CoursesController extends Controller
         {
             //save course
             $course = new Course();
-            $course->title = $request->input('title');
+            $course->name = $request->input('name');
             $course->description = $request->input('description');
             $course->is_public = $request->input('is_public') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');
@@ -133,7 +133,7 @@ class CoursesController extends Controller
 
         // validate
         $rules = array(
-            'title'        => 'required',
+            'name'        => 'required',
             'order_weight' => 'required',
             'slug'         => 'required|max:100'
         );
@@ -148,7 +148,7 @@ class CoursesController extends Controller
         else
         {
             //save course
-            $course->title = $request->input('title');
+            $course->name = $request->input('name');
             $course->description = $request->input('description');
             $course->is_public = $request->input('is_public') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');

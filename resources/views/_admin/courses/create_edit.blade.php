@@ -64,9 +64,9 @@
                         <div class="widget-body smart-form ">
 
                             <section>
-                                <label class="label">Title <span class="req">*</span></label>
+                                <label class="label">Name <span class="req">*</span></label>
                                 <label class="input">
-                                    <input type="text" name="title" placeholder="Title" class="form-control input-sm" value="{{old('title', $course->title)}}">
+                                    <input type="text" name="name" placeholder="Name" class="form-control input-sm" value="{{old('name', $course->name)}}">
                                 </label>
                             </section>
 

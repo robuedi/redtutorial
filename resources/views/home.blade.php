@@ -21,7 +21,7 @@
                 {{--</div>--}}
             {{--</div>--}}
             <div class="row">
-                @foreach( [1=>'HTML', 2=>'CSS', 3=> 'JS', 4 => 'PHP'] as $key => $value)
+                @foreach( [1=>'SQL', 2=>'PHP', 3=> 'JS'] as $key => $value)
                     <article class="col-md-3 tutorial-item">
                         <div class="tutorial-item-container">
                             <header style="background-image: url(/assets/img/{{strtolower($value)}}-background.png)">

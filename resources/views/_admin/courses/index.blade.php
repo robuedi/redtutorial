@@ -50,8 +50,8 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label>Title</label>
-                                                    <input class="form-control" type="text" name="title" placeholder="Title" value="{{ Illuminate\Support\Facades\Input::get('title') }}">
+                                                    <label>Name</label>
+                                                    <input class="form-control" type="text" name="name" placeholder="Name" value="{{ Illuminate\Support\Facades\Input::get('name') }}">
                                                 </div>
                                             </div>
 
@@ -108,7 +108,7 @@
                                     <table class="table table-striped table-bordered table-listing table-hover smart-form ">
                                         <thead>
                                         <tr>
-                                            <th><a class="{{ $listing->sortDir("title") }}" href="{{ $listing->sortLink("title") }}"><span>Title</span></a></th>
+                                            <th><a class="{{ $listing->sortDir("name") }}" href="{{ $listing->sortLink("name") }}"><span>Name</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("is_public") }}" href="{{ $listing->sortLink("is_public") }}"><span>Is Public</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("is_draft") }}" href="{{ $listing->sortLink("is_draft") }}"><span>Is Draft</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("order_weight") }}" href="{{ $listing->sortLink("order_weight") }}"><span>Order Weight</span></a></th>
@@ -122,7 +122,7 @@
                                         @foreach($results_arr as $r)
                                             <tr>
 
-                                                <td>{{ $r->title }}</td>
+                                                <td>{{ $r->name }}</td>
                                                 <td><span class="label {{ $r->is_public ? 'label-success': 'label-info' }}">{{ $r->is_public ? 'YES': 'NO' }}</span></td>
                                                 <td><span class="label {{ $r->is_draft ? 'label-success': 'label-info' }}">{{ $r->is_draft ? 'YES': 'NO' }}</span></td>
                                                 <td>{{ $r->order_weight }}</td>
