@@ -19,6 +19,9 @@ return [
 
     'home'                  => 'Home',
 
+    //Inputs
+    'select_placeholder'    => 'Please select',
+
     //Filters
     'filters'               => 'Filters',
     'filters_title'         => 'Title',
@@ -37,6 +40,7 @@ return [
 
     //section
     'configure'             => 'Configure',
-    'details_title'         => 'Details'
+    'details_title'         => 'Details',
+    'map'                   => 'Map'
 
 ];

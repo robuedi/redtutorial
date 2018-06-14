@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Log;
+use URL;
 
 class Course extends Model
 {
@@ -11,8 +12,13 @@ class Course extends Model
 
     static function getHierarchicalList($name_key_only = true)
     {
-        $courses    = self::whereNull('parent_id')->get();
-        $chapters   = self::whereNotNull('parent_id')->get()->groupBy('parent_id');
+        $courses    = self::whereNull('parent_id')
+                        ->orderBy('order_weight')
+                        ->get();
+
+        $chapters   = self::whereNotNull('parent_id')
+                        ->orderBy('order_weight')
+                        ->get()->groupBy('parent_id');
 
         $hierarchical_list = [];
         foreach($courses as $key => $course)
@@ -20,7 +26,16 @@ class Course extends Model
             $parent_level = '';
             $children = self::getChapterChildren($chapters, $course->id, $parent_level);
 
-            $hierarchical_list[] = (object)['id' => $course->Sid, 'name' => ($key+1).'. '.$course->name, 'children'=>$children];
+
+            $hierarchical_list[] = [
+                'id'            => $course->id.'',
+                'name'          => ($key+1).'. '.$course->name,
+                'clear_name'    => $course->name,
+                'children'      => $children,
+                'link'          => URL::to('/admin/courses/'.$course->id.'/edit'),
+                'is_public'     => $course->is_public,
+                'is_draft'      => $course->is_draft,
+            ];
         }
 
         return $hierarchical_list;
@@ -34,10 +49,18 @@ class Course extends Model
             foreach ($chapters[$id] as $key => $child)
             {
                 $child_level = $key+1;
-                $inherit_level = $parent_level.'.'.$child_level;
+                $inherit_level = $parent_level.$child_level.'. ';
                 $grandchildren = self::getChapterChildren($chapters, $child->id, $inherit_level);
 
-                $children[] = (object)['id' => $child->id, 'name' => $parent_level.'.'.$child_level.'. '.$child->name, 'children' => $grandchildren];
+                $children[] = [
+                    'id'            => $child->id,
+                    'name'          => $inherit_level.$child->name,
+                    'clear_name'    => $child->name,
+                    'children'      => $grandchildren,
+                    'is_public'     => $child->is_public,
+                    'is_draft'     => $child->is_draft,
+                    'link'          => URL::to('/admin/chapters/'.$child->id.'/edit')
+                ];
             }
         }
 

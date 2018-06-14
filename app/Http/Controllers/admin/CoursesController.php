@@ -207,7 +207,6 @@ class CoursesController extends Controller
 
         //update weight
         $courses = Course::whereNull('parent_id')
-                            ->where('level', 1)
                             ->orderBy('order_weight')
                             ->get();
 

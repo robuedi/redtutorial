@@ -11,6 +11,7 @@ use View;
 use App\Libraries\REC\UIMessage;
 use App\Http\Controllers\Controller;
 use Log;
+use Redirect;
 
 class ChaptersController extends Controller
 {
@@ -69,16 +70,14 @@ class ChaptersController extends Controller
 
     function create()
     {
-        $new_course = new Course();
+        $new_chapter = new Course();
         //get current max order;
         $max_order_number = Course::max('order_weight');
-        $new_course->order_weight = (int)$max_order_number+1;
-        $courses = Course::where('is_draft', 0)->get();
+        $new_chapter->order_weight = (int)$max_order_number+1;
         $curses_hierarchy = Course::getHierarchicalList();
 
         return View::make('_admin.chapters.create_edit', [
-            'section_obj'       => $new_course,
-            'courses'           => $courses,
+            'chapter'           => $new_chapter,
             'curses_hierarchy'  => json_encode($curses_hierarchy),
             'create_action'     => true
         ]);
@@ -86,10 +85,11 @@ class ChaptersController extends Controller
 
     function edit($id)
     {
-        $course = Course::findOrFail($id);
+        $chapter = Course::findOrFail($id);
         $curses_hierarchy = Course::getHierarchicalList();
+        Log::info($curses_hierarchy);
         return View::make('_admin.chapters.create_edit', [
-            'section_obj'       => $course,
+            'chapter'           => $chapter,
             'curses_hierarchy'  => json_encode($curses_hierarchy)
         ]);
     }
@@ -98,8 +98,10 @@ class ChaptersController extends Controller
     {
         // validate
         $rules = array(
-            'name'        => 'required',
-            'order_weight' => 'required'
+            'name'                  => 'required',
+            'order_weight'          => 'required',
+            'parent_id'             => 'required|integer',
+            'slug'                  => 'required'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -112,18 +114,20 @@ class ChaptersController extends Controller
         else
         {
             //save course
-            $course = new Course();
-            $course->name = $request->input('name');
-            $course->description = $request->input('description');
-            $course->is_public = $request->input('is_public') ? 1 : 0;
-            $course->order_weight = $request->input('order_weight');
-            $course->save();
+            $chapter = new Course();
+            $chapter->name          = $request->input('name');
+            $chapter->description   = $request->input('description');
+            $chapter->is_public     = $request->input('is_public') ? 1 : 0;
+            $chapter->order_weight  = $request->input('order_weight');
+            $chapter->parent_id     = $request->input('parent_id');
+            $chapter->slug          = $request->input('slug');
+            $chapter->save();
 
             //send user back
             UIMessage::set('success', "Course created successfully.");
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/chapters/'.$course->id.'/edit');
+                return redirect('admin/chapters/'.$chapter->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
                 return redirect('admin/chapters/create'); // save and add new
@@ -135,12 +139,14 @@ class ChaptersController extends Controller
 
     function update($id, Request $request)
     {
-        $course = Course::findOrFail($id);
+        $chapter = Course::findOrFail($id);
 
         // validate
         $rules = array(
-            'name'        => 'required',
-            'order_weight' => 'required'
+            'name'                  => 'required',
+            'order_weight'          => 'required',
+            'parent_id'             => 'required|integer',
+            'slug'                  => 'required'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -153,17 +159,19 @@ class ChaptersController extends Controller
         else
         {
             //save course
-            $course->name = $request->input('name');
-            $course->description = $request->input('description');
-            $course->is_public = $request->input('is_public') ? 1 : 0;
-            $course->order_weight = $request->input('order_weight');
-            $course->save();
+            $chapter->name = $request->input('name');
+            $chapter->description = $request->input('description');
+            $chapter->is_public = $request->input('is_public') ? 1 : 0;
+            $chapter->is_draft = $request->input('is_draft') ? 1 : 0;
+            $chapter->order_weight = $request->input('order_weight');
+            $chapter->parent_id = $request->input('parent_id');
+            $chapter->save();
 
             //send user back
-            UIMessage::set('success', ucfirst($this->section_name_sg)." updated successfully.");
+            UIMessage::set('success', "Chapter updated successfully.");
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/chapters/'.$course->id.'/edit');
+                return redirect('admin/chapters/'.$chapter->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
                 return redirect('admin/chapters/create'); // save and add new
@@ -175,31 +183,55 @@ class ChaptersController extends Controller
 
     public function destroy($id)
     {
-        $course = Course::find($id);
+        $chapter = Course::find($id);
 
-        // if the record is not found, redirect to listing with an message
-        if(!$course)
+        //check if exist
+        if(!$chapter)
+            abort(404);
+
+        //check if chapters or lessons linked with the chapter
+        $linked_chapters = Course::where('parent_id', $id)
+            ->count();
+
+        $linked_lesson = Lesson::where('course_id', $id)
+            ->count();
+
+        //check
+        if($linked_chapters || $linked_lesson)
         {
-            UIMessage::set('warning', "Invalid course ID.");
+            $warning = 'There are chapter(s) and lesson(s) linked to the chapter.';
+            if($linked_chapters && !$linked_lesson)
+            {
+                $warning = 'There is a chapter(s) already linked to the chapter';
+            }
+            elseif($linked_lesson)
+            {
+                $warning = 'There is a lesson(s) already linked to the chapter';
+            }
+
+            UIMessage::set('warning', $warning);
             return redirect()->back();
         }
 
-        //delete course
-        $course->delete();
+        //delete chapter
+        $parent_id = $chapter->parent_id;
+        $chapter->delete();
 
         //update weight
-        $courses = Course::orderBy('order_weight')->get();
+        $chapters = Course::where('parent_id', $parent_id)
+            ->orderBy('order_weight')
+            ->get();
+
         $i = 1;
-        foreach ($courses as $course)
+        foreach ($chapters as $chapter)
         {
-            $course->order_weight = $i;
-            $course->update();
+            $chapter->order_weight = $i;
+            $chapter->update();
             $i++;
         }
 
         // still here? delete the field
-        UIMessage::set('success', ucfirst($this->section_name_sg)." deleted successfully. Order weight updated.");
-
+        UIMessage::set('success', "Chapter deleted successfully. Order weight updated.");
 
         return redirect('admin/chapters');
     }
