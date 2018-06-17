@@ -65,8 +65,9 @@ class CoursesController extends Controller
     {
         $new_course = new Course();
         //get current max order;
-        $max_order_number = Course::max('order_weight');
+        $max_order_number = Course::whereNull('parent_id')->max('order_weight');
         $new_course->order_weight = (int)$max_order_number+1;
+        $new_course->is_draft = 1;
 
         return View::make('_admin.courses.create_edit', ['course' => $new_course]);
     }
@@ -108,7 +109,9 @@ class CoursesController extends Controller
             $course->description = $request->input('description');
             $course->is_public = $request->input('is_public') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');
-            $course->slug = $request->input('slug');
+            if($request->input('enabled_slug_edit')){
+                $course->slug          = $request->input('slug');
+            }
             $course->level = 0;
             $course->parent_id = null;
             $course->save();
@@ -152,7 +155,9 @@ class CoursesController extends Controller
             $course->description = $request->input('description');
             $course->is_public = $request->input('is_public') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');
-            $course->slug = $request->input('slug');
+            if($request->input('enabled_slug_edit')){
+                $course->slug          = $request->input('slug');
+            }
             $course->save();
 
             //send user back

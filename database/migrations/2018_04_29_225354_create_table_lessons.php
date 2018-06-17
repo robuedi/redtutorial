@@ -16,8 +16,8 @@ class CreateTableLessons extends Migration
         Schema::create('lessons', function(Blueprint $table)
         {
             $table->increments('id')->index();
-            $table->integer('course_id')->index()->nullable();
-            $table->string('title', 255);
+            $table->integer('parent_id')->index()->nullable();
+            $table->string('name', 255);
             $table->text('description')->nullable();
             $table->text('content')->nullable();
             $table->double('order_weight', 6, 2)->index();

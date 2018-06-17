@@ -50,8 +50,8 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label>@lang('admin_general.filters_title')</label>
-                                                    <input class="form-control" type="text" name="title" value="{{ Illuminate\Support\Facades\Input::get('title') }}">
+                                                    <label>@lang('admin_general.filters_name')</label>
+                                                    <input class="form-control" type="text" name="name" value="{{ Illuminate\Support\Facades\Input::get('name') }}">
                                                 </div>
                                             </div>
 
@@ -98,7 +98,7 @@
                                     <table class="table table-striped table-bordered table-listing table-hover smart-form ">
                                         <thead>
                                         <tr>
-                                            <th><a class="{{ $listing->sortDir("title") }}" href="{{ $listing->sortLink("title") }}"><span>@lang('admin_lessons.listing_title')</span></a></th>
+                                            <th><a class="{{ $listing->sortDir("name") }}" href="{{ $listing->sortLink("name") }}"><span>@lang('admin_lessons.listing_name')</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("is_public") }}" href="{{ $listing->sortLink("is_public") }}"><span>@lang('admin_lessons.listing_is_public')</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("order_weight") }}" href="{{ $listing->sortLink("order_weight") }}"><span>@lang('admin_lessons.listing_order_weight')</span></a></th>
                                             <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>@lang('admin_lessons.listing_date_created')</span></a></th>
@@ -111,7 +111,7 @@
                                         @foreach($results_arr as $r)
                                             <tr>
 
-                                                <td>{{ $r->title }}</td>
+                                                <td>{{ $r->name }}</td>
                                                 <td><span class="label {{ $r->is_public ? 'label-success': 'label-info' }}">{{ $r->is_public ? 'YES': 'NO' }}</span></td>
                                                 <td>{{ $r->order_weight }}</td>
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>

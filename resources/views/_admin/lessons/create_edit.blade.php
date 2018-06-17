@@ -6,7 +6,7 @@
 @section('breadcrumbs')
     <li><a href="{{URL::to('/')}}">@lang('admin_general.home')</a></li>
     <li><a href="{{URL::to('/admin/lessons')}}">@lang('admin_lessons.lessons')</a></li>
-    <li>@if($main_object->id) @lang('admin_general.edit') @else @lang('admin_general.creates') @endif</li>
+    <li>@if($lesson->id) @lang('admin_general.edit') @else @lang('admin_general.creates') @endif</li>
 @stop
 
 @section('scripts')
@@ -17,12 +17,12 @@
 
 @section('content')
 
-<form action="{{url('admin/lessons/'.$main_object->id)}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
+<form action="{{url('admin/lessons/'.$lesson->id)}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-6">
             <h1 class="page-title txt-color-blueDark">
                 <i class="fa fa-fw fa-pencil-square-o"></i>
-                @lang('admin_lessons.lessons') <span>&gt; @if($main_object->id) @lang('admin_general.edit') @else @lang('admin_general.create') @endif </span>
+                @lang('admin_lessons.lessons') <span>&gt; @if($lesson->id) @lang('admin_general.edit') @else @lang('admin_general.create') @endif </span>
             </h1>
         </div>
 
@@ -40,7 +40,7 @@
                 </ul>
             </div>
             <button type="submit" name="save_and_continue" value="1" class=" btn btn-lg btn-primary">@lang('admin_general.save_and_continue')</button>
-            @if($main_object->id)
+            @if($lesson->id)
                 <input name="_method" type="hidden" value="PUT" >
             @endif
             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -53,86 +53,149 @@
         <div class="row">
             <div class="col-md-8">
 
-                <div class="jarviswidget" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
-                    <header>
-                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                        <h2>@lang('admin_general.details_title') </h2>
+                <div class="row">
+                    <div class="col-md-12">
 
-                    </header>
+                        <div class="jarviswidget" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
+                            <header>
+                                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                <h2>@lang('admin_general.details_title') </h2>
 
-                    <div role="content" >
-                        <div class="widget-body smart-form ">
+                            </header>
 
-                            <section>
-                                <label class="label">Title</label>
-                                <label class="input">
-                                    <input type="text" name="title" placeholder="Title" class="form-control input-sm" value="{{$main_object->title}}">
-                                </label>
-                            </section>
+                            <div role="content" >
+                                <div class="widget-body smart-form ">
 
-                            <section>
-                                    <label class="label">Description</label>
-                                    <label class="textarea textarea-resizable">
-                                        <textarea rows="3" type="text" name="description" placeholder="Description" class="custom-scroll" >{{$main_object->description}}</textarea>
-                                    </label>
-                            </section>
+                                    <section>
+                                        <label class="label">Name</label>
+                                        <label class="input">
+                                            <input type="text" name="name" placeholder="Name" class="form-control input-sm" value="{{$lesson->name}}">
+                                        </label>
+                                    </section>
 
-                            <section>
-                                <label class="label">Course order weight <span class="req">*</span></label>
-                                <label class="input">
-                                    <input type="text" name="order_weight" placeholder="Order weight" class="form-control input-sm" value="{{$main_object->order_weight}}">
-                                </label>
-                            </section>
+                                    <section>
+                                        <label class="label">Description</label>
+                                        <label class="textarea textarea-resizable">
+                                            <textarea rows="3" type="text" name="description" placeholder="Description" class="custom-scroll" >{{$lesson->description}}</textarea>
+                                        </label>
+                                    </section>
 
-                            <section>
-                                <label class="label">Category<span class="req">*</span></label>
-                                <label class="input">
-                                    <input type="text" name="order_weight" placeholder="Order weight" class="form-control input-sm" value="{{$main_object->order_weight}}">
-                                </label>
-                            </section>
+                                </div>
+                            </div>
 
-                            <section>
-                                <label class="label toggle-inline">Is public <span class="req">*</span></label>
-                                <label class="toggle" >
-                                    <input type="checkbox" name="is_public" @if($main_object->is_public) checked="checked" @endif>
-                                    <i data-swchon-text="YES" data-swchoff-text="NO"></i>
-                                </label>
-                            </section>
+                        </div>
 
-                            <section>
-                                <label class="label">Slug <span class="req">*</span></label>
-                                <label class="input">
-                                    <input type="text" name="slug" placeholder="slug" class="form-control input-sm" value="{{$main_object->slug}}">
-                                </label>
-                            </section>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="jarviswidget" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
+                            <header>
+                                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                <h2>@lang('admin_lessons.content') </h2>
+
+                            </header>
+
+                            <div role="content" >
+                                <div class="widget-body smart-form ">
+
+                                    <section>
+                                        <label class="textarea textarea-resizable">
+                                            <textarea rows="3" type="text" name="description" placeholder="Description" class="custom-scroll" >{{$lesson->content}}</textarea>
+                                        </label>
+                                    </section>
+
+                                </div>
+                            </div>
 
                         </div>
                     </div>
-
                 </div>
 
+
             </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-sm-12">
+            <div class="col-md-4">
 
                 <div class="jarviswidget" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
                     <header>
                         <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                        <h2>@lang('admin_lessons.content') </h2>
+                        <h2> @lang('admin_general.details_title') </h2>
 
+                        <ul id="widget-tab-1" class="nav nav-tabs pull-right">
+
+                            <li class=" @if($lesson->id) active @endif ">
+
+                                <a data-toggle="tab" href="#hr1"> <i class="fa fa-lg fa-arrow-circle-o-down"></i> <span class="hidden-mobile hidden-tablet"> @lang('admin_general.map') </span> </a>
+
+                            </li>
+
+                            <li class=" @if(!$lesson->id) active @endif">
+                                <a data-toggle="tab" href="#hr2"> <i class="fa fa-lg fa-arrow-circle-o-up"></i> <span class="hidden-mobile hidden-tablet"> @lang('admin_general.configure') </span></a>
+                            </li>
+
+                        </ul>
                     </header>
 
                     <div role="content" >
-                        <div class="widget-body smart-form ">
+                        <div class="widget-body  ">
 
-                            <section>
-                                <label class="textarea textarea-resizable">
-                                    <textarea rows="3" type="text" name="description" placeholder="Description" class="custom-scroll" >{{$main_object->content}}</textarea>
-                                </label>
-                            </section>
+                            <div class="tab-content padding-10">
+                                <div class="tab-pane fade  @if($lesson->id) in active @endif curses-chapters-tree" id="hr1">
+                                </div>
+                                <div class="tab-pane fade  @if(!$lesson->id) in active @endif " id="hr2">
+                                    <section class="smart-form">
+                                        <section>
+                                            <label class="label toggle-inline">Is public <span class="req">*</span></label>
+                                            <label class="toggle" >
+                                                <input type="checkbox" name="is_public" @if(old('is_public', $lesson->is_public)) checked="checked" @endif>
+                                                <i data-swchon-text="YES" data-swchoff-text="NO"></i>
+                                            </label>
+                                        </section>
+
+                                        <section>
+                                            <label class="label toggle-inline">Is draft <span class="req">*</span></label>
+                                            <label class="toggle" >
+                                                <input type="checkbox" name="is_draft" @if(old('is_draft', $lesson->is_draft)) checked="checked" @endif>
+                                                <i data-swchon-text="YES" data-swchoff-text="NO"></i>
+                                            </label>
+                                        </section>
+
+                                        <section>
+                                            <label class="label">Order weight <span class="req">*</span></label>
+                                            <label class="input">
+                                                <input type="text" name="order_weight" placeholder="Order weight" class="form-control input-sm" value="{{old('order_weight', $lesson->order_weight)}}">
+                                            </label>
+                                        </section>
+
+                                    </section>
+
+                                    <section style="overflow: auto" >
+                                        <div class="col-md-12">
+                                            <label style="font-weight: normal">Slug <span class="req">*</span></label>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="input-group" data-input-enable-switcher>
+                                                    <input data-switch-enable-target type="text" name="slug" placeholder="Slug"  disabled="disabled" class="form-control" data-value="{{old('slug',$lesson->slug)}}" value="{{old('slug',$lesson->slug)}}">
+                                                    <span class="input-group-addon">
+                                                            <span class="onoffswitch">
+                                                                <input data-switch-enable type="checkbox" name="enabled_slug_edit" class="onoffswitch-checkbox" id="switch_slug">
+                                                                <label class="onoffswitch-label" for="switch_slug">
+                                                                    <span class="onoffswitch-inner" data-swchon-text="YES" data-swchoff-text="NO"></span>
+                                                                    <span class="onoffswitch-switch"></span>
+                                                                </label>
+                                                            </span>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                </div>
+                            </div>
 
                         </div>
                     </div>

@@ -14,7 +14,7 @@ use Sentinel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
-use App\Models\Login;
+use App\Login;
 use Request;
 use Session;
 

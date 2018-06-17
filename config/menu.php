@@ -16,7 +16,7 @@ return array(
             "class"     => "fa-book",
             "submenus"  => array(
                 "1" => array(
-                    "name"  => "All courses",
+                    "name"  => "Courses",
                     "url"   => "admin/courses",
                     "aliases"   => array('admin\/courses\/[a-zA-Z0-9]+\/edit'),
                 ),
@@ -34,9 +34,9 @@ return array(
             "class"     => "fa-list-alt",
             "submenus"  => array(
                 '1' => array(
-                    "name"      => "All chapters",
+                    "name"      => "Chapters",
                     "url"       => "admin/chapters",
-                    "aliases"   => array(),
+                    "aliases"   => array('admin\/chapters\/[a-zA-Z0-9]+\/edit'),
                 ),
                 "2" => array(
                     "name"  => "Add new chapter",

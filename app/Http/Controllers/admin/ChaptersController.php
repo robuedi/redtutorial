@@ -71,15 +71,23 @@ class ChaptersController extends Controller
     function create()
     {
         $new_chapter = new Course();
+
+        //by default is draft
+        $new_chapter->is_draft = 1;
+
         //get current max order;
-        $max_order_number = Course::max('order_weight');
+        $max_order_number = Course::whereNotNull('parent_id')
+                            ->max('order_weight');
         $new_chapter->order_weight = (int)$max_order_number+1;
         $curses_hierarchy = Course::getHierarchicalList();
 
+        //get map hierarchy
+        $curses_hierarchy_map = Course::getHierarchicalList(null, true);
+
         return View::make('_admin.chapters.create_edit', [
-            'chapter'           => $new_chapter,
-            'curses_hierarchy'  => json_encode($curses_hierarchy),
-            'create_action'     => true
+            'chapter'               => $new_chapter,
+            'curses_hierarchy'      => json_encode($curses_hierarchy),
+            'curses_hierarchy_map'  => $curses_hierarchy_map
         ]);
     }
 
@@ -87,10 +95,12 @@ class ChaptersController extends Controller
     {
         $chapter = Course::findOrFail($id);
         $curses_hierarchy = Course::getHierarchicalList();
-        Log::info($curses_hierarchy);
+        $curses_hierarchy_map = Course::getHierarchicalList($id, true);
+
         return View::make('_admin.chapters.create_edit', [
             'chapter'           => $chapter,
-            'curses_hierarchy'  => json_encode($curses_hierarchy)
+            'curses_hierarchy'  => json_encode($curses_hierarchy),
+            'curses_hierarchy_map'  => json_encode($curses_hierarchy_map)
         ]);
     }
 
@@ -101,7 +111,6 @@ class ChaptersController extends Controller
             'name'                  => 'required',
             'order_weight'          => 'required',
             'parent_id'             => 'required|integer',
-            'slug'                  => 'required'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -120,7 +129,10 @@ class ChaptersController extends Controller
             $chapter->is_public     = $request->input('is_public') ? 1 : 0;
             $chapter->order_weight  = $request->input('order_weight');
             $chapter->parent_id     = $request->input('parent_id');
-            $chapter->slug          = $request->input('slug');
+
+            if($request->input('enabled_slug_edit')){
+                $chapter->slug          = $request->input('slug');
+            }
             $chapter->save();
 
             //send user back
@@ -146,7 +158,6 @@ class ChaptersController extends Controller
             'name'                  => 'required',
             'order_weight'          => 'required',
             'parent_id'             => 'required|integer',
-            'slug'                  => 'required'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -165,6 +176,9 @@ class ChaptersController extends Controller
             $chapter->is_draft = $request->input('is_draft') ? 1 : 0;
             $chapter->order_weight = $request->input('order_weight');
             $chapter->parent_id = $request->input('parent_id');
+            if($request->input('enabled_slug_edit')){
+                $chapter->slug          = $request->input('slug');
+            }
             $chapter->save();
 
             //send user back

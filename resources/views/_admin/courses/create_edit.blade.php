@@ -10,6 +10,21 @@
 @stop
 
 @section('scripts')
+    <script>
+        $(function () {
+            $('[data-switch-enable]').on('change', function () {
+                var target = $(this).closest('[data-input-enable-switcher]').find('[data-switch-enable-target]');
+                if($(this).is(':checked'))
+                {
+                    target.removeAttr('disabled');
+                }
+                else{
+                    target.val(target.attr('data-value'));
+                    target.attr('disabled', 'disabled');
+                }
+            });
+        })
+    </script>
 @stop
 
 @section('stylesheets')
@@ -88,42 +103,82 @@
                 <div class="jarviswidget" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
                     <header>
                         <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                        <h2> @lang('admin_general.configure') </h2>
+                        <h2> @lang('admin_general.details_title') </h2>
 
+                        <ul id="widget-tab-1" class="nav nav-tabs pull-right">
+
+                            <li class=" @if($course->id) active @endif">
+
+                                <a data-toggle="tab" href="#hr1"> <i class="fa fa-lg fa-arrow-circle-o-down"></i> <span class="hidden-mobile hidden-tablet"> @lang('admin_general.map') </span> </a>
+
+                            </li>
+
+                            <li class="@if(!$course->id) active @endif">
+                                <a data-toggle="tab" href="#hr2"> <i class="fa fa-lg fa-arrow-circle-o-up"></i> <span class="hidden-mobile hidden-tablet"> @lang('admin_general.configure') </span></a>
+                            </li>
+
+                        </ul>
                     </header>
 
                     <div role="content" >
-                        <div class="widget-body smart-form ">
+                        <div class="widget-body ">
 
-                            <section>
-                                <label class="label toggle-inline">Is public</label>
-                                <label class="toggle" >
-                                    <input type="checkbox" name="is_public" @if(old('is_public', $course->is_public)) checked="checked" @endif>
-                                    <i data-swchon-text="YES" data-swchoff-text="NO"></i>
-                                </label>
-                            </section>
 
-                            <section>
-                                <label class="label toggle-inline">Is draft</label>
-                                <label class="toggle" >
-                                    <input type="checkbox" name="is_draft" @if(old('is_draft', $course->is_draft)) checked="checked" @endif>
-                                    <i data-swchon-text="YES" data-swchoff-text="NO"></i>
-                                </label>
-                            </section>
+                            <div class="tab-content padding-10">
+                                <div class="tab-pane fade @if($course->id) in active @endif curses-chapters-tree" id="hr1">
+                                </div>
+                                <div class="tab-pane fade @if(!$course->id) in active @endif " id="hr2">
+                                    <section class="smart-form">
+                                        <section>
+                                            <label class="label toggle-inline">Is public</label>
+                                            <label class="toggle" >
+                                                <input type="checkbox" name="is_public" @if(old('is_public', $course->is_public)) checked="checked" @endif>
+                                                <i data-swchon-text="YES" data-swchoff-text="NO"></i>
+                                            </label>
+                                        </section>
 
-                            <section>
-                                <label class="label">Course order weight </label>
-                                <label class="input">
-                                    <input type="text" name="order_weight" placeholder="Order weight" class="form-control input-sm" value="{{old('order_weight', $course->order_weight)}}">
-                                </label>
-                            </section>
+                                        <section>
+                                            <label class="label toggle-inline">Is draft</label>
+                                            <label class="toggle" >
+                                                <input type="checkbox" name="is_draft" @if(old('is_draft', $course->is_draft)) checked="checked" @endif>
+                                                <i data-swchon-text="YES" data-swchoff-text="NO"></i>
+                                            </label>
+                                        </section>
 
-                            <section>
-                                <label class="label">Slug <span class="req">*</span></label>
-                                <label class="input">
-                                    <input type="text" name="slug" placeholder="slug" class="form-control input-sm" value="{{old('slug', $course->slug)}}">
-                                </label>
-                            </section>
+                                        <section>
+                                            <label class="label">Course order weight </label>
+                                            <label class="input">
+                                                <input type="text" name="order_weight" placeholder="Order weight" class="form-control input-sm" value="{{old('order_weight', $course->order_weight)}}">
+                                            </label>
+                                        </section>
+                                    </section>
+
+                                    <section style="overflow: auto" >
+                                        <div class="col-md-12">
+                                            <label style="font-weight: normal">Slug <span class="req">*</span></label>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="input-group" data-input-enable-switcher>
+                                                    <input data-switch-enable-target type="text" name="slug" placeholder="Slug"  disabled="disabled" class="form-control" data-value="{{old('slug',$course->slug)}}" value="{{old('slug',$course->slug)}}">
+                                                    <span class="input-group-addon">
+                                                            <span class="onoffswitch">
+                                                                <input data-switch-enable type="checkbox" name="enabled_slug_edit" class="onoffswitch-checkbox" id="switch_slug">
+                                                                <label class="onoffswitch-label" for="switch_slug">
+                                                                    <span class="onoffswitch-inner" data-swchon-text="YES" data-swchoff-text="NO"></span>
+                                                                    <span class="onoffswitch-switch"></span>
+                                                                </label>
+                                                            </span>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+
+
 
                         </div>
                     </div>

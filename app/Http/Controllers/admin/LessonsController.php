@@ -27,22 +27,21 @@ class LessonsController extends Controller
         // settings
         $query_data = array(
 
-            'fields' => "le.id, le.title, le.is_public, le.created_at, le.updated_at, le.order_weight",
+            'fields' => "le.id, le.name, le.is_public, le.created_at, le.updated_at, le.order_weight",
 
             'body' => "FROM lessons le
                         WHERE(1) {filters}",
 
             'filters' => array(
-                'title' => "AND title LIKE '%{title}%'",
+                'name' => "AND name LIKE '%{name}%'",
                 'is_public' => "AND is_public = {is_public}"
             ),
 
             'sortables' => array(
-                'title'         => '',
+                'name'          => '',
                 'is_public'     => '',
                 'created_at'    => '',
-                'updated_at'    => '',
-                'order_weight'  => 'asc'
+                'updated_at'    => 'asc'
             )
         );
 
@@ -64,24 +63,27 @@ class LessonsController extends Controller
         //get current max order;
         $max_order_number = Lesson::max('order_weight');
         $new_lesson->order_weight = (int)$max_order_number+1;
-        $courses_list = Course::where('is_draft', 0)->get()->keyBy('id');
-
-        $courses = clone $courses_list;
-        $courses_ids = clone $courses_list;
-        ->pluck('word_two')->toArray();
-
-        $chapters = Chapter::where('is_draft', 0)->whereI->get();
+        $courses = Course::whereNull('parent_id')->get();
+        $chapters = Course::whereNotNull('parent_id')->get();
 
         return View::make('_admin.lessons.create_edit', [
-            'main_object'   => $new_lesson,
+            'lesson'        => $new_lesson,
             'courses'       => $courses,
-            'chapters'      => $chapters,
-            'create_action' => true
+            'chapters'      => $chapters
         ]);
     }
 
-    public function edit()
+    public function edit($id)
     {
+        //get lesson
+        $lesson = Lesson::where('id', $id)
+                    ->first();
+
+        //check if exist
+        if(!$lesson)
+            abort(404);
+
+        return View::make('_admin.lessons.create_edit', ['lesson' => $lesson]);
 
     }
 
@@ -98,5 +100,18 @@ class LessonsController extends Controller
     public function destroy()
     {
 
+    }
+
+    public function getOrderFromParentAjax()
+    {
+        $response = [
+            'status'    => 0,
+            'message'   => 'Error'
+        ];
+
+
+
+
+        return Response::json($response);
     }
 }

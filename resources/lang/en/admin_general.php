@@ -24,7 +24,7 @@ return [
 
     //Filters
     'filters'               => 'Filters',
-    'filters_title'         => 'Title',
+    'filters_name'          => 'Name',
     'filters_is_public'     => 'Is public',
     'filters_submit'        => 'Submit',
     'filters_reset'         => 'Reset',
@@ -32,7 +32,7 @@ return [
     //Listing
     'listing_no_results'    => 'This search returned no results.',
     'listing_per_page'      => 'Per page',
-    'listing_title'         => 'Title',
+    'listing_name'          => 'Name',
     'listing_is_public'     => 'Is public',
     'listing_order_weight'  => 'Order weight',
     'listing_date_created'  => 'Date created',
@@ -41,6 +41,7 @@ return [
     //section
     'configure'             => 'Configure',
     'details_title'         => 'Details',
-    'map'                   => 'Map'
+    'map'                   => 'Map',
+    'content'               => 'Content'
 
 ];
