@@ -31,7 +31,7 @@ return array(
             "name"      => "Chapters",
             "url"       => "#",
             "aliases"   => array(),
-            "class"     => "fa-list-alt",
+            "class"     => "fa-bookmark-o",
             "submenus"  => array(
                 '1' => array(
                     "name"      => "Chapters",
@@ -49,7 +49,7 @@ return array(
             "name"      => "Lessons",
             "url"       => "#",
             "aliases"   => array(),
-            "class"     => "fa-bookmark-o",
+            "class"     => "fa-file-text-o",
             "submenus"  => array(
                 "1" => array(
                     "name"  => "All lessons",

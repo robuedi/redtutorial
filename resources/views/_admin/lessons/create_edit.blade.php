@@ -10,9 +10,11 @@
 @stop
 
 @section('scripts')
+    <script src="/assets/_admin/js/tree-view-section.js"></script>
 @stop
 
 @section('stylesheets')
+    <link rel="stylesheet" type="text/css" href="/assets/_admin/css/tree-view-section.css">
 @stop
 
 @section('content')
@@ -142,7 +144,7 @@
                         <div class="widget-body  ">
 
                             <div class="tab-content padding-10">
-                                <div class="tab-pane fade  @if($lesson->id) in active @endif curses-chapters-tree" id="hr1">
+                                <div class="tab-pane fade  @if($lesson->id) in active @endif curses-chapters-tree" data-curses-hierarchy-map='{!! $curses_hierarchy_map !!}' id="hr1">
                                 </div>
                                 <div class="tab-pane fade  @if(!$lesson->id) in active @endif " id="hr2">
                                     <section class="smart-form">

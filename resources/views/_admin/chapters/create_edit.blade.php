@@ -10,8 +10,8 @@
 @stop
 
 @section('scripts')
+    <script src="/assets/_admin/js/tree-view-section.js"></script>
     <script>
-
 
         $(function () {
 
@@ -20,7 +20,6 @@
                 allowClear: true,
                 width: 'resolve',
                 dropdownAutoWidth: true,
-                // width: '400px',
                 data: {
                     results: JSON.parse($('[data-curses-hierarchy]').attr('data-curses-hierarchy')),
                     text: "name"
@@ -37,77 +36,6 @@
 
 
         $(document).ready(function() {
-
-            //get data
-            var curses_hierarchy = JSON.parse($('[data-curses-hierarchy-map]').attr('data-curses-hierarchy-map'));
-
-            var html = {content: ''};
-
-            //loop through courses
-            for(var i = 0; i < curses_hierarchy.length; i++)
-            {
-                html.content += '<li><span>' +
-                        '<i class="fa fa-minus"></i> <a href="'+curses_hierarchy[i].link+'">'+curses_hierarchy[i].clear_name+'</a>' +
-                        '<i class=" text-success hidden-'+curses_hierarchy[i].is_public+'" >public</i> <i  class=" text-info hidden-'+curses_hierarchy[i].is_draft+'" >draft</i>' +
-                    '</span>';
-
-                if(curses_hierarchy[i].children.length > 0)
-                {
-                    //loop through chapters/lessons children
-                    getChildren(html, curses_hierarchy[i].children);
-                }
-
-                html.content += '</li>';
-            }
-
-            if(html.content.length > 0)
-            {
-
-                html.content = $('<div class="tree "><ul>'+html.content+'</ul></div>');
-            }
-
-            $('.curses-chapters-tree').append(html.content);
-
-            function getChildren(html, children) {
-                html.content += '<ul>';
-                for(var j = 0; j < children.length; j++)
-                {
-                    var children_ = false;
-                    var icon = '';
-                    if(children[j].children.length > 0)
-                    {
-                        children_ = true;
-                        icon = 'fa-minus';
-                    }
-
-                    html.content += '<li><span><i class="fa '+icon+'"></i> <a href="'+children[j].link+'">'+children[j].clear_name+'</a>' +
-                            '<i class=" text-success hidden-'+children[j].is_public+'" >public</i> <i class=" text-info hidden-'+children[j].is_draft+'" >draft</i>' +
-                        '</span>';
-
-                    if(children_)
-                    {
-                        getChildren(html, children[j].children);
-                    }
-
-                    html.content += '</li>';
-                }
-                html.content += '</ul>';
-            }
-
-            $('.tree > ul').attr('role', 'tree').find('ul').attr('role', 'group');
-            $('.tree').find('li:has(ul)').addClass('parent_li').attr('role', 'treeitem').find(' > span > i:first-child').attr('title', 'Collapse this branch').on('click', function(e) {
-                var children = $(this).closest('li.parent_li').find(' > ul > li');
-
-                if (children.is(':visible')) {
-                    children.hide('fast');
-                    $(this).attr('title', 'Expand this branch').removeClass().addClass('fa fa-plus');
-                } else {
-                    children.show('fast');
-                    $(this).attr('title', 'Collapse this branch').removeClass().addClass('fa fa-minus');
-                }
-                e.stopPropagation();
-            });
-
 
             $('[data-switch-enable]').on('change', function () {
                 var target = $(this).closest('[data-input-enable-switcher]').find('[data-switch-enable-target]');
@@ -126,11 +54,7 @@
 @stop
 
 @section('stylesheets')
-    <style>
-        .hidden-0{
-            display: none !important;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/assets/_admin/css/tree-view-section.css">
 @stop
 
 @section('content')

@@ -66,10 +66,14 @@ class LessonsController extends Controller
         $courses = Course::whereNull('parent_id')->get();
         $chapters = Course::whereNotNull('parent_id')->get();
 
+        //get map hierarchy
+        $curses_hierarchy_map = Course::getHierarchicalList(null, true);
+
         return View::make('_admin.lessons.create_edit', [
             'lesson'        => $new_lesson,
             'courses'       => $courses,
-            'chapters'      => $chapters
+            'chapters'      => $chapters,
+            'curses_hierarchy_map'  => json_encode($curses_hierarchy_map)
         ]);
     }
 
@@ -83,7 +87,13 @@ class LessonsController extends Controller
         if(!$lesson)
             abort(404);
 
-        return View::make('_admin.lessons.create_edit', ['lesson' => $lesson]);
+        //get map hierarchy
+        $curses_hierarchy_map = Course::getHierarchicalList($id.'lesson', true);
+
+        return View::make('_admin.lessons.create_edit', [
+            'lesson' => $lesson,
+            'curses_hierarchy_map'  => json_encode($curses_hierarchy_map)
+        ]);
 
     }
 

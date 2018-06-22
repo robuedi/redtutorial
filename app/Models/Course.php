@@ -50,7 +50,7 @@ class Course extends Model
                 'link'          => URL::to('/admin/courses/'.$course->id.'/edit'),
                 'is_public'     => $course->is_public,
                 'is_draft'      => $course->is_draft,
-                'pointing_id'   => $pointing_id === $course->id ? true : false,
+                'pointing_id'   => (string)$pointing_id === (string)$course->id.'course' ? 1 : 0,
                 'type'          => 'course'
             ];
         }
@@ -81,7 +81,7 @@ class Course extends Model
                     'is_public'     => $child->is_public,
                     'is_draft'      => $child->is_draft,
                     'link'          => URL::to('/admin/chapters/'.$child->id.'/edit'),
-                    'pointing_id'   => $pointing_id === $child->id ? true : false,
+                    'pointing_id'   => (string)$pointing_id === (string)$child->id.'chapter' ? 1 : 0,
                     'type'          => 'chapter'
                 ];
             }
@@ -102,7 +102,7 @@ class Course extends Model
                     'is_public'     => $child->is_public,
                     'is_draft'      => $child->is_draft,
                     'link'          => URL::to('/admin/lessons/'.$child->id.'/edit'),
-                    'pointing_id'   => $pointing_id === $child->id ? true : false,
+                    'pointing_id'   => (string)$pointing_id === (string)$child->id.'lesson' ? 1 : 0,
                     'type'          => 'lesson'
                 ];
             }

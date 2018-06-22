@@ -95,7 +95,7 @@ class ChaptersController extends Controller
     {
         $chapter = Course::findOrFail($id);
         $curses_hierarchy = Course::getHierarchicalList();
-        $curses_hierarchy_map = Course::getHierarchicalList($id, true);
+        $curses_hierarchy_map = Course::getHierarchicalList($id.'chapter', true);
 
         return View::make('_admin.chapters.create_edit', [
             'chapter'           => $chapter,

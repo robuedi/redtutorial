@@ -69,7 +69,13 @@ class CoursesController extends Controller
         $new_course->order_weight = (int)$max_order_number+1;
         $new_course->is_draft = 1;
 
-        return View::make('_admin.courses.create_edit', ['course' => $new_course]);
+        //get map hierarchy
+        $curses_hierarchy_map = Course::getHierarchicalList(null, true);
+
+        return View::make('_admin.courses.create_edit', [
+                'course' => $new_course,
+                'curses_hierarchy_map'  => json_encode($curses_hierarchy_map)
+            ]);
     }
 
     function edit($id)
@@ -82,7 +88,12 @@ class CoursesController extends Controller
         if(!$course)
             abort(404);
 
-        return View::make('_admin.courses.create_edit', ['course' => $course]);
+        $curses_hierarchy_map = Course::getHierarchicalList($id.'course', true);
+
+        return View::make('_admin.courses.create_edit', [
+                'course' => $course,
+                'curses_hierarchy_map'  => json_encode($curses_hierarchy_map)
+            ]);
     }
 
     function store(Request $request)
