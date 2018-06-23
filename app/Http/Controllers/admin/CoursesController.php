@@ -17,6 +17,7 @@ use View;
 use App\Http\Controllers\Controller;
 use App\Lesson;
 use App\Libraries\REC\UIMessage;
+use Redirect;
 
 class CoursesController extends Controller
 {
@@ -102,8 +103,12 @@ class CoursesController extends Controller
         $rules = array(
             'name'        => 'required',
             'order_weight' => 'required',
-            'slug'         => 'required|max:100'
         );
+
+        //if not draft and slug is empty
+        if( empty($request->input('slug')) && !$request->input('is_draft') ){
+            $rules['slug'] = 'required|max:100';
+        }
 
         $validator = Validator::make(Input::all(), $rules);
 
@@ -119,6 +124,7 @@ class CoursesController extends Controller
             $course->name = $request->input('name');
             $course->description = $request->input('description');
             $course->is_public = $request->input('is_public') ? 1 : 0;
+            $course->is_draft = $request->input('is_draft') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');
             if($request->input('enabled_slug_edit')){
                 $course->slug          = $request->input('slug');
@@ -149,10 +155,32 @@ class CoursesController extends Controller
         $rules = array(
             'name'        => 'required',
             'order_weight' => 'required',
-            'slug'         => 'required|max:100'
         );
 
-        $validator = Validator::make(Input::all(), $rules);
+        //if not draft and no slug
+        $messages = [];
+        if(
+            //is not draft and no slug input and no slug saved
+            (
+                (empty($request->input('slug'))&& empty($course->slug))
+                ||
+                (empty($request->input('slug'))&& $request->input('enabled_slug_edit'))
+            )
+            && !$request->input('is_draft')
+        )
+        {
+            $rules['slug'] = 'required|max:100';
+            $messages['slug.required']  = 'Field slug required if not draft';
+        }
+
+        //if public not allowed draft
+        if($request->input('is_public')&&$request->input('is_draft'))
+        {
+            $rules['no_pubic_while_draft']              = 'required';
+            $messages['no_pubic_while_draft.required']  = 'Public not allowed when draft';
+        }
+
+        $validator = Validator::make(Input::all(), $rules, $messages);
 
         if ($validator->fails())
         {
@@ -165,6 +193,7 @@ class CoursesController extends Controller
             $course->name = $request->input('name');
             $course->description = $request->input('description');
             $course->is_public = $request->input('is_public') ? 1 : 0;
+            $course->is_draft = $request->input('is_draft') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');
             if($request->input('enabled_slug_edit')){
                 $course->slug          = $request->input('slug');

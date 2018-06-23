@@ -16,12 +16,12 @@ return array(
             "class"     => "fa-book",
             "submenus"  => array(
                 "1" => array(
-                    "name"  => "Courses",
+                    "name"  => "All",
                     "url"   => "admin/courses",
                     "aliases"   => array('admin\/courses\/[a-zA-Z0-9]+\/edit'),
                 ),
                 "2" => array(
-                    "name"  => "Add new course",
+                    "name"  => "Add new",
                     "url"   => "admin/courses/create",
                     "aliases"   => array('admin\/courses\/create'),
                 )
@@ -34,12 +34,12 @@ return array(
             "class"     => "fa-bookmark-o",
             "submenus"  => array(
                 '1' => array(
-                    "name"      => "Chapters",
+                    "name"      => "All",
                     "url"       => "admin/chapters",
                     "aliases"   => array('admin\/chapters\/[a-zA-Z0-9]+\/edit'),
                 ),
                 "2" => array(
-                    "name"  => "Add new chapter",
+                    "name"  => "Add new",
                     "url"   => "admin/chapters/create",
                     "aliases"   => array('admin\/chapters\/create'),
                 )
@@ -52,12 +52,12 @@ return array(
             "class"     => "fa-file-text-o",
             "submenus"  => array(
                 "1" => array(
-                    "name"  => "All lessons",
+                    "name"  => "All",
                     "url"   => "admin/lessons",
                     "aliases"   => array('admin\/lessons\/[a-zA-Z0-9]+\/edit'),
                 ),
                 "2" => array(
-                    "name"  => "Add new lesson",
+                    "name"  => "Add new",
                     "url"   => "admin/lessons/create",
                     "aliases"   => array('admin\/lessons\/create'),
                 )

@@ -16,11 +16,11 @@ $(document).ready(function() {
     for(var i = 0; i < curses_hierarchy.length; i++)
     {
         //make current item label
-        html.content += '<li>' +
-                            '<span class="tree-label">' +
+        html.content += '<li >' +
+                            '<span class="tree-label pointing-'+curses_hierarchy[i].pointing_id+'">' +
                                 '<i class="fa fa-minus"></i>&nbsp;&nbsp;&nbsp;' +
                                     '<a href="'+curses_hierarchy[i].link+'">' +
-                                        '<i class="fa fa-lg '+doc_type[curses_hierarchy[i].type]+' pointing-'+curses_hierarchy[i].pointing_id+'"></i>&nbsp;&nbsp;'+
+                                        '<i class="fa fa-lg '+doc_type[curses_hierarchy[i].type]+' "></i>&nbsp;&nbsp;'+
                                             curses_hierarchy[i].clear_name+
                                     '</a>' +
                                 '<i class=" text-success hidden-'+curses_hierarchy[i].is_public+'" >&nbsp;&nbsp;public</i>' +
@@ -57,11 +57,11 @@ $(document).ready(function() {
             }
 
             //make current item label
-            html.content += '<li>' +
-                                '<span class="tree-label">' +
+            html.content += '<li >' +
+                                '<span class="tree-label pointing-'+children[j].pointing_id+'">' +
                                     '<i class="fa '+icon+'"></i>&nbsp;&nbsp;&nbsp;' +
                                         '<a href="'+children[j].link+'">' +
-                                            '<i class="fa fa-lg '+doc_type[children[j].type]+' pointing-'+children[j].pointing_id+'"></i>&nbsp;&nbsp;' +
+                                            '<i class="fa fa-lg '+doc_type[children[j].type]+' "></i>&nbsp;&nbsp;' +
                                                 children[j].clear_name+
                                         '</a>' +
                                     '<i class=" text-success hidden-'+children[j].is_public+'" >&nbsp;&nbsp;public</i> ' +

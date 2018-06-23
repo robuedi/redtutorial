@@ -13,4 +13,8 @@ return [
     'lessons' => 'Lessons',
     'content' => 'Content',
 
+    //sections
+    'editor' => 'Editor',
+    'preview' => 'Preview',
+
 ];

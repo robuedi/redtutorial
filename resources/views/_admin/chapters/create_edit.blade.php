@@ -11,9 +11,12 @@
 
 @section('scripts')
     <script src="/assets/_admin/js/tree-view-section.js"></script>
+    <script src="/assets/_admin/js/general.js"></script>
+    <script src="/assets/_admin/js/libs/ckeditor.js"></script>
     <script>
-
         $(function () {
+            //description editor
+            ClassicEditor.create( document.querySelector( '#description_editor' ) );
 
             $('.curses-hierarchy').select2({
                 searchInputPlaceholder: 'Please select',
@@ -33,23 +36,6 @@
             });
 
         });
-
-
-        $(document).ready(function() {
-
-            $('[data-switch-enable]').on('change', function () {
-                var target = $(this).closest('[data-input-enable-switcher]').find('[data-switch-enable-target]');
-                if($(this).is(':checked'))
-                {
-                    target.removeAttr('disabled');
-                }
-                else{
-                    target.val(target.attr('data-value'));
-                    target.attr('disabled', 'disabled');
-                }
-            });
-
-        })
     </script>
 @stop
 
@@ -114,7 +100,7 @@
                             <section>
                                     <label class="label">Description</label>
                                     <label class="textarea textarea-resizable">
-                                        <textarea rows="3" type="text" name="description" placeholder="Description" class="custom-scroll" >{{old('description', $chapter->description)}}</textarea>
+                                        <textarea rows="3" type="text" id="description_editor" name="description" placeholder="Description" class="custom-scroll" >{{old('description', $chapter->description)}}</textarea>
                                     </label>
                             </section>
 
@@ -200,7 +186,7 @@
                                                             <input data-switch-enable-target type="text" name="slug" placeholder="Slug"  disabled="disabled" class="form-control" data-value="{{old('slug',$chapter->slug)}}" value="{{old('slug',$chapter->slug)}}">
                                                             <span class="input-group-addon">
                                                             <span class="onoffswitch">
-                                                                <input data-switch-enable type="checkbox" name="enabled_slug_edit" class="onoffswitch-checkbox" id="switch_slug">
+                                                                <input data-switch-enable type="checkbox" @if(!$chapter->id) checked @endif name="enabled_slug_edit" class="onoffswitch-checkbox" id="switch_slug">
                                                                 <label class="onoffswitch-label" for="switch_slug">
                                                                     <span class="onoffswitch-inner" data-swchon-text="YES" data-swchoff-text="NO"></span>
                                                                     <span class="onoffswitch-switch"></span>

@@ -11,6 +11,38 @@
 
 @section('scripts')
     <script src="/assets/_admin/js/tree-view-section.js"></script>
+    <script src="/assets/_admin/js/general.js"></script>
+    <script src="/assets/_admin/js/libs/ckeditor.js"></script>
+    <script>
+        $(function () {
+            ClassicEditor.create( document.querySelector( '#text_content' ) );
+            ClassicEditor.create( document.querySelector( '#description_editor' ) );
+            console.log(ClassicEditor.build.plugins.map( plugin => plugin.pluginName ));
+
+        });
+    </script>
+    <script>
+        $(function () {
+
+            $('.curses-hierarchy').select2({
+                searchInputPlaceholder: 'Please select',
+                allowClear: true,
+                width: 'resolve',
+                dropdownAutoWidth: true,
+                data: {
+                    results: JSON.parse($('[data-curses-hierarchy]').attr('data-curses-hierarchy')),
+                    text: "name"
+                },
+                formatSelection: function(item) {
+                    return item.name
+                },
+                formatResult: function(item) {
+                    return item.name
+                }
+            });
+
+        });
+    </script>
 @stop
 
 @section('stylesheets')
@@ -71,14 +103,14 @@
                                     <section>
                                         <label class="label">Name</label>
                                         <label class="input">
-                                            <input type="text" name="name" placeholder="Name" class="form-control input-sm" value="{{$lesson->name}}">
+                                            <input type="text" name="name" placeholder="Name" class="form-control input-sm" value="{{old('name', $lesson->name)}}">
                                         </label>
                                     </section>
 
                                     <section>
                                         <label class="label">Description</label>
                                         <label class="textarea textarea-resizable">
-                                            <textarea rows="3" type="text" name="description" placeholder="Description" class="custom-scroll" >{{$lesson->description}}</textarea>
+                                            <textarea rows="3" type="text" id="description_editor" name="description" placeholder="Description" class="custom-scroll" >{{old('description', $lesson->description)}}</textarea>
                                         </label>
                                     </section>
 
@@ -97,17 +129,36 @@
                                 <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
                                 <h2>@lang('admin_lessons.content') </h2>
 
+
+                                <ul id="widget-tab-1" class="nav nav-tabs pull-right">
+
+                                    <li class="active ">
+
+                                        <a data-toggle="tab" href="#content_editor"> <i class="fa fa-lg fa-arrow-circle-o-down"></i> <span class="hidden-mobile hidden-tablet"> @lang('admin_lessons.editor') </span> </a>
+
+                                    </li>
+
+                                    <li class="">
+                                        <a data-toggle="tab" href="#preview"> <i class="fa fa-lg fa-arrow-circle-o-up"></i> <span class="hidden-mobile hidden-tablet"> @lang('admin_lessons.preview') </span></a>
+                                    </li>
+
+                                </ul>
+
                             </header>
 
                             <div role="content" >
-                                <div class="widget-body smart-form ">
+                                <div class="widget-body no-padding ">
 
-                                    <section>
-                                        <label class="textarea textarea-resizable">
-                                            <textarea rows="3" type="text" name="description" placeholder="Description" class="custom-scroll" >{{$lesson->content}}</textarea>
-                                        </label>
-                                    </section>
+                                    <div class="tab-content">
+                                        {{--Editor--}}
+                                        <div class="tab-pane fade in active" id="content_editor">
+                                            <textarea id="text_content" rows="3" type="text" name="content" placeholder="Content" class="custom-scroll" >{{old('content', $lesson->content)}}</textarea>
+                                        </div>
 
+                                        {{--Preview--}}
+                                        <div class="tab-pane fade " id="preview">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -171,6 +222,13 @@
                                             </label>
                                         </section>
 
+                                        <section>
+                                            <label class="label">Course/Chapter <span class="req">*</span></label>
+                                            <label class="input">
+                                                <input name="parent_id" type="hidden" class="curses-hierarchy" data-placeholder="@lang('admin_general.select_placeholder')" value="{{old('parent_id', $lesson->parent_id)}}">
+                                                <span class="hidden" data-curses-hierarchy='{!! $curses_hierarchy !!}' ></span>
+                                            </label>
+                                        </section>
                                     </section>
 
                                     <section style="overflow: auto" >
@@ -184,7 +242,7 @@
                                                     <input data-switch-enable-target type="text" name="slug" placeholder="Slug"  disabled="disabled" class="form-control" data-value="{{old('slug',$lesson->slug)}}" value="{{old('slug',$lesson->slug)}}">
                                                     <span class="input-group-addon">
                                                             <span class="onoffswitch">
-                                                                <input data-switch-enable type="checkbox" name="enabled_slug_edit" class="onoffswitch-checkbox" id="switch_slug">
+                                                                <input data-switch-enable type="checkbox" @if(!$lesson->id) checked @endif name="enabled_slug_edit" class="onoffswitch-checkbox" id="switch_slug">
                                                                 <label class="onoffswitch-label" for="switch_slug">
                                                                     <span class="onoffswitch-inner" data-swchon-text="YES" data-swchoff-text="NO"></span>
                                                                     <span class="onoffswitch-switch"></span>

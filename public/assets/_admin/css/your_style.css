@@ -81,3 +81,20 @@ button.btn.btn-lg, a.btn.btn-lg {
     border-radius: 0 !important;
 }
 
+/*Lessons*/
+#content_editor .ck.ck-toolbar {
+    border-top: none;
+    background-color: transparent;
+    border-bottom: 1px solid #C2C2C2
+}
+#content_editor .ck.ck-editor__editable_inline {
+    /*border-top-style: dotted;*/
+}
+#content_editor .ck.ck-sticky-panel__content {
+    border-bottom: 17px solid #FAFAFA
+}
+#content_editor .ck.ck-editor__main>.ck-editor__editable.ck-focused {
+    border-color: var(--ck-color-base-border);
+    box-shadow: none;
+}
+

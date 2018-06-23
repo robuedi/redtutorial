@@ -23,7 +23,7 @@ class CreateTableCourses extends Migration
             $table->double('order_weight', 6, 2)->index();
             $table->tinyInteger('is_public')->default(0)->index();
             $table->tinyInteger('is_draft')->default(1)->index();
-            $table->string('slug', 100)->index();
+            $table->string('slug', 100)->nullable()->index();
             $table->timestamps();
         });
     }

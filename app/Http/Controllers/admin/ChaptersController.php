@@ -87,7 +87,7 @@ class ChaptersController extends Controller
         return View::make('_admin.chapters.create_edit', [
             'chapter'               => $new_chapter,
             'curses_hierarchy'      => json_encode($curses_hierarchy),
-            'curses_hierarchy_map'  => $curses_hierarchy_map
+            'curses_hierarchy_map'  => json_encode($curses_hierarchy_map)
         ]);
     }
 
@@ -98,8 +98,8 @@ class ChaptersController extends Controller
         $curses_hierarchy_map = Course::getHierarchicalList($id.'chapter', true);
 
         return View::make('_admin.chapters.create_edit', [
-            'chapter'           => $chapter,
-            'curses_hierarchy'  => json_encode($curses_hierarchy),
+            'chapter'               => $chapter,
+            'curses_hierarchy'      => json_encode($curses_hierarchy),
             'curses_hierarchy_map'  => json_encode($curses_hierarchy_map)
         ]);
     }
@@ -112,6 +112,11 @@ class ChaptersController extends Controller
             'order_weight'          => 'required',
             'parent_id'             => 'required|integer',
         );
+
+        //if not draft and slug is empty
+        if( empty($request->input('slug')) && !$request->input('is_draft') ){
+            $rules['slug'] = 'required|max:100';
+        }
 
         $validator = Validator::make(Input::all(), $rules);
 
@@ -160,7 +165,31 @@ class ChaptersController extends Controller
             'parent_id'             => 'required|integer',
         );
 
-        $validator = Validator::make(Input::all(), $rules);
+        //if not draft and no slug
+        $messages = [];
+        if(
+            //is not draft and no slug input and no slug saved
+            (
+                (empty($request->input('slug'))&& empty($course->slug))
+                ||
+                (empty($request->input('slug'))&& $request->input('enabled_slug_edit'))
+            )
+            && !$request->input('is_draft')
+        )
+        {
+            $rules['slug'] = 'required|max:100';
+            $messages['slug.required']  = 'Field slug required if not draft';
+        }
+
+        //if public not allowed draft
+        if($request->input('is_public')&&$request->input('is_draft'))
+        {
+            $rules['no_pubic_while_draft']              = 'required';
+            $messages['no_pubic_while_draft.required']  = 'Public not allowed when draft';
+        }
+
+        $validator = Validator::make(Input::all(), $rules, $messages);
+
 
         if ($validator->fails())
         {

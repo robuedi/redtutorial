@@ -25,11 +25,8 @@
 .tree .text-success {
     font-size: 12px;
 }
-.tree .pointing-1 {
-    color: #FFF;
-    background-color: #468847;
-    padding: 4px 4px 3px;
-    border-radius: 3px;
+.tree span.tree-label.pointing-1 {
+    background-color: #e7e7e7;
 }
 .tree li.parent_li>span:hover,
 .tree li>span:hover {
