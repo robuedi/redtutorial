@@ -157,6 +157,9 @@
 
                                         {{--Preview--}}
                                         <div class="tab-pane fade " id="preview">
+                                            <div>
+                                                {!! old('content', $lesson->content) !!}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -9,9 +9,11 @@
 @stop
 
 @section('scripts')
+    <script src="/assets/_admin/js/tree-view-section.js"></script>
 @stop
 
 @section('stylesheets')
+    <link rel="stylesheet" type="text/css" href="/assets/_admin/css/tree-view-section.css">
 @stop
 
 @section('content')
@@ -46,10 +48,134 @@
         </div>
     </div>
 
-    <div class="row">
 
-        <div class="col-xs1"></div>
+    <section id="widget-grid" class="">
 
-    </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="jarviswidget" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>@lang('admin_dashboard.courses_numbers')</h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div role="content">
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
+
+                            <div class="table-responsive">
+
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" >#</th>
+                                            <th>Category</th>
+                                            <th>Public</th>
+                                            <th>Draft</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="txt-color-green">
+                                            <td class="text-center" ><h3>1.</h3></td>
+                                            <td>
+                                                <h3 >
+                                                    <a class="editable-click txt-color-green" href="/admin/courses">Courses</a>
+                                                </h3>
+                                            </td>
+                                            <td>
+                                                <h3>
+                                                    <a class="editable-click txt-color-green" href="/admin/courses?is_public=1">{{$public_courses}}</a>
+                                                    <small>({{abs($public_courses-$total_courses)}})</small>
+                                                </h3>
+                                            </td>
+                                            <td>
+                                                <h3>
+                                                    <a class="editable-click txt-color-green" href="/admin/courses?is_draft=1">{{$draft_courses}}</a>
+                                                    <small>({{abs($draft_courses-$total_courses)}})</small>
+                                                </h3>
+                                            </td>
+                                            <td><h3>{{$total_courses}}</h3></td>
+                                        </tr>
+                                        <tr class="txt-color-magenta">
+                                            <td class="text-center" ><h3>2.</h3></td>
+                                            <td>
+                                                <h3>
+                                                    <a class="editable-click txt-color-magenta" href="/admin/chapters">Chapters</a>
+                                                </h3>
+                                            </td>
+                                            <td>
+                                                <h3>
+                                                    <a class="editable-click txt-color-magenta" href="/admin/chapters?is_public=1">{{$public_chapters}}</a>
+                                                    <small>({{abs($public_chapters-$total_chapters)}})</small>
+                                                </h3>
+                                            </td>
+                                            <td>
+                                                <h3>
+                                                    <a class="editable-click txt-color-magenta" href="/admin/chapters?is_draft=1">{{$draft_chapters}}</a>
+                                                    <small>({{abs($draft_chapters-$total_chapters)}})</small>
+                                                </h3>
+                                            </td>
+                                            <td>
+                                                <h3>{{$total_chapters}}</h3>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-primary">
+                                            <td class="text-center" ><h3>3.</h3></td>
+                                            <td>
+                                                <h3>
+                                                    <a class="editable-click text-primary" href="/admin/lessons">Lessons</a>
+                                                </h3>
+                                            </td>
+                                            <td>
+                                                <h3>
+                                                    <a class="editable-click text-primary" href="/admin/lessons?is_public=1">{{$public_lessons}}</a>
+                                                    <small>({{abs($public_lessons-$total_lessons)}})</small>
+                                                </h3>
+                                            </td>
+                                            <td>
+                                                <h3>
+                                                    <a class="editable-click text-primary" href="/admin/lessons?is_draft=1">{{$draft_lessons}}</a>
+                                                    <small>({{abs($draft_lessons-$total_lessons)}})</small>
+                                                </h3>
+                                            </td>
+                                            <td><h3>{{$total_lessons}}</h3></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                        <!-- end widget content -->
+
+                    </div>
+                    <!-- end widget div -->
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="jarviswidget" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>@lang('admin_dashboard.courses_map')</h2>
+
+                    </header>
+
+                    <div role="content" >
+                        <div class="widget-body curses-chapters-tree" data-children-display="false" data-curses-hierarchy-map='{!! $curses_hierarchy_map !!}'>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
 
 @stop

@@ -57,7 +57,7 @@
 
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label>Is Active</label>
+                                                    <label>@lang("admin_general.filters_is_public")</label>
                                                     <select name="is_public" class="select2" data-placeholder="Please select" style="width: 100%">
                                                         <option value=""></option>
                                                         <option value="1" @if(Illuminate\Support\Facades\Input::get('is_public') == "1") selected @endif>YES</option>
