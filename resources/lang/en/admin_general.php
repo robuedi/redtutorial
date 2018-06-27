@@ -37,6 +37,8 @@ return [
     'listing_order_weight'  => 'Order weight',
     'listing_date_created'  => 'Date created',
     'listing_date_updated'  => 'date updated',
+    'listing_thumbnail'     => 'Thumbnail',
+    'listing_actions'       => 'Actions',
 
     //section
     'configure'             => 'Configure',

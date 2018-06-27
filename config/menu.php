@@ -94,12 +94,12 @@ return array(
             "submenus"  => array(
                 '1' => array(
                     "name"      => "All files",
-                    "url"       => "admin/medialibrary",
+                    "url"       => "admin/media-library",
                     "aliases"   => array(),
                 ),
                 '2' => array(
                     "name"      => "Upload new",
-                    "url"       => "admin/medialibrary/add",
+                    "url"       => "admin/media-library/add",
                     "aliases"   => array(),
                 ),
             ),

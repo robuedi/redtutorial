@@ -9,13 +9,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    @yield('meta')
+
     <!-- Caution! DO NOT change the order -->
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/_admin/')}}/css/smartadmin-production-plugins.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/_admin/')}}/css/smartadmin-production.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/_admin/')}}/css/smartadmin-skins.min.css">
 
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/_admin/')}}/css/smartadmin-rtl.min.css">
-
+    <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/_admin/')}}/css/smart-admin-style.css">
 
     <!-- Basic Styles -->
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/_admin/')}}/css/bootstrap.min.css">
@@ -67,6 +69,7 @@
         }
     </script>
     <script >
+        var site_url = "{{ url('') }}";
         $(function () {
             //set unique ids to jarvis in order to remember the colors
             var path_name_jarvis = window.location.pathname;

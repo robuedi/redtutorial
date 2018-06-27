@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        '/media-library/upload' //TODO check is alternative to upload {{ csrf_field() }}
     ];
 }

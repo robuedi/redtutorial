@@ -15,7 +15,11 @@
     <script src="/assets/_admin/js/libs/ckeditor.js"></script>
     <script>
         $(function () {
-            ClassicEditor.create( document.querySelector( '#text_content' ) );
+            ClassicEditor.create( document.querySelector( '#text_content' ), {
+                ckfinder: {
+                    uploadUrl: '/media-library/ckeditor'
+                }
+            } );
             ClassicEditor.create( document.querySelector( '#description_editor' ) );
             console.log(ClassicEditor.build.plugins.map( plugin => plugin.pluginName ));
 

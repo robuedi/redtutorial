@@ -33,6 +33,16 @@ Route::group(array('namespace' => 'admin', 'prefix' => 'admin'), function(){
         Route::resource('/courses', 'CoursesController');
         Route::resource('/chapters', 'ChaptersController');
         Route::resource('/lessons', 'LessonsController');
+
+        //Media Library
+        Route::get('/media-library/', 'MediaLibraryController@index');
+        Route::get('/media-library/add', 'MediaLibraryController@add');
+        Route::post('/media-library/upload', 'MediaLibraryController@upload');
+        Route::get('/media-library/delete/{id}', 'MediaLibraryController@delete');
+        Route::get('/media-library/popup_browse', 'MediaLibraryController@popup_browse');
+        Route::get('/media-library/popup_upload', 'MediaLibraryController@popup_upload');
+        Route::get('/media-library/download/{id}', 'MediaLibraryController@download');
+        Route::get('/media-library/ckeditor', 'MediaLibraryController@ckeditor');
     });
 
 });
