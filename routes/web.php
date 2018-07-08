@@ -43,6 +43,13 @@ Route::group(array('namespace' => 'admin', 'prefix' => 'admin'), function(){
         Route::get('/media-library/popup_upload', 'MediaLibraryController@popup_upload');
         Route::get('/media-library/download/{id}', 'MediaLibraryController@download');
         Route::get('/media-library/ckeditor', 'MediaLibraryController@ckeditor');
+
+        //User Profile
+        Route::get('/user-profile', 'UserProfileController@edit');
+        Route::post('/user-profile', 'UserProfileController@update');
+
+        //Configuration - Theme
+        Route::get('/configuration/theme', 'ConfigurationController@editUserTheme');
     });
 
 });

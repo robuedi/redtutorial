@@ -12,11 +12,15 @@
 @section('scripts')
     <script src="/assets/_admin/js/tree-view-section.js"></script>
     <script src="/assets/_admin/js/general.js"></script>
-    <script src="/assets/_admin/js/libs/ckeditor.js"></script>
+    <script src="/assets/_admin/js/libs/ckeditor/ckeditor.js"></script>
     <script>
         $(function () {
             //description editor
-            ClassicEditor.create( document.querySelector( '#description_editor' ) );
+            CKEDITOR.replace( 'description_editor' ,
+                {
+                    toolbar : 'deadsimple',
+                    uiColor : '#F5F5F5'
+                });
 
             $('.curses-hierarchy').select2({
                 searchInputPlaceholder: 'Please select',

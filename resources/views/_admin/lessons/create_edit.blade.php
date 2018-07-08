@@ -8,25 +8,51 @@
     <li><a href="{{URL::to('/admin/lessons')}}">@lang('admin_lessons.lessons')</a></li>
     <li>@if($lesson->id) @lang('admin_general.edit') @else @lang('admin_general.creates') @endif</li>
 @stop
-
 @section('scripts')
     <script src="/assets/_admin/js/tree-view-section.js"></script>
     <script src="/assets/_admin/js/general.js"></script>
-    <script src="/assets/_admin/js/libs/ckeditor.js"></script>
+    <script src="/assets/_admin/js/libs/ckeditor_4.10.0_full/ckeditor.js"></script>
+    <script src="/assets/js/libs/prism/prism.js"></script>
     <script>
-        $(function () {
-            ClassicEditor.create( document.querySelector( '#text_content' ), {
-                ckfinder: {
-                    uploadUrl: '/media-library/ckeditor'
-                }
-            } );
-            ClassicEditor.create( document.querySelector( '#description_editor' ) );
-            console.log(ClassicEditor.build.plugins.map( plugin => plugin.pluginName ));
+        $(function (){
+            CKEDITOR.editorConfig = function( config )
+            {
+                config.extraPlugins = 'popup';
+            };
+
+            CKEDITOR.replace( 'text_content' ,
+            {
+                // toolbar : 'deadsimple',
+                uiColor : '#F5F5F5',
+                allowedContent: true,
+                height: '700px',
+                extraPlugins:'tab,codesnippet,imagebrowser',
+                codeSnippet_theme: 'monokai_sublime',
+                imageBrowser_listUrl: '/admin/media-library/ckeditor',
 
         });
-    </script>
-    <script>
-        $(function () {
+            CKEDITOR.replace( 'description_editor' ,
+            {
+                toolbar : 'deadsimple',
+                uiColor : '#F5F5F5'
+            });
+
+            // $('.snippet').each(function (index) {
+            //     var script_type = $(this).attr('data-type');
+            //     $(this).attr('data-order', index);
+            //
+            //     const flask = new CodeFlask('.'+this.className+'[data-order="'+index+'"]', { language: script_type });
+            //
+            // })
+
+            // ClassicEditor.create( document.querySelector( '#text_content' ), {
+            //     ckfinder: {
+            //         uploadUrl: '/media-library/ckeditor'
+            //     }
+            // } );
+            // ClassicEditor.create( document.querySelector( '#description_editor' ) );
+            // console.log(ClassicEditor.build.plugins.map( plugin => plugin.pluginName ));
+
 
             $('.curses-hierarchy').select2({
                 searchInputPlaceholder: 'Please select',
@@ -51,6 +77,7 @@
 
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="/assets/_admin/css/tree-view-section.css">
+    <link rel="stylesheet" type="text/css" href="/assets/js/libs/prism/prism.css">
 @stop
 
 @section('content')
@@ -161,7 +188,7 @@
 
                                         {{--Preview--}}
                                         <div class="tab-pane fade " id="preview">
-                                            <div>
+                                            <div class="text-content-preview">
                                                 {!! old('content', $lesson->content) !!}
                                             </div>
                                         </div>

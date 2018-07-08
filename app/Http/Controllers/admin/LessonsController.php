@@ -123,7 +123,7 @@ class LessonsController extends Controller
         if(
             //is not draft and no slug input and no slug saved
             (
-                (empty($request->input('slug'))&& empty($course->slug))
+                (empty($request->input('slug'))&& empty($lesson->slug))
                 ||
                 (empty($request->input('slug'))&& $request->input('enabled_slug_edit'))
             )

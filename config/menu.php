@@ -106,13 +106,13 @@ return array(
         ),
         array(
             "name"      => "Configuration",
-            "url"       => "admin/configuration",
+            "url"       => "#",
             "aliases"   => array(),
             "class"     => "fa-wrench",
             "submenus"  => array(
                 '1' => array(
-                    "name"      => "Themes",
-                    "url"       => "admin/themes",
+                    "name"      => "Theme",
+                    "url"       => "admin/configuration/theme",
                     "aliases"   => array(),
                 ),
             ),

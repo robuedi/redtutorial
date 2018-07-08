@@ -11,6 +11,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\MediaFile;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\URL;
+use Log;
+use Illuminate\Http\Request;
 
 class MediaLibraryController extends Controller
 {
@@ -143,15 +146,6 @@ class MediaLibraryController extends Controller
     public function popup_upload()
     {
         return View::make('_admin.media-library.popup_upload');
-    }
-
-    public function ckeditor(Request $request)
-    {
-        //get CKeditor params
-        $params['CKEditor'] = $request->input('CKEditor');
-        $params['CKEditorFuncNum'] = $request->input('CKEditorFuncNum');
-
-        return View::make('_admin.media_library.ckeditor', $params);
     }
 
     public function download($id = 0) {

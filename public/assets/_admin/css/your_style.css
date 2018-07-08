@@ -97,4 +97,6 @@ button.btn.btn-lg, a.btn.btn-lg {
     border-color: var(--ck-color-base-border);
     box-shadow: none;
 }
-
+.text-content-preview{
+    padding: 20px;
+}
