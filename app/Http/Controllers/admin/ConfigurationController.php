@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Sentinel;
-use App\UserConfiguration;
+use App\Configuration;
 use View;
 
 class ConfigurationController extends Controller

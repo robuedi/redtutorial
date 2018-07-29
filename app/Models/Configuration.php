@@ -6,10 +6,11 @@
  * Time: 14:44
  */
 
-namespace App\Models;
+namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 
-class Configuration
+class Configuration extends Model
 {
     protected $table = 'configurations';
 }
