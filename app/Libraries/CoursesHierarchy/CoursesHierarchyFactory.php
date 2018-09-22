@@ -35,7 +35,20 @@ class CoursesHierarchyFactory implements ICoursesHierarchyFactory
         }
         elseif ($type == 'client')
         {
-            return new CoursesHierarchy([],[],[]);
+            //courses
+            $courses = Course::whereNull('parent_id')
+                ->orderBy('order_weight')
+                ->get();
+
+            //chapters
+            $chapters = Course::whereNotNull('parent_id')
+                ->orderBy('order_weight')
+                ->get()->groupBy('parent_id');
+
+            //lessons
+            $lessons = [];
+
+            return new CoursesHierarchyClient($courses, $chapters, $lessons);
         }
         else
         {

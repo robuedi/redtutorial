@@ -6,7 +6,7 @@
  * Time: 19:30
  */
 
-namespace App\Libraries\REC;
+namespace App\Libraries;
 
 use Session;
 use Redirect;

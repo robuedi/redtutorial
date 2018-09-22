@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    {!! \App\Libraries\REC\UIMessage::get() !!}
+    {!! \App\Libraries\UIMessage::get() !!}
 
     <section id="widget-grid" >
         <div class="row">

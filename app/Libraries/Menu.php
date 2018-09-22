@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libraries\REC;
+namespace App\Libraries;
 
 use Config;
 use Log;

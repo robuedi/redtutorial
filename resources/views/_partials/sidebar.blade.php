@@ -7,70 +7,51 @@
         <img src="">
     </div>
     <nav>
+
         <ul data-sidebar-nav class="root-list">
-            <li data-list-item >
-                <span class="item-label">
-                    <a href="#">SOLID Principle</a>
-                    <i class="fas fa-plus"></i>
-                </span>
-                <ul data-list-inner >
-                    <li data-list-item >
-                        <span class="item-label">
-                            <a href="#">S - Single Responsibility Principle</a>
-                        </span>
-                    </li>
-                    <li data-list-item >
-                        <span class="item-label">
-                            <a href="#">O - Open-Closed Principle</a>
-                        </span>
-                    </li>
-                    <li data-list-item >
-                        <span class="item-label">
-                            <a href="#">L - Liskov Substitution Principle</a>
-                        </span>
-                    </li>
-                    <li data-list-item >
-                        <span class="item-label">
-                            <a href="#">I - Interface Segregation Principle</a>
-                        </span>
-                    </li>
-                    <li data-list-item >
-                        <span class="item-label">
-                            <a href="#">D - Dependency Inversion Principle</a>
-                        </span>
-                    </li>
-                </ul>
-            </li>
-            <li data-list-item >
-                <span class="item-label">
-                    <a href="#">Design Patterns </a>
-                    <i class="fas fa-plus"></i>
-                </span>
-                <ul data-list-inner >
-                    <li data-list-item >
-                        <span class="item-label">
-                            <a href="#">Creational </a>
+            @foreach($hierarchy_list as $key => $list_item)
+
+                <li data-list-item data-check="{{(int)$list_item['has_children']}}" >
+                    <span class="item-label">
+                        <a href="#">{{$list_item['clear_name']}}</a>
+                        @if((int)$list_item['has_children'] > 0)
                             <i class="fas fa-plus"></i>
-                        </span>
-                        <ul data-list-inner >
-                            <li data-list-item >
-                                <span class="item-label">
-                                    <a href="#">Factory</a>
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                                <ul data-list-inner >
-                                    <li data-list-item ><span class="item-label"><a href="#">Text</a></span></li>
-                                    <li data-list-item ><span class="item-label"><a href="#">Code</a></span></li>
-                                </ul>
-                            </li>
-                            <li data-list-item ><span class="item-label"><a href="#">Builder</a></span></li>
+                        @endif
+                    </span>
+
+                @if((int)$list_item['has_children'] > 0)
+                    {{\App\Libraries\MenuClient::setChildrenCounter((int)$list_item['has_children']+1)}}
+                    <ul data-list-inner >
+                @else
+                    </li>
+                @endif
+
+                {{\App\Libraries\MenuClient::countChildren()}}
+                @for ($i = 0; $i < \App\Libraries\MenuClient::getEndingsNeeded(); $i++)
                         </ul>
                     </li>
-                    <li data-list-item ><span class="item-label"><a href="#">Behavioral</a></span></li>
-                </ul>
-            </li>
-            <li data-list-item ><span class="item-label"><a href="#">PHP</a></span></li>
-            <li data-list-item ><span class="item-label"><a href="#">JavaScript</a></span></li>
+                @endfor
+
+            @endforeach
+
         </ul>
+
     </nav>
 </aside>
+
+<!--
+o
+    l
+        o
+            l/l
+            l
+                o
+                    l/l
+                    l/l
+                    l/l
+                /o
+            /l
+        /0
+    /l
+/0
+-->

@@ -57,12 +57,14 @@ class CoursesHierarchy extends Course implements ICoursesHierarchy
                 'id'            => $course->id.'',
                 'name'          => ($key+1).'. '.$course->name,
                 'clear_name'    => $course->name,
-                'children'      => $children,
+                'has_children'  => count($children),
+                'parent_id'     => 0,
                 'link'          => URL::to('/admin/courses/'.$course->id.'/edit'),
                 'is_public'     => $course->is_public,
                 'is_draft'      => $course->is_draft,
                 'pointing_id'   => (string)$pointing_id === (string)$course->id.'course' ? 1 : 0,
-                'type'          => 'course'
+                'type'          => 'course',
+                'children'      => $children  //this field needs to be the last one
             ];
         }
 
@@ -88,12 +90,14 @@ class CoursesHierarchy extends Course implements ICoursesHierarchy
                     'id'            => $child->id,
                     'name'          => $inherit_level.$child->name,
                     'clear_name'    => $child->name,
-                    'children'      => $grandchildren,
+                    'has_children'  => count($grandchildren),
+                    'parent_id'     => $id,
                     'is_public'     => $child->is_public,
                     'is_draft'      => $child->is_draft,
                     'link'          => URL::to('/admin/chapters/'.$child->id.'/edit'),
                     'pointing_id'   => (string)$pointing_id === (string)$child->id.'chapter' ? 1 : 0,
-                    'type'          => 'chapter'
+                    'type'          => 'chapter',
+                    'children'      => $grandchildren, //this field needs to be the last one
                 ];
             }
         }
@@ -109,12 +113,14 @@ class CoursesHierarchy extends Course implements ICoursesHierarchy
                     'id'            => $child->id,
                     'name'          => $child->name,
                     'clear_name'    => $child->name,
-                    'children'      => [], //lessons don't have children, they are endpoints
+                    'has_children'  => 0,
+                    'parent_id'     => $id,
                     'is_public'     => $child->is_public,
                     'is_draft'      => $child->is_draft,
                     'link'          => URL::to('/admin/lessons/'.$child->id.'/edit'),
                     'pointing_id'   => (string)$pointing_id === (string)$child->id.'lesson' ? 1 : 0,
-                    'type'          => 'lesson'
+                    'type'          => 'lesson',
+                    'children'      => [], //lessons don't have children, they are endpoints this field needs to be the last one
                 ];
             }
         }

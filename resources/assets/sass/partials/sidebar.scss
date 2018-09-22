@@ -40,11 +40,13 @@
     color: $brand-third;
     float: right;
     margin-right: 95px;
+    padding-left: 20px;
 
     ul {
       text-align: right;
       list-style: none;
       letter-spacing: 1.5px;
+      padding: 0;
 
       li {
         line-height: 1.4;

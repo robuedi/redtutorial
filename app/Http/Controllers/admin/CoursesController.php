@@ -10,13 +10,13 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use App\Libraries\REC\Listing;
+use App\Libraries\Listing;
 use App\Course;
 use Validator;
 use View;
 use App\Http\Controllers\Controller;
 use App\Lesson;
-use App\Libraries\REC\UIMessage;
+use App\Libraries\UIMessage;
 use Redirect;
 use App\Libraries\CoursesHierarchy\CoursesHierarchyFactory;
 

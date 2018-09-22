@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    {!! \App\Libraries\REC\UIMessage::get() !!}
+    {!! \App\Libraries\UIMessage::get() !!}
 
     <form action="{{ URL::current() }}" enctype="application/x-www-form-urlencoded" method="get">
 

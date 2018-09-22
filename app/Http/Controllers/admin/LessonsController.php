@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Libraries\REC\Listing;
+use App\Libraries\Listing;
 use View;
 use App\Lesson;
 use App\Course;
@@ -17,7 +17,7 @@ use App\Chapter;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Input;
-use App\Libraries\REC\UIMessage;
+use App\Libraries\UIMessage;
 use Redirect;
 use App\Libraries\CoursesHierarchy\CoursesHierarchyFactory;
 

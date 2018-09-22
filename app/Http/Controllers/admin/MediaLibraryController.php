@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Libraries\REC\Listing;
-use App\Libraries\REC\Upload;
-use App\Libraries\REC\UIMessage;
+use App\Libraries\Listing;
+use App\Libraries\Upload;
+use App\Libraries\UIMessage;
 use Redirect;
 use View;
 use App\Http\Controllers\Controller;

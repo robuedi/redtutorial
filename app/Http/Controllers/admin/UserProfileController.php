@@ -11,7 +11,7 @@ use Sentinel;
 use Session;
 use Validator;
 use Redirect;
-use App\Libraries\REC\UIMessage;
+use App\Libraries\UIMessage;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use User;

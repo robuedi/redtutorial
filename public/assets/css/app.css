@@ -77,12 +77,14 @@ body main #content_top_section {
   color: #000;
   float: right;
   margin-right: 95px;
+  padding-left: 20px;
 }
 
 #left_menu nav ul {
   text-align: right;
   list-style: none;
   letter-spacing: 1.5px;
+  padding: 0;
 }
 
 #left_menu nav ul li {

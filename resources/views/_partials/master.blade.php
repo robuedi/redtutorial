@@ -45,7 +45,7 @@
 
     <body>
 
-        @include('_partials.sidebar')
+        @include('_partials.sidebar', array('hierarchy_list' => App\Libraries\MenuClient::getMenu()))
 
         <main>
 
