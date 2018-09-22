@@ -16,18 +16,11 @@ html {
   height: 100%;
 }
 
-body *,
-html * {
-  font-family: "MySans";
-}
-
-body main,
-html main {
+body#admin_authentication main {
   min-height: calc(100vh - 100px);
 }
 
-body main.f-box-display,
-html main.f-box-display {
+body#admin_authentication main.f-box-display {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,24 +36,21 @@ html main.f-box-display {
           align-items: center;
 }
 
-body main .row,
-html main .row {
+body#admin_authentication main .row {
   width: 350px;
   max-width: 90vw;
 }
 
-body main h1,
-html main h1 {
-  color: #000;
+body#admin_authentication main h1 {
+  color: #ededed;
   margin: 50px 0px;
   text-align: center;
 }
 
-body main button.submit,
-html main button.submit {
+body#admin_authentication main button.submit {
   display: block;
-  background-color: #f05256;
-  color: #000;
+  background-color: #E62C33;
+  color: #ededed;
   width: 100%;
   border: none;
   border-radius: 0;
@@ -72,45 +62,38 @@ html main button.submit {
   letter-spacing: 1px;
 }
 
-body main button.submit:hover,
-html main button.submit:hover {
+body#admin_authentication main button.submit:hover {
   -webkit-animation: submit-hover .3s forwards;
           animation: submit-hover .3s forwards;
 }
 
-body main .input-container,
-html main .input-container {
+body#admin_authentication main .input-container {
   padding: 1vh 0vh;
 }
 
-body main .input-container_username,
-html main .input-container_username {
+body#admin_authentication main .input-container_username {
   margin-top: 40px;
 }
 
-body main .input-container input,
-html main .input-container input {
+body#admin_authentication main .input-container input {
   position: relative;
   display: block;
   border: none;
   margin: 15px 0px 25px;
   width: 100%;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid #ededed;
 }
 
-body main .input-container input:focus,
-html main .input-container input:focus {
+body#admin_authentication main .input-container input:focus {
   -webkit-animation: input-active .7s forwards;
           animation: input-active .7s forwards;
 }
 
-body main .img-container,
-html main .img-container {
+body#admin_authentication main .img-container {
   text-align: center;
 }
 
-body main .img-container img,
-html main .img-container img {
+body#admin_authentication main .img-container img {
   margin: 0 auto;
   text-align: center;
   border-radius: 10%;
@@ -118,8 +101,7 @@ html main .img-container img {
   width: auto;
 }
 
-body footer,
-html footer {
+body#admin_authentication footer {
   height: 100px;
   text-align: center;
   display: -webkit-box;
@@ -139,18 +121,16 @@ html footer {
   padding: 30px 10px 10px;
 }
 
-body footer ul,
-html footer ul {
+body#admin_authentication footer ul {
   text-align: left;
   display: inline-block;
 }
 
-body footer ul .warning,
-html footer ul .warning {
-  color: #f05256;
+body#admin_authentication footer ul .warning {
+  color: #E62C33;
 }
 
-.alert {
+body#admin_authentication .alert {
   margin-bottom: 20px;
   margin-top: 20px;
   color: #675100;
@@ -167,14 +147,14 @@ html footer ul .warning {
   position: relative;
 }
 
-.alert.alert-danger {
+body#admin_authentication .alert.alert-danger {
   border-color: #953b39;
   color: #fff;
   background: #c26565;
   text-shadow: none;
 }
 
-.alert.alert-dismissible .close {
+body#admin_authentication .alert.alert-dismissible .close {
   top: 0;
   width: 25px;
   right: 0px;
@@ -197,47 +177,47 @@ html footer ul .warning {
   height: 100%;
 }
 
-.alert.alert-dismissible .close [aria-hidden]:hover {
+body#admin_authentication .alert.alert-dismissible .close [aria-hidden]:hover {
   opacity: 0.7;
 }
 
 @-webkit-keyframes input-active {
   0% {
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #ededed;
   }
 
   100% {
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #ededed;
   }
 }
 
 @keyframes input-active {
   0% {
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #ededed;
   }
 
   100% {
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #ededed;
   }
 }
 
 @-webkit-keyframes submit-hover {
   from {
-    background-color: #f05256;
+    background-color: #E62C33;
   }
 
   to {
-    background-color: #000;
+    background-color: #ededed;
   }
 }
 
 @keyframes submit-hover {
   from {
-    background-color: #f05256;
+    background-color: #E62C33;
   }
 
   to {
-    background-color: #000;
+    background-color: #ededed;
   }
 }
 

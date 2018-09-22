@@ -24,8 +24,9 @@ $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
 // Brands
-$brand-primary: #f05256;
-$brand-second: #000;
+$brand-primary: #E62C33;
+$brand-second: #ededed;
+$brand-third: #000;
 
 $brand-blue-brighter: #516f79;
 
@@ -38,14 +39,14 @@ $brand-grey3: #ebebeb;
 //$brand-danger: #c3423d;
 
 // Typography
-$font-family-sans-serif: "Tajawal", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family: 'PT Sans', sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
 $text-color: #000;
 
 // sidebar
-$sidebar-color: #1f1f1f;
 $brand-dark: #333;
+$white: #FFF;
 
 // Buttons
 $btn-default-color: $text-color;

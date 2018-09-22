@@ -8,9 +8,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets')}}/css/lib/bootstrap4.0.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets')}}/css/admin-login.css">
 </head>
-<body>
+<body id="admin_authentication" >
 
-    <main class="container f-box-display">
+    <main class="container f-box-display" >
         <section class="row">
             <div class="col">
 

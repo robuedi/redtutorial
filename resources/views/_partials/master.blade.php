@@ -14,14 +14,17 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{--<link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap-grid.min.css">--}}
-        <link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap.min.css">
+        {{--<link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap.min.css">--}}
         <link rel="stylesheet" type="text/css" href="/assets/css/lib/normalize8.css">
         <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
 
         @yield('stylesheets')
 
         <!-- Main Font -->
-        <link href="https://fonts.googleapis.com/css?family=Courgette|Tajawal:300,400,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
 
         <!--[if lt IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>

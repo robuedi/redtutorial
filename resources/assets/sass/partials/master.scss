@@ -1,9 +1,13 @@
-main {
+body {
+  font-family: $font-family;
 
+  main {
 
-  #content_top_section {
-    border-bottom: 1px solid $brand-dark;
-    height: 50px;
-    @include main-left-margin();
+    #content_top_section {
+      border-bottom: 1px solid $brand-dark;
+      height: 50px;
+      @include main-left-margin();
+    }
   }
+
 }

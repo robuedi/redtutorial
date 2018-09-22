@@ -2,7 +2,7 @@
 //that are depending one in another
 
 $sidebar-lg: 300px;
-$sidebar-xl: 25%;
+$sidebar-xl: 28%;
 
 @mixin sidebar-width(){
 
@@ -20,4 +20,9 @@ $sidebar-xl: 25%;
   @media (min-width: $screen-xl) {
     margin-left: $sidebar-xl;
   }
+}
+
+@mixin sidebar-font(){
+  font-size: 16px;
+  color: $white;
 }
