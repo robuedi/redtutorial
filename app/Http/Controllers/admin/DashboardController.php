@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Course;
 use App\Lesson;
 use Log;
+use App\Libraries\CoursesHierarchy\CoursesHierarchyFactory;
 
 class DashboardController extends Controller
 {
@@ -61,9 +62,10 @@ class DashboardController extends Controller
                     ->first();
 
         //get hierarchy
-        $curses_hierarchy_map = Course::getHierarchicalList(null, true);
 
-        Log::info($curses_hierarchy_map);
+        $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
+        $hierarchy_item->setDefaultAdminLessons();
+        $curses_hierarchy_map = $hierarchy_item->getHierarchyList();
 
         return View::make('_admin.dashboard.index', [
             'public_courses'    => $public_courses->public,

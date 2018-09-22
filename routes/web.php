@@ -50,6 +50,10 @@ Route::group(array('namespace' => 'admin', 'prefix' => 'admin'), function(){
 
         //Configuration - Theme
         Route::get('/configuration/theme', 'ConfigurationController@editUserTheme');
+
+        //User Management
+        Route::resource('/user-management', 'UsersManagement');
+
     });
 
 });

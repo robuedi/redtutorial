@@ -43,8 +43,9 @@ $font-size-base: 14px;
 $line-height-base: 1.6;
 $text-color: #000;
 
-// Navbar
-$navbar-default-bg: #000;
+// sidebar
+$sidebar-color: #1f1f1f;
+$brand-dark: #333;
 
 // Buttons
 $btn-default-color: $text-color;
@@ -60,22 +61,18 @@ $panel-default-heading-bg: #fff;
 //c3423d 4b5e65
 //#2f435e, #44566c, #ececec, #201b22
 
-$grid-breakpoints: (
-  // Extra small screen / phone
-  xs: 0,
-  // Small screen / phone
-  sm: 576px,
-  // Medium screen / tablet
-  md: 768px,
-  // Large screen / desktop
-  lg: 992px,
-  // Extra large screen / wide desktop
-  xl: 1200px
-);
+//grid breakpoints:
+// Small screen / phone
+$screen-sm: 576px;
+$screen-sm-max: 767px;
 
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px
-);
+// Medium screen / tablet
+$screen-md: 768px;
+$screen-md-max: 991px;
+
+// Large screen / desktop
+$screen-lg: 992px;
+$screen-lg-max: 1199px;
+
+// Extra large screen / wide desktop
+$screen-xl: 1200px;

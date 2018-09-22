@@ -88,6 +88,8 @@ $(document).ready(function() {
         html.content += '</ul>';
     }
 
+
+
     $('.tree > ul').attr('role', 'tree').find('ul').attr('role', 'group');
     $('.tree').find('li:has(ul)').addClass('parent_li').attr('role', 'treeitem').find(' > span > i:first-child').attr('title', 'Collapse this branch').on('click', function(e) {
         var children = $(this).closest('li.parent_li').find(' > ul > li');
@@ -101,5 +103,10 @@ $(document).ready(function() {
         }
         e.stopPropagation();
     });
+
+
+    var treeView = {
+
+    }
 
 });

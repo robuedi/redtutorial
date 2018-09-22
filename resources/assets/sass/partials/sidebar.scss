@@ -1,0 +1,8 @@
+#left_menu {
+  background: $sidebar-color;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  box-sizing: border-box;
+  @include sidebar-width();
+}

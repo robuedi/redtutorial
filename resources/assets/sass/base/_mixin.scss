@@ -1,0 +1,23 @@
+//setting the sidebar with and content width
+//that are depending one in another
+
+$sidebar-lg: 300px;
+$sidebar-xl: 25%;
+
+@mixin sidebar-width(){
+
+  width: $sidebar-lg;
+
+  @media (min-width: $screen-xl) {
+    width: $sidebar-xl;
+  }
+}
+
+@mixin main-left-margin(){
+
+  margin-left: $sidebar-lg;
+
+  @media (min-width: $screen-xl) {
+    margin-left: $sidebar-xl;
+  }
+}

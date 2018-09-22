@@ -19,6 +19,7 @@ use Validator;
 use Illuminate\Support\Facades\Input;
 use App\Libraries\REC\UIMessage;
 use Redirect;
+use App\Libraries\CoursesHierarchy\CoursesHierarchyFactory;
 
 
 class LessonsController extends Controller
@@ -74,8 +75,11 @@ class LessonsController extends Controller
         $chapters = Course::whereNotNull('parent_id')->get();
 
         //get map hierarchy
-        $curses_hierarchy_map = Course::getHierarchicalList(null, true);
-        $curses_hierarchy = Course::getHierarchicalList();
+
+        $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
+        $curses_hierarchy = $hierarchy_item->getHierarchyList();
+        $hierarchy_item->setDefaultAdminLessons();
+        $curses_hierarchy_map = $hierarchy_item->getHierarchyList();
 
         return View::make('_admin.lessons.create_edit', [
             'lesson'        => $new_lesson,
@@ -97,8 +101,11 @@ class LessonsController extends Controller
             abort(404);
 
         //get map hierarchy
-        $curses_hierarchy_map = Course::getHierarchicalList($id.'lesson', true);
-        $curses_hierarchy = Course::getHierarchicalList();
+        $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
+        $curses_hierarchy = $hierarchy_item->getHierarchyList();
+        $hierarchy_item->setDefaultAdminLessons();
+        $hierarchy_item->setPointingID($id.'lesson');
+        $curses_hierarchy_map = $hierarchy_item->getHierarchyList();
 
         return View::make('_admin.lessons.create_edit', [
             'lesson'                => $lesson,

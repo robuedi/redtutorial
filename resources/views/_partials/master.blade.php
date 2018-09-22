@@ -41,50 +41,19 @@
     </head>
 
     <body>
-        <div id="page_wrapper">
-            <nav id="main_navigation" class="container-fluid">
-                <div class="row">
-                    <div class="col-md-2">
-                        <a class="title" href="/">
-                            <p >
-                                <span class="red">RED</span>
-                                <span class="tutorial">tutorial</span>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
 
-                    <div class="main-menu-list col-md-10 ">
-                        <ul class="menu-list">
-                            @foreach($sections as $link => $name)
-                                <li><a href="{{$link}}">{{$name}}</a></li>
-                            @endforeach
-                            <li><a>SEARCH</a></li>
-                            <li><a>PLAYGROUND</a></li>
-                        </ul>
-                    </div>
+        @include('_partials.sidebar')
 
-                    <div class="col-md-2 navigation-sidebar hidden ">
-                        <span>
-                            Menu
-                        </span>
-                        <div class="menu-sidebar">
-                            <ul class="menu-items">
-                                <li>HTML</li>
-                                <li>SEARCH</li>
-                                <li>Contact us</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+        <main>
+
+            <section id="content_top_section">
+
+            </section>
 
             @yield('content')
+        </main>
 
-            <footer>
-            </footer>
-        </div>
+
 
         <script src="/assets/js/main.js"></script>
         @yield('scripts')

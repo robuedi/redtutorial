@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Libraries\CoursesHierarchy\CoursesHierarchyFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Libraries\REC\Listing;
@@ -79,10 +80,13 @@ class ChaptersController extends Controller
         $max_order_number = Course::whereNotNull('parent_id')
                             ->max('order_weight');
         $new_chapter->order_weight = (int)$max_order_number+1;
-        $curses_hierarchy = Course::getHierarchicalList();
+
+        $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
+        $curses_hierarchy = $hierarchy_item->getHierarchyList();
 
         //get map hierarchy
-        $curses_hierarchy_map = Course::getHierarchicalList(null, true);
+        $hierarchy_item->setDefaultAdminLessons();
+        $curses_hierarchy_map = $hierarchy_item->getHierarchyList();
 
         return View::make('_admin.chapters.create_edit', [
             'chapter'               => $new_chapter,
@@ -94,8 +98,13 @@ class ChaptersController extends Controller
     function edit($id)
     {
         $chapter = Course::findOrFail($id);
-        $curses_hierarchy = Course::getHierarchicalList();
-        $curses_hierarchy_map = Course::getHierarchicalList($id.'chapter', true);
+
+        //get hierarchy
+        $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
+        $curses_hierarchy = $hierarchy_item->getHierarchyList();
+        $hierarchy_item->setDefaultAdminLessons();
+        $hierarchy_item->setPointingID($id.'chapter');
+        $curses_hierarchy_map = $hierarchy_item->getHierarchyList();
 
         return View::make('_admin.chapters.create_edit', [
             'chapter'               => $chapter,
@@ -170,7 +179,7 @@ class ChaptersController extends Controller
         if(
             //is not draft and no slug input and no slug saved
             (
-                (empty($request->input('slug'))&& empty($course->slug))
+                (empty($request->input('slug'))&& empty($chapter->slug))
                 ||
                 (empty($request->input('slug'))&& $request->input('enabled_slug_edit'))
             )

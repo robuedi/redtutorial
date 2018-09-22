@@ -18,6 +18,7 @@ use App\Http\Controllers\Controller;
 use App\Lesson;
 use App\Libraries\REC\UIMessage;
 use Redirect;
+use App\Libraries\CoursesHierarchy\CoursesHierarchyFactory;
 
 class CoursesController extends Controller
 {
@@ -71,7 +72,9 @@ class CoursesController extends Controller
         $new_course->is_draft = 1;
 
         //get map hierarchy
-        $curses_hierarchy_map = Course::getHierarchicalList(null, true);
+        $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
+        $hierarchy_item->setDefaultAdminLessons();
+        $curses_hierarchy_map = $hierarchy_item->getHierarchyList();
 
         return View::make('_admin.courses.create_edit', [
                 'course' => $new_course,
@@ -89,7 +92,11 @@ class CoursesController extends Controller
         if(!$course)
             abort(404);
 
-        $curses_hierarchy_map = Course::getHierarchicalList($id.'course', true);
+
+        $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
+        $hierarchy_item->setDefaultAdminLessons();
+        $hierarchy_item->setPointingID($id.'course');
+        $curses_hierarchy_map = $hierarchy_item->getHierarchyList();
 
         return View::make('_admin.courses.create_edit', [
                 'course' => $course,
