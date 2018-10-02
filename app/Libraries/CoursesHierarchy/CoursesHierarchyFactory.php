@@ -11,6 +11,7 @@ namespace App\Libraries\CoursesHierarchy;
 use App\Course;
 use App\Libraries;
 use Illuminate\Support\Facades\Log;
+use App\Lesson;
 
 class CoursesHierarchyFactory implements ICoursesHierarchyFactory
 {
@@ -37,18 +38,28 @@ class CoursesHierarchyFactory implements ICoursesHierarchyFactory
         {
             //courses
             $courses = Course::whereNull('parent_id')
+                ->where('is_public',1)
+                ->where('is_draft',0)
                 ->orderBy('order_weight')
                 ->get();
 
             //chapters
             $chapters = Course::whereNotNull('parent_id')
+                ->where('is_public',1)
+                ->where('is_draft',0)
                 ->orderBy('order_weight')
                 ->get()->groupBy('parent_id');
 
             //lessons
-            $lessons = [];
+            $lessons = Lesson::whereNotNull('parent_id')
+                ->orderBy('order_weight')
+                ->where('is_public',1)
+                ->where('is_draft',0)
+                ->get()->groupBy('parent_id');
 
-            return new CoursesHierarchyClient($courses, $chapters, $lessons);
+            $courses_hierarchy = new CoursesHierarchyClient($courses, $chapters, $lessons);
+
+            return $courses_hierarchy;
         }
         else
         {

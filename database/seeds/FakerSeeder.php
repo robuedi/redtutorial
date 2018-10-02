@@ -22,7 +22,7 @@ class FakerSeeder extends Seeder
             $courses = ['PHP', 'SQL', 'JavaScript', 'HTML', 'CSS3'];
             $chapters_range = 4;
             $chapters = ['Beginner', 'Intermediary', 'Advanced', 'Extra'];
-            $lessons_range = 15;
+            $lessons_range = 55;
 
             $faker = Faker\Factory::create();
 
@@ -65,7 +65,7 @@ class FakerSeeder extends Seeder
 
                         $lesson                 = new Lesson();
                         $lesson->parent_id      = $chapter->id;
-                        $lesson->name           = $faker->sentence($nbWords = 4, $variableNbWords = true);
+                        $lesson->name           = rtrim($faker->sentence($nbWords = 4, $variableNbWords = true), '.');
                         $lesson->description    = $faker->text(600);
                         $lesson->content        = $faker->text(800);
                         $lesson->order_weight   = $j+1;

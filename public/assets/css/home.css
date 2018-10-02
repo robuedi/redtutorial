@@ -10,3 +10,48 @@
 #fafafa
 */
 
+.home-container {
+  height: 100vh;
+  min-height: 650px;
+  width: 100%;
+  background-image: url("/assets/img/passion-to-create.jpg");
+  background-size: cover;
+  position: relative;
+}
+
+.home-container .page-title {
+  font-weight: lighter;
+  color: #E62C33;
+  padding: 100px 75px 100px 75px;
+}
+
+.home-container .page-title h1 {
+  margin: 0;
+  font-weight: 300;
+  font-size: 50px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.home-container .page-content {
+  color: #FFF;
+  padding: 30px 75px 30px 75px;
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 150px;
+}
+
+.home-container .page-content .page-inner-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 30px 75px 30px 75px;
+}
+
+.home-container .page-content .page-inner-container .section-tags {
+  margin-top: 30px;
+}
+
+.home-container .page-content .page-inner-container .section-tags .red-button-second {
+  margin: 0px 10px;
+}
+

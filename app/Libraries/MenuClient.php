@@ -22,7 +22,6 @@ class MenuClient
     public static function getMenu()
     {
         $hierarchy_object = CoursesHierarchyFactory::createHierarchyObject('client');
-        $hierarchy_object->setDefaultAdminLessons();
         $hierarchy_list = $hierarchy_object->getHierarchyList();
 
         //process array to make it in one dimension
@@ -33,15 +32,15 @@ class MenuClient
 
     public static function addItem($value, $key)
     {
-        if(in_array($key, ['clear_name', 'has_children', 'parent_id']))
-        {
+//        if(in_array($key, ['clear_name', 'has_children', 'type', 'parent_id']))
+//        {
             self::$menu_items[self::$items_index][$key] = $value;
 
             if($key === 'parent_id')
             {
                 self::$items_index++;
             }
-        }
+//        }
 
     }
 

@@ -87,6 +87,13 @@ return array(
             ),
         ),
         array(
+            "name"      => "Pages",
+            "url"       => "admin/pages",
+            "aliases"   => array(),
+            "class"     => "fa-user",
+            "submenus"  => array(),
+        ),
+        array(
             "name"      => "Media Library",
             "url"       => "#",
             "aliases"   => array(),

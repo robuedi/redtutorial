@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <title>
             @section('title')
-                | WebCode Tutorial
+                | {{config('app.name')}}
             @show
         </title>
 
@@ -22,6 +22,7 @@
 
         <!-- Main Font -->
         <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
@@ -48,15 +49,8 @@
         @include('_partials.sidebar', array('hierarchy_list' => App\Libraries\MenuClient::getMenu()))
 
         <main>
-
-            <section id="content_top_section">
-
-            </section>
-
             @yield('content')
         </main>
-
-
 
         <script src="/assets/js/main.js"></script>
         @yield('scripts')

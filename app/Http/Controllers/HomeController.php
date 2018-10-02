@@ -9,19 +9,21 @@
 namespace App\Http\Controllers;
 
 use View;
-use App\Models\Testing;
+use App\Course;
 
 class HomeController extends Controller
 {
-    function index(){
+    function index()
+    {
 
-        $meta = [
-            'description' => 'Learn HTML, CSS, JavaScript, PHP'
-        ];
+        $courses = Course::where('is_draft', 0)
+                    ->where('is_public', 1)
+                    ->whereNull('parent_id')
+                    ->get();
 
+        $meta['keywords'] = 'PHP, SQL, JavaScript, design patterns, SOLID principles';
+        $meta['description'] = 'Learn programing, design patterns, SOLID principles';
 
-        $sections = Testing::getSections();
-
-        return View::make('home', ['meta'=>$meta, 'sections' => $sections]);
+        return View::make('home', ['meta' => $meta, 'courses' => $courses]);
     }
 }

@@ -42,7 +42,7 @@ body#admin_authentication main .row {
 }
 
 body#admin_authentication main h1 {
-  color: #ededed;
+  color: #eee;
   margin: 50px 0px;
   text-align: center;
 }
@@ -50,7 +50,7 @@ body#admin_authentication main h1 {
 body#admin_authentication main button.submit {
   display: block;
   background-color: #E62C33;
-  color: #ededed;
+  color: #eee;
   width: 100%;
   border: none;
   border-radius: 0;
@@ -81,7 +81,7 @@ body#admin_authentication main .input-container input {
   border: none;
   margin: 15px 0px 25px;
   width: 100%;
-  border-bottom: 2px solid #ededed;
+  border-bottom: 2px solid #eee;
 }
 
 body#admin_authentication main .input-container input:focus {
@@ -183,21 +183,21 @@ body#admin_authentication .alert.alert-dismissible .close [aria-hidden]:hover {
 
 @-webkit-keyframes input-active {
   0% {
-    border-bottom: 2px solid #ededed;
+    border-bottom: 2px solid #eee;
   }
 
   100% {
-    border-bottom: 2px solid #ededed;
+    border-bottom: 2px solid #eee;
   }
 }
 
 @keyframes input-active {
   0% {
-    border-bottom: 2px solid #ededed;
+    border-bottom: 2px solid #eee;
   }
 
   100% {
-    border-bottom: 2px solid #ededed;
+    border-bottom: 2px solid #eee;
   }
 }
 
@@ -207,7 +207,7 @@ body#admin_authentication .alert.alert-dismissible .close [aria-hidden]:hover {
   }
 
   to {
-    background-color: #ededed;
+    background-color: #eee;
   }
 }
 
@@ -217,7 +217,7 @@ body#admin_authentication .alert.alert-dismissible .close [aria-hidden]:hover {
   }
 
   to {
-    background-color: #ededed;
+    background-color: #eee;
   }
 }
 

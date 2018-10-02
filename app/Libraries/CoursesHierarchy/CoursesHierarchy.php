@@ -33,99 +33,87 @@ class CoursesHierarchy extends Course implements ICoursesHierarchy
 
     public function getHierarchyList() : array
     {
-        //get courses
-        $courses    = $this->courses;
-
-        //get chapters
-        $chapters   = $this->chapters;
-
-        //get lessons
-        $lessons    = $this->lessons;
-
-        $pointing_id = $this->pointing_id;
-
         $hierarchical_list = [];
         //loop courses
-        foreach($courses as $key => $course)
+        foreach($this->courses as $key => $course)
         {
             $parent_level = '';
             //check course children (go into recursive function)
-            $children = $this->getChapterChildren($chapters, $lessons, $course->id, $parent_level, $pointing_id);
+            $children = $this->getChapterChildren( $course, $parent_level);
 
             //add new course and it's children
-            $hierarchical_list[] = [
-                'id'            => $course->id.'',
-                'name'          => ($key+1).'. '.$course->name,
-                'clear_name'    => $course->name,
-                'has_children'  => count($children),
-                'parent_id'     => 0,
-                'link'          => URL::to('/admin/courses/'.$course->id.'/edit'),
-                'is_public'     => $course->is_public,
-                'is_draft'      => $course->is_draft,
-                'pointing_id'   => (string)$pointing_id === (string)$course->id.'course' ? 1 : 0,
-                'type'          => 'course',
-                'children'      => $children  //this field needs to be the last one
-            ];
+            $hierarchical_list[] = $this->setCourseData($key, $course, $children);
         }
 
         return $hierarchical_list;
     }
 
-    private function getChapterChildren(&$chapters, &$lessons, $id, &$parent_level, &$pointing_id)
+    private function getChapterChildren(&$parent, &$parent_level)
     {
         $children = [];
         //check if parent has chapter children
-        if(isset($chapters[$id]))
+        if(isset($this->chapters[$parent->id]))
         {
             //loop chapter children
-            foreach ($chapters[$id] as $key => $child)
+            foreach ($this->chapters[$parent->id] as $key => $child)
             {
                 $child_level = $key+1;
                 $inherit_level = $parent_level.$child_level.'. ';
+                $child->parent = $parent;
+
                 //check if has also has children
-                $grandchildren = $this->getChapterChildren($chapters,$lessons, $child->id, $inherit_level,$pointing_id);
+                $grandchildren = $this->getChapterChildren($child, $inherit_level);
+
+                $child->inherit_level = $inherit_level;
 
                 //save chapters data and it's children
-                $children[] = [
-                    'id'            => $child->id,
-                    'name'          => $inherit_level.$child->name,
-                    'clear_name'    => $child->name,
-                    'has_children'  => count($grandchildren),
-                    'parent_id'     => $id,
-                    'is_public'     => $child->is_public,
-                    'is_draft'      => $child->is_draft,
-                    'link'          => URL::to('/admin/chapters/'.$child->id.'/edit'),
-                    'pointing_id'   => (string)$pointing_id === (string)$child->id.'chapter' ? 1 : 0,
-                    'type'          => 'chapter',
-                    'children'      => $grandchildren, //this field needs to be the last one
-                ];
+                $children[] = $this->setChapterData($child, $grandchildren);
             }
         }
 
         //check if parent has lesson children
-        if(isset($lessons[$id]))
+        if(isset($this->lessons[$parent->id]))
         {
             //loop lesson children
-            foreach ($lessons[$id] as $key => $child)
+            foreach ($this->lessons[$parent->id] as $key => $child)
             {
                 //save lesson data
-                $children[] = [
-                    'id'            => $child->id,
-                    'name'          => $child->name,
-                    'clear_name'    => $child->name,
-                    'has_children'  => 0,
-                    'parent_id'     => $id,
-                    'is_public'     => $child->is_public,
-                    'is_draft'      => $child->is_draft,
-                    'link'          => URL::to('/admin/lessons/'.$child->id.'/edit'),
-                    'pointing_id'   => (string)$pointing_id === (string)$child->id.'lesson' ? 1 : 0,
-                    'type'          => 'lesson',
-                    'children'      => [], //lessons don't have children, they are endpoints this field needs to be the last one
-                ];
+                $child->parent = $parent;
+                $children[] = $this->setLessonData($child);
             }
         }
 
         return $children;
+    }
+
+    protected function setCourseData(&$key, &$course, &$children)
+    {
+        $data = [
+            'index'     => $key,
+            'name'      => $course->name,
+            'children'  => $children
+        ];
+
+        return $data;
+    }
+
+    protected function setChapterData(&$chapter, &$children)
+    {
+        $data = [
+            'name'      => $chapter->name,
+            'children'  => $children
+        ];
+
+        return $data;
+    }
+
+    protected function setLessonData(&$lesson)
+    {
+        $data = [
+            'name'      => $lesson,
+        ];
+
+        return $data;
     }
 
 }

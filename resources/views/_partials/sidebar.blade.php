@@ -11,17 +11,20 @@
         <ul data-sidebar-nav class="root-list">
             @foreach($hierarchy_list as $key => $list_item)
 
-                <li data-list-item data-check="{{(int)$list_item['has_children']}}" >
+                <li class="list-item" data-list-item @if((int)$list_item['parent_id'] === 0) data-root-list @endif data-check="{{(int)$list_item['has_children']}}" >
                     <span class="item-label">
-                        <a href="#">{{$list_item['clear_name']}}</a>
+                        <a href="/tutorial/{{$list_item['url_path']}}">{{$list_item['clear_name']}}</a>
                         @if((int)$list_item['has_children'] > 0)
-                            <i class="fas fa-plus"></i>
+                            <span class="open-symbol">
+                                <i></i>
+                                <i></i>
+                            </span>
                         @endif
                     </span>
 
                 @if((int)$list_item['has_children'] > 0)
                     {{\App\Libraries\MenuClient::setChildrenCounter((int)$list_item['has_children']+1)}}
-                    <ul data-list-inner >
+                    <ul data-list-inner class="@if($hierarchy_list[$key+1]['type'] === 'lesson') list-display-roman @endif" >
                 @else
                     </li>
                 @endif
@@ -38,20 +41,3 @@
 
     </nav>
 </aside>
-
-<!--
-o
-    l
-        o
-            l/l
-            l
-                o
-                    l/l
-                    l/l
-                    l/l
-                /o
-            /l
-        /0
-    /l
-/0
--->

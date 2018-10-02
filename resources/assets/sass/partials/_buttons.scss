@@ -1,0 +1,27 @@
+.red-button {
+  padding: 10px 25px;
+  color: $brand-primary;
+  border: 1px solid $brand-primary;
+  cursor: pointer;
+  display: inline-block;
+
+
+  &:hover {
+    background-color: $brand-primary;
+    color: $white;
+  }
+}
+.red-button-second {
+  padding: 10px 25px;
+  color: $white;
+  border: 1px solid $brand-primary;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.4);
+  display: inline-block;
+
+
+  &:hover {
+    background-color: $brand-primary;
+    color: $white;
+  }
+}

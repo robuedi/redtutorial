@@ -25,7 +25,7 @@ $panel-inner-border: $laravel-border-color;
 
 // Brands
 $brand-primary: #E62C33;
-$brand-second: #ededed;
+$brand-second: #eee;
 $brand-third: #000;
 
 $brand-blue-brighter: #516f79;
@@ -40,13 +40,17 @@ $brand-grey3: #ebebeb;
 
 // Typography
 $font-family: 'PT Sans', sans-serif;
+$font-family-source: 'Source Sans Pro', sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
 $text-color: #000;
+$text-color-sidebar: #000;
 
 // sidebar
-$brand-dark: #333;
+$brand-dark: #EEE;
 $white: #FFF;
+
+$padding-content-top: 100px;
 
 // Buttons
 $btn-default-color: $text-color;

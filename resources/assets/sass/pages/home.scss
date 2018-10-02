@@ -1,3 +1,47 @@
 
 @import "resources/assets/sass/base/variables";
 
+.home-container {
+  height: 100vh;
+  min-height: 650px;
+  width: 100%;
+  background-image: url("/assets/img/passion-to-create.jpg");
+  background-size: cover;
+  position: relative;
+
+  .page-title {
+    font-weight: lighter;
+    color: $brand-primary;
+    padding: 100px 75px 100px 75px;
+
+    h1 {
+      margin: 0;
+      font-weight: 300;
+      font-size: 50px;
+      font-family: $font-family-source;
+    }
+  }
+
+  .page-content {
+    color: #FFF;
+    padding: 30px 75px 30px 75px;
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 150px;
+
+    .page-inner-container {
+      background-color: rgba(0,0,0, 0.6);
+      padding: 30px 75px 30px 75px;
+
+      .section-tags{
+        margin-top: 30px;
+
+        .red-button-second{
+          margin: 0px 10px;
+        }
+      }
+    }
+  }
+}

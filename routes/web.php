@@ -58,58 +58,10 @@ Route::group(array('namespace' => 'admin', 'prefix' => 'admin'), function(){
 
 });
 
-Route::get('/testing', 'TestingController@index');
-
-/*
-
-Route::get('/html', function() {
-    return App::make('CoursesController')->course('html');
-});
-*/
-
-Route::get('/{section_slug}', function($section_slug) {
-
-    $sections_slugs = \App\Models\Testing::getSectionsURL();
-
-    if ( in_array($section_slug, $sections_slugs) ){
-        $controller = new \App\Http\Controllers\CoursesController();
-        return $controller->getSection($section_slug);
-    }
-
-});
+//Tutorials
+Route::get('/tutorials', 'TutorialsController@index');
+Route::get('/tutorial/{course_slag}', 'TutorialsController@showCourse');
+Route::get('/tutorial/{course_slag}/{chapter_slag}', 'TutorialsController@showChapter');
+Route::get('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsController@showLesson');
 
 
-Route::get('/{section_slug}/{course}', function($section_slug, $course) {
-
-    $courses_slugs = \App\Models\Testing::getCoursesURL();
-
-    if ( in_array($course, $courses_slugs) ){
-        $controller = new \App\Http\Controllers\CoursesController();
-        return $controller->getCourse($course);
-    }
-
-
-//    else{
-//        Section::get()
-//         if  slug = section {
-//
-//            return App::make('CoursesController')->section($section)
-//        };
-//    }
-
-});
-
-
-/*
- * OBS
- * encode white spaces url, encode urls
- *
- * */
-
-/*
- * learn-html-tutorial/beginners/heading-page
- *
- *
- *
- *
- * */

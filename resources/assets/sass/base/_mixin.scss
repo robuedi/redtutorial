@@ -14,7 +14,6 @@ $sidebar-xl: 28%;
 }
 
 @mixin main-left-margin(){
-
   margin-left: $sidebar-lg;
 
   @media (min-width: $screen-xl) {
