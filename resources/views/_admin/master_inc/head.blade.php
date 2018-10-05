@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets/_admin/')}}/css/extra.min.css">
 
     <!-- FAVICONS -->
-    <link rel="shortcut icon" href="{{URL::to('/assets/_admin/')}}/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{URL::to('/assets/_admin/')}}/img/favicon/red-tutorial.ico" type="image/x-icon">
     <link rel="icon" href="{{URL::to('/assets/_admin/')}}/img/favicon/favicon.ico" type="image/x-icon">
 
     <!-- GOOGLE FONT -->

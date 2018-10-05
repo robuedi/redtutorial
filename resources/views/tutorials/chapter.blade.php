@@ -11,13 +11,18 @@
 
 @section('content')
 
-    <section class="course-container">
-        <h1 class="course-name">{{$course->course_name.' | '.$chapter->chapter_name}}</h1>
-        <div class="course-description">
+    <section class="tutorial-name" style='background-image: url("/assets/img/php-elephant.jpg")'>
+        <div class="heading-inner-container">
+            <h2>
+                <a href="/tutorial/{{$chapter->course_slug}}">{{$chapter->course_name}}</a>
+            </h2>
+            <h1>{{$chapter->chapter_name}}</h1>
+        </div>
+    </section>
+    <section class="tutorial-container">
+        <div class="tutorial-description">
             {{$chapter->chapter_description}}
         </div>
-
-
     </section>
 
 @stop

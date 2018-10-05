@@ -3,7 +3,7 @@
 @section('title') {{$course->name}} @parent @stop
 
 @section('stylesheets')
-    <link rel="stylesheet" type="text/css" href="/assets/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
 @stop
 
 @section('scripts')
@@ -11,13 +11,15 @@
 
 @section('content')
 
-    <section class="course-container">
-        <h1 class="course-name">{{$course->name}}</h1>
-        <div class="course-description">
+    <section class="tutorial-name" style='background-image: url("/assets/img/php-elephant.jpg")'>
+        <div class="heading-inner-container">
+            <h1 >{{$course->name}}</h1>
+        </div>
+    </section>
+    <section class="tutorial-container">
+        <div class="tutorial-description">
             {{$course->description}}
         </div>
-
-
     </section>
 
 @stop

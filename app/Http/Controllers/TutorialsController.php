@@ -34,16 +34,15 @@ class TutorialsController extends Controller
     {
 
         //get the chapter
-        $chapter = DB::table('courses co')
-                    ->join('chapters ch', 'co.id', '=', 'ch.parent_id')
+        $chapter = DB::table('courses as co')
+                    ->join('courses as ch', 'co.id', '=', 'ch.parent_id')
                     ->where('co.slug', $course_slug)
                     ->where('ch.slug', $chapter_slug)
-                    ->where('slug', $chapter_slug)
                     ->where('co.is_draft', 0)
                     ->where('ch.is_draft', 0)
                     ->where('co.is_public', 1)
                     ->where('ch.is_public', 1)
-                    ->selectRaw('co.name as course_name, ch.name as chapter_name, ch.description as chapter_description')
+                    ->selectRaw('co.name as course_name, co.slug as course_slug, ch.name as chapter_name, ch.description as chapter_description')
                     ->first();
 
         //return 404 if not found
@@ -74,7 +73,7 @@ class TutorialsController extends Controller
                 ->where('co.is_public', 1)
                 ->where('ch.is_public', 1)
                 ->where('le.is_public', 1)
-                ->selectRaw('co.name as course_name, ch.name as chapter_name, le.name as lesson_name, le.description as lesson_description, le.content as lesson_content')
+                ->selectRaw('co.name as course_name, co.slug as course_slag, ch.name as chapter_name, ch.slug as chapter_slag, le.name as lesson_name, le.description as lesson_description, le.content as lesson_content')
                 ->first();
 
         //return 404 if not found

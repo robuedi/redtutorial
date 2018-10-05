@@ -10,6 +10,8 @@
 @import "partials/master";
 @import "partials/sidebar";
 
+@import "pages/tutorials";
+
 textarea:focus, input:focus, button:focus{
   outline: none;
 }

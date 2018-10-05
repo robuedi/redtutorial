@@ -10,14 +10,21 @@
 @stop
 
 @section('content')
-
-    <section class="lesson-container">
-        <h1 class="lesson-name">{{$lesson->course_name.' | '.$lesson->chapter_name.' | '.$lesson->lesson_name}}</h1>
-        <div class="lesson-description">
+    <section class="tutorial-name" style='background-image: url("/assets/img/php-elephant.jpg")'>
+        <div class="heading-inner-container">
+            <h2>
+                <a href="/tutorial/{{$lesson->course_slag}}">{{$lesson->course_name}}</a>
+                |
+                <a href="/tutorial/{{$lesson->course_slag.'/'.$lesson->chapter_slag}}">{{$lesson->chapter_name}}</a>
+            </h2>
+            <h1>{{$lesson->lesson_name}}</h1>
+        </div>
+    </section>
+    <section class="tutorial-container">
+        <div class="tutorial-description">
             {{$lesson->lesson_description}}
         </div>
-        <br/>
-        <div class="lesson-content">
+        <div class="tutorial-content">
             {{$lesson->lesson_content}}
         </div>
     </section>

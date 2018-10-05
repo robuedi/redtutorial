@@ -10,6 +10,10 @@
 #fafafa
 */
 
+a:hover {
+  color: #E62C33;
+}
+
 .red-button {
   padding: 10px 25px;
   color: #E62C33;
@@ -54,6 +58,10 @@ body main {
   }
 }
 
+body main .right-container {
+  padding: 75px;
+}
+
 #left_menu {
   overflow: auto;
   background: #EEE;
@@ -85,6 +93,8 @@ body main {
 
 #left_menu .logo-container .logo-txt {
   text-align: right;
+  margin: 16px 0px;
+  text-decoration: none;
 }
 
 #left_menu .logo-container .logo-txt .red {
@@ -120,6 +130,8 @@ body main {
   list-style: none;
   letter-spacing: 1.5px;
   padding: 0;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 #left_menu nav ul .list-display-roman {
@@ -130,10 +142,12 @@ body main {
 #left_menu nav ul li {
   line-height: 1.4;
   font-size: 14px;
+  margin-bottom: 5px;
 }
 
 #left_menu nav ul li > .item-label {
   position: relative;
+  padding-bottom: 12px;
 }
 
 #left_menu nav ul li > .item-label > a {
@@ -166,6 +180,25 @@ body main {
   margin-bottom: 22px;
   text-transform: uppercase;
   font-size: 18px;
+}
+
+#left_menu .pages-links {
+  padding-top: 50px;
+  border-top: 1px dashed #CCC;
+}
+
+#left_menu .pages-links li {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+#left_menu .pages-links li a {
+  text-decoration: none;
+  color: #000;
+}
+
+#left_menu .pages-links li a:hover {
+  color: #E62C33;
 }
 
 .list-item > .item-label > .open-symbol {
@@ -206,6 +239,60 @@ body main {
 .list-item.active > .item-label > .open-symbol i:first-child {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+.tutorial-name {
+  padding: 100px 75px 100px 0px;
+  margin: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.tutorial-name .heading-inner-container {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 20px 20px 20px 75px;
+  display: inline-block;
+  font-family: "PT Sans", sans-serif;
+}
+
+.tutorial-name .heading-inner-container h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0px;
+  color: #E62C33;
+  font-size: 50px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.tutorial-name .heading-inner-container h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0px 0px 15px 0px;
+  color: #404040;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.tutorial-name .heading-inner-container h2 a {
+  color: #404040;
+  text-decoration: none;
+}
+
+.tutorial-container {
+  padding: 75px;
+}
+
+.tutorial-container .tutorial-description {
+  font-size: 22px;
+  margin-bottom: 50px;
+  line-height: 1.5;
+}
+
+.tutorial-container .tutorial-content {
+  font-size: 20px;
+  line-height: 1.65;
 }
 
 textarea:focus,

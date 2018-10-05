@@ -21,6 +21,8 @@
 
     .logo-txt {
       text-align: right;
+      margin: 16px 0px;
+      text-decoration: none;
 
       .red{
         display: block;
@@ -55,6 +57,8 @@
       list-style: none;
       letter-spacing: 1.5px;
       padding: 0;
+      margin-bottom: 0px;
+      margin-top: 0px;
 
       .list-display-roman {
         list-style-type: upper-roman;
@@ -64,9 +68,11 @@
       li {
         line-height: 1.4;
         font-size: 14px;
+        margin-bottom: 5px;
 
         > .item-label {
           position: relative;
+          padding-bottom: 12px;
 
           > a {
             text-decoration: none;
@@ -106,6 +112,25 @@
         margin-bottom: 22px;
         text-transform: uppercase;
         font-size: 18px;
+      }
+    }
+  }
+
+  .pages-links {
+    padding-top: 50px;
+    border-top: 1px dashed #CCC;
+
+    li {
+      margin-bottom: 12px;
+      font-size: 16px;
+
+      a {
+        text-decoration: none;
+        color: $text-color-sidebar;
+
+        &:hover {
+          color: $brand-primary;
+        }
       }
     }
   }

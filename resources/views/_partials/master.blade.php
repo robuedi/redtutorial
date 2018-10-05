@@ -15,6 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{--<link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap-grid.min.css">--}}
         {{--<link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap.min.css">--}}
+        <link rel="icon" href="/assets/img/red-tutorial.ico">
         <link rel="stylesheet" type="text/css" href="/assets/css/lib/normalize8.css">
         <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
 
