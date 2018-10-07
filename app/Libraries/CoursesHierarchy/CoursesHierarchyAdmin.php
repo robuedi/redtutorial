@@ -29,7 +29,7 @@ class CoursesHierarchyAdmin extends CoursesHierarchy implements ICoursesHierarch
             'clear_name'    => $course->name,
             'type'          => 'course',
             'parent_id'     => 0,
-            'link'          => URL::to('/admin/courses/'.$course->id.'/edit'),
+            'link'          => URL::to(config('app.admin_route').'/courses/'.$course->id.'/edit'),
             'is_public'     => $course->is_public,
             'is_draft'      => $course->is_draft,
             'pointing_id'   => (string)$this->pointing_id === (string)$course->id.'course' ? 1 : 0,
@@ -49,7 +49,7 @@ class CoursesHierarchyAdmin extends CoursesHierarchy implements ICoursesHierarch
             'parent_id'     => $chapter->parent_id,
             'is_public'     => $chapter->is_public,
             'is_draft'      => $chapter->is_draft,
-            'link'          => URL::to('/admin/chapters/'.$chapter->id.'/edit'),
+            'link'          => URL::to(config('app.admin_route').'/chapters/'.$chapter->id.'/edit'),
             'pointing_id'   => (string)$this->pointing_id === (string)$chapter->id.'chapter' ? 1 : 0,
             'children'      => $children,
         ];
@@ -67,7 +67,7 @@ class CoursesHierarchyAdmin extends CoursesHierarchy implements ICoursesHierarch
             'parent_id'     => $lesson->parent_id,
             'is_public'     => $lesson->is_public,
             'is_draft'      => $lesson->is_draft,
-            'link'          => URL::to('/admin/lessons/'.$lesson->id.'/edit'),
+            'link'          => URL::to(config('app.admin_route').'/lessons/'.$lesson->id.'/edit'),
             'pointing_id'   => (string)$this->pointing_id === (string)$lesson->id.'lesson' ? 1 : 0,
             'children'      => [], //lessons don't have children, they are endpoints
         ];

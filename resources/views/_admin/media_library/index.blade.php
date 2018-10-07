@@ -4,7 +4,7 @@
 
 
 @section('breadcrumbs')
-    <li><a href="{{URL::to('/')}}">@lang('admin_general.home')</a></li>
+    <li><a href="{{URL::to('/'.config('app.admin_route'))}}">@lang('admin_general.home')</a></li>
     <li>@lang('admin_media_library.media_library')</li>
 @stop
 
@@ -23,7 +23,7 @@
             </h1>
         </div>
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8 text-right">
-            <a href="{{url('admin/media-library/add')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> @lang('admin_media_library.upload_new')</a>
+            <a href="{{url(config('app.admin_route').'/media-library/add')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> @lang('admin_media_library.upload_new')</a>
         </div>
     </div>
 
@@ -117,8 +117,8 @@
                                                 </td>
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>
                                                 <td style="text-align:center;">
-                                                    <a href="{{URL::to('admin/media-library/download/'.$r->id)}}" class="btn btn-sm btn-primary apply-tooltip" title="Download file"><i class="fa fa-download"></i></a>
-                                                    <a href="{{URL::to('admin/media-library/delete/'.$r->id)}}" class="btn btn-sm btn-danger btn-delete apply-tooltip" title="Delete" data-warning="Are you sure?"><i class="fa fa-trash-o"></i></a>
+                                                    <a href="{{URL::to(config('app.admin_route').'/media-library/download/'.$r->id)}}" class="btn btn-sm btn-primary apply-tooltip" title="Download file"><i class="fa fa-download"></i></a>
+                                                    <a href="{{URL::to(config('app.admin_route').'/media-library/delete/'.$r->id)}}" class="btn btn-sm btn-danger btn-delete apply-tooltip" title="Delete" data-warning="Are you sure?"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -153,12 +153,12 @@ class ChaptersController extends Controller
             UIMessage::set('success', "Course created successfully.");
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/chapters/'.$chapter->id.'/edit');
+                return redirect(config('app.admin_route').'/chapters/'.$chapter->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
-                return redirect('admin/chapters/create'); // save and add new
+                return redirect(config('app.admin_route').'/chapters/create'); // save and add new
             else
-                return redirect('admin/chapters'); //redirect to listing
+                return redirect(config('app.admin_route').'/chapters'); //redirect to listing
 
         }
     }
@@ -223,12 +223,12 @@ class ChaptersController extends Controller
             UIMessage::set('success', "Chapter updated successfully.");
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/chapters/'.$chapter->id.'/edit');
+                return redirect(config('app.admin_route').'/chapters/'.$chapter->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
-                return redirect('admin/chapters/create'); // save and add new
+                return redirect(config('app.admin_route').'/chapters/create'); // save and add new
             else
-                return redirect('admin/chapters'); //redirect to listing
+                return redirect(config('app.admin_route').'/chapters'); //redirect to listing
         }
 
     }
@@ -285,7 +285,7 @@ class ChaptersController extends Controller
         // still here? delete the field
         UIMessage::set('success', "Chapter deleted successfully. Order weight updated.");
 
-        return redirect('admin/chapters');
+        return redirect(config('app.admin_route').'/chapters');
     }
 
 }

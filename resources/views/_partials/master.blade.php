@@ -9,7 +9,8 @@
             @show
         </title>
 
-        <meta name="description" content="{{$meta['description']}}">
+        @yield('meta')
+
         <meta name="author" content="{{config('app.name')}}">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">

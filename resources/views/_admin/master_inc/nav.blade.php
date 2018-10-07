@@ -5,7 +5,7 @@ you can add as many as you like
 <section id="shortcut">
 	<ul>
 		<li>
-			<a href="/admin/user-profile" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
+			<a href="/{{config('app.admin_route')}}/user-profile" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
 		</li>
 	</ul>
 </section>

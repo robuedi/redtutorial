@@ -4,7 +4,7 @@
     <title>Login - {{config('app.name')}} </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=yes">
-    <link rel="icon" href="{{URL::to('/assets/_admin/')}}/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{URL::to('/assets/_admin/')}}/img/favicon/red-tutorial.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets')}}/css/lib/bootstrap4.0.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets')}}/css/admin-login.css">
 </head>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 @endif
-                <form action="/admin/login" id="login_form" method="POST">
+                <form action="{{config('app.admin_route')}}/login" id="login_form" method="POST">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="input-container input-container_username">
                         <input type="text" name="email" placeholder="Email address" autocomplete="off" >

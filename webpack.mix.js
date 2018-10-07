@@ -15,7 +15,8 @@ mix.js('resources/assets/js/app.js', 'assets/js/')
     .js('resources/assets/js/main.js', 'assets/js/')
     .sass('resources/assets/sass/app.scss', 'assets/css/')
     .sass('resources/assets/sass/pages/home.scss', 'assets/css/')
-    .sass('resources/assets/sass/pages/admin-login.scss', 'assets/css/');
+    .sass('resources/assets/sass/pages/admin-login.scss', 'assets/css/')
+    .sass('resources/assets/sass/pages/error_page.scss', 'assets/css/');
 
 //model
 // mix.js('resources/assets/js/app.js', 'dist/')

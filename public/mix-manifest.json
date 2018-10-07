@@ -3,5 +3,6 @@
     "/assets/css/app.css": "/assets/css/app.css",
     "/assets/css/home.css": "/assets/css/home.css",
     "/assets/css/admin-login.css": "/assets/css/admin-login.css",
+    "/assets/css/error_page.css": "/assets/css/error_page.css",
     "/assets/js/main.js": "/assets/js/main.js"
 }

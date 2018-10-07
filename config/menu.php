@@ -4,7 +4,7 @@ return array(
     'admin' => array(
         array(
             "name"      => "Dashboard",
-            "url"       => "admin/dashboard",
+            "url"       => "/dashboard",
             "aliases"   => array(),
             "class"     => "fa-dashboard",
             "submenus"  => array(),
@@ -17,13 +17,13 @@ return array(
             "submenus"  => array(
                 "1" => array(
                     "name"  => "All",
-                    "url"   => "admin/courses",
-                    "aliases"   => array('admin\/courses\/[a-zA-Z0-9]+\/edit'),
+                    "url"   => "/courses",
+                    "aliases"   => array('\/courses\/[a-zA-Z0-9]+\/edit'),
                 ),
                 "2" => array(
                     "name"  => "Add new",
-                    "url"   => "admin/courses/create",
-                    "aliases"   => array('admin\/courses\/create'),
+                    "url"   => "/courses/create",
+                    "aliases"   => array('\/courses\/create'),
                 )
             ),
         ),
@@ -35,13 +35,13 @@ return array(
             "submenus"  => array(
                 '1' => array(
                     "name"      => "All",
-                    "url"       => "admin/chapters",
-                    "aliases"   => array('admin\/chapters\/[a-zA-Z0-9]+\/edit'),
+                    "url"       => "/chapters",
+                    "aliases"   => array('\/chapters\/[a-zA-Z0-9]+\/edit'),
                 ),
                 "2" => array(
                     "name"  => "Add new",
-                    "url"   => "admin/chapters/create",
-                    "aliases"   => array('admin\/chapters\/create'),
+                    "url"   => "/chapters/create",
+                    "aliases"   => array('\/chapters\/create'),
                 )
             ),
         ),
@@ -53,15 +53,22 @@ return array(
             "submenus"  => array(
                 "1" => array(
                     "name"  => "All",
-                    "url"   => "admin/lessons",
-                    "aliases"   => array('admin\/lessons\/[a-zA-Z0-9]+\/edit'),
+                    "url"   => "/lessons",
+                    "aliases"   => array('\/lessons\/[a-zA-Z0-9]+\/edit'),
                 ),
                 "2" => array(
                     "name"  => "Add new",
-                    "url"   => "admin/lessons/create",
-                    "aliases"   => array('admin\/lessons\/create'),
+                    "url"   => "/lessons/create",
+                    "aliases"   => array('\/lessons\/create'),
                 )
             ),
+        ),
+        array(
+            "name"      => "Contact Messages",
+            "url"       => "/contact-messages",
+            "aliases"   => array('\/contact-messages\/[a-zA-Z0-9]+\/edit'),
+            "class"     => "fa-dashboard",
+            "submenus"  => array(),
         ),
         array(
             "name"      => "Users Management",
@@ -71,27 +78,38 @@ return array(
             "submenus"  => array(
                 '1' => array(
                     "name"      => " All administrators",
-                    "url"       => "backend/users_management/administrators/show",
-                    "aliases"   => array('admin\/users_management\/admin\/[0-9]+\/edit'),
+                    "url"       => "/users_management/administrators/show",
+                    "aliases"   => array('\/users_management\/admin\/[0-9]+\/edit'),
                 ),
                 '2' => array(
                     "name"      => " All clients",
-                    "url"       => "backend/users_management/clients/show",
-                    "aliases"   => array('admin\/users_management\/client\/[0-9]+\/edit'),
+                    "url"       => "/users_management/clients/show",
+                    "aliases"   => array('\/users_management\/client\/[0-9]+\/edit'),
                 ),
                 '3' => array(
                     "name"      => "Add new",
-                    "url"       => "backend/users_management/create",
-                    "aliases"   => array('admin\/users_management\/admin\/create', 'backend\/users_management\/client\/create'),
+                    "url"       => "/users_management/create",
+                    "aliases"   => array('\/users_management\/admin\/create', '\/users_management\/client\/create'),
                 ),
             ),
         ),
         array(
-            "name"      => "Pages",
-            "url"       => "admin/pages",
+            "name"      => "Static Pages",
+            "url"       => "#",
             "aliases"   => array(),
             "class"     => "fa-user",
-            "submenus"  => array(),
+            "submenus"  => array(
+                "1" => array(
+                    "name"  => "All",
+                    "url"   => "/static-pages",
+                    "aliases"   => array('\/static-pages\/[a-zA-Z0-9]+\/edit'),
+                ),
+                "2" => array(
+                    "name"  => "Add new",
+                    "url"   => "/lessons/create",
+                    "aliases"   => array('\/static-pages\/create'),
+                )
+            ),
         ),
         array(
             "name"      => "Media Library",
@@ -101,12 +119,12 @@ return array(
             "submenus"  => array(
                 '1' => array(
                     "name"      => "All files",
-                    "url"       => "admin/media-library",
+                    "url"       => "/media-library",
                     "aliases"   => array(),
                 ),
                 '2' => array(
                     "name"      => "Upload new",
-                    "url"       => "admin/media-library/add",
+                    "url"       => "/media-library/add",
                     "aliases"   => array(),
                 ),
             ),
@@ -119,7 +137,7 @@ return array(
             "submenus"  => array(
                 '1' => array(
                     "name"      => "Theme",
-                    "url"       => "admin/configuration/theme",
+                    "url"       => "/configuration/theme",
                     "aliases"   => array(),
                 ),
             ),

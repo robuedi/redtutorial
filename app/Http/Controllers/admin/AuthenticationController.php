@@ -25,7 +25,7 @@ class AuthenticationController extends Controller
     {
         //check if user is logged in as admin or owner
         if (Sentinel::check() && (Sentinel::hasAccess('admin')))
-            return Redirect::intended('admin/dashboard');
+            return Redirect::intended(config('app.admin_route').'/dashboard');
         else
             return View::make('_admin.authentication.login');
     }
@@ -66,7 +66,7 @@ class AuthenticationController extends Controller
                 // store in session the current login history id
                 Session::put('login_history_id', $login_history_id);
 
-                return Redirect::intended('admin/dashboard');
+                return Redirect::intended(config('app.admin-area').'/dashboard');
             }
 
             $errors = 'Invalid login or password.';
@@ -98,6 +98,6 @@ class AuthenticationController extends Controller
             }
         }
 
-        return Redirect::to('admin/');
+        return Redirect::to(config('app.admin-area'));
     }
 }

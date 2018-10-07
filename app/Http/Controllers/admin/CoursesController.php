@@ -144,12 +144,12 @@ class CoursesController extends Controller
             UIMessage::set('success', "Course created successfully.");
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/courses/'.$course->id.'/edit');
+                return redirect(config('app.admin_route').'/courses/'.$course->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
-                return redirect('admin/courses/create'); // save and add new
+                return redirect(config('app.admin_route').'/courses/create'); // save and add new
             else
-                return redirect('admin/courses'); //redirect to listing
+                return redirect(config('app.admin_route').'/courses'); //redirect to listing
 
         }
     }
@@ -211,12 +211,12 @@ class CoursesController extends Controller
             UIMessage::set('success', 'Course updated successfully.');
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/courses/'.$course->id.'/edit');
+                return redirect(config('app.admin_route').'/courses/'.$course->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
-                return redirect('admin/courses/create'); // save and add new
+                return redirect(config('app.admin_route').'/courses/create'); // save and add new
             else
-                return redirect('admin/courses'); //redirect to listing
+                return redirect(config('app.admin_route').'/courses'); //redirect to listing
         }
 
     }
@@ -273,7 +273,7 @@ class CoursesController extends Controller
         // still here? delete the field
         UIMessage::set('success', "Course deleted successfully. Order weight updated.");
 
-        return redirect('admin/courses');
+        return redirect(config('app.admin_route').'/courses');
     }
 
 }

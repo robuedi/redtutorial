@@ -173,12 +173,12 @@ class LessonsController extends Controller
             UIMessage::set('success', 'Lesson updated successfully.');
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/lessons/'.$lesson->id.'/edit');
+                return redirect(config('app.admin_route').'/lessons/'.$lesson->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
-                return redirect('admin/lessons/create'); // save and add new
+                return redirect(config('app.admin_route').'/lessons/create'); // save and add new
             else
-                return redirect('admin/lessons'); //redirect to listing
+                return redirect(config('app.admin_route').'/lessons'); //redirect to listing
         }
 
     }
@@ -223,12 +223,12 @@ class LessonsController extends Controller
             UIMessage::set('success', "Lesson created successfully.");
             if (Input::get('save_and_continue')) //redirect to the same page
             {
-                return redirect('admin/lessons/'.$lesson->id.'/edit');
+                return redirect(config('app.admin_route').'/lessons/'.$lesson->id.'/edit');
             }
             elseif (Input::get('save_and_add_new'))
-                return redirect('admin/lessons/create'); // save and add new
+                return redirect(config('app.admin_route').'/lessons/create'); // save and add new
             else
-                return redirect('admin/lessons'); //redirect to listing
+                return redirect(config('app.admin_route').'/lessons'); //redirect to listing
 
         }
     }
@@ -272,6 +272,6 @@ class LessonsController extends Controller
         // still here? delete the field
         UIMessage::set('success', "Lesson deleted successfully. Order weight updated.");
 
-        return redirect('admin/courses');
+        return redirect(config('app.admin_route').'/courses');
     }
 }

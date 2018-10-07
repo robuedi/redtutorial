@@ -4,7 +4,7 @@
 
 
 @section('breadcrumbs')
-    <li><a href="{{URL::to('/')}}">@lang('admin_general.home')</a></li>
+    <li><a href="{{URL::to('/'.config('app.admin_route'))}}">@lang('admin_general.home')</a></li>
     <li>@lang('admin_users_management.users_management')</li>
 @stop
 

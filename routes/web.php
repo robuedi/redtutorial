@@ -19,7 +19,7 @@ Route::get('/welcome', function () {
 
 
 // Admin
-Route::group(array('namespace' => 'admin', 'prefix' => 'admin'), function(){
+Route::group(array('namespace' => 'admin', 'prefix' => 'admin-area'), function(){
 
     //Authentication
     Route::get('/', 'AuthenticationController@login');

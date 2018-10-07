@@ -4,7 +4,6 @@
             <span class="red">RED</span>
             <span class="tutorial">Tutorial</span>
         </a>
-        <img src="">
     </div>
     <nav>
 
@@ -40,9 +39,9 @@
         </ul>
 
         <ul class="pages-links">
-            <li><a href="#">ABOUT US</a></li>
-            <li><a href="#">CONTACT US</a></li>
-            <li><a href="#">TERMS OF USE & PRIVACY</a></li>
+            <li><a href="/about-us">ABOUT US</a></li>
+            <li><a href="/contact-us">CONTACT US</a></li>
+            <li><a href="/terms-of-use-and-privacy">TERMS OF USE & PRIVACY</a></li>
         </ul>
 
     </nav>

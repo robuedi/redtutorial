@@ -43,6 +43,8 @@ a:hover {
 
 body {
   font-family: "PT Sans", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 body main {
@@ -50,6 +52,8 @@ body main {
   overflow: hidden;
   background-color: #FFF;
   min-height: 100vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 @media (min-width: 1200px) {
@@ -89,32 +93,6 @@ body main .right-container {
   margin-top: 100px;
   margin-right: 95px;
   margin-bottom: 50px;
-}
-
-#left_menu .logo-container .logo-txt {
-  text-align: right;
-  margin: 16px 0px;
-  text-decoration: none;
-}
-
-#left_menu .logo-container .logo-txt .red {
-  display: block;
-  color: #E62C33;
-  text-transform: uppercase;
-  font-size: 35px;
-  letter-spacing: 6px;
-  font-weight: lighter;
-  text-align: center;
-}
-
-#left_menu .logo-container .logo-txt .tutorial {
-  display: block;
-  color: #000;
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: lighter;
-  letter-spacing: 6px;
-  text-align: center;
 }
 
 #left_menu nav {
@@ -239,6 +217,32 @@ body main .right-container {
 .list-item.active > .item-label > .open-symbol i:first-child {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+.logo-txt {
+  text-align: right;
+  margin: 16px 0px;
+  text-decoration: none;
+}
+
+.logo-txt .red {
+  display: block;
+  color: #E62C33;
+  text-transform: uppercase;
+  font-size: 35px;
+  letter-spacing: 6px;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.logo-txt .tutorial {
+  display: block;
+  color: #000;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: lighter;
+  letter-spacing: 6px;
+  text-align: center;
 }
 
 .tutorial-name {

@@ -4,7 +4,7 @@
 
 
 @section('breadcrumbs')
-    <li><a href="{{URL::to('/')}}">Home</a></li>
+    <li><a href="{{URL::to('/'.config('app.admin_route'))}}">Home</a></li>
     <li>@lang('admin_chapters_courses.courses')</li>
 @stop
 
@@ -22,7 +22,7 @@
             </h1>
         </div>
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8 text-right pull-right">
-            <a href="{{url('admin/courses/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> @lang('admin_general.add_new')</a>
+            <a href="{{url(config('app.admin_route').'/courses/create')}}" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> @lang('admin_general.add_new')</a>
         </div>
     </div>
 
@@ -129,9 +129,9 @@
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>
                                                 <td class="format-momentjs">{{ $r->updated_at }}</td>
                                                 <td style="text-align:center;">
-                                                    <a href="{{url('admin/courses/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
+                                                    <a href="{{url(config('app.admin_route').'/courses/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
                                                     @if(empty ($r->code_page ))
-                                                        <a href="javascript:deleteRouteObject('{{url('admin/courses/'.$r->id)}}')" class="btn btn-sm btn-danger btn-delete apply-tooltip" data-method="DELETE" title="Delete" data-warning="Are you sure?"><i class="glyphicon glyphicon-trash"></i></a>
+                                                        <a href="javascript:deleteRouteObject('{{url(config('app.admin_route').'/courses/'.$r->id)}}')" class="btn btn-sm btn-danger btn-delete apply-tooltip" data-method="DELETE" title="Delete" data-warning="Are you sure?"><i class="glyphicon glyphicon-trash"></i></a>
                                                     @endif
                                                 </td>
                                             </tr>

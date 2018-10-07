@@ -1,5 +1,7 @@
 body {
   font-family: $font-family;
+  margin: 0;
+  padding: 0;
 
   main {
 
@@ -7,6 +9,7 @@ body {
     overflow: hidden;
     background-color: #FFF;
     min-height: 100vh;
+    box-sizing: border-box;
 
     .right-container{
       padding: 75px;

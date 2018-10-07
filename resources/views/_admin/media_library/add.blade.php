@@ -16,8 +16,8 @@
 @stop
 
 @section('breadcrumbs')
-    <li><a href="{{URL::to('/admin/')}}">@lang('admin_general.home')</a></li>
-    <li><a href="{{URL::to('/admin/media-library')}}">@lang('admin_media_library.media_library')</a></li>
+    <li><a href="{{URL::to('/'.config('app.admin_route'))}}">@lang('admin_general.home')</a></li>
+    <li><a href="{{URL::to('/'.config('app.admin_route').'/media-library')}}">@lang('admin_media_library.media_library')</a></li>
     <li>@lang('admin_media_library.add_new_file')</li>
 @stop
 

@@ -1,9 +1,12 @@
 @extends('_partials.master')
 
+@section('meta')
+    <meta name="description" content="{{$meta['description']}}">
+@stop
+
 @section('title') {{$chapter->course_name}} @parent @stop
 
 @section('stylesheets')
-    <link rel="stylesheet" type="text/css" href="/assets/css/home.css">
 @stop
 
 @section('scripts')

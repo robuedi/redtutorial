@@ -4,7 +4,7 @@
 
 
 @section('breadcrumbs')
-    <li><a href="{{URL::to('/')}}">Home</a></li>
+    <li><a href="{{URL::to('/'.config('app.admin_route'))}}">Home</a></li>
     <li>Dashboard</li>
 @stop
 
@@ -82,18 +82,18 @@
                                             <td class="text-center" ><h3>1.</h3></td>
                                             <td>
                                                 <h3 >
-                                                    <a class="editable-click txt-color-green" href="/admin/courses">Courses</a>
+                                                    <a class="editable-click txt-color-green" href="/{{config('app.admin_route')}}/courses">Courses</a>
                                                 </h3>
                                             </td>
                                             <td>
                                                 <h3>
-                                                    <a class="editable-click txt-color-green" href="/admin/courses?is_public=1">{{$public_courses}}</a>
+                                                    <a class="editable-click txt-color-green" href="/{{config('app.admin_route')}}/courses?is_public=1">{{$public_courses}}</a>
                                                     <small>({{abs($public_courses-$total_courses)}})</small>
                                                 </h3>
                                             </td>
                                             <td>
                                                 <h3>
-                                                    <a class="editable-click txt-color-green" href="/admin/courses?is_draft=1">{{$draft_courses}}</a>
+                                                    <a class="editable-click txt-color-green" href="/{{config('app.admin_route')}}/courses?is_draft=1">{{$draft_courses}}</a>
                                                     <small>({{abs($draft_courses-$total_courses)}})</small>
                                                 </h3>
                                             </td>
@@ -103,18 +103,18 @@
                                             <td class="text-center" ><h3>2.</h3></td>
                                             <td>
                                                 <h3>
-                                                    <a class="editable-click txt-color-magenta" href="/admin/chapters">Chapters</a>
+                                                    <a class="editable-click txt-color-magenta" href="/{{config('app.admin_route')}}/chapters">Chapters</a>
                                                 </h3>
                                             </td>
                                             <td>
                                                 <h3>
-                                                    <a class="editable-click txt-color-magenta" href="/admin/chapters?is_public=1">{{$public_chapters}}</a>
+                                                    <a class="editable-click txt-color-magenta" href="/{{config('app.admin_route')}}/chapters?is_public=1">{{$public_chapters}}</a>
                                                     <small>({{abs($public_chapters-$total_chapters)}})</small>
                                                 </h3>
                                             </td>
                                             <td>
                                                 <h3>
-                                                    <a class="editable-click txt-color-magenta" href="/admin/chapters?is_draft=1">{{$draft_chapters}}</a>
+                                                    <a class="editable-click txt-color-magenta" href="/{{config('app.admin_route')}}/chapters?is_draft=1">{{$draft_chapters}}</a>
                                                     <small>({{abs($draft_chapters-$total_chapters)}})</small>
                                                 </h3>
                                             </td>
@@ -126,18 +126,18 @@
                                             <td class="text-center" ><h3>3.</h3></td>
                                             <td>
                                                 <h3>
-                                                    <a class="editable-click text-primary" href="/admin/lessons">Lessons</a>
+                                                    <a class="editable-click text-primary" href="/{{config('app.admin_route')}}/lessons">Lessons</a>
                                                 </h3>
                                             </td>
                                             <td>
                                                 <h3>
-                                                    <a class="editable-click text-primary" href="/admin/lessons?is_public=1">{{$public_lessons}}</a>
+                                                    <a class="editable-click text-primary" href="/{{config('app.admin_route')}}/lessons?is_public=1">{{$public_lessons}}</a>
                                                     <small>({{abs($public_lessons-$total_lessons)}})</small>
                                                 </h3>
                                             </td>
                                             <td>
                                                 <h3>
-                                                    <a class="editable-click text-primary" href="/admin/lessons?is_draft=1">{{$draft_lessons}}</a>
+                                                    <a class="editable-click text-primary" href="/{{config('app.admin_route')}}/lessons?is_draft=1">{{$draft_lessons}}</a>
                                                     <small>({{abs($draft_lessons-$total_lessons)}})</small>
                                                 </h3>
                                             </td>

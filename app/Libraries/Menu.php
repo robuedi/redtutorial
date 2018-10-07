@@ -3,9 +3,10 @@
 namespace App\Libraries;
 
 use Config;
+use function foo\func;
 use Log;
 use Request;
-//use Sentinel;
+use Sentinel;
 
 class Menu
 {
@@ -19,8 +20,23 @@ class Menu
         // get all menu structure
         $menu = Config::get('menu');
 
+        Log::info($menu);
+
+        //update routes, make them dynamic
+        array_walk_recursive(
+            $menu,
+            function (&$value, $key) {
+                if ($key === 'url' && $value !== '#' && !empty($value)) {
+                    $value = config('app.admin_route').$value;
+                }
+            }
+        );
+
+
+        Log::info($menu);
+
         // filter menu based on current user type
-//        if (Sentinel::hasAccess('admin'))
+        if (Sentinel::hasAccess('admin'))
             $menu = $menu['admin'];
 
         foreach ($menu as $top_level_menu_key => $top_level_menu) {

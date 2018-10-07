@@ -4,8 +4,8 @@
 
 
 @section('breadcrumbs')
-    <li><a href="{{URL::to('/')}}">@lang('admin_general.home')</a></li>
-    <li><a href="{{URL::to('/admin/lessons')}}">@lang('admin_lessons.lessons')</a></li>
+    <li><a href="{{URL::to('/'.config('app.admin_route'))}}">@lang('admin_general.home')</a></li>
+    <li><a href="{{URL::to('/'.config('app.admin_route').'/lessons')}}">@lang('admin_lessons.lessons')</a></li>
     <li>@if($lesson->id) @lang('admin_general.edit') @else @lang('admin_general.creates') @endif</li>
 @stop
 @section('scripts')
@@ -82,7 +82,7 @@
 
 @section('content')
 
-<form action="{{url('admin/lessons/'.$lesson->id)}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
+<form action="{{url(config('app.admin_route').'/lessons/'.$lesson->id)}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-6">
             <h1 class="page-title txt-color-blueDark">

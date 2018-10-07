@@ -3,7 +3,7 @@
 @section('title') Edit profile - @parent @stop
 
 @section('breadcrumbs')
-    <li><a href="{{URL::to('/')}}">Home</a></li>
+    <li><a href="{{URL::to('/'.config('app.admin_route'))}}">Home</a></li>
     <li>Theme</li>
 @stop
 

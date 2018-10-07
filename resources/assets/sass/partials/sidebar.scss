@@ -18,31 +18,6 @@
     margin-top: $padding-content-top;
     margin-right: 95px;
     margin-bottom: 50px;
-
-    .logo-txt {
-      text-align: right;
-      margin: 16px 0px;
-      text-decoration: none;
-
-      .red{
-        display: block;
-        color: $brand-primary;
-        text-transform: uppercase;
-        font-size: 35px;
-        letter-spacing: 6px;
-        font-weight: lighter;
-        text-align: center;
-      }
-      .tutorial{
-        display: block;
-        color: $text-color-sidebar;
-        font-size: 16px;
-        text-transform: uppercase;
-        font-weight: lighter;
-        letter-spacing: 6px;
-        text-align: center;
-      }
-    }
   }
 
   nav{
@@ -172,3 +147,29 @@
     transform: rotate(180deg);
   }
 }
+
+.logo-txt {
+  text-align: right;
+  margin: 16px 0px;
+  text-decoration: none;
+
+  .red{
+    display: block;
+    color: $brand-primary;
+    text-transform: uppercase;
+    font-size: 35px;
+    letter-spacing: 6px;
+    font-weight: lighter;
+    text-align: center;
+  }
+  .tutorial{
+    display: block;
+    color: $text-color-sidebar;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: lighter;
+    letter-spacing: 6px;
+    text-align: center;
+  }
+}
+
