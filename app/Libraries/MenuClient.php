@@ -32,15 +32,12 @@ class MenuClient
 
     public static function addItem($value, $key)
     {
-//        if(in_array($key, ['clear_name', 'has_children', 'type', 'parent_id']))
-//        {
-            self::$menu_items[self::$items_index][$key] = $value;
+        self::$menu_items[self::$items_index][$key] = $value;
 
-            if($key === 'parent_id')
-            {
-                self::$items_index++;
-            }
-//        }
+        if($key === 'parent_id')
+        {
+            self::$items_index++;
+        }
 
     }
 

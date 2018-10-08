@@ -26,6 +26,8 @@ return [
     'filters'               => 'Filters',
     'filters_name'          => 'Name',
     'filters_is_public'     => 'Is public',
+    'filters_is_draft'      => 'Is draft',
+    'filters_slug'          => 'Slug',
     'filters_submit'        => 'Submit',
     'filters_reset'         => 'Reset',
 
@@ -34,9 +36,11 @@ return [
     'listing_per_page'      => 'Per page',
     'listing_name'          => 'Name',
     'listing_is_public'     => 'Is public',
+    'listing_is_draft'      => 'Is draft',
+    'listing_slug'          => 'Slug',
     'listing_order_weight'  => 'Order weight',
     'listing_date_created'  => 'Date created',
-    'listing_date_updated'  => 'date updated',
+    'listing_date_updated'  => 'Date updated',
     'listing_thumbnail'     => 'Thumbnail',
     'listing_actions'       => 'Actions',
 
@@ -44,6 +48,10 @@ return [
     'configure'             => 'Configure',
     'details_title'         => 'Details',
     'map'                   => 'Map',
-    'content'               => 'Content'
+    'content'               => 'Content',
+
+    //editor
+    'editor_edit'           => 'Editor',
+    'editor_preview'        => 'Preview'
 
 ];

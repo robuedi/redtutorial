@@ -11,15 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-
 // Admin
-Route::group(array('namespace' => 'admin', 'prefix' => 'admin-area'), function(){
+Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')), function(){
 
     //Authentication
     Route::get('/', 'AuthenticationController@login');
@@ -52,11 +45,17 @@ Route::group(array('namespace' => 'admin', 'prefix' => 'admin-area'), function()
         Route::get('/configuration/theme', 'ConfigurationController@editUserTheme');
 
         //User Management
-        Route::resource('/user-management', 'UsersManagement');
+        Route::resource('/user-management', 'UsersManagementController');
+
+        //Static Pages
+        Route::resource('/static-pages', 'StaticPagesController');
 
     });
 
 });
+
+//Home
+Route::get('/', 'HomeController@index');
 
 //Tutorials
 Route::get('/tutorials', 'TutorialsController@index');
@@ -64,4 +63,6 @@ Route::get('/tutorial/{course_slag}', 'TutorialsController@showCourse');
 Route::get('/tutorial/{course_slag}/{chapter_slag}', 'TutorialsController@showChapter');
 Route::get('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsController@showLesson');
 
+//Info pages
+Route::get('/info/{url}', 'StaticPagesController@index');
 

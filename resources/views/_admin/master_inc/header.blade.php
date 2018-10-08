@@ -3,9 +3,7 @@
 		<header id="header">
 			<div id="logo-group">
 
-				<!-- PLACE YOUR LOGO HERE -->
-				<span id="logo"> <img src="{{URL::to('/assets/_admin/')}}/img/logo.png" height="50" alt="{{config('app.name')}}"> </span>
-				<!-- END LOGO PLACEHOLDER -->
+				<span id="logo"> <a href="/{{config('app.admin_route')}}"><img src="{{URL::to('/assets/_admin/')}}/img/logo.png" height="50" alt="{{config('app.name')}}"></a> </span>
 
 				<!-- Note: The activity badge color changes when clicked and resets the number to 0
 				Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->

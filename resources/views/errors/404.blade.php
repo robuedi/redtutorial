@@ -26,7 +26,7 @@
                 <a href="{{url('')}}" class="logo-txt">
                     <span class="red">RED</span>
                     <span class="tutorial">Tutorial</span>
-                </a>
+        a        </a>
                 <span class="error-quote">
                 The balance of the internet has been broken...
                 </span>

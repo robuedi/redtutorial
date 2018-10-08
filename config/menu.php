@@ -31,7 +31,7 @@ return array(
             "name"      => "Chapters",
             "url"       => "#",
             "aliases"   => array(),
-            "class"     => "fa-bookmark-o",
+            "class"     => "fa-bookmark",
             "submenus"  => array(
                 '1' => array(
                     "name"      => "All",
@@ -49,7 +49,7 @@ return array(
             "name"      => "Lessons",
             "url"       => "#",
             "aliases"   => array(),
-            "class"     => "fa-file-text-o",
+            "class"     => "fa-file-text",
             "submenus"  => array(
                 "1" => array(
                     "name"  => "All",
@@ -67,7 +67,7 @@ return array(
             "name"      => "Contact Messages",
             "url"       => "/contact-messages",
             "aliases"   => array('\/contact-messages\/[a-zA-Z0-9]+\/edit'),
-            "class"     => "fa-dashboard",
+            "class"     => "fa-envelope",
             "submenus"  => array(),
         ),
         array(
@@ -97,7 +97,7 @@ return array(
             "name"      => "Static Pages",
             "url"       => "#",
             "aliases"   => array(),
-            "class"     => "fa-user",
+            "class"     => "fa-sitemap",
             "submenus"  => array(
                 "1" => array(
                     "name"  => "All",
@@ -106,7 +106,7 @@ return array(
                 ),
                 "2" => array(
                     "name"  => "Add new",
-                    "url"   => "/lessons/create",
+                    "url"   => "/static-pages/create",
                     "aliases"   => array('\/static-pages\/create'),
                 )
             ),

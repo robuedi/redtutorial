@@ -48,12 +48,22 @@
 
     <body>
 
-        @include('_partials.sidebar', array('hierarchy_list' => App\Libraries\MenuClient::getMenu()))
+        @include('_partials.sidebar', array('hierarchy_list' => App\Libraries\MenuClient::getMenu(), 'static_pages' => \App\Libraries\MenuClientStatic::getStaticMenu()))
 
         <main>
             @yield('content')
         </main>
 
+        <aside class="cookie-message">
+            The government says i have to tell you i use cookies, so here it is
+        </aside>
+
+        <!-- JS Plugins -->
+        <script src="/assets/js/libs/cookieBar/jquery.cookieBar.min.js"></script>
+        <script></script>
+
+        <!-- Custom JS -->
+        <script src="/assets/js/cookie_bar.js"></script>
         <script src="/assets/js/main.js"></script>
         @yield('scripts')
 

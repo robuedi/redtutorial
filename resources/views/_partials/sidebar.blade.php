@@ -39,9 +39,10 @@
         </ul>
 
         <ul class="pages-links">
-            <li><a href="/about-us">ABOUT US</a></li>
             <li><a href="/contact-us">CONTACT US</a></li>
-            <li><a href="/terms-of-use-and-privacy">TERMS OF USE & PRIVACY</a></li>
+            @foreach($static_pages as $page)
+                <li><a href="/info/{{$page->slug}}">{{$page->name}}</a></li>
+            @endforeach
         </ul>
 
     </nav>

@@ -162,15 +162,18 @@
                                                 <div class="input-group" data-input-enable-switcher>
                                                     <input data-switch-enable-target type="text" name="slug" placeholder="Slug"  disabled="disabled" class="form-control" data-value="{{old('slug',$course->slug)}}" value="{{old('slug',$course->slug)}}">
                                                     <span class="input-group-addon">
-                                                            <span class="onoffswitch">
-                                                                <input data-switch-enable type="checkbox" @if(!$course->id) checked @endif name="enabled_slug_edit" class="onoffswitch-checkbox" id="switch_slug">
-                                                                <label class="onoffswitch-label" for="switch_slug">
-                                                                    <span class="onoffswitch-inner" data-swchon-text="YES" data-swchoff-text="NO"></span>
-                                                                    <span class="onoffswitch-switch"></span>
-                                                                </label>
-                                                            </span>
+                                                        <span class="onoffswitch">
+                                                            <input data-switch-enable type="checkbox" @if(!$course->id) checked @endif name="enabled_slug_edit" class="onoffswitch-checkbox" id="switch_slug">
+                                                            <label class="onoffswitch-label" for="switch_slug">
+                                                                <span class="onoffswitch-inner" data-swchon-text="YES" data-swchoff-text="NO"></span>
+                                                                <span class="onoffswitch-switch"></span>
+                                                            </label>
                                                         </span>
+                                                    </span>
                                                 </div>
+                                                <p class="text-right text-muted">
+                                                    <small >If changed then loss of SEO</small>
+                                                </p>
                                             </div>
                                         </div>
                                     </section>

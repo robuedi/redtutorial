@@ -66,7 +66,7 @@ class AuthenticationController extends Controller
                 // store in session the current login history id
                 Session::put('login_history_id', $login_history_id);
 
-                return Redirect::intended(config('app.admin-area').'/dashboard');
+                return Redirect::intended(config('app.admin_route').'/dashboard');
             }
 
             $errors = 'Invalid login or password.';
@@ -98,6 +98,6 @@ class AuthenticationController extends Controller
             }
         }
 
-        return Redirect::to(config('app.admin-area'));
+        return Redirect::to(config('app.admin_route'));
     }
 }
