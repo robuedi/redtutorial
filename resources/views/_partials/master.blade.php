@@ -19,6 +19,7 @@
         <link rel="icon" href="/assets/img/red-tutorial.ico">
         <link rel="stylesheet" type="text/css" href="/assets/css/lib/normalize8.css">
         <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
+        <link rel="stylesheet" type="text/css" href="/assets/js/libs/cookieBar/cookieBar.css">
 
         @yield('stylesheets')
 
@@ -55,7 +56,7 @@
         </main>
 
         <aside class="cookie-message">
-            The government says i have to tell you i use cookies, so here it is
+            This website uses cookies to improve user experience. By using this website you consent to all cookies in accordance with our Cookie Policy.
         </aside>
 
         <!-- JS Plugins -->

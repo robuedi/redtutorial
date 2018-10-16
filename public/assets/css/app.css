@@ -162,6 +162,7 @@ body main .right-container {
 #left_menu .pages-links {
   padding-top: 50px;
   border-top: 1px dashed #CCC;
+  text-transform: uppercase;
 }
 
 #left_menu .pages-links li {
@@ -174,7 +175,8 @@ body main .right-container {
   color: #000;
 }
 
-#left_menu .pages-links li a:hover {
+#left_menu .pages-links li a:hover,
+#left_menu .pages-links li a.active {
   color: #E62C33;
 }
 

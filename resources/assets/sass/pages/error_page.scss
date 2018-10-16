@@ -18,7 +18,10 @@
   }
 
   .animated-error{
+    max-width: 450px;
     text-align: center;
+    width: 100%;
+
     .particles-container{
       display: inline-block;
       position: relative;

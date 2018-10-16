@@ -1,3 +1,5 @@
 $(document).ready(function() {
-    $('.cookie-message').cookieBar();
+    $('.cookie-message').cookieBar({
+        closeButton : '.close-button'
+    });
 });

@@ -20,9 +20,9 @@
 
     h1 {
       margin: 0;
-      font-weight: 300;
+      font-weight: 400;
       font-size: 50px;
-      font-family: $font-family-source;
+      font-family: $font-family;
     }
   }
 
@@ -46,13 +46,6 @@
         margin: 0;
       }
 
-      .section-tags{
-        margin-top: 30px;
-
-        .red-button-second{
-          margin: 0px 10px;
-        }
-      }
     }
   }
 }

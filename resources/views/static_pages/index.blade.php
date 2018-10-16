@@ -16,9 +16,11 @@
 @section('content')
 
     <article class="static-page-content" >
-        <header>{{$page->header}}</header>
-        <section>
-            {{$page->content}}
+        <header>
+            <h1>{{$page->heading}}</h1>
+        </header>
+        <section class="content">
+            {!! $page->content !!}
         </section>
 
     </article>

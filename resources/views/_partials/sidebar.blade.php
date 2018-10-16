@@ -39,9 +39,9 @@
         </ul>
 
         <ul class="pages-links">
-            <li><a href="/contact-us">CONTACT US</a></li>
+            <li><a href="/contact-us" class="@if(url()->current() === url('/contact-us')) active @endif" >CONTACT US</a></li>
             @foreach($static_pages as $page)
-                <li><a href="/info/{{$page->slug}}">{{$page->name}}</a></li>
+                <li><a href="/info/{{$page->slug}}" class="@if(url()->current() === url('/info/'.$page->slug)) active @endif" >{{$page->name}}</a></li>
             @endforeach
         </ul>
 

@@ -93,6 +93,7 @@
   .pages-links {
     padding-top: 50px;
     border-top: 1px dashed #CCC;
+    text-transform: uppercase;
 
     li {
       margin-bottom: 12px;
@@ -102,7 +103,7 @@
         text-decoration: none;
         color: $text-color-sidebar;
 
-        &:hover {
+        &:hover, &.active {
           color: $brand-primary;
         }
       }
@@ -171,3 +172,4 @@
     text-align: center;
   }
 }
+

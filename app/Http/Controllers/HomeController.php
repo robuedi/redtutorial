@@ -19,11 +19,12 @@ class HomeController extends Controller
         $courses = Course::where('is_draft', 0)
                     ->where('is_public', 1)
                     ->whereNull('parent_id')
-                    ->get();
+                    ->pluck('name')
+                    ->toArray();
 
         $meta['keywords'] = 'PHP, SQL, JavaScript, design patterns, SOLID principles';
         $meta['description'] = 'Learn programing, design patterns, SOLID principles';
 
-        return View::make('home', ['meta' => $meta, 'courses' => $courses]);
+        return View::make('home', ['meta' => $meta, 'courses' => implode(', ', $courses)]);
     }
 }

@@ -66,3 +66,7 @@ Route::get('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsCon
 //Info pages
 Route::get('/info/{url}', 'StaticPagesController@index');
 
+//Contact Us
+Route::get('/contact-us', 'ContactController@index');
+Route::post('/contact-us', 'ContactController@saveMessage');
+

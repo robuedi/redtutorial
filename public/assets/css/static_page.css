@@ -1,0 +1,327 @@
+/*
+#f05256
+#2f4050
+#516f79
+
+#e3eaf4
+#d8d8d8
+#ebebeb
+
+#fafafa
+*/
+
+a:hover {
+  color: #E62C33;
+}
+
+.red-button {
+  padding: 10px 25px;
+  color: #E62C33;
+  border: 1px solid #E62C33;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.red-button:hover {
+  background-color: #E62C33;
+  color: #FFF;
+}
+
+.red-button-second {
+  padding: 10px 25px;
+  color: #FFF;
+  border: 1px solid #E62C33;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: inline-block;
+}
+
+.red-button-second:hover {
+  background-color: #E62C33;
+  color: #FFF;
+}
+
+body {
+  font-family: "PT Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body main {
+  margin-left: 300px;
+  overflow: hidden;
+  background-color: #FFF;
+  min-height: 100vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media (min-width: 1200px) {
+  body main {
+    margin-left: 28%;
+  }
+}
+
+body main .right-container {
+  padding: 75px;
+}
+
+#left_menu {
+  overflow: auto;
+  background: #EEE;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-right: 1px dashed #ddd;
+  width: 300px;
+}
+
+#left_menu::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  #left_menu {
+    width: 28%;
+  }
+}
+
+#left_menu .logo-container {
+  float: right;
+  margin-top: 100px;
+  margin-right: 95px;
+  margin-bottom: 50px;
+}
+
+#left_menu nav {
+  color: #000;
+  float: right;
+  margin-right: 95px;
+  padding-left: 20px;
+  clear: both;
+}
+
+#left_menu nav ul {
+  text-align: right;
+  list-style: none;
+  letter-spacing: 1.5px;
+  padding: 0;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+#left_menu nav ul .list-display-roman {
+  list-style-type: upper-roman;
+  direction: rtl;
+}
+
+#left_menu nav ul li {
+  line-height: 1.4;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#left_menu nav ul li > .item-label {
+  position: relative;
+}
+
+#left_menu nav ul li > .item-label > a {
+  text-decoration: none;
+  color: #000;
+}
+
+#left_menu nav ul li > .item-label:hover {
+  color: #E62C33;
+}
+
+#left_menu nav ul li > .item-label:hover > a {
+  color: #E62C33;
+}
+
+#left_menu nav ul li ul {
+  display: none;
+}
+
+#left_menu nav ul li.active > .item-label > a,
+#left_menu nav ul li.active > .item-label > i.fas {
+  color: #E62C33;
+}
+
+#left_menu nav ul li.active > ul {
+  display: block;
+}
+
+#left_menu nav ul.root-list > li {
+  margin-bottom: 22px;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+#left_menu .pages-links {
+  padding-top: 50px;
+  border-top: 1px dashed #CCC;
+  text-transform: uppercase;
+}
+
+#left_menu .pages-links li {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+#left_menu .pages-links li a {
+  text-decoration: none;
+  color: #000;
+}
+
+#left_menu .pages-links li a:hover,
+#left_menu .pages-links li a.active {
+  color: #E62C33;
+}
+
+.list-item > .item-label > .open-symbol {
+  display: inline-block;
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+}
+
+.list-item > .item-label > .open-symbol i {
+  content: "";
+  width: 15px;
+  height: 2px;
+  background: #000;
+  display: inline-block;
+  position: absolute;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.list-item > .item-label > .open-symbol i:first-child {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.list-item.active > .item-label > .open-symbol i:first-child {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.logo-txt {
+  text-align: right;
+  margin: 16px 0px;
+  text-decoration: none;
+}
+
+.logo-txt .red {
+  display: block;
+  color: #E62C33;
+  text-transform: uppercase;
+  font-size: 35px;
+  letter-spacing: 6px;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.logo-txt .tutorial {
+  display: block;
+  color: #000;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: lighter;
+  letter-spacing: 6px;
+  text-align: center;
+}
+
+.tutorial-name {
+  padding: 100px 75px 100px 0px;
+  margin: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.tutorial-name .heading-inner-container {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 20px 20px 20px 75px;
+  display: inline-block;
+  font-family: "PT Sans", sans-serif;
+}
+
+.tutorial-name .heading-inner-container h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0px;
+  color: #E62C33;
+  font-size: 50px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.tutorial-name .heading-inner-container h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0px 0px 15px 0px;
+  color: #404040;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.tutorial-name .heading-inner-container h2 a {
+  color: #404040;
+  text-decoration: none;
+}
+
+.tutorial-container {
+  padding: 75px;
+}
+
+.tutorial-container .tutorial-description {
+  font-size: 22px;
+  margin-bottom: 50px;
+  line-height: 1.5;
+}
+
+.tutorial-container .tutorial-content {
+  font-size: 20px;
+  line-height: 1.65;
+}
+
+textarea:focus,
+input:focus,
+button:focus {
+  outline: none;
+}
+
+@font-face {
+  font-family: 'BOLDFONT';
+  src: url(/fonts/Pacifi-Serif-Bold.ttf) format("ttf");
+}
+
+.static-page-content {
+  padding: 75px;
+  font-family: "PT Sans", sans-serif;
+}
+
+.static-page-content h1 {
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+
+.static-page-content .content p {
+  margin: 0;
+}
+

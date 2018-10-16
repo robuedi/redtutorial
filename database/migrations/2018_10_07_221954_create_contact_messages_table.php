@@ -17,7 +17,7 @@ class CreateContactMessagesTable extends Migration
             $table->increments('id');
             $table->string('name',255)->index();
             $table->string('email',255)->index();
-            $table->string('subject',255);
+            $table->string('subject',255)->nullable();
             $table->text('content');
             $table->timestamps();
         });

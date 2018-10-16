@@ -9,20 +9,20 @@
 .cookie-message {
   position:fixed;
   top:0;left:0;right:0;
-  padding:0 85px 0 20px;
+  padding:5px 85px 5px 20px;
   background:#fff;
   border-bottom:1px solid #ccc;
   box-shadow:0px 0px 3px #ccc;
   z-index: 99;
+  display: none;
 }
 .cookie-message a {
   position:absolute;
   top:0; *top:-2px; right:20px;
   cursor:pointer;
+  color: #E62C33;
 }
 .cookie-message p, .cookie-message a {
-  color:#333;
-  font:bold 11px/18px Arial;
   margin:0.6em 0;
 }
 .blue {
