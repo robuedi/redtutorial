@@ -12,7 +12,8 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'assets/js/')
-    .js('resources/assets/js/main.js', 'assets/js/')
+    .js('resources/assets/js/sidebar.js', 'assets/js/')
+    .js('resources/assets/js/feedback_message.js', 'assets/js/')
     .sass('resources/assets/sass/app.scss', 'assets/css/')
     .sass('resources/assets/sass/pages/home.scss', 'assets/css/')
     .sass('resources/assets/sass/pages/admin-login.scss', 'assets/css/')

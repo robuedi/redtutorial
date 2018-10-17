@@ -1,6 +1,6 @@
 @extends('_admin.master')
 
-@section('title') @lang('admin_users_management.users_management') - @parent @stop
+@section('title') @lang('admin_users_management.users_management') @parent @stop
 
 
 @section('breadcrumbs')

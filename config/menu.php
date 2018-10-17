@@ -128,20 +128,6 @@ return array(
                     "aliases"   => array(),
                 ),
             ),
-        ),
-        array(
-            "name"      => "Configuration",
-            "url"       => "#",
-            "aliases"   => array(),
-            "class"     => "fa-wrench",
-            "submenus"  => array(
-                '1' => array(
-                    "name"      => "Theme",
-                    "url"       => "/configuration/theme",
-                    "aliases"   => array(),
-                ),
-            ),
-
-        ),
+        )
     ),
 );

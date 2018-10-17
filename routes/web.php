@@ -22,9 +22,16 @@ Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')
     //Require authentication
     Route::group(array('middleware' => 'admin_section'), function()
     {
+        //Dashboard
         Route::get('/dashboard', 'DashboardController@index');
+
+        //Courses
         Route::resource('/courses', 'CoursesController');
+
+        //Chapters
         Route::resource('/chapters', 'ChaptersController');
+
+        //Lessons
         Route::resource('/lessons', 'LessonsController');
 
         //Media Library
@@ -50,6 +57,8 @@ Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')
         //Static Pages
         Route::resource('/static-pages', 'StaticPagesController');
 
+        //Contact Messages
+        Route::resource('/contact-messages', 'ContactMessagesController');
     });
 
 });

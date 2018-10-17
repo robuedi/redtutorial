@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login - {{config('app.name')}} </title>
+    <title>Login | {{config('app.name')}} </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=yes">
     <link rel="icon" href="{{URL::to('/assets/_admin/')}}/img/favicon/red-tutorial.ico" type="image/x-icon">

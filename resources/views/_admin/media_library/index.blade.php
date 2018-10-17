@@ -1,6 +1,6 @@
 @extends('_admin.master')
 
-@section('title') @lang('admin_media_library.media_library') - @parent @stop
+@section('title') @lang('admin_media_library.media_library') @parent @stop
 
 
 @section('breadcrumbs')

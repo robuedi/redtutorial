@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessageToUser;
 use App\Rules\CustomSumVerification;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Redirect;
 use App\Libraries\UIMessage;
 use Illuminate\Support\Facades\Session;
 use App\Models\ContactMessage;
+use Sentinel;
+use Log;
 
 class ContactController extends Controller
 {
@@ -39,7 +42,7 @@ class ContactController extends Controller
             'name'      => 'required|max:255',
             'email'     => 'required|max:255|email',
             'message'   => 'required|max:1500',
-            'verification' => ['required', 'integer', 'max:255', new CustomSumVerification('Verification', Session::pull('contact_verification'))]
+            'verification' => ['required', 'integer', 'max:255', new CustomSumVerification('Verification', Session::get('contact_verification'))]
         ];
 
         $validator = Validator::make(Input::all(), $rules);
@@ -64,6 +67,19 @@ class ContactController extends Controller
 
             $contact_message->content = $request->message;
             $contact_message->save();
+
+            //link message to admins
+            $role = Sentinel::findRoleBySlug('admin');
+            $users = $role->users()->with('roles')->get();
+
+            //create the links
+            foreach ($users as $user)
+            {
+                $message_to_user = new ContactMessageToUser();
+                $message_to_user->message_id    = $contact_message->id;
+                $message_to_user->user_id       = $user->id;
+                $message_to_user->save();
+            }
 
             UIMessage::set('success', 'Message sent successfully. Thank you.');
             return Redirect::back();

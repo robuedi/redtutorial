@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /*
 #f05256
 #2f4050
@@ -244,6 +246,50 @@ body main .right-container {
   font-weight: lighter;
   letter-spacing: 6px;
   text-align: center;
+}
+
+.alert {
+  padding: 20px 60px 20px 20px;
+  background-color: #EEE;
+  position: relative;
+  min-height: 70px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 18px;
+}
+
+.alert p {
+  margin: 0px 0px 5px;
+}
+
+.alert.alert-danger p:before {
+  content: "\2022   ";
+  color: #E62C33;
+  font-size: 22px;
+  line-height: 5px;
+}
+
+.alert .close {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #E62C33;
+  color: #E62C33;
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+  background-color: #FFF;
+  line-height: 2px;
+  cursor: pointer;
+}
+
+.alert .close:hover {
+  background-color: #E62C33;
+  color: #FFF;
 }
 
 .tutorial-name {

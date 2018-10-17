@@ -1,6 +1,6 @@
 @extends('_admin.master')
 
-@section('title') Dashboard - @parent @stop
+@section('title') @lang('admin_chapters_courses.courses') @parent @stop
 
 
 @section('breadcrumbs')

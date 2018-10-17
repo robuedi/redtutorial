@@ -16,6 +16,7 @@ return [
     'save'                  => 'Save',
     'save_and_add_new'      => 'Save and Add new',
     'add_new'               => 'Add new',
+    'view'                  => 'View',
 
     'home'                  => 'Home',
 

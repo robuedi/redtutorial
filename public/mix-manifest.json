@@ -5,6 +5,7 @@
     "/assets/css/admin-login.css": "/assets/css/admin-login.css",
     "/assets/css/error_page.css": "/assets/css/error_page.css",
     "/assets/css/static_page.css": "/assets/css/static_page.css",
-    "/assets/js/main.js": "/assets/js/main.js",
-    "/assets/css/contact_us.css": "/assets/css/contact_us.css"
+    "/assets/css/contact_us.css": "/assets/css/contact_us.css",
+    "/assets/js/sidebar.js": "/assets/js/sidebar.js",
+    "/assets/js/feedback_message.js": "/assets/js/feedback_message.js"
 }

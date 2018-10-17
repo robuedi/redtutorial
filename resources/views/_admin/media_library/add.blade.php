@@ -5,7 +5,7 @@
 @stop
 
 
-@section('title') @lang('admin_media_library.add_new_files') - @parent @stop
+@section('title') @lang('admin_media_library.add_new_files') @parent @stop
 
 @section('scripts')
     <script src="/assets/_admin/js/libs/plupload/plupload.full.min.js"></script>

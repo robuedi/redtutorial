@@ -1,0 +1,17 @@
+ADMIN SIDE
+- user management
+- remove configuration section (not in use anymore)
+- finish media gallery
+- add image field for courses
+- add image field for static pages
+
+CLIENT SIDE
+- check cookie bar
+- check for mobile
+- set static page style
+- set/update menu JS/CSS
+- make header image for courses dynamic
+- make header image for static pages dynamic
+
+LATER
+- make homepage image dynamic (possible changed from configuration admin)

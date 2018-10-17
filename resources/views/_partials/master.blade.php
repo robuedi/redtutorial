@@ -65,7 +65,8 @@
 
         <!-- Custom JS -->
         <script src="/assets/js/cookie_bar.js"></script>
-        <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/sidebar.js"></script>
+        <script src="/assets/js/feedback_message.js"></script>
         @yield('scripts')
 
     </body>

@@ -14,7 +14,7 @@
   height: 100vh;
   min-height: 650px;
   width: 100%;
-  background-image: url("/assets/img/passion-to-create.jpg");
+  background-image: url("/assets/img/adventure-altitude-asphalt-371578_white.jpg");
   background-size: cover;
   position: relative;
   overflow: auto;
@@ -38,12 +38,12 @@
 
 .home-container .page-content {
   color: #FFF;
-  padding: 30px 75px 30px 0px;
+  padding: 30px 75px 0px 0px;
   font-size: 18px;
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 150px;
+  bottom: 30px;
 }
 
 .home-container .page-content .page-inner-container {

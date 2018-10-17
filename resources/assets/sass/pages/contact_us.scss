@@ -22,11 +22,20 @@
     }
   }
 
-  .contact-form {
+  .content {
     padding: 75px;
 
+    .feedback{
+      width: 450px;
+      max-width: 100%;
+
+      .alert {
+        margin-bottom: 40px;
+      }
+    }
+
     .form-input {
-      width: 350px;
+      width: 450px;
       max-width: 100%;
       padding: 5px 0px 40px;
 

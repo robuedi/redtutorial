@@ -1,0 +1,45 @@
+.alert {
+  padding: 20px 60px 20px 20px;
+  background-color: #EEE;
+  position: relative;
+  min-height: 70px;
+  box-sizing: border-box;
+  font-size: 18px;
+
+  p {
+    margin: 0px 0px 5px;
+  }
+
+  &.alert-danger {
+    p {
+      &:before {
+        content: "• ";
+        color: $brand-primary;
+        font-size: 22px;
+        line-height: 5px;
+      }
+    }
+  }
+
+  .close {
+    box-sizing: border-box;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid $brand-primary;
+    color: $brand-primary;
+    padding: 5px;
+    font-size: 30px;
+    text-align: center;
+    background-color: #FFF;
+    line-height: 2px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $brand-primary;
+      color: #FFF;
+    }
+  }
+}

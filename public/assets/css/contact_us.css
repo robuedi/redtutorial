@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /*
 #f05256
 #2f4050
@@ -246,6 +248,50 @@ body main .right-container {
   text-align: center;
 }
 
+.alert {
+  padding: 20px 60px 20px 20px;
+  background-color: #EEE;
+  position: relative;
+  min-height: 70px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 18px;
+}
+
+.alert p {
+  margin: 0px 0px 5px;
+}
+
+.alert.alert-danger p:before {
+  content: "\2022   ";
+  color: #E62C33;
+  font-size: 22px;
+  line-height: 5px;
+}
+
+.alert .close {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #E62C33;
+  color: #E62C33;
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+  background-color: #FFF;
+  line-height: 2px;
+  cursor: pointer;
+}
+
+.alert .close:hover {
+  background-color: #E62C33;
+  color: #FFF;
+}
+
 .tutorial-name {
   padding: 100px 75px 100px 0px;
   margin: 0px;
@@ -333,17 +379,26 @@ button:focus {
   letter-spacing: 0.5px;
 }
 
-.contact-us-page-content .contact-form {
+.contact-us-page-content .content {
   padding: 75px;
 }
 
-.contact-us-page-content .contact-form .form-input {
-  width: 350px;
+.contact-us-page-content .content .feedback {
+  width: 450px;
+  max-width: 100%;
+}
+
+.contact-us-page-content .content .feedback .alert {
+  margin-bottom: 40px;
+}
+
+.contact-us-page-content .content .form-input {
+  width: 450px;
   max-width: 100%;
   padding: 5px 0px 40px;
 }
 
-.contact-us-page-content .contact-form .form-input label {
+.contact-us-page-content .content .form-input label {
   width: 100%;
   font-weight: 400;
   font-size: 20px;
@@ -351,24 +406,24 @@ button:focus {
   display: inline-block;
 }
 
-.contact-us-page-content .contact-form .form-input label .required-status {
+.contact-us-page-content .content .form-input label .required-status {
   float: right;
   font-weight: 400;
   opacity: 0.4;
   font-size: 14px;
 }
 
-.contact-us-page-content .contact-form .form-input input {
+.contact-us-page-content .content .form-input input {
   height: 25px;
 }
 
-.contact-us-page-content .contact-form .form-input input.verification-input {
+.contact-us-page-content .content .form-input input.verification-input {
   margin-left: 55px;
   width: calc(100% - 55px);
 }
 
-.contact-us-page-content .contact-form .form-input input,
-.contact-us-page-content .contact-form .form-input textarea {
+.contact-us-page-content .content .form-input input,
+.contact-us-page-content .content .form-input textarea {
   padding: 3px;
   width: 100%;
   font-size: 18px;
@@ -377,11 +432,11 @@ button:focus {
   border-bottom: 1px solid #E62C33;
 }
 
-.contact-us-page-content .contact-form .form-input .verification-input-container {
+.contact-us-page-content .content .form-input .verification-input-container {
   position: relative;
 }
 
-.contact-us-page-content .contact-form .form-input .verification-input-container .verification-text {
+.contact-us-page-content .content .form-input .verification-input-container .verification-text {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -389,7 +444,7 @@ button:focus {
   left: 0;
 }
 
-.contact-us-page-content .contact-form .form-input .submit-btn {
+.contact-us-page-content .content .form-input .submit-btn {
   font-family: "PT Sans", sans-serif;
   letter-spacing: 1px;
   font-size: 18px;
@@ -403,8 +458,8 @@ button:focus {
   font-weight: 400;
 }
 
-.contact-us-page-content .contact-form .form-input .submit-btn:hover,
-.contact-us-page-content .contact-form .form-input .submit-btn:focus {
+.contact-us-page-content .content .form-input .submit-btn:hover,
+.contact-us-page-content .content .form-input .submit-btn:focus {
   background-color: #E62C33;
   color: #fff;
 }

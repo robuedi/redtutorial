@@ -1,6 +1,6 @@
 @extends('_admin.master')
 
-@section('title') @lang('admin_static_pages.static_pages') - @parent @stop
+@section('title') @lang('admin_static_pages.static_pages') @parent @stop
 
 
 @section('breadcrumbs')

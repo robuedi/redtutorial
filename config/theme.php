@@ -59,6 +59,6 @@ return [
     ],
 
 
-    'custom' => ['body' => 'fixed-navigation']
+    'custom' => ['body' => '']
 
 ];

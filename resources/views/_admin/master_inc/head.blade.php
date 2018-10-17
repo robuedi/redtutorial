@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-    <title> @section('title') {{config('app.name')}} @show </title>
+    <title> @section('title') | Admin {{config('app.name')}} @show </title>
     <meta name="robots" content="noindex,follow">
     <meta name="description" content="">
     <meta name="author" content="">

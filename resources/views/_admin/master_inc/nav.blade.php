@@ -45,8 +45,15 @@ you can add as many as you like
 		<!-- NAVIGATION : This navigation is also responsive -->
 		<ul>
 			@foreach ($config_menu as $menu)
-				<li class="@if (isset($menu['active']) && $menu['active']) active @endif   @if (isset($menu['submenus']) && count($menu['submenus']) > 0) @endif">
-					<a href="@if (isset($menu['submenus']) && count($menu['submenus']) > 0)# @else /{{$menu['url']}}@endif"><i class="fa fa-lg fa-fw {{ $menu['class'] }}"></i> <span class="menu-item-parent">{{ $menu['name'] }}</span></a>
+				<li class="@if (isset($menu['active']) && $menu['active']) active @endif">
+					<a href="@if (isset($menu['submenus']) && count($menu['submenus']) > 0)# @else /{{$menu['url']}}@endif">
+						<i class="fa fa-lg fa-fw {{ $menu['class'] }}">
+							@if($menu['name'] == 'Contact Messages' &&\App\Libraries\MenuUserContactMessages::currentUserUnreadMsgNr() > 0 )
+								<em>{{\App\Libraries\MenuUserContactMessages::getUnreadMsgNr()}}</em>
+							@endif
+						</i>
+						<span class="menu-item-parent">{{ $menu['name'] }}</span>
+					</a>
 
 
 					@if (isset($menu['submenus']) && count($menu['submenus']))
