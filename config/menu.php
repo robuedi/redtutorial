@@ -78,18 +78,18 @@ return array(
             "submenus"  => array(
                 '1' => array(
                     "name"      => " All administrators",
-                    "url"       => "/users_management/administrators/show",
-                    "aliases"   => array('\/users_management\/admin\/[0-9]+\/edit'),
+                    "url"       => "/users-management/admin",
+                    "aliases"   => array('\/users-management\/admin\/[0-9]+\/edit'),
                 ),
                 '2' => array(
                     "name"      => " All clients",
-                    "url"       => "/users_management/clients/show",
-                    "aliases"   => array('\/users_management\/client\/[0-9]+\/edit'),
+                    "url"       => "/users-management/client",
+                    "aliases"   => array('\/users-management\/client\/[0-9]+\/edit'),
                 ),
                 '3' => array(
                     "name"      => "Add new",
-                    "url"       => "/users_management/create",
-                    "aliases"   => array('\/users_management\/admin\/create', '\/users_management\/client\/create'),
+                    "url"       => "/users-management/create",
+                    "aliases"   => array('\/users-management\/admin\/create', '\/users-management\/client\/create'),
                 ),
             ),
         ),

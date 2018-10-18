@@ -48,11 +48,13 @@ Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')
         Route::get('/user-profile', 'UserProfileController@edit');
         Route::post('/user-profile', 'UserProfileController@update');
 
-        //Configuration - Theme
-        Route::get('/configuration/theme', 'ConfigurationController@editUserTheme');
-
         //User Management
-        Route::resource('/user-management', 'UsersManagementController');
+        Route::get('/users-management/{type}', 'UsersManagementController@index');
+        Route::get('/users-management/{id}/edit', 'UsersManagementController@edit');
+        Route::get('/users-management/{type}/create', 'UsersManagementController@create');
+        Route::post('/users-management', 'UsersManagementController@store');
+        Route::put('/users-management/{id}', 'UsersManagementController@update');
+        Route::delete('/users-management/{id}', 'UsersManagement@destroy');
 
         //Static Pages
         Route::resource('/static-pages', 'StaticPagesController');

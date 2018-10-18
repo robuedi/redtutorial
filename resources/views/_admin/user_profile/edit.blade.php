@@ -9,8 +9,8 @@
 
 @section('content')
 
-    <form action="" enctype="application/x-www-form-urlencoded" method="post">
-
+    <form action="{{URL::current()}}" enctype="application/x-www-form-urlencoded" method="post">
+        {{ csrf_field() }}
         <div class="row">
             <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
                 <h1 class="page-title txt-color-blueDark">
@@ -49,8 +49,13 @@
                             <input class="form-control" placeholder="Email" type="text" name="email" value="{{{old('email',$user->email)}}}">
                         </div>
                         <div class="form-group">
+                            <i class="icon-prepend fa fa-envelope-o"></i>
+                            <label>Second email </label>
+                            <input class="form-control" placeholder="Second email" type="text" name="second_email" value="{{{old('second_email',$user->second_email)}}}">
+                        </div>
+                        <div class="form-group">
                             <i class="icon-prepend fa fa-phone"></i>
-                            <label>Phone <span class="req">*</span></label>
+                            <label>Phone </label>
                             <input class="form-control phone-number-mask" placeholder="Phone" type="text" name="phone" value="{{{old('phone',$user->phone)}}}">
                         </div>
                         <div class="form-group">

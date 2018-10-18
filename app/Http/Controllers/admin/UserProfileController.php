@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use View;
 use Log;
 use Login;
-use Request;
+use Illuminate\Http\Request;
 use Sentinel;
 use Session;
 use Validator;
@@ -14,7 +14,7 @@ use Redirect;
 use App\Libraries\UIMessage;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
-use User;
+use App\User;
 use Illuminate\Support\Facades\Input;
 
 class UserProfileController extends Controller {
@@ -35,12 +35,10 @@ class UserProfileController extends Controller {
 
         // validate
         $rules = array(
-            'first_name'       =>'required',
-            'last_name'        =>'required',
-            'email'            =>'required',
-            'phone'            =>'required',
-            'password'		   =>'',
-            'confirm_password' =>'',
+            'first_name'       =>'required|min:2',
+            'last_name'        =>'required|min:2',
+            'email'            =>'required|email',
+            'second_email'     =>'nullable|email',
         );
 
         if ( ! empty($password))
@@ -64,6 +62,7 @@ class UserProfileController extends Controller {
             $user->first_name   = $request->input('first_name');
             $user->last_name    = $request->input('last_name');
             $user->email        = $request->input('email');
+            $user->second_email = $request->input('second_email');
             $user->phone        = $request->input('phone');
 
 

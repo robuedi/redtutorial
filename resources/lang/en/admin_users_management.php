@@ -9,6 +9,9 @@ return [
     |
     */
 
-    'users_management' =>  'Users Management'
+    'users_management'  =>  'Users Management',
+    'admin'             =>  'Administrators',
+    'client'            =>  'Clients',
+
 
 ];

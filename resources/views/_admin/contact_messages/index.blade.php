@@ -138,7 +138,7 @@
                                         <tbody>
                                         <?php $results_arr = $results->items() ?>
                                         @foreach($results_arr as $r)
-                                            <tr class="@if($r->is_flagged) info @endif">
+                                            <tr class="@if($r->is_flagged) success @endif">
                                                 <td  >
                                                     <a class="absolute-full-container" href="{{url(config('app.admin_route').'/contact-messages/'.$r->id)}}/edit"></a>
                                                     <p @if(!$r->is_read||$r->is_flagged) style="font-weight: bold" @endif >{{ $r->name }}</p>

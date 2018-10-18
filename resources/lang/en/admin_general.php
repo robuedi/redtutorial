@@ -40,6 +40,7 @@ return [
     'listing_is_draft'      => 'Is draft',
     'listing_slug'          => 'Slug',
     'listing_order_weight'  => 'Order weight',
+    'listing_date_last_login'  => 'Last login date',
     'listing_date_created'  => 'Date created',
     'listing_date_updated'  => 'Date updated',
     'listing_thumbnail'     => 'Thumbnail',
