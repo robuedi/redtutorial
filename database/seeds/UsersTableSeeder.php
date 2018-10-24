@@ -71,6 +71,18 @@ class UsersTableSeeder extends Seeder
                     'password'   => '6EqnvRzJVmAxZmGrJxBN',
                     'first_name' => "Eduard",
                     'last_name'  => "Robu",
+                    'permissions'=> [
+                        'user.admin.view'           => true,
+                        'user.admin.create'         => true,
+                        'user.admin.edit'           => true,
+                        'user.admin.delete'         => true,
+                        'user.admin.deactivate_user'   => true,
+                        'user.client.view'          => true,
+                        'user.client.create'        => true,
+                        'user.client.edit'          => true,
+                        'user.client.delete'        => true,
+                        'user.client.deactivate_user'  => true,
+                    ]
                 ],
 
                 [
@@ -78,20 +90,25 @@ class UsersTableSeeder extends Seeder
                     'password'   => 'jyIIop9BUtLYzpx65qAM',
                     'first_name' => "Eduard",
                     'last_name'  => "Robu",
+                    'permissions'=> [
+                        'user.client.view'   => true,
+                        'user.client.create' => true,
+                        'user.client.edit'   => true,
+                    ]
                 ]
             ];
 
             // get admin role
-            $adminRole          = Sentinel::findRoleBySlug('admin');
+            $admin_role          = Sentinel::findRoleBySlug('admin');
 
             foreach ($admins as $admin)
             {
                 // register and activate admin user
-                $adminUser = Sentinel::registerAndActivate($admin);
-                $adminUser->save();
+                $admin_user = Sentinel::registerAndActivate($admin);
+                $admin_user->save();
 
                 // assign admin user to admin role
-                $adminRole->users()->attach($adminUser);
+                $admin_role->users()->attach($admin_user);
             }
 
             $this->command->error(count($admins).' admins added. ');

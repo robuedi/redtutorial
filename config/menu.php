@@ -87,9 +87,14 @@ return array(
                     "aliases"   => array('\/users-management\/client\/[0-9]+\/edit'),
                 ),
                 '3' => array(
-                    "name"      => "Add new",
-                    "url"       => "/users-management/create",
-                    "aliases"   => array('\/users-management\/admin\/create', '\/users-management\/client\/create'),
+                    "name"      => " Add new administrator",
+                    "url"       => "/users-management/admin/create",
+                    "aliases"   => array('\/users-management\/admin\/create'),
+                ),
+                '4' => array(
+                    "name"      => " Add new client",
+                    "url"       => "/users-management/client/create",
+                    "aliases"   => array('\/users-management\/client\/create'),
                 ),
             ),
         ),

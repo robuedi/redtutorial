@@ -26,6 +26,7 @@
         </div>
     </div>
 
+    {!! \App\Libraries\UIMessage::get() !!}
 
     <section id="widget-grid" class="">
 

@@ -117,7 +117,7 @@
 
                         <header>
                             <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                            <h2>@lang('admin_chapters_courses.chapters')</h2>
+                            <h2>@lang('admin_contact_messages.contact_messages')</h2>
                         </header>
 
                         <!-- widget div-->

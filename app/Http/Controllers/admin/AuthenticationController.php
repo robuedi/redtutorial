@@ -17,17 +17,27 @@ use Illuminate\Support\Facades\Redirect;
 use App\Login;
 use Request;
 use Session;
-
+use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
+use App\Libraries\UIMessage;
 
 class AuthenticationController extends Controller
 {
     public function login()
     {
-        //check if user is logged in as admin or owner
-        if (Sentinel::check() && (Sentinel::hasAccess('admin')))
-            return Redirect::intended(config('app.admin_route').'/dashboard');
-        else
+        //check if user is logged in as admin
+        try {
+
+            if (Sentinel::check() && (Sentinel::hasAccess('admin')))
+                return Redirect::intended(config('app.admin_route').'/dashboard');
+            else
+                return View::make('_admin.authentication.login');
+
+        } catch (NotActivatedException $e) {
+
+            UIMessage::set('danger', 'Account not activated.');
             return View::make('_admin.authentication.login');
+
+        }
     }
 
     public function doLogin()

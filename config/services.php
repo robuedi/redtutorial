@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => env('redtutorial.com'),
+        'secret' => env('key-5d1b0aceae429a6dfc9ab047189f2b93'),
     ],
 
     'ses' => [

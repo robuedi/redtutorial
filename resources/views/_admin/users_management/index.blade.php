@@ -111,10 +111,10 @@
                                                 @endif
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>
                                                 <td class="format-momentjs">{{ $r->updated_at }}</td>
-                                                <td style="text-align:center;">
-                                                    <a href="{{url(config('app.admin_route').'/users-management/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
+                                                <td data-s="{{$r->activation_status}}" style="text-align:center;">
+                                                    <a href="{{url(config('app.admin_route').'/users-management/'.$type.'/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
                                                     @if(empty ($r->code_page ))
-                                                        <a href="javascript:deleteRouteObject('{{url(config('app.admin_route').'/users-management/'.$r->id)}}')" class="btn btn-sm btn-danger btn-delete apply-tooltip" data-method="DELETE" title="Disable" data-warning="Are you sure?"><i class="glyphicon glyphicon-ban-circle"></i></a>
+                                                        <a href="javascript:promptAction('{{url(config('app.admin_route').'/users-management/'.$r->id.'/deactivate')}}')" class="btn btn-sm @if($r->activation_status === 0 || $r->activation_status === 1) btn-danger @else btn-success @endif btn-delete apply-tooltip" data-method="DELETE" title="Deactivate" data-warning="Are you sure you want to @if($r->activation_status === 0 || $r->activation_status === 1) deactivate @else activate @endif the user?"><i class="glyphicon @if($r->activation_status === 0 || $r->activation_status === 1) glyphicon-ban-circle @else glyphicon-ok @endif"></i></a>
                                                     @endif
                                                 </td>
                                             </tr>

@@ -50,11 +50,12 @@ Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')
 
         //User Management
         Route::get('/users-management/{type}', 'UsersManagementController@index');
-        Route::get('/users-management/{id}/edit', 'UsersManagementController@edit');
+        Route::get('/users-management/{type}/{id}/edit', 'UsersManagementController@edit');
         Route::get('/users-management/{type}/create', 'UsersManagementController@create');
         Route::post('/users-management', 'UsersManagementController@store');
         Route::put('/users-management/{id}', 'UsersManagementController@update');
-        Route::delete('/users-management/{id}', 'UsersManagement@destroy');
+        Route::delete('/users-management/{id}', 'UsersManagementController@destroy');
+        Route::delete('/users-management/{id}/deactivate', 'UsersManagementController@toggleActivation');
 
         //Static Pages
         Route::resource('/static-pages', 'StaticPagesController');

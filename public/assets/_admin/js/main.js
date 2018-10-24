@@ -71,3 +71,7 @@ function confirm_modal(action, message, yes_button_text)
 function deleteRouteObject(delete_url) {
     $('#delete_form').attr('action', delete_url).submit();
 }
+
+function promptAction(action_url) {
+    $('#delete_form').attr('action', action_url).submit();
+}

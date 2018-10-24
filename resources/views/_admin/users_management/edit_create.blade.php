@@ -17,7 +17,7 @@
 
 @section('content')
 
-    <form action="{{url(config('app.admin_route').'/users-management/'.$user->role.'/'.$user->id)}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
+    <form action="{{url(config('app.admin_route').'/users-management/'.$user->id)}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
         <div class="row">
             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-6">
                 <h1 class="page-title txt-color-blueDark">
@@ -32,19 +32,28 @@
                     <button class="btn btn-lg bg-color-blueDark txt-color-white dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="javascript:void(0);" id="save-and-add">@lang('admin_general.save_and_add_new')</a>
-                            <input type="hidden" autocomplete="off" id="save-and-add-input" name="save_and_add_new" value="" />
-                        </li>
-                    </ul>
+                    @if(!$user->id)
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="javascript:void(0);" id="save-and-add">@lang('admin_general.save_and_add_new')</a>
+                                <input type="hidden" autocomplete="off" id="save-and-add-input" name="save_and_add_new" value="" />
+                            </li>
+                        </ul>
+
+                    @else
+                        <ul class="dropdown-menu danger">
+                            <li>
+                                <a href="javascript:deleteRouteObject('{{url(config('app.admin_route').'/users-management/'.$user->id)}}')" class="btn btn-md  btn-delete apply-tooltip" data-method="DELETE" title="Delete" data-warning="Are you sure you want to delete the user?">Delete <i class="glyphicon glyphicon-trash"></i></a>
+                            </li>
+                        </ul>
+                    @endif
                 </div>
                 <button type="submit" name="save_and_continue" value="1" class=" btn btn-lg btn-primary">@lang('admin_general.save_and_continue')</button>
                 @if($user->id)
                     <input name="_method" type="hidden" value="PUT" >
-                @else
-                    <input type="hidden" name="user_type" value="{{$user->role}}">
                 @endif
+
+                <input type="hidden" name="role" value="{{$user->role}}">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
             </div>
         </div>
@@ -63,59 +72,61 @@
                         </header>
 
                         <div role="content" >
-                                    <div class="widget-body smart-form ">
+                            <div class="widget-body smart-form ">
 
-                                        <section>
-                                            <label class="label">First name <span class="req">*</span></label>
-                                            <label class="input">
-                                                <input type="text" name="first_name" placeholder="First name" class="form-control input-sm" value="{{old('first_name', $user->first_name)}}">
-                                            </label>
-                                        </section>
+                                <section>
+                                    <label class="label">First name <span class="req">*</span></label>
+                                    <label class="input">
+                                        <input type="text" name="first_name" placeholder="First name" class="form-control input-sm" value="{{old('first_name', $user->first_name)}}">
+                                    </label>
+                                </section>
 
-                                        <section>
-                                            <label class="label">Last name <span class="req">*</span></label>
-                                            <label class="input">
-                                                <input type="text" name="last_name" placeholder="Last name" class="form-control input-sm" value="{{old('last_name', $user->last_name)}}">
-                                            </label>
-                                        </section>
+                                <section>
+                                    <label class="label">Last name <span class="req">*</span></label>
+                                    <label class="input">
+                                        <input type="text" name="last_name" placeholder="Last name" class="form-control input-sm" value="{{old('last_name', $user->last_name)}}">
+                                    </label>
+                                </section>
 
-                                        <section>
-                                            <label class="label">Email <span class="req">*</span></label>
-                                            <label class="input">
-                                                <input type="text" name="email" placeholder="Email" class="form-control input-sm" value="{{old('email', $user->email)}}">
-                                            </label>
-                                        </section>
+                                <section>
+                                    <label class="label">Email <span class="req">*</span></label>
+                                    <label class="input">
+                                        <input @if($user->id&&$user->role==='admin') disabled @endif type="text" name="email" placeholder="Email" class="form-control input-sm" value="{{old('email', $user->email)}}">
+                                    </label>
+                                </section>
 
-                                        <section>
-                                            <label class="label">Second email </label>
-                                            <label class="input">
-                                                <input type="text" name="second_email" placeholder="Second email" class="form-control input-sm" value="{{old('second_email', $user->second_email)}}">
-                                            </label>
-                                        </section>
+                                <section>
+                                    <label class="label">Second email </label>
+                                    <label class="input">
+                                        <input @if($user->id&&$user->role==='admin') disabled @endif type="text" name="second_email" placeholder="Second email" class="form-control input-sm" value="{{old('second_email', $user->second_email)}}">
+                                    </label>
+                                </section>
 
-                                        <section>
-                                            <label class="label">Phone </label>
-                                            <label class="input">
-                                                <input type="text" name="phone" placeholder="Phone" class="form-control input-sm phone-number-mask" value="{{old('phone', $user->phone)}}">
-                                            </label>
-                                        </section>
+                                <section>
+                                    <label class="label">Phone </label>
+                                    <label class="input">
+                                        <input @if($user->id&&$user->role==='admin') disabled @endif type="text" name="phone" placeholder="Phone" class="form-control input-sm phone-number-mask" value="{{old('phone', $user->phone)}}">
+                                    </label>
+                                </section>
 
-                                        <section>
-                                            <label class="label">Password @if(!$user->id) <span class="req">*</span> @endif</label>
-                                            <label class="input">
-                                                <input type="password" name="password" placeholder="Password" class="form-control input-sm" >
-                                            </label>
-                                        </section>
+                                @if(!($user->id&&$user->role==='admin'))
+                                <section>
+                                    <label class="label">Password @if(!$user->id) <span class="req">*</span> @endif</label>
+                                    <label class="input">
+                                        <input type="password" name="password" placeholder="Password" class="form-control input-sm" >
+                                    </label>
+                                </section>
 
-                                        <section>
-                                            <label class="label">Confirm password @if(!$user->id) <span class="req">*</span> @endif</label>
-                                            <label class="input">
-                                                <input type="password" name="confirm_password" placeholder="Confirm password" class="form-control input-sm" >
-                                            </label>
-                                        </section>
+                                <section>
+                                    <label class="label">Confirm password @if(!$user->id) <span class="req">*</span> @endif</label>
+                                    <label class="input">
+                                        <input type="password" name="password_confirmation" placeholder="Confirm password" class="form-control input-sm" >
+                                    </label>
+                                </section>
+                                @endif
 
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
