@@ -19,7 +19,7 @@ class FakerSeeder extends Seeder
 
         if ($this->command->confirm('Do you wish to continue?'))
         {
-            $courses = ['PHP', 'SQL', 'JavaScript', 'HTML', 'CSS3'];
+            $courses = ['PHP', 'SOLID Principles', 'Design patterns', 'SQL', 'JavaScript'];
             $chapters_range = 4;
             $chapters = ['Beginner', 'Intermediary', 'Advanced', 'Extra'];
             $lessons_range = 55;
@@ -34,7 +34,7 @@ class FakerSeeder extends Seeder
                 $course->name           = $course_name;
                 $course->description    = $faker->text(600);
                 $course->order_weight   = $index+1;
-                $course->is_public      = $faker->randomElement(array (1, 0, 1, 0, 1));
+                $course->is_public      = 1;
                 $course->is_draft       = $faker->randomElement(array (0, !$course->is_public));
                 $course->slug           = preg_replace('/^-+|-+$/', '', strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $course->name)));
                 $course->created_at     = $faker->dateTimeThisYear($max = 'now', $timezone = null);
@@ -67,7 +67,7 @@ class FakerSeeder extends Seeder
                         $lesson->parent_id      = $chapter->id;
                         $lesson->name           = rtrim($faker->sentence($nbWords = 4, $variableNbWords = true), '.');
                         $lesson->description    = $faker->text(600);
-                        $lesson->content        = $faker->text(800);
+                        $lesson->content        = $faker->text(1200);
                         $lesson->order_weight   = $j+1;
                         $lesson->is_public      = $chapter->is_public ? $faker->randomElement(array (1, 0, 1, 0, 1)) : 0;
                         $lesson->is_draft       = $faker->randomElement(array (0, !$lesson->is_public));

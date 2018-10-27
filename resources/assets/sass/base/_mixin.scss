@@ -1,29 +1,17 @@
-//setting the sidebar with and content width
-//that are depending one in another
 
-$sidebar-lg: 300px;
-$sidebar-xl: 28%;
 
-@mixin sidebar-width(){
+@mixin container-sizing() {
+  padding: 100px 75px;
 
-  width: $sidebar-lg;
-
-  @media (min-width: $screen-xl) {
-    width: $sidebar-xl;
+  @media (max-width: $screen-md-max) {
+    padding: 50px 30px;
   }
 }
 
-@mixin main-left-margin(){
-  margin-left: $sidebar-lg;
-
-  @media (min-width: $screen-xl) {
-    margin-left: $sidebar-xl;
-  }
-}
-
-@mixin sidebar-font(){
-  font-size: 16px;
-  color: $white;
+@mixin main-page-header(){
+  color: $brand-primary;
+  font-size: 40px;
+  font-weight: 400;
 }
 
 a {

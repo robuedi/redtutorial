@@ -14,6 +14,7 @@
         <meta name="author" content="{{config('app.name')}}">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#E62C33">
         {{--<link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap-grid.min.css">--}}
         {{--<link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap.min.css">--}}
         <link rel="icon" href="/assets/img/red-tutorial.ico">
@@ -51,9 +52,18 @@
 
         @include('_partials.sidebar', array('hierarchy_list' => App\Libraries\MenuClient::getMenu(), 'static_pages' => \App\Libraries\MenuClientStatic::getStaticMenu()))
 
+        <aside class="mobile-nav">
+            <a href="{{url('')}}" class="logo-txt">
+                <span class="red">RED</span>
+                <span class="tutorial">Tutorial</span>
+            </a>
+            <button aria-label="Open sidebar" class="trigger-sidebar"></button>
+        </aside>
+
         <main>
             @yield('content')
         </main>
+
 
         <aside class="cookie-message">
             This website uses cookies to improve user experience. By using this website you consent to all cookies in accordance with our Cookie Policy.

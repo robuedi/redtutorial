@@ -33,6 +33,8 @@ $brand-blue-brighter: #516f79;
 $brand-grey1: #e3eaf4;
 $brand-grey2: #e9e9e9;
 $brand-grey3: #ebebeb;
+
+$shadow-color: #DDD;
 //$brand-info: #ececec;
 //$brand-success: #44566c;
 //$brand-warning: #201b22;
@@ -81,3 +83,8 @@ $screen-lg-max: 1199px;
 
 // Extra large screen / wide desktop
 $screen-xl: 1200px;
+
+//setting the sidebar with and content width
+//that are depending one in another
+$sidebar-lg: 300px;
+$sidebar-xl: 28%;

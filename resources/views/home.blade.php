@@ -12,18 +12,28 @@
 
 @section('content')
 
-    <section class="home-container">
+    <section class="home-container" >
         <section class="page-title">
-            <h1>Tutorials for {{$courses}}</h1>
+            <h1>Tutorials </h1>
         </section>
 
 
-        <section class="page-content">
-            <div class="page-inner-container">
-                <p class="txt-description" >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget sagittis mauris, et commodo ligula. In congue lectus semper ante sodales finibus. Mauris pulvinar quam vitae lorem interdum hendrerit. Fusce tristique fringilla justo, eget sodales enim. Maecenas consectetur ex sed nisi gravida venenatis. Aenean libero metus, accumsan nec sagittis eget, accumsan vel est. Aliquam efficitur ultricies massa, non venenatis arcu posuere non. Mauris at velit diam. Integer malesuada sollicitudin libero eget euismod. Cras sit amet elit sed lorem suscipit vestibulum sed quis elit.
-                </p>
+        <section class="page-content" >
+            @foreach($courses as $course)
+            <div class="course-item" >
+                <div class="inner-container" >
+                    <h2 >{{$course->name}}</h2>
+                    <div class="txt-content">
+                        <p>
+                            Curabitur viverra dui accumsan imperdiet luctus. Etiam arcu erat, suscipit at tortor quis, pretium efficitur tellus. Nam varius sem ac vulputate vehicula.
+                        </p>
+                    </div>
+                    <a href="/tutorial/{{$course->slug}}">
+                        <span>More</span> <i class="fas fa-chevron-circle-right"></i>
+                    </a>
+                </div>
             </div>
+            @endforeach
         </section>
     </section>
 

@@ -50,12 +50,12 @@ body {
 }
 
 body main {
-  margin-left: 300px;
   overflow: hidden;
   background-color: #FFF;
   min-height: 100vh;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin-left: 300px;
 }
 
 @media (min-width: 1200px) {
@@ -68,16 +68,25 @@ body main .right-container {
   padding: 75px;
 }
 
+@media (max-width: 991px) {
+  body main {
+    margin-left: 0;
+  }
+}
+
 #left_menu {
   overflow: auto;
   background: #EEE;
   position: fixed;
   height: 100%;
+  top: 0;
   left: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border-right: 1px dashed #ddd;
   width: 300px;
+  -webkit-transition: left 1s;
+  transition: left 1s;
+  z-index: 50;
 }
 
 #left_menu::-webkit-scrollbar {
@@ -87,6 +96,20 @@ body main .right-container {
 @media (min-width: 1200px) {
   #left_menu {
     width: 28%;
+  }
+}
+
+@media (max-width: 991px) {
+  #left_menu {
+    left: -300px;
+  }
+
+  #left_menu .logo-txt {
+    display: none;
+  }
+
+  #left_menu.sidebar-show {
+    left: 0;
   }
 }
 
@@ -248,6 +271,80 @@ body main .right-container {
   text-align: center;
 }
 
+.mobile-nav {
+  padding: 10px;
+  display: none;
+  background-color: #eee;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+}
+
+@media (max-width: 991px) {
+  .mobile-nav {
+    display: block;
+  }
+}
+
+.mobile-nav .logo-txt {
+  margin: 0;
+  display: inline-block;
+}
+
+.mobile-nav .logo-txt .red {
+  font-size: 25px;
+}
+
+.mobile-nav .logo-txt .tutorial {
+  font-size: 14px;
+}
+
+.mobile-nav .trigger-sidebar {
+  display: inline-block;
+  float: right;
+  height: 40px;
+  width: 65px;
+  border-radius: 7px;
+  background-color: #eee;
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: none;
+}
+
+.mobile-nav .trigger-sidebar:before,
+.mobile-nav .trigger-sidebar:after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 30px;
+  background-color: #E62C33;
+  left: 17px;
+  top: 15px;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+.mobile-nav .trigger-sidebar:after {
+  top: 24px;
+}
+
+.mobile-nav .trigger-sidebar.trigger-open:before {
+  top: 20px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.mobile-nav .trigger-sidebar.trigger-open:after {
+  top: 20px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
 .alert {
   padding: 20px 60px 20px 20px;
   background-color: #EEE;
@@ -298,41 +395,81 @@ body main .right-container {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-}
-
-.tutorial-name .heading-inner-container {
-  background-color: rgba(255, 255, 255, 0.4);
-  padding: 20px 20px 20px 75px;
-  display: inline-block;
   font-family: "PT Sans", sans-serif;
 }
 
-.tutorial-name .heading-inner-container h1 {
-  position: relative;
+.tutorial-name:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.6;
+  background: -webkit-gradient(linear, right bottom, left top, from(#bc519e), to(#3d6098));
+  background: linear-gradient(to left top, #bc519e, #3d6098);
   z-index: 1;
-  margin: 0px;
-  color: #E62C33;
-  font-size: 50px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
 }
 
-.tutorial-name .heading-inner-container h2 {
-  position: relative;
-  z-index: 1;
-  margin: 0px 0px 15px 0px;
-  color: #404040;
-  font-size: 20px;
-  font-weight: 100;
+.tutorial-name .subtitle {
+  display: inline-block;
+  background-color: #eee;
 }
 
-.tutorial-name .heading-inner-container h2 a {
+.tutorial-name .subtitle h2 {
+  position: relative;
+  z-index: 2;
+  padding: 20px 10px 20px 10px;
+  margin: 0px 0px 0px 0px;
+  color: #bfbfbf;
+  font-size: 22px;
+  font-weight: 800;
+  display: inline-block;
+}
+
+.tutorial-name .subtitle h2 a {
   color: #404040;
   text-decoration: none;
 }
 
+.tutorial-name .subtitle h2 a:hover {
+  color: #FFF;
+}
+
+.tutorial-name .subtitle h2:first-child {
+  padding-left: 75px;
+  font-size: 26px;
+}
+
+.tutorial-name .subtitle h2:last-child {
+  padding-right: 40px;
+}
+
+.tutorial-name .heading-inner-container {
+  position: relative;
+  z-index: 2;
+}
+
+.tutorial-name .heading-inner-container h1 {
+  padding: 20px 40px 20px 75px;
+  background-color: #eee;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  margin: 0px;
+  color: #E62C33;
+  font-size: 40px;
+  font-weight: 400;
+}
+
 .tutorial-container {
-  padding: 75px;
+  padding: 100px 75px;
+}
+
+@media (max-width: 991px) {
+  .tutorial-container {
+    padding: 50px 30px;
+  }
 }
 
 .tutorial-container .tutorial-description {

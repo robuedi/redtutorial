@@ -14,10 +14,10 @@
          container: document.getElementById('upload-container'),
          max_file_size : '30mb',
 
-         url : site_url + '/admin/media-library/upload',
+         url : site_url + '/'+ admin_url +'/media-library/upload',
 
-         flash_swf_url : 'admin/js/libs/plugin/plupload/Moxie.swf',
-         silverlight_xap_url : 'admin/js/libs/plugin/plupload/Moxie.xap',
+         flash_swf_url : admin_url+'/js/libs/plugin/plupload/Moxie.swf',
+         silverlight_xap_url : admin_url+'/js/libs/plugin/plupload/Moxie.xap',
          filters : [
              {title : "Image files", extensions : "jpg,gif,png"},
              {title : "Documents", extensions : "pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar,7z,txt,rtf"}

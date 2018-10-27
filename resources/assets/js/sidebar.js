@@ -105,4 +105,11 @@ window.onload = function(){
     };
 
     sidebar_navigation.init();
+
+
+    //sidebar mobile
+    $('.trigger-sidebar').on('click', function () {
+        $('#left_menu').toggleClass('sidebar-show');
+        $(this).toggleClass('trigger-open');
+    })
 }

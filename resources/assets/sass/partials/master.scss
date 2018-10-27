@@ -5,14 +5,22 @@ body {
 
   main {
 
-    @include main-left-margin();
     overflow: hidden;
     background-color: #FFF;
     min-height: 100vh;
     box-sizing: border-box;
+    margin-left: $sidebar-lg;
+
+    @media (min-width: $screen-xl) {
+      margin-left: $sidebar-xl;
+    }
 
     .right-container{
       padding: 75px;
+    }
+
+    @media (max-width: $screen-md-max) {
+      margin-left: 0;
     }
   }
 

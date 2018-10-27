@@ -8,22 +8,37 @@
     margin: 0px;
     background-size: cover;
     background-repeat: no-repeat;
-    //border-bottom: 1px dashed #ddd;
+    position: relative;
+
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0.6;
+      background: -webkit-linear-gradient(left top,  #bc519e, #3d6098);
+      background: -o-linear-gradient(left top,  #bc519e, #3d6098);
+      background: -moz-linear-gradient(left top,  #bc519e, #3d6098);
+      background: linear-gradient(to left top , #bc519e, #3d6098);
+      z-index: 1;
+    }
 
     h1{
-      background-color: rgba(255, 255, 255, 0.4);
+      position: relative;
+      z-index: 2;
+      background-color: $brand-second;
       padding: 20px 20px 20px 75px;
       margin: 0;
       display: inline-block;
-      color: $brand-primary;
-      font-size: 50px;
-      font-weight: 400;
-      letter-spacing: 0.5px;
+
+      @include main-page-header()
     }
   }
 
   .content {
-    padding: 75px;
+    @include container-sizing();
 
     .feedback{
       width: 450px;

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=yes">
     <link rel="icon" href="{{URL::to('/assets/_admin/')}}/img/favicon/red-tutorial.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets')}}/css/lib/bootstrap4.0.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets')}}/css/admin-login.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{URL::to('/assets')}}/css/admin_login.css">
 </head>
 <body id="admin_authentication" >
 

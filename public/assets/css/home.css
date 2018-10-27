@@ -10,51 +10,169 @@
 #fafafa
 */
 
+a:hover {
+  color: #E62C33;
+}
+
 .home-container {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   height: 100vh;
   min-height: 650px;
   width: 100%;
-  background-image: url("/assets/img/adventure-altitude-asphalt-371578_white.jpg");
-  background-size: cover;
   position: relative;
   overflow: auto;
+  background: -webkit-gradient(linear, right bottom, left top, from(#bc519e), to(#3d6098));
+  background: linear-gradient(to left top, #bc519e, #3d6098);
 }
 
 .home-container .page-title {
-  font-weight: lighter;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   color: #E62C33;
-  margin: 100px 75px 100px 0px;
-  padding: 30px 75px 30px 75px;
-  background-color: rgba(255, 255, 255, 0.6);
+  font-weight: lighter;
+  background-color: #eee;
+  margin: 75px 75px 0px 0px;
+  padding: 30px 75px;
   display: inline-block;
+  max-width: 100%;
+}
+
+@media (max-width: 991px) {
+  .home-container .page-title {
+    padding: 20px 55px;
+  }
 }
 
 .home-container .page-title h1 {
   margin: 0;
+  color: #E62C33;
+  font-size: 40px;
   font-weight: 400;
-  font-size: 50px;
-  font-family: "PT Sans", sans-serif;
 }
 
 .home-container .page-content {
-  color: #FFF;
-  padding: 30px 75px 0px 0px;
   font-size: 18px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 100px 75px;
 }
 
-.home-container .page-content .page-inner-container {
-  background-color: rgba(255, 255, 255, 0.6);
-  padding: 30px 75px 30px 75px;
+.home-container .page-content::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  content: "";
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 350px;
+          flex: 0 0 350px;
+  max-width: 100%;
+}
+
+@media (max-width: 991px) {
+  .home-container .page-content {
+    padding: 50px 30px;
+  }
+}
+
+.home-container .page-content .course-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 350px;
+          flex: 0 0 350px;
   color: #000;
-  font-size: 22px;
-  line-height: 1.2;
+  min-height: 200px;
+  position: relative;
+  border: 1px dashed #eee;
+  margin-bottom: 40px;
+  max-width: 100%;
 }
 
-.home-container .page-content .page-inner-container .txt-description {
+.home-container .page-content .course-item .inner-container {
+  padding: 30px;
+  overflow: auto;
+}
+
+.home-container .page-content .course-item .inner-container h2 {
+  font-size: 28px;
+  color: #FFF;
+  margin: 0 0 20px;
+}
+
+.home-container .page-content .course-item .inner-container .txt-content {
+  margin-bottom: 25px;
+}
+
+.home-container .page-content .course-item .inner-container .txt-content p {
+  font-size: 20px;
+  color: #FFF;
   margin: 0;
+  line-height: 1.5;
+}
+
+.home-container .page-content .course-item .inner-container a {
+  font-family: "PT Sans", sans-serif;
+  letter-spacing: 1px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #2a2a2a;
+  padding: 5px 10px;
+  float: right;
+  font-weight: 800;
+  text-decoration: none;
+  line-height: 25px;
+  vertical-align: center;
+}
+
+.home-container .page-content .course-item .inner-container a span {
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.home-container .page-content .course-item .inner-container a i {
+  font-size: 24px;
+  color: #2d2d2d;
+  height: 24px;
+  width: 24px;
+  position: relative;
+}
+
+.home-container .page-content .course-item .inner-container a i:after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top: 1px;
+  bottom: 1px;
+  background-color: #FFF;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.home-container .page-content .course-item .inner-container a i:before {
+  position: relative;
+  z-index: 1;
+}
+
+.home-container .page-content .course-item .inner-container a:hover,
+.home-container .page-content .course-item .inner-container a:focus {
+  background-color: #E62C33;
+  color: #fff;
+}
+
+.home-container .page-content .course-item .inner-container a:hover i:before,
+.home-container .page-content .course-item .inner-container a:focus i:before {
+  color: #FFF;
+}
+
+.home-container .page-content .course-item .inner-container a:hover i:after,
+.home-container .page-content .course-item .inner-container a:focus i:after {
+  background-color: #E62C33;
 }
 

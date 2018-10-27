@@ -70,6 +70,8 @@
     </script>
     <script >
         var site_url = "{{ url('') }}";
+        var admin_url = "{{ config('app.admin_route') }}";
+
         $(function () {
             //set unique ids to jarvis in order to remember the colors
             var path_name_jarvis = window.location.pathname;

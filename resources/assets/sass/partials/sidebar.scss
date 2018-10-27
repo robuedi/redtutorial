@@ -8,10 +8,29 @@
   background: $brand-dark;
   position: fixed;
   height: 100%;
+  top: 0;
   left: 0;
   box-sizing: border-box;
-  border-right: 1px dashed #ddd;
-  @include sidebar-width();
+  width: $sidebar-lg;
+  transition: left 1s;
+  z-index: 50;
+
+  @media (min-width: $screen-xl) {
+    width: $sidebar-xl;
+  }
+
+  @media (max-width: $screen-md-max) {
+    left: -$sidebar-lg;
+
+    .logo-txt{
+      display: none;
+    }
+
+    &.sidebar-show{
+      left: 0;
+    }
+
+  }
 
   .logo-container {
     float: right;
@@ -173,3 +192,70 @@
   }
 }
 
+.mobile-nav {
+  padding:10px;
+  display: none;
+  background-color: $brand-second;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+
+  @media (max-width: $screen-md-max) {
+    display: block;
+  }
+
+  .logo-txt {
+    margin: 0;
+    display: inline-block;
+
+    .red{
+      font-size: 25px;
+    }
+
+    .tutorial {
+      font-size: 14px;
+    }
+  }
+
+  .trigger-sidebar {
+    display: inline-block;
+    float: right;
+    height: 40px;
+    width: 65px;
+    border-radius: 7px;
+    background-color: $brand-second;
+    position: relative;
+    box-sizing: border-box;
+    border: none;
+
+    &:before, &:after{
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 30px;
+      background-color: $brand-primary;
+      left: 17px;
+      top: 15px;
+      transition: transform .5s;
+    }
+
+    &:after {
+      top: 24px;
+    }
+
+    &.trigger-open{
+      &:before {
+        top: 20px;
+        transform: rotate(45deg);
+      }
+      &:after {
+        top: 20px;
+        transform: rotate(-45deg);
+      }
+    }
+
+  }
+
+}

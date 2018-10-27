@@ -15,10 +15,12 @@
 @section('content')
 
     <section class="tutorial-name" style='background-image: url("/assets/img/php-elephant.jpg")'>
-        <div class="heading-inner-container">
+        <div class="subtitle">
             <h2>
                 <a href="/tutorial/{{$chapter->course_slug}}">{{$chapter->course_name}}</a>
             </h2>
+        </div>
+        <div class="heading-inner-container">
             <h1>{{$chapter->chapter_name}}</h1>
         </div>
     </section>
