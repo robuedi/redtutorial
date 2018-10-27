@@ -7,7 +7,6 @@
 @section('title') Contact Us @parent @stop
 
 @section('stylesheets')
-    <link rel="stylesheet" type="text/css" href="/assets/css/contact_us.css">
 @stop
 
 @section('scripts')

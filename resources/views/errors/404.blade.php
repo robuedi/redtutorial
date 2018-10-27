@@ -7,7 +7,6 @@
 @section('title') 404 Page not found @parent @stop
 
 @section('stylesheets')
-    <link rel="stylesheet" type="text/css" href="/assets/css/error_page.css">
 @stop
 
 @section('scripts')

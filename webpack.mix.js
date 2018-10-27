@@ -14,12 +14,7 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'assets/js/')
     .js('resources/assets/js/sidebar.js', 'assets/js/')
     .js('resources/assets/js/feedback_message.js', 'assets/js/')
-    .sass('resources/assets/sass/app.scss', 'assets/css/')
-    .sass('resources/assets/sass/pages/home.scss', 'assets/css/')
-    .sass('resources/assets/sass/pages/admin_login.scss', 'assets/css/')
-    .sass('resources/assets/sass/pages/error_page.scss', 'assets/css/')
-    .sass('resources/assets/sass/pages/static_page.scss', 'assets/css/')
-    .sass('resources/assets/sass/pages/contact_us.scss', 'assets/css/');
+    .sass('resources/assets/sass/app.scss', 'assets/css/');
 
 //model
 // mix.js('resources/assets/js/app.js', 'dist/')

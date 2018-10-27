@@ -3,6 +3,10 @@ body {
   margin: 0;
   padding: 0;
 
+  &.fixed-body {
+    position: fixed;
+  }
+
   main {
 
     overflow: hidden;
@@ -24,4 +28,7 @@ body {
     }
   }
 
+}
+textarea:focus, input:focus, button:focus{
+  outline: none;
 }

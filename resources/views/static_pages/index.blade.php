@@ -7,7 +7,6 @@
 @section('title') {{$page->head_title}} @parent @stop
 
 @section('stylesheets')
-    <link rel="stylesheet" type="text/css" href="/assets/css/static_page.css">
 @stop
 
 @section('scripts')

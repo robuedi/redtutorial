@@ -7,7 +7,6 @@
 @section('title') Home @parent @stop
 
 @section('stylesheets')
-    <link rel="stylesheet" type="text/css" href="/assets/css/maintenance.css">
 @stop
 
 @section('content')

@@ -1,11 +1,6 @@
 {
     "/assets/js/app.js": "/assets/js/app.js",
     "/assets/css/app.css": "/assets/css/app.css",
-    "/assets/css/home.css": "/assets/css/home.css",
-    "/assets/css/admin_login.css": "/assets/css/admin_login.css",
-    "/assets/css/error_page.css": "/assets/css/error_page.css",
-    "/assets/css/static_page.css": "/assets/css/static_page.css",
-    "/assets/css/contact_us.css": "/assets/css/contact_us.css",
     "/assets/js/sidebar.js": "/assets/js/sidebar.js",
     "/assets/js/feedback_message.js": "/assets/js/feedback_message.js"
 }

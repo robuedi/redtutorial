@@ -7,7 +7,6 @@
 @section('title') Home @parent @stop
 
 @section('stylesheets')
-    <link rel="stylesheet" type="text/css" href="/assets/css/home.css">
 @stop
 
 @section('content')
@@ -29,7 +28,7 @@
                         </p>
                     </div>
                     <a href="/tutorial/{{$course->slug}}">
-                        <span>More</span> <i class="fas fa-chevron-circle-right"></i>
+                        <span>See more</span> <i class="fas fa-chevron-circle-right"></i>
                     </a>
                 </div>
             </div>

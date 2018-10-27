@@ -1,5 +1,3 @@
-@import "../app";
-
 .contact-us-page-content {
   font-family: $font-family;
 
@@ -33,7 +31,8 @@
       margin: 0;
       display: inline-block;
 
-      @include main-page-header()
+      @include main-page-header();
+      @include main-page-header-left-padding();
     }
   }
 
@@ -70,6 +69,7 @@
       }
 
       input {
+        border-radius: 0;
         height: 25px;
 
         &.verification-input{

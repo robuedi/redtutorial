@@ -14,34 +14,21 @@
         <meta name="author" content="{{config('app.name')}}">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#E62C33">
-        {{--<link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap-grid.min.css">--}}
-        {{--<link rel="stylesheet" type="text/css" href="/assets/css/lib/bootstrap.min.css">--}}
+
+        <meta name="theme-color" content="#e62c33">
+
         <link rel="icon" href="/assets/img/red-tutorial.ico">
-        <link rel="stylesheet" type="text/css" href="/assets/css/lib/normalize8.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
-        <link rel="stylesheet" type="text/css" href="/assets/js/libs/cookieBar/cookieBar.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/app.min.css">
 
         @yield('stylesheets')
 
         <!-- Main Font -->
-        <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-
-
-        <!--[if lt IE 9]>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-        <![endif]-->
-
-        <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script>
-            if (!window.jQuery) {
-                document.write('<script src="/assets/js/libs/jquery-3.3.1.min.js"><\/script>');
-            }
-        </script>
+        {{--<!--[if lt IE 9]>--}}
+        {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>--}}
+        {{--<![endif]-->--}}
 
         <script>
             var site_url = "{{ url('') }}";
@@ -69,14 +56,17 @@
             This website uses cookies to improve user experience. By using this website you consent to all cookies in accordance with our Cookie Policy.
         </aside>
 
-        <!-- JS Plugins -->
-        <script src="/assets/js/libs/cookieBar/jquery.cookieBar.min.js"></script>
-        <script></script>
+        <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            if (!window.jQuery) {
+                document.write('<script src="/assets/js/libs/jquery-3.3.1.min.js"><\/script>');
+            }
+        </script>
 
-        <!-- Custom JS -->
-        <script src="/assets/js/cookie_bar.js"></script>
-        <script src="/assets/js/sidebar.js"></script>
-        <script src="/assets/js/feedback_message.js"></script>
+        <!-- JS -->
+        <script src="/assets/js/scripts.min.js"></script>
+
         @yield('scripts')
 
     </body>

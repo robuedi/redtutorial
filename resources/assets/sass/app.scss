@@ -2,23 +2,25 @@
 @import "base/variables";
 @import "base/mixin";
 
-// Bootstrap
-//@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+//Normalize
+@import "libs/normalize8.scss";
+@import "libs/cookieBar.scss";
 
-//Master & Sidebar
-@import "partials/buttons";
+//Layout
+@import "layout/buttons";
+@import "layout/elements";
+
+//Partials
 @import "partials/master";
+@import "partials/header";
 @import "partials/sidebar";
-@import "partials/elements";
 
+//Pages
+@import "pages/admin_login";
+@import "pages/contact_us";
+@import "pages/error_page";
+@import "pages/home";
+@import "pages/static_page";
 @import "pages/tutorials";
 
-textarea:focus, input:focus, button:focus{
-  outline: none;
-}
-
-@font-face {
-  font-family: 'BOLDFONT';
-  src: url(/fonts/Pacifi-Serif-Bold.ttf) format("ttf");
-}
 

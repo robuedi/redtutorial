@@ -1,5 +1,4 @@
 
-
 @mixin container-sizing() {
   padding: 100px 75px;
 
@@ -12,6 +11,15 @@
   color: $brand-primary;
   font-size: 40px;
   font-weight: 400;
+}
+
+@mixin main-page-header-left-padding(){
+  padding-left: 75px;
+
+  @media (max-width: $screen-md-max) {
+    padding: 20px 50px;
+  }
+
 }
 
 a {
