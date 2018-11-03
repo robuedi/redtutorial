@@ -9,6 +9,24 @@
 @stop
 
 @section('scripts')
+    <script>
+        $('[data-courses-filter]').select2({
+            searchInputPlaceholder: 'Please select',
+            allowClear: true,
+            width: 'resolve',
+            dropdownAutoWidth: true,
+            data: {
+                results: JSON.parse($('[data-curses-hierarchy]').attr('data-curses-hierarchy')),
+                text: "name"
+            },
+            formatSelection: function(item) {
+                return item.name
+            },
+            formatResult: function(item) {
+                return item.name
+            }
+        });
+    </script>
 @stop
 
 @section('stylesheets')
@@ -56,6 +74,15 @@
                                                 </div>
                                             </div>
 
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label >Course </label>
+                                                    <input name="course" class="display-block" data-courses-filter type="hidden"  data-placeholder="@lang('admin_general.select_placeholder')" value="{{Request::input('course')}}">
+                                                    <span class="hidden" data-curses-hierarchy='{!! $curses_hierarchy !!}' ></span>
+                                                </div>
+                                            </div>
+
+
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label>Is Active</label>
@@ -74,18 +101,6 @@
                                                         <option value=""></option>
                                                         <option value="1" @if(Illuminate\Support\Facades\Input::get('is_draft') == "1") selected @endif>YES</option>
                                                         <option value="0" @if(Illuminate\Support\Facades\Input::get('is_draft') == "0") selected @endif>NO</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label>Levels</label>
-                                                    <select name="level" class="select2" data-placeholder="Please select" style="width: 100%">
-                                                        <option value=""></option>
-                                                        @foreach($levels as $level)
-                                                            <option value="{{$level}}" @if(Illuminate\Support\Facades\Input::get('level') == $level) selected @endif>{{$level}}</option>
-                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -130,13 +145,13 @@
                                     <table class="table table-striped table-bordered table-listing table-hover smart-form ">
                                         <thead>
                                         <tr>
-                                            <th><a class="{{ $listing->sortDir("name") }}" href="{{ $listing->sortLink("name") }}"><span>Name</span></a></th>
-                                            <th style="width: 100px"><a class="{{ $listing->sortDir("is_public") }}" href="{{ $listing->sortLink("is_public") }}"><span>Is Active</span></a></th>
-                                            <th style="width: 100px"><a class="{{ $listing->sortDir("is_draft") }}" href="{{ $listing->sortLink("is_draft") }}"><span>Is Draft</span></a></th>
-                                            <th style="width: 100px"><a class="{{ $listing->sortDir("order_weight") }}" href="{{ $listing->sortLink("order_weight") }}"><span>Order Weight</span></a></th>
-                                            <th style="width: 100px"><a class="{{ $listing->sortDir("level") }}" href="{{ $listing->sortLink("level") }}"><span>Level</span></a></th>
-                                            <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>Date Created</span></a></th>
-                                            <th style="width:200px"><a class="{{ $listing->sortDir("updated_at") }}" href="{{ $listing->sortLink("updated_at") }}"><span>Date Updated</span></a></th>
+                                            <th style="width: 100px"><a class="{{ $listing->sortDir("c.name") }}" href="{{ $listing->sortLink("c.name") }}"><span>Course</span></a></th>
+                                            <th><a class="{{ $listing->sortDir("co.name") }}" href="{{ $listing->sortLink("co.name") }}"><span>Name</span></a></th>
+                                            <th style="width: 100px"><a class="{{ $listing->sortDir("co.is_public") }}" href="{{ $listing->sortLink("co.is_public") }}"><span>Is Active</span></a></th>
+                                            <th style="width: 100px"><a class="{{ $listing->sortDir("co.is_draft") }}" href="{{ $listing->sortLink("co.is_draft") }}"><span>Is Draft</span></a></th>
+                                            <th style="width: 100px"><a class="{{ $listing->sortDir("co.order_weight") }}" href="{{ $listing->sortLink("co.order_weight") }}"><span>Order Weight</span></a></th>
+                                            <th style="width:200px"><a class="{{ $listing->sortDir("co.created_at") }}" href="{{ $listing->sortLink("co.created_at") }}"><span>Date Created</span></a></th>
+                                            <th style="width:200px"><a class="{{ $listing->sortDir("co.updated_at") }}" href="{{ $listing->sortLink("co.updated_at") }}"><span>Date Updated</span></a></th>
                                             <th style="width:120px; text-align:center"><span>Actions</span></th>
                                         </tr>
                                         </thead>
@@ -144,12 +159,11 @@
                                         <?php $results_arr = $results->items() ?>
                                         @foreach($results_arr as $r)
                                             <tr>
-
-                                                <td>{{ $r->name }}</td>
+                                                <td>{{ $r->course_name }}</td>
+                                                <td><strong>{{ $r->name }}</strong></td>
                                                 <td><span class="label {{ $r->is_public ? 'label-success': 'label-info' }}">{{ $r->is_public ? 'YES': 'NO' }}</span></td>
                                                 <td><span class="label {{ $r->is_draft ? 'label-success': 'label-info' }}">{{ $r->is_draft ? 'YES': 'NO' }}</span></td>
                                                 <td>{{ $r->order_weight }}</td>
-                                                <td>{{ $r->level }}</td>
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>
                                                 <td class="format-momentjs">{{ $r->updated_at }}</td>
                                                 <td style="text-align:center;">

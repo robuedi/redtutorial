@@ -1,6 +1,6 @@
 <aside id="left_menu" >
     <div class="logo-container">
-        <a href="{{url('')}}" class="logo-txt">
+        <a href="/" class="logo-txt">
             <span class="red">RED</span>
             <span class="tutorial">Tutorial</span>
         </a>
@@ -8,31 +8,61 @@
     <nav>
 
         <ul data-sidebar-nav class="root-list">
-            @foreach($hierarchy_list as $key => $list_item)
+            @foreach($menu as $course)
 
-                <li class="list-item @if(url()->current() === url('/tutorial/'.$list_item['url_path'])) active @endif" data-list-item @if((int)$list_item['parent_id'] === 0) data-root-list @endif data-check="{{(int)$list_item['has_children']}}" >
+                <li class="course-level @if(url()->current() === url('/tutorial/'.$course->slug)) active {{\App\Libraries\MenuClient::setActiveCourse()}} @endif">
                     <span class="item-label">
-                        <a href="/tutorial/{{$list_item['url_path']}}">{{$list_item['clear_name']}}</a>
-                        @if((int)$list_item['has_children'] > 0)
-                            <span class="open-symbol">
-                                <i></i>
-                                <i></i>
-                            </span>
+                        <a href="/tutorial/{{$course->slug}}">{{$course->name}}</a>
+
+                        @if(isset($course->chapters))
+                        <span class="open-symbol">
+                            <i></i>
+                            <i></i>
+                        </span>
                         @endif
                     </span>
 
-                @if((int)$list_item['has_children'] > 0)
-                    {{\App\Libraries\MenuClient::setChildrenCounter((int)$list_item['has_children']+1)}}
-                    <ul data-list-inner class="@if($hierarchy_list[$key+1]['type'] === 'lesson') list-display-roman @endif" >
-                @else
+                    @if(isset($course->chapters))
+                        <ul class="chapters-list">
+                            @foreach($course->chapters as $chapter)
+                            <li class="chapter-level @if(url()->current() === url('/tutorial/'.$course->slug.'/'.$chapter->slug)) active {{\App\Libraries\MenuClient::setActiveCourse()}} @endif">
+                                <span class="item-label" >
+                                    <a href="/tutorial/{{$course->slug}}/{{$chapter->slug}}">{{$chapter->name}}</a>
+
+                                    @if(isset($chapter->lessons))
+                                        <span class="open-symbol">
+                                            <i></i>
+                                            <i></i>
+                                        </span>
+                                    @endif
+                                </span>
+
+                                @if(isset($chapter->lessons))
+
+                                    <ul class="lessons-list">
+                                        @foreach($chapter->lessons as $lesson)
+                                            <li class="lesson-level @if(url()->current() === url('/tutorial/'.$course->slug.'/'.$chapter->slug.'/'.$lesson->slug)) active {{\App\Libraries\MenuClient::setActiveCourse()}} @endif">
+                                                <span class="item-label">
+                                                     <a href="/tutorial/{{$course->slug}}/{{$chapter->slug}}/{{$lesson->slug}}">{{$lesson->name}}</a>
+                                                </span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+
+                                @endif
+
+                            </li>
+                            @endforeach
+                        </ul>
+                    @endif
+
+                </li>
+
+                @if(\App\Libraries\MenuClient::checkActiveCourse())
+                    <li class="see-other-courses">
+                        <button class="see-btn">See other courses</button>
                     </li>
                 @endif
-
-                {{\App\Libraries\MenuClient::countChildren()}}
-                @for ($i = 0; $i < \App\Libraries\MenuClient::getEndingsNeeded(); $i++)
-                        </ul>
-                    </li>
-                @endfor
 
             @endforeach
 

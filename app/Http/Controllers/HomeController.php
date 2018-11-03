@@ -18,7 +18,7 @@ class HomeController extends Controller
 
         $courses = Course::where('is_public', 1)
                     ->whereNull('parent_id')
-                    ->select('name', 'slug')
+                    ->select('name', 'slug', 'description')
                     ->get();
 
         $meta['keywords'] = 'PHP, SQL, JavaScript, design patterns, SOLID principles';

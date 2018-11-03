@@ -37,10 +37,10 @@
 
     <body>
 
-        @include('_partials.sidebar', array('hierarchy_list' => App\Libraries\MenuClient::getMenu(), 'static_pages' => \App\Libraries\MenuClientStatic::getStaticMenu()))
+        @include('_partials.sidebar', array('menu' => App\Libraries\MenuClient::getMenu(isset($course_id) ? $course_id : null), 'static_pages' => \App\Libraries\MenuClientStatic::getStaticMenu()))
 
         <aside class="mobile-nav">
-            <a href="{{url('')}}" class="logo-txt">
+            <a href="/" class="logo-txt">
                 <span class="red">RED</span>
                 <span class="tutorial">Tutorial</span>
             </a>

@@ -12,7 +12,7 @@
   left: 0;
   box-sizing: border-box;
   width: $sidebar-lg;
-  transition: left 1s;
+  transition: left .5s;
   z-index: 50;
 
   @media (min-width: $screen-xl) {
@@ -22,8 +22,12 @@
   @media (max-width: $screen-md-max) {
     left: -$sidebar-lg;
 
-    .logo-txt{
+    .logo-container{
       display: none;
+    }
+
+    nav {
+      margin-top: 70px;
     }
 
     &.sidebar-show{
@@ -46,124 +50,152 @@
     padding-left: 20px;
     clear: both;
 
-    ul {
+
+    ul.root-list{
+      letter-spacing: 1.5px;
       text-align: right;
       list-style: none;
-      letter-spacing: 1.5px;
-      padding: 0;
-      margin-bottom: 0px;
-      margin-top: 0px;
 
-      .list-display-roman {
-        list-style-type: upper-roman;
-        direction: rtl;
-      }
 
       li {
-        line-height: 1.4;
-        font-size: 14px;
-        margin-bottom: 5px;
+        color: $text-color-sidebar;
 
-        > .item-label {
-          position: relative;
+        &.see-other-courses {
+          border-top: 1px dashed #CCC;
+          margin-bottom: 10px;
+          font-size: 17px;
+          padding-top: 40px;
+          margin-top: 40px;
 
-          > a {
-            text-decoration: none;
-            color: $text-color-sidebar;
+          ~ li {
+            display: none;
           }
 
-          &:hover {
-            color: $brand-primary;
+          &.active-see {
+            ~ li {
 
-            > a {
+              display: block;
+
+            }
+
+            .see-btn{
               color: $brand-primary;
             }
           }
-        }
 
-
-        ul {
-          display: none;
+          .see-btn {
+            cursor: pointer;
+            background: none;
+            border: none;
+          }
         }
 
         &.active {
           > .item-label {
-            > a, > i.fas{
-              color: $brand-primary;
+            color: $brand-primary;
+
+            .open-symbol i {
+              background-color: $brand-primary;
+            }
+
+          }
+        }
+
+        &.course-level{
+          margin-bottom: 22px;
+          font-size: 17px;
+
+
+          > .chapters-list {
+            display: none;
+            list-style: none;
+
+            li.chapter-level {
+              > .lessons-list{
+                display: none;
+                list-style: none;
+              }
+
+              &.active .lessons-list {
+                display: block;
+              }
+
             }
           }
 
-          > ul {
+          &.active > .chapters-list {
             display: block;
+          }
+        }
+
+        > .item-label {
+          position: relative;
+
+          a{
+            text-decoration: none;
+            color: inherit;
+          }
+
+          .open-symbol {
+            display: inline-block;
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+
+            i {
+              content: "";
+              width: 15px;
+              height: 2px;
+              background-color: $text-color-sidebar;
+              display: inline-block;
+              position: absolute;
+              cursor: pointer;
+              transition: transform .5s;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              margin: auto;
+
+              &:first-child{
+                transform: rotate(90deg);
+              }
+            }
+          }
+        }
+
+        &.active > .item-label > .open-symbol i:first-child{
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    ul.pages-links {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px dashed #CCC;
+      text-transform: uppercase;
+      text-align: right;
+      list-style: none;
+      letter-spacing: 1.5px;
+
+      li {
+        margin-bottom: 12px;
+        font-size: 16px;
+        line-height: 1.4;
+
+        a {
+          text-decoration: none;
+          color: $text-color-sidebar;
+          &.active  {
+            color: $brand-primary;
           }
         }
       }
     }
-
-    ul.root-list {
-      > li{
-        margin-bottom: 22px;
-        text-transform: uppercase;
-        font-size: 18px;
-      }
-    }
-  }
-
-  .pages-links {
-    padding-top: 50px;
-    border-top: 1px dashed #CCC;
-    text-transform: uppercase;
-
-    li {
-      margin-bottom: 12px;
-      font-size: 16px;
-
-      a {
-        text-decoration: none;
-        color: $text-color-sidebar;
-
-        &:hover, &.active {
-          color: $brand-primary;
-        }
-      }
-    }
-  }
-
-}
-
-.list-item {
-  > .item-label > .open-symbol {
-    display: inline-block;
-    position: absolute;
-    right: -25px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 15px;
-    height: 15px;
-
-    i {
-      content: "";
-      width: 15px;
-      height: 2px;
-      background: $text-color-sidebar;
-      display: inline-block;
-      position: absolute;
-      cursor: pointer;
-      transition: transform .5s;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      margin: auto;
-
-      &:first-child{
-        transform: rotate(90deg);
-      }
-    }
-  }
-
-  &.active > .item-label > .open-symbol i:first-child{
-    transform: rotate(180deg);
   }
 }
 
@@ -193,10 +225,10 @@
 }
 
 .mobile-nav {
-  padding:10px;
+  padding:5px;
   display: none;
-  background-color: $brand-second;
-  position: relative;
+  background-color: rgba($brand-second, 0.9);
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -211,11 +243,11 @@
     display: inline-block;
 
     .red{
-      font-size: 25px;
+      font-size: 22px;
     }
 
     .tutorial {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 
@@ -225,7 +257,7 @@
     height: 40px;
     width: 65px;
     border-radius: 7px;
-    background-color: $brand-second;
+    background-color: initial;
     position: relative;
     box-sizing: border-box;
     border: none;
@@ -255,7 +287,5 @@
         transform: rotate(-45deg);
       }
     }
-
   }
-
 }

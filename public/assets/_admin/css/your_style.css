@@ -123,3 +123,7 @@ button.btn.btn-lg, a.btn.btn-lg {
     box-shadow: none;
      color: #FFF;
 }
+
+.display-block {
+    display: block !important;
+}

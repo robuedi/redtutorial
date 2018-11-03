@@ -1,10 +1,8 @@
 .home-container {
   box-sizing: border-box;
-  height: 100vh;
-  min-height: 650px;
+  min-height: 100vh;
   width: 100%;
   position: relative;
-  overflow: auto;
   background: -webkit-linear-gradient(left top,  #bc519e, #3d6098);
   background: -o-linear-gradient(left top,  #bc519e, #3d6098);
   background: -moz-linear-gradient(left top,  #bc519e, #3d6098);
@@ -48,96 +46,93 @@
     @include container-sizing();
 
     .course-item {
-      flex: 0 0 350px;
+      flex: 0 0 300px;
       color: $text-color;
       min-height: 200px;
       position: relative;
       border: 1px dashed #eee;
       margin-bottom: 40px;
       max-width: 100%;
+      padding: 30px 30px 60px;
+      overflow: auto;
 
-      .inner-container {
-        padding: 30px;
-        overflow: auto;
-
-        h2{
-            font-size: 28px;
-            color: #FFF;
-            margin: 0 0 20px ;
-          }
-
-        .txt-content{
-          margin-bottom: 25px;
-
-          p {
-            font-size: 20px;
-            color: #FFF;
-            margin: 0;
-            line-height: 1.5;
-          }
+      h2{
+          font-size: 28px;
+          color: #FFF;
+          margin: 0 0 20px ;
         }
 
-        a{
-            font-family: $font-family;
-            letter-spacing: 1px;
-            font-size: 20px;
-            cursor: pointer;
-            color: #2a2a2a;
-            padding: 5px 10px;
-            //background-color: rgba($brand-primary, 0.6);
-            float: right;
-            font-weight: 800;
-            text-decoration: none;
-            line-height: 25px;
-            vertical-align: center;
+      .txt-content{
+        margin-bottom: 25px;
+        line-height: 1.5;
+        font-size: 20px;
+        color: #FFF;
 
-            span{
-              display: inline-block;
-              padding-right: 5px;
+        p {
+          margin: 0;
+        }
+      }
+
+      a{
+          font-family: $font-family;
+          letter-spacing: 1px;
+          font-size: 20px;
+          cursor: pointer;
+          color: #2a2a2a;
+          padding: 5px 10px;
+          font-weight: 800;
+          text-decoration: none;
+          line-height: 25px;
+          vertical-align: middle;
+          position: absolute;
+          right: 30px;
+          bottom: 30px;
+
+          span{
+            display: inline-block;
+            padding-right: 5px;
+          }
+
+          i {
+            font-size: 24px;
+            color: #2d2d2d;
+            height: 24px;
+            width: 24px;
+            position: relative;
+
+            &:after{
+              content: "";
+              position: absolute;
+              left: 1px;
+              right: 1px;
+              top: 1px;
+              bottom: 1px;
+              background-color: #FFF;
+              border-radius: 50%;
+              z-index: 0;
             }
-
-            i {
-              font-size: 24px;
-              color: #2d2d2d;
-              height: 24px;
-              width: 24px;
+            &:before{
               position: relative;
-
-              &:after{
-                content: "";
-                position: absolute;
-                left: 1px;
-                right: 1px;
-                top: 1px;
-                bottom: 1px;
-                background-color: #FFF;
-                border-radius: 50%;
-                z-index: 0;
-              }
-              &:before{
-                position: relative;
-                z-index: 1;
-              }
+              z-index: 1;
             }
+          }
 
-            &:hover, &:focus {
-              background-color: $brand-primary ;
-              color: #fff;
+          &:hover, &:focus {
+            background-color: $brand-primary ;
+            color: #fff;
 
-              i{
-                &:before{
-                  color: #FFF ;
-                }
-                &:after{
-                  background-color: $brand-primary ;
-                }
+            i{
+              &:before{
+                color: #FFF ;
               }
-
+              &:after{
+                background-color: $brand-primary ;
+              }
             }
 
           }
 
-      }
+        }
 
     }
 

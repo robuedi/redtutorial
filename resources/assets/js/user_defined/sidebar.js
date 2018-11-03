@@ -6,101 +6,57 @@ window.onload = function(){
             //fetch DOM
             this.initDOM();
 
-            //init actions
-            this.activateItem();
+            //initial page loading
+            this.openParents();
 
-            //show active
-            this.initialOpenParents('');
+            //open/close action
+            this.openCloseAction();
+
+            //show/hide other courses
+            this.seeOtherCourses();
+
         },
         initDOM: function () {
-            this.container      = $('[data-sidebar-nav]');
-            this.mainListItems  = this.container.find('[data-sidebar-nav] > [data-list-item]');
-            this.listItems      = this.container.find('[data-list-item]');
-            this.listItemActive = this.listItems.filter('.active').eq(0);
-            this.listItemsLabel = this.listItems.find(' > .item-label');
+            this.container      = $('.root-list');
+            this.listItems      = this.container.find('li');
+            this.listItemsSym   = this.listItems.find('.open-symbol');
+            this.seeOtherourses = this.container.find('.see-other-courses');
+            // this.itemsLabel     = this.container.find('.item-label');
         },
-        activateItem: function(){
-            var that = this;
-            this.listItemsLabel.on('click', function(e){
+        openParents: function () {
+            //get active item
+            var activeItem = this.listItems.filter('.active');
 
-                //add active
-                var parent = $(this).closest('[data-list-item]');
+            //make parents active
+            if(activeItem.length > 0)
+            {
+                var parents = activeItem.parentsUntil('.root-list', 'li');
 
-                if($(parent).length > 0)
-                {
-                    if(parent.hasClass('active'))
-                    {
-                        //close list item
-                        that.closeAction(parent);
-                    }
-                    else
-                    {
-                        //open list item
-                        that.openAction(parent);
-                    }
-                }
+                parents.addClass('active');
+            }
+        },
+        openCloseAction: function () {
+            this.listItemsSym.on('click', function () {
+               var parent = $(this).closest('li');
+
+               //open/close
+               if(parent.hasClass('active'))
+               {
+                   parent.removeClass('active');
+               }
+               else
+               {
+                   parent.addClass('active');
+
+                   //close siblings
+                   parent.siblings().removeClass('active');
+               }
             });
         },
-        openAction: function (parent) {
-
-            //close others
-            //get main parent
-            if($(parent).is('[data-root-list]'))
-            {
-                var mainParent = parent;
-            }
-            else
-            {
-                var mainParent = parent.closest('[data-root-list]')
-            }
-
-            //close other parents and children
-            var that = this;
-            this.mainListItems.each(function () {
-                if(this !== mainParent)
-                {
-                    $(this).removeClass('active');
-                    this.closeChildren(this);
-                }
+        seeOtherCourses: function () {
+            this.seeOtherourses.on('click', function () {
+               $(this).toggleClass('active-see');
             });
-
-            //open parent
-            parent.addClass('active');
-        },
-        closeAction: function (parent) {
-
-            //close children
-            this.closeChildren(parent);
-
-            //close parent
-            $(parent).removeClass('active');
-        },
-        closeChildren: function (parent) {
-
-            //hide all children's lists
-            var innerChildren = parent.find('[data-list-item]');
-            innerChildren.each(function(){
-                $(this).removeClass('active');
-            });
-        },
-        initialOpenParents: function (activeList) {
-
-            //get parent
-            if(activeList.length === 0)
-            {
-                var parent = this.listItemActive.parents('[data-list-item]').eq(0);
-            }
-            else
-            {
-                var parent = activeList.parents('[data-list-item]').eq(0);
-            }
-
-            //active parent
-            if(parent.length > 0)
-            {
-                parent.addClass('active');
-                this.initialOpenParents(parent);
-            }
         }
     };
 
@@ -114,3 +70,4 @@ window.onload = function(){
         $('body').toggleClass('fixed-body');
     })
 }
+

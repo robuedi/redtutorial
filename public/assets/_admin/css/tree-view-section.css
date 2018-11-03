@@ -63,3 +63,8 @@
 .tree-label > .fa:first-child {
     -webkit-text-stroke: 1px #fafafa;
 }
+
+.tree .fa-plus,
+.tree .fa-minus {
+    display: none;
+}

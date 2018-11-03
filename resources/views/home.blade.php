@@ -23,9 +23,7 @@
                 <div class="inner-container" >
                     <h2 >{{$course->name}}</h2>
                     <div class="txt-content">
-                        <p>
-                            Curabitur viverra dui accumsan imperdiet luctus. Etiam arcu erat, suscipit at tortor quis, pretium efficitur tellus. Nam varius sem ac vulputate vehicula.
-                        </p>
+                        {!! $course->description !!}
                     </div>
                     <a href="/tutorial/{{$course->slug}}">
                         <span>See more</span> <i class="fas fa-chevron-circle-right"></i>

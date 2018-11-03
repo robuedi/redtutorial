@@ -25,7 +25,7 @@
                 // toolbar : 'deadsimple',
                 uiColor : '#F5F5F5',
                 allowedContent: true,
-                height: '700px',
+                height: '200px',
                 extraPlugins:'tab,codesnippet,imagebrowser',
                 codeSnippet_theme: 'monokai_sublime',
                 imageBrowser_listUrl: '/admin/media-library/ckeditor',
@@ -229,7 +229,7 @@
                         <div class="widget-body  ">
 
                             <div class="tab-content padding-10">
-                                <div class="tab-pane fade  @if($lesson->id) in active @endif curses-chapters-tree" data-curses-hierarchy-map='{!! $curses_hierarchy_map !!}' id="hr1">
+                                <div class="tab-pane fade  @if($lesson->id) in active @endif curses-chapters-tree" data-children-display="false" data-curses-hierarchy-map='{!! $curses_hierarchy_map !!}' id="hr1">
                                 </div>
                                 <div class="tab-pane fade  @if(!$lesson->id) in active @endif " id="hr2">
                                     <section class="smart-form">

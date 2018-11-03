@@ -72,6 +72,17 @@
                         <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
                         <h2>Details </h2>
 
+                        @if($course->id)
+                        <div class="widget-toolbar" role="menu">
+
+                            <div class="btn-group">
+                                <a href="{{url(config('app.admin_route').'/chapters?course='.$course->id)}}" class="btn btn-xs btn-success">
+                                    Chapters
+                                </a>
+                            </div>
+                        </div>
+                        @endif
+
                     </header>
 
                     <div role="content" >

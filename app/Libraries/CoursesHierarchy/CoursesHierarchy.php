@@ -31,6 +31,26 @@ class CoursesHierarchy extends Course implements ICoursesHierarchy
         $this->lessons = $lessons;
     }
 
+    public function setChapters($chapters){
+        $this->chapters = $chapters;
+    }
+
+    public function setCourses($courses){
+        $this->courses = $courses;
+    }
+
+    public function getLessons(){
+        return $this->lessons;
+    }
+
+    public function getChapters(){
+        return $this->chapters;
+    }
+
+    public function getCourses(){
+        return $this->courses;
+    }
+
     public function getHierarchyList() : array
     {
         $hierarchical_list = [];

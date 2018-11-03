@@ -25,27 +25,28 @@ class ChaptersController extends Controller
         // settings
         $query_data = array(
 
-            'fields' => "co.id, co.name, co.is_public, co.is_draft, co.level, co.created_at, co.updated_at, co.order_weight",
+            'fields' => "co.id, co.name, c.name as course_name, co.is_public, co.is_draft, co.created_at, co.updated_at, co.order_weight",
 
             'body' => "FROM courses co
-                        WHERE parent_id IS NOT NULL {filters}",
+                        INNER JOIN courses c ON co.parent_id = c.id
+                        WHERE co.parent_id IS NOT NULL {filters}",
 
             'filters' => array(
-                'name' => "AND name LIKE '%{name}%'",
-                'is_public' => "AND is_public = {is_public}",
-                'is_draft' => "AND is_draft = {is_draft}",
-                'level' => "AND level = {level}",
-                'slug' => "AND slug = '%{slug}%'"
+                'name' => "AND co.name LIKE '%{name}%'",
+                'is_public' => "AND co.is_public = {is_public}",
+                'is_draft' => "AND co.is_draft = {is_draft}",
+                'course' => "AND co.parent_id = {course}",
+                'slug' => "AND co.slug = '%{slug}%'"
             ),
 
             'sortables' => array(
-                'name'         => '',
-                'is_public'     => '',
-                'is_draft'      => '',
-                'level'         => '',
-                'created_at'    => '',
-                'updated_at'    => '',
-                'order_weight'  => 'asc'
+                'co.name'           => '',
+                'co.is_public'      => '',
+                'co.is_draft'       => '',
+                'co.created_at'     => '',
+                'co.updated_at'     => '',
+                'c.name'            => 'asc',
+                'co.order_weight'   => 'asc'
             )
         );
 
@@ -53,19 +54,17 @@ class ChaptersController extends Controller
         $listing = new Listing($query_data);
         $results = $listing->results();
 
-        //get chapters levels
-        $levels = Course::whereNotNull('parent_id')
-                        ->pluck('level');
-
-        $courses_chapters = Course::get();
-
-
+        //get hierarchy
+        //without chapters
+        $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
+        $hierarchy_item->setChapters([]);
+        $curses_hierarchy = $hierarchy_item->getHierarchyList();
 
         // display
         return View::make('_admin.chapters.index', array(
-            'results'   => $results,
-            'levels'    => $levels,
-            'listing'   => $listing
+            'curses_hierarchy'  => json_encode($curses_hierarchy),
+            'results'           => $results,
+            'listing'           => $listing
         ));
     }
 
@@ -79,14 +78,20 @@ class ChaptersController extends Controller
         //get current max order;
         $max_order_number = Course::whereNotNull('parent_id')
                             ->max('order_weight');
+
         $new_chapter->order_weight = (int)$max_order_number+1;
 
+        //get hierarchy
         $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
-        $curses_hierarchy = $hierarchy_item->getHierarchyList();
 
         //get map hierarchy
+        //add back chapters
         $hierarchy_item->setDefaultAdminLessons();
         $curses_hierarchy_map = $hierarchy_item->getHierarchyList();
+
+        //get input hierarchy
+        $hierarchy_item->setChapters([]);
+        $curses_hierarchy = $hierarchy_item->getHierarchyList();
 
         return View::make('_admin.chapters.create_edit', [
             'chapter'               => $new_chapter,
@@ -101,10 +106,14 @@ class ChaptersController extends Controller
 
         //get hierarchy
         $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
-        $curses_hierarchy = $hierarchy_item->getHierarchyList();
         $hierarchy_item->setDefaultAdminLessons();
         $hierarchy_item->setPointingID($id.'chapter');
         $curses_hierarchy_map = $hierarchy_item->getHierarchyList();
+
+
+        //get input hierarchy
+        $hierarchy_item->setChapters([]);
+        $curses_hierarchy = $hierarchy_item->getHierarchyList();
 
         return View::make('_admin.chapters.create_edit', [
             'chapter'               => $chapter,

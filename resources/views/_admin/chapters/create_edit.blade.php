@@ -171,7 +171,7 @@
                                                 </section>
 
                                                 <section>
-                                                    <label class="label">Course/Chapter <span class="req">*</span></label>
+                                                    <label class="label">Course <span class="req">*</span></label>
                                                     <label class="input">
                                                         <input name="parent_id" type="hidden" class="curses-hierarchy" data-placeholder="@lang('admin_general.select_placeholder')" value="{{old('parent_id', $chapter->parent_id)}}">
                                                         <span class="hidden" data-curses-hierarchy='{!! $curses_hierarchy !!}' ></span>

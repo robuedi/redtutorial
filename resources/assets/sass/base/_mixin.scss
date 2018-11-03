@@ -11,6 +11,10 @@
   color: $brand-primary;
   font-size: 40px;
   font-weight: 400;
+
+  @media (max-width: $screen-md-max) {
+    line-height: 1;
+  }
 }
 
 @mixin main-page-header-left-padding(){

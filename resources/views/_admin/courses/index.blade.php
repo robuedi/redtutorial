@@ -114,7 +114,7 @@
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("order_weight") }}" href="{{ $listing->sortLink("order_weight") }}"><span>Order Weight</span></a></th>
                                             <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>Date Created</span></a></th>
                                             <th style="width:200px"><a class="{{ $listing->sortDir("updated_at") }}" href="{{ $listing->sortLink("updated_at") }}"><span>Date Updated</span></a></th>
-                                            <th style="width:120px; text-align:center"><span>Actions</span></th>
+                                            <th style="width:150px; text-align:center"><span>Actions</span></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -129,6 +129,7 @@
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>
                                                 <td class="format-momentjs">{{ $r->updated_at }}</td>
                                                 <td style="text-align:center;">
+                                                    <a href="{{url(config('app.admin_route').'/chapters?course='.$r->id)}}" class="btn btn-sm btn-warning apply-tooltip" title="View chapters"><i class="fa fa-md fa-fw fa-bookmark"></i></a>&nbsp;&nbsp;
                                                     <a href="{{url(config('app.admin_route').'/courses/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
                                                     @if(empty ($r->code_page ))
                                                         <a href="javascript:deleteRouteObject('{{url(config('app.admin_route').'/courses/'.$r->id)}}')" class="btn btn-sm btn-danger btn-delete apply-tooltip" data-method="DELETE" title="Delete" data-warning="Are you sure?"><i class="glyphicon glyphicon-trash"></i></a>

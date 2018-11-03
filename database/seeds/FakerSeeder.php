@@ -32,7 +32,7 @@ class FakerSeeder extends Seeder
             {
                 $course                 = new Course();
                 $course->name           = $course_name;
-                $course->description    = $faker->text(600);
+                $course->description    = $faker->text(300);
                 $course->order_weight   = $index+1;
                 $course->is_public      = 1;
                 $course->is_draft       = $faker->randomElement(array (0, !$course->is_public));

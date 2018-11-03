@@ -8,85 +8,129 @@
 
 namespace App\Libraries;
 
-
-use App\Libraries\CoursesHierarchy\CoursesHierarchyFactory;
+use App\Course;
+use App\Lesson;
 use Log;
 
 class MenuClient
 {
-    private static $menu_items = [];
-    private static $items_index = 0;
-    private static $children_counter = [];
-    private static $ending_needed = 0;
 
-    public static function getMenu()
+    private static $menu = null;
+    private static $is_active_course = false;
+
+
+    public static function getMenu(?int $top_course = null) : array
     {
-        $hierarchy_object = CoursesHierarchyFactory::createHierarchyObject('client');
-        $hierarchy_list = $hierarchy_object->getHierarchyList();
-
-        //process array to make it in one dimension
-        array_walk_recursive($hierarchy_list, array(__CLASS__, "addItem"));
-
-        return self::$menu_items;
-    }
-
-    public static function addItem($value, $key)
-    {
-        self::$menu_items[self::$items_index][$key] = $value;
-
-        if($key === 'parent_id')
+        //avoid multiple callings of the queries
+        if(self::$menu === null)
         {
-            self::$items_index++;
+            self::$menu = self::getMenuData($top_course);
         }
 
+        return self::$menu;
     }
 
-    public static function setChildrenCounter($children_number)
+    private static function getMenuData(?int $top_course) : array
     {
-        //add new counter
-        if($children_number > 0)
-            self::$children_counter[] = $children_number;
-    }
+        $menu = [];
 
-    public static function countChildren()
-    {
-        $array_size = count(self::$children_counter);
-        self::$ending_needed = 0;
-        if($array_size)
+        //get data
+        $courses_chapters = Course::select('id', 'parent_id', 'name', 'slug')
+                            ->whereNotNull('name')
+                            ->whereNotNull('slug')
+                            ->where('is_public', 1)
+                            ->when($top_course, function ($query, $top_course) {
+                                return $query->orderByRaw('id = '.$top_course.' DESC, order_weight ASC');
+                            }, function ($query) {
+                                return $query->orderBy('order_weight');
+                            })
+                            ->get();
+
+        //avoid double query to DB - get courses/chapters by collection filter
+        $courses = clone $courses_chapters;
+        $courses = $courses->where('parent_id', '=', '');
+
+        //get ids
+        $courses_ids = $courses->pluck('id');
+
+        //check if there where courses
+        if(!$courses_ids)
         {
-            //check if we are at the last element
-            if(self::$children_counter[$array_size-1] === 1){
-                //remove queue counter
-                array_pop(self::$children_counter);
+            return $menu;
+        }
 
-                self::$ending_needed = 1;
+        //get courses
+        $courses = $courses->all();
 
-                //proccess any other previous counters
-                $array_size = count(self::$children_counter);
-                for($i = 0; $i < $array_size; $i++) {
-                    if(self::$children_counter[$i] == 1)
+        //get chapters
+        $chapters = $courses_chapters->whereIn('parent_id', $courses_ids);
+
+        //get lessons
+        if($chapters)
+        {
+            $chapters_ids = $chapters->pluck('id');
+
+            //get lessons
+            $lessons = Lesson::select('id', 'parent_id', 'name', 'slug')
+                ->whereNotNull('name')
+                ->whereNotNull('slug')
+                ->whereIn('parent_id', $chapters_ids)
+                ->where('is_public', 1)
+                ->orderBy('order_weight')
+                ->get();
+
+            //link lessons to chapters
+            if($lessons)
+            {
+                $lessons = $lessons->groupBy('parent_id')->all();
+                foreach ($chapters as $chapter)
+                {
+                    if(isset($lessons[$chapter->id]))
                     {
-                        self::$ending_needed++;
-                        self::$children_counter[$i]--;
+                        $chapter->lessons = $lessons[$chapter->id];
                     }
                 }
-
-                self::$children_counter = array_filter(self::$children_counter);
-
             }
 
-            //continue to decrease counter
-            $arr_new_size = count(self::$children_counter);
-            if($arr_new_size)
-                self::$children_counter[$arr_new_size-1]--;
+            //group chapters
+            $chapters = $chapters ?  $chapters->groupBy('parent_id')->all() : [];
+
+            //make the menu
+            foreach ($courses as $course)
+            {
+
+                if(isset($chapters[$course->id]))
+                {
+                    $course->chapters = $chapters[$course->id];
+                }
+
+                $menu[] = $course;
+            }
+
+            return $menu;
+
+        }
+        else
+        {
+            return $courses;
         }
     }
 
-    public static function getEndingsNeeded()
+    //set that the current looping course is active -> in sidebar
+    public static function setActiveCourse()
     {
-        return self::$ending_needed;
+        self::$is_active_course = true;
     }
 
-
-
+    //check if the looping course is active -> in sidebar
+    public static function checkActiveCourse()
+    {
+        if(self::$is_active_course)
+        {
+            self::$is_active_course = false;
+            return true;
+        }
+        else
+            return false;
+    }
 }

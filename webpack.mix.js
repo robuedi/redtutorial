@@ -11,10 +11,10 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'assets/js/')
-    .js('resources/assets/js/sidebar.js', 'assets/js/')
-    .js('resources/assets/js/feedback_message.js', 'assets/js/')
-    .sass('resources/assets/sass/app.scss', 'assets/css/');
+// mix.js('resources/assets/js/app.js', 'assets/js/')
+//     .js('resources/assets/js/sidebar.js', 'assets/js/')
+//     .js('resources/assets/js/feedback_message.js', 'assets/js/')
+//     .sass('resources/assets/sass/app.scss', 'assets/css/');
 
 //model
 // mix.js('resources/assets/js/app.js', 'dist/')
