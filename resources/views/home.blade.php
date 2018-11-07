@@ -21,12 +21,12 @@
             @foreach($courses as $course)
             <div class="course-item" >
                 <div class="inner-container" >
-                    <h2 >{{$course->name}}</h2>
+                    <h2 >{{$course->name}} <small>Course</small></h2>
                     <div class="txt-content">
                         {!! $course->description !!}
                     </div>
-                    <a href="/tutorial/{{$course->slug}}">
-                        <span>See more</span> <i class="fas fa-chevron-circle-right"></i>
+                    <a class="start-course" href="/tutorial/{{$course->slug}}">
+                        <span>Start now</span> <i class="fas fa-chevron-circle-right"></i>
                     </a>
                 </div>
             </div>

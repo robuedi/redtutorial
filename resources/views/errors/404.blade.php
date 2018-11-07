@@ -21,20 +21,6 @@
             <p class="error-description">
                 We couldn't find the page you are looking for.
             </p>
-
-            <div class="animated-error">
-                <div class="particles-container">
-                    <a href="{{url('')}}" class="logo-txt">
-                        <span class="red">RED</span>
-                        <span class="tutorial">Tutorial</span>
-                    </a>
-                    <div class="particles">
-                        <span class="particle particle--c"></span>
-                        <span class="particle particle--a"></span>
-                        <span class="particle particle--b"></span>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 

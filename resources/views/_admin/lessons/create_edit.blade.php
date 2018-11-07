@@ -31,11 +31,7 @@
                 imageBrowser_listUrl: '/admin/media-library/ckeditor',
 
         });
-            CKEDITOR.replace( 'description_editor' ,
-            {
-                toolbar : 'deadsimple',
-                uiColor : '#F5F5F5'
-            });
+
 
             // $('.snippet').each(function (index) {
             //     var script_type = $(this).attr('data-type');
@@ -139,7 +135,7 @@
                                     </section>
 
                                     <section>
-                                        <label class="label">Description</label>
+                                        <label class="label">Description <small>(for admin only)</small></label>
                                         <label class="textarea textarea-resizable">
                                             <textarea rows="3" type="text" id="description_editor" name="description" placeholder="Description" class="custom-scroll" >{{old('description', $lesson->description)}}</textarea>
                                         </label>
@@ -189,7 +185,7 @@
                                         {{--Preview--}}
                                         <div class="tab-pane fade " id="preview">
                                             <div class="text-content-preview">
-                                                {!! old('content', $lesson->content) !!}
+                                                {!! old('content', '') !!}
                                             </div>
                                         </div>
                                     </div>

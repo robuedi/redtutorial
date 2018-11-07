@@ -18,7 +18,7 @@
         <meta name="theme-color" content="#e62c33">
 
         <link rel="icon" href="/assets/img/red-tutorial.ico">
-        <link rel="stylesheet" type="text/css" href="/assets/css/app.min.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/app.min.css?v=1">
 
         @yield('stylesheets')
 
@@ -65,7 +65,7 @@
         </script>
 
         <!-- JS -->
-        <script src="/assets/js/scripts.min.js"></script>
+        <script src="/assets/js/scripts.min.js?v=1"></script>
 
         @yield('scripts')
 

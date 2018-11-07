@@ -1,6 +1,7 @@
 ADMIN SIDE
 - add image field for courses ?
 - add image field for static pages ?
+- refactor hierarchy js function on right side from courses/chapters/lesson
 
 CLIENT SIDE
 - check cookie bar

@@ -1,6 +1,6 @@
 
 @mixin container-sizing() {
-  padding: 100px 75px;
+  padding: 50px 75px;
 
   @media (max-width: $screen-md-max) {
     padding: 50px 30px;

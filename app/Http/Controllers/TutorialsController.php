@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use View;
 use App\Course;
+use App\Lesson;
 use DB;
 use Illuminate\Support\Facades\Log;
 
@@ -22,6 +23,13 @@ class TutorialsController extends Controller
                     ->where('is_public', 1)
                     ->firstOrFail();
 
+        //get chapters
+        $chapters = Course::where('parent_id', $course->id)
+                        ->where('is_public', 1)
+                        ->whereNotNull('slug')
+                        ->get();
+
+
         //set meta
         $meta['keywords'] = 'course, learn, '.$course->name;
         $meta['description'] = 'Learn '.$course->name;
@@ -29,7 +37,8 @@ class TutorialsController extends Controller
         return View::make('tutorials.course', [
             'course'    => $course,
             'meta'      => $meta,
-            'course_id' => $course->id
+            'course_id' => $course->id,
+            'chapters'  => $chapters
         ]);
     }
 
@@ -43,13 +52,28 @@ class TutorialsController extends Controller
                     ->where('ch.slug', $chapter_slug)
                     ->where('co.is_public', 1)
                     ->where('ch.is_public', 1)
-                    ->selectRaw('co.id as course_id, co.name as course_name, co.slug as course_slug, ch.name as chapter_name, ch.description as chapter_description')
+                    ->selectRaw('co.id as course_id, co.name as course_name, ch.id as chapter_id, co.slug as course_slug, ch.name as chapter_name, ch.description as chapter_description, ch.slug as chapter_slug')
                     ->first();
 
         //return 404 if not found
         if(!$chapter)
         {
             abort(404);
+        }
+
+        //get chapters
+        $lessons = Lesson::where('parent_id', $chapter->chapter_id)
+            ->where('is_public', 1)
+            ->whereNotNull('slug')
+            ->get();
+
+        //set index
+        $lesson_i       = 1;
+        $lesson_count   = count($lessons);
+        foreach ($lessons as $lesson)
+        {
+            $lesson->index = $lesson_i.'/'.$lesson_count;
+            $lesson_i++;
         }
 
         //set meta
@@ -59,7 +83,8 @@ class TutorialsController extends Controller
         return View::make('tutorials.chapter', [
             'chapter'   => $chapter,
             'meta'      => $meta,
-            'course_id' => $chapter->course_id
+            'course_id' => $chapter->course_id,
+            'lessons'   => $lessons
         ]);
     }
 

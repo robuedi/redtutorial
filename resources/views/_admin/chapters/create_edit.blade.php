@@ -12,16 +12,8 @@
 @section('scripts')
     <script src="/assets/_admin/js/tree-view-section.js"></script>
     <script src="/assets/_admin/js/general.js"></script>
-    <script src="/assets/_admin/js/libs/ckeditor/ckeditor.js"></script>
     <script>
         $(function () {
-            //description editor
-            CKEDITOR.replace( 'description_editor' ,
-                {
-                    toolbar : 'deadsimple',
-                    uiColor : '#F5F5F5'
-                });
-
             $('.curses-hierarchy').select2({
                 searchInputPlaceholder: 'Please select',
                 allowClear: true,
@@ -102,12 +94,18 @@
                             </section>
 
                             <section>
-                                    <label class="label">Description</label>
+                                    <label class="label">Description  <small>(for admin only)</small></label>
                                     <label class="textarea textarea-resizable">
                                         <textarea rows="3" type="text" id="description_editor" name="description" placeholder="Description" class="custom-scroll" >{{old('description', $chapter->description)}}</textarea>
                                     </label>
                             </section>
 
+                            <section>
+                                <label class="label">Symbol class</label>
+                                <label class="input">
+                                    <input type="text" name="symbol_class" placeholder="Symbol class" class="form-control input-sm" value="{{old('symbol_class', $chapter->symbol_class)}}">
+                                </label>
+                            </section>
                         </div>
                     </div>
 

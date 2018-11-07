@@ -160,7 +160,6 @@ class LessonsController extends Controller
             //save course
             $lesson->name           = $request->input('name');
             $lesson->description    = $request->input('description');
-            $lesson->content        = $request->input('content');
             $lesson->is_public      = $request->input('is_public') ? 1 : 0;
             $lesson->order_weight   = $request->input('order_weight');
             if($request->input('enabled_slug_edit')){
@@ -210,7 +209,6 @@ class LessonsController extends Controller
             $lesson = new Lesson();
             $lesson->name           = $request->input('name');
             $lesson->description    = $request->input('description');
-            $lesson->content        = $request->input('content');
             $lesson->is_public      = $request->input('is_public') ? 1 : 0;
             $lesson->order_weight   = $request->input('order_weight');
             if($request->input('enabled_slug_edit')){

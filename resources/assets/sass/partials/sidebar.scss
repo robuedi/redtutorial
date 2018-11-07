@@ -71,6 +71,12 @@
             display: none;
           }
 
+          &.top-side {
+            margin-top: 0;
+            border-top: none;
+            padding-top: 0;
+          }
+
           &.active-see {
             ~ li {
 
@@ -90,34 +96,72 @@
           }
         }
 
-        &.active {
-          > .item-label {
-            color: $brand-primary;
-
-            .open-symbol i {
-              background-color: $brand-primary;
-            }
-
-          }
-        }
 
         &.course-level{
           margin-bottom: 22px;
-          font-size: 17px;
 
+          &.active {
+            > .item-label {
+              //color: $brand-primary;
+
+              .open-symbol i {
+                background-color: $brand-primary;
+              }
+
+            }
+          }
+
+          >.item-label {
+            font-size: 20px;
+          }
 
           > .chapters-list {
             display: none;
             list-style: none;
+            margin: 10px 0px;
 
             li.chapter-level {
+              margin-bottom: 10px;
+
+              >.item-label {
+                font-size: 18px;
+              }
+
               > .lessons-list{
                 display: none;
                 list-style: none;
+
+                .lesson-level {
+                  margin: 5px -20px 5px 5px;
+
+                  >.item-label {
+                    font-size: 16px;
+
+
+                    i {
+                      color: $brand-second;
+                    }
+                  }
+
+                  &.active > .item-label i {
+                    color: $brand-primary;
+                  }
+                }
               }
 
-              &.active .lessons-list {
-                display: block;
+              &.active {
+                > .item-label {
+                  i.toggle-children{
+                    color: $brand-primary;
+                  }
+                  span.toggle-children i {
+                    background-color: $brand-primary;
+                  }
+                }
+
+                .lessons-list {
+                  display: block;
+                }
               }
 
             }
@@ -136,12 +180,19 @@
             color: inherit;
           }
 
-          .open-symbol {
-            display: inline-block;
+          .toggle-children > i{
+            cursor: pointer;
+          }
+
+          .open-symbol, .toggle-children > i{
             position: absolute;
             right: -25px;
             top: 50%;
             transform: translateY(-50%);
+          }
+
+          .open-symbol {
+            display: inline-block;
             width: 15px;
             height: 15px;
 
@@ -174,9 +225,6 @@
     }
 
     ul.pages-links {
-      margin-top: 40px;
-      padding-top: 40px;
-      border-top: 1px dashed #CCC;
       text-transform: uppercase;
       text-align: right;
       list-style: none;
@@ -186,6 +234,13 @@
         margin-bottom: 12px;
         font-size: 16px;
         line-height: 1.4;
+
+        &.my-account{
+          border-bottom: 1px dashed #CCC;
+          margin-bottom: 40px;
+          padding-bottom: 40px;
+
+        }
 
         a {
           text-decoration: none;

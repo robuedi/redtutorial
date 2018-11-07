@@ -35,6 +35,11 @@
     justify-content: space-around;
     width: 100%;
     box-sizing: border-box;
+    padding: 75px;
+
+    @media (max-width: $screen-md-max) {
+      padding: 50px 30px;
+    }
 
     &::after {
       box-sizing: border-box;
@@ -43,7 +48,6 @@
       max-width: 100%;
     }
 
-    @include container-sizing();
 
     .course-item {
       flex: 0 0 300px;
@@ -57,9 +61,14 @@
       overflow: auto;
 
       h2{
-          font-size: 28px;
+          font-size: 36px;
           color: #FFF;
           margin: 0 0 20px ;
+
+          small {
+            display: block;
+            font-size: 26px;
+          }
         }
 
       .txt-content{
@@ -73,7 +82,7 @@
         }
       }
 
-      a{
+      a.start-course{
           font-family: $font-family;
           letter-spacing: 1px;
           font-size: 20px;
@@ -87,6 +96,7 @@
           position: absolute;
           right: 30px;
           bottom: 30px;
+          background-color: #FFF;
 
           span{
             display: inline-block;

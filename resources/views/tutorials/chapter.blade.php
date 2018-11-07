@@ -14,20 +14,31 @@
 
 @section('content')
 
-    <section class="tutorial-name" style='background-image: url("/assets/img/php-elephant.jpg")'>
-        <div class="subtitle">
-            <h2>
-                <a href="/tutorial/{{$chapter->course_slug}}">{{$chapter->course_name}}</a>
-            </h2>
+    <section class="chapters-section" >
+        <div class="header-section" style='background-image: url("/assets/img/php-elephant.jpg")'>
+            <div class="subtitle">
+                <h2>
+                    <a href="/tutorial/{{$chapter->course_slug}}"><i class="fas fa-angle-left"></i> {{$chapter->course_name}}</a>
+                </h2>
+            </div>
+            <div class="heading-inner-container">
+                <h1>{{$chapter->chapter_name}}</h1>
+            </div>
         </div>
-        <div class="heading-inner-container">
-            <h1>{{$chapter->chapter_name}}</h1>
-        </div>
-    </section>
-    <section class="tutorial-container">
-        <div class="tutorial-description">
-            {{$chapter->chapter_description}}
-        </div>
+
+        <section class="chapter-container">
+            <div class="lesson-choosing">
+                @foreach($lessons as $lesson)
+                    <a href="/tutorial/{{$chapter->course_slug.'/'.$chapter->chapter_slug.'/'.$lesson->slug}}" class="option">
+                        <h4>{{$lesson->name}}</h4>
+                        <span class="lesson-number">{{$lesson->index}}</span>
+                        <span class="go-link">
+                            <i class="fas fa-chevron-circle-right"></i>
+                        </span>
+                    </a>
+                @endforeach
+            </div>
+        </section>
     </section>
 
 @stop

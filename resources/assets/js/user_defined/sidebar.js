@@ -19,7 +19,7 @@ window.onload = function(){
         initDOM: function () {
             this.container      = $('.root-list');
             this.listItems      = this.container.find('li');
-            this.listItemsSym   = this.listItems.find('.open-symbol');
+            this.listItemsSym   = this.listItems.find('.toggle-children');
             this.seeOtherourses = this.container.find('.see-other-courses');
             // this.itemsLabel     = this.container.find('.item-label');
         },

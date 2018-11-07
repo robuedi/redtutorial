@@ -20,8 +20,9 @@ class FakerSeeder extends Seeder
         if ($this->command->confirm('Do you wish to continue?'))
         {
             $courses = ['PHP', 'SOLID Principles', 'Design patterns', 'SQL', 'JavaScript'];
-            $chapters_range = 4;
-            $chapters = ['Beginner', 'Intermediary', 'Advanced', 'Extra'];
+            $chapter_symbols = ['fas fa-search', 'fas fa-boxes', 'fas fa-align-left', ' fas fa-balance-scale', 'fas fa-cogs', 'fas fa-adjust', 'fas fa-atom'];
+            $chapters_range = count($chapter_symbols);
+//            $chapters = ['Beginner', 'Intermediary', 'Advanced', 'Extra'];
             $lessons_range = 55;
 
             $faker = Faker\Factory::create();
@@ -43,17 +44,18 @@ class FakerSeeder extends Seeder
                 $course->save();
 
 
-                for ($i = 0; $i < rand(2, $chapters_range); $i++)
+                for ($i = 0; $i < rand(4, $chapters_range); $i++)
                 {
 
                     $chapter                 = new Course();
                     $chapter->parent_id      = $course->id;
-                    $chapter->name           = $chapters[$i];
+                    $chapter->name           = rtrim($faker->sentence($nbWords = 1, $variableNbWords = true), '.');
                     $chapter->description    = $faker->text(600);
                     $chapter->order_weight   = $i+1;
-                    $chapter->is_public      = $course->is_public ? $faker->randomElement(array (1, 0, 1, 0, 1)) : 0;
+                    $chapter->is_public      = $course->is_public ? $faker->randomElement(array (1, 1, 0, 1, 1, 1)) : 0;
                     $chapter->is_draft       = $faker->randomElement(array (0, !$chapter->is_public));
                     $chapter->slug           = preg_replace('/^-+|-+$/', '', strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $chapter->name)));
+                    $chapter->symbol_class   = $chapter_symbols[$i];
                     $chapter->created_at     = $faker->dateTimeThisYear($max = 'now', $timezone = null);
                     $chapter->updated_at     = $course->created_at;
 
@@ -65,7 +67,7 @@ class FakerSeeder extends Seeder
 
                         $lesson                 = new Lesson();
                         $lesson->parent_id      = $chapter->id;
-                        $lesson->name           = rtrim($faker->sentence($nbWords = 4, $variableNbWords = true), '.');
+                        $lesson->name           = rtrim($faker->sentence($nbWords = 1, $variableNbWords = true), '.');
                         $lesson->description    = $faker->text(600);
                         $lesson->content        = $faker->text(1200);
                         $lesson->order_weight   = $j+1;

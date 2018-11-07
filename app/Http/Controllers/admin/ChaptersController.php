@@ -152,6 +152,7 @@ class ChaptersController extends Controller
             $chapter->is_public     = $request->input('is_public') ? 1 : 0;
             $chapter->order_weight  = $request->input('order_weight');
             $chapter->parent_id     = $request->input('parent_id');
+            $chapter->symbol_class  = $request->input('symbol_class');
 
             if($request->input('enabled_slug_edit')){
                 $chapter->slug          = $request->input('slug');
@@ -219,6 +220,7 @@ class ChaptersController extends Controller
             //save course
             $chapter->name = $request->input('name');
             $chapter->description = $request->input('description');
+            $chapter->symbol_class = $request->input('symbol_class');
             $chapter->is_public = $request->input('is_public') ? 1 : 0;
             $chapter->is_draft = $request->input('is_draft') ? 1 : 0;
             $chapter->order_weight = $request->input('order_weight');
