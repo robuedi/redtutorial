@@ -16,5 +16,11 @@ return [
     //sections
     'editor' => 'Editor',
     'preview' => 'Preview',
+    'sections' => 'Sections',
 
-];
+    //new section
+    'lesson_section' => 'Section',
+    'parent_lesson' => 'Parent lesson',
+    'options' => 'Options',
+
+    ];

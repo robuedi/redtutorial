@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\LessonSection;
 use App\Libraries\Listing;
 use View;
 use App\Lesson;
@@ -107,8 +108,13 @@ class LessonsController extends Controller
         $hierarchy_item->setPointingID($id.'lesson');
         $curses_hierarchy_map = $hierarchy_item->getHierarchyList();
 
+        //get lesson sections
+        $lesson_sections = LessonSection::where('lesson_id', $lesson->id)
+                            ->get();
+
         return View::make('_admin.lessons.create_edit', [
             'lesson'                => $lesson,
+            'lesson_sections'       => $lesson_sections,
             'curses_hierarchy'      => json_encode($curses_hierarchy),
             'curses_hierarchy_map'  => json_encode($curses_hierarchy_map)
         ]);
@@ -255,7 +261,7 @@ class LessonsController extends Controller
         $lesson->delete();
 
         //update weight, get lessons
-        $lessons = Course::where('parent_id', $lesson->parent_id)
+        $lessons = Course::where('parent_id', $parent_id)
             ->orderBy('order_weight')
             ->get();
 
@@ -270,6 +276,6 @@ class LessonsController extends Controller
         // still here? delete the field
         UIMessage::set('success', "Lesson deleted successfully. Order weight updated.");
 
-        return redirect(config('app.admin_route').'/courses');
+        return redirect(config('app.admin_route').'/lessons');
     }
 }

@@ -1,4 +1,4 @@
-<aside id="left_menu" >
+<aside id="left_menu" style='background-image: url("/assets/img/php-elephant2.jpg")' >
     <div class="logo-container">
         <a href="/" class="logo-txt">
             <span class="red">RED</span>
@@ -7,73 +7,6 @@
     </div>
     <nav>
 
-        <ul data-sidebar-nav class="root-list" style="display: none">
-            @if(isset($hide_all_tutorials))
-                <li class="see-other-courses top-side">
-                    <button class="see-btn">COURSES</button>
-                </li>
-            @endif
-
-            @foreach($menu as $course)
-
-                <li class="course-level @if(url()->current() === url('/tutorial/'.$course->slug)) active {{\App\Libraries\MenuClient::setActiveCourse()}} @endif">
-                    <span class="item-label">
-                        <a href="/tutorial/{{$course->slug}}">{{$course->name}}</a>
-
-                        @if(isset($course->chapters))
-                        <span class="open-symbol toggle-children">
-                            <i></i>
-                            <i></i>
-                        </span>
-                        @endif
-                    </span>
-
-                    @if(isset($course->chapters))
-                        <ul class="chapters-list">
-                            @foreach($course->chapters as $chapter)
-                            <li class="chapter-level @if(url()->current() === url('/tutorial/'.$course->slug.'/'.$chapter->slug)) active {{\App\Libraries\MenuClient::setActiveCourse()}} @endif">
-                                <span class="item-label" >
-                                    <a href="/tutorial/{{$course->slug}}/{{$chapter->slug}}">{{$chapter->name}}</a>
-
-                                    @if(isset($chapter->lessons))
-                                        <span class="open-symbol toggle-children">
-                                            <i></i>
-                                            <i></i>
-                                        </span>
-                                    @endif
-                                </span>
-
-                                @if(isset($chapter->lessons))
-
-                                    <ul class="lessons-list">
-                                        @foreach($chapter->lessons as $lesson)
-                                            <li class="lesson-level @if(url()->current() === url('/tutorial/'.$course->slug.'/'.$chapter->slug.'/'.$lesson->slug)) active {{\App\Libraries\MenuClient::setActiveCourse()}} @endif">
-                                                <span class="item-label">
-                                                     <a href="/tutorial/{{$course->slug}}/{{$chapter->slug}}/{{$lesson->slug}}">{{$lesson->name}}</a>
-                                                     <i class="fas fa-caret-left"></i>
-                                                </span>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-
-                                @endif
-
-                            </li>
-                            @endforeach
-                        </ul>
-                    @endif
-
-                </li>
-
-                @if(\App\Libraries\MenuClient::checkActiveCourse())
-                    <li class="see-other-courses">
-                        <button class="see-btn">COURSES</button>
-                    </li>
-                @endif
-
-            @endforeach
-
-        </ul>
 
         <ul class="pages-links">
             <li class="my-account" ><a href="#"  >MY ACCOUNT</a></li>

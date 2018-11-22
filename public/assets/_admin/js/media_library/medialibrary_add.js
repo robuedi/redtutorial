@@ -4,6 +4,8 @@
  $(function(){
     $('.fileslist').html('');
 
+    var itemLink = $('[data-upload-item]').attr('data-upload-item');
+
      var uploader = new plupload.Uploader({
          headers: {
              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -14,7 +16,7 @@
          container: document.getElementById('upload-container'),
          max_file_size : '30mb',
 
-         url : site_url + '/'+ admin_url +'/media-library/upload',
+         url : site_url + '/'+ admin_url +'/media-library/upload' + itemLink,
 
          flash_swf_url : admin_url+'/js/libs/plugin/plupload/Moxie.swf',
          silverlight_xap_url : admin_url+'/js/libs/plugin/plupload/Moxie.xap',

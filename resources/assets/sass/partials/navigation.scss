@@ -1,0 +1,48 @@
+#main_navigation{
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  box-shadow: 2px 0px 2px 1px rgba(0,0,0,0.2);
+
+  .nav-inner {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px 20px;
+    line-height: 15px;
+    vertical-align: bottom;
+
+    .logo-txt{
+      .red, .tutorial{
+        line-height: 1.15;
+      }
+    }
+
+    .navigation-links {
+      display: inline-block;
+      margin: 0;
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: inline-block;
+        padding: 22px;
+
+        a {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          color: #000;
+          text-decoration: none;
+          transition: color .5s;
+          font-size: 18px;
+          text-transform: uppercase;
+
+          &.active, &:hover {
+            color: $brand-primary;
+          }
+        }
+      }
+    }
+  }
+}
+

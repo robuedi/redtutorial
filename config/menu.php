@@ -54,7 +54,7 @@ return array(
                 "1" => array(
                     "name"  => "All",
                     "url"   => "/lessons",
-                    "aliases"   => array('\/lessons\/[a-zA-Z0-9]+\/edit'),
+                    "aliases"   => array('\/lessons\/[a-zA-Z0-9]+\/edit', '\/lesson-section\/[a-zA-Z0-9]+\/edit', '\/lesson-section\/create\/[a-zA-Z0-9]+'),
                 ),
                 "2" => array(
                     "name"  => "Add new",

@@ -1,0 +1,231 @@
+.lesson-main-container {
+  background-color: $brand-second;
+  min-height: calc(100vh - 93px);
+
+  .tutorial-name{
+    padding: 100px 75px 100px 0px;
+    margin: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    font-family: $font-family;
+    flex: 1;
+
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0.6;
+      background: -webkit-linear-gradient(left top,  #bc519e, #3d6098);
+      background: -o-linear-gradient(left top,  #bc519e, #3d6098);
+      background: -moz-linear-gradient(left top,  #bc519e, #3d6098);
+      background: linear-gradient(to left top , #bc519e, #3d6098);
+      z-index: 1;
+    }
+
+
+    .subtitle{
+      display: inline-block;
+      background-color: $brand-second;
+
+      h2 {
+        position: relative;
+        z-index: 2;
+        padding: 20px 10px;
+        margin: 0px 0px 0px 0px;
+        color: lighten($text-color, 75%);
+        font-size: 22px;
+        font-weight: 800;
+        display: inline-block;
+
+        a {
+          color: lighten($text-color, 25%);
+          text-decoration: none;
+
+          &:hover{
+            color: #FFF;
+          }
+        }
+
+        &:first-child{
+          padding-left: 75px;
+          font-size: 24px;
+
+          @media (max-width: $screen-md-max) {
+            padding-left: 50px;
+          }
+        }
+        &:last-child{
+          padding-right: 40px;
+
+
+          @media (max-width: $screen-md-max) {
+            padding-right: 20px;
+          }
+        }
+      }
+    }
+
+    .heading-inner-container {
+      position: relative;
+      z-index: 2;
+
+      h1 {
+        padding: 20px 40px 20px 75px;
+        background-color: $brand-second;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        margin: 0px;
+        font-size: 30px;
+        color: $brand-primary;
+        font-weight: 400;
+
+        @include main-page-header-left-padding();
+      }
+
+    }
+  }
+
+  .tutorial-container {
+    text-align: center;
+
+    @include container-sizing();
+
+    .lessons-list {
+      text-align: left;
+      width: 850px;
+      max-width: 100%;
+      padding: 5px;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 80px;
+      margin-top: 30px;
+
+      .lesson-container{
+        display: none;
+        border-radius: 4px;
+        background-color: #fefefe;
+        padding: 20px 40px 20px;
+        border: 1px solid #ddd;
+        //box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+
+        > p{
+          font-size: 16px;
+          line-height: 1.5;
+
+        }
+        p:empty {
+          display:none
+        }
+
+        &.active {
+          display: block;
+        }
+
+        pre{
+          margin: 10px 0px;
+          white-space: pre-wrap;       /* css-3 */
+          white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+          white-space: -pre-wrap;      /* Opera 4-6 */
+          white-space: -o-pre-wrap;    /* Opera 7 */
+          word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+          code {
+            background-color: $brand-second;
+            border-radius: 4px;
+            padding: 10px;
+          }
+        }
+
+        .quiz-form{
+          margin-top: 35px;
+          .input-container{
+            display: block;
+            input{
+              display: none;
+            }
+
+            .input-label{
+              cursor: pointer;
+              box-shadow: 1px 1px 1px 1px #ddd;
+              border-radius: 2px;
+              border: 1px solid #aaa;
+              display: block;
+              padding: 10px 15px;
+              margin-bottom: 10px;
+
+              &:hover {
+                background-color: #eee;
+              }
+            }
+
+            input:checked + .input-label {
+              border-left: 8px solid #aaa;
+              padding-left: 8px;
+
+            }
+          }
+        }
+      }
+
+      .prev-load {
+        cursor: pointer;
+        position: absolute;
+        left: 5px;
+        bottom: -50px;
+        color: #aaa;
+        font-size: 30px;
+
+        &:hover i{
+          border-radius: 50%;
+          color: #000;
+          box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .next-load {
+        cursor: pointer;
+        position: absolute;
+        left: 55px;
+        bottom: -50px;
+        font-size: 30px;
+
+        &:hover i{
+          border-radius: 50%;
+          box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+
+      &.initial-load .lesson-container:first-child{
+        display: block;
+      }
+    }
+
+    .ui-feedback {
+      margin: 35px 0px 5px;
+
+      span {
+        display: inline-block;
+        border-radius: 4px;
+        padding: 10px;
+        font-size: 20px;
+        border: 1px solid #eee;
+        font-weight: 600;
+
+      }
+
+      &.warning span{
+        border-left: 4px solid $brand-primary;
+
+      }
+    }
+  }
+
+}
+
+

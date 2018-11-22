@@ -18,7 +18,7 @@
         <div class="header-section" style='background-image: url("/assets/img/php-elephant.jpg")'>
             <div class="subtitle">
                 <h2>
-                    <a href="/tutorial/{{$chapter->course_slug}}"><i class="fas fa-angle-left"></i> {{$chapter->course_name}}</a>
+                    <a href="/tutorial/{{$chapter->course_slug}}"><i class="fas fa-angle-left"></i> Chapters</a>
                 </h2>
             </div>
             <div class="heading-inner-container">
@@ -27,16 +27,21 @@
         </div>
 
         <section class="chapter-container">
-            <div class="lesson-choosing">
-                @foreach($lessons as $lesson)
-                    <a href="/tutorial/{{$chapter->course_slug.'/'.$chapter->chapter_slug.'/'.$lesson->slug}}" class="option">
-                        <h4>{{$lesson->name}}</h4>
-                        <span class="lesson-number">{{$lesson->index}}</span>
-                        <span class="go-link">
-                            <i class="fas fa-chevron-circle-right"></i>
-                        </span>
-                    </a>
-                @endforeach
+            <div class="lesson-choosing-container">
+                <div class="lesson-choosing">
+                    @foreach($lessons as $lesson)
+                        <a href="/tutorial/{{$chapter->course_slug.'/'.$chapter->chapter_slug.'/'.$lesson->slug}}" class="option @if(rand(0,1)) option-square @else option-circle @endif option-pos-{{rand(1,6)}}" >
+                            <div class="bck-img" style='background-image: url("/assets/img/background-texture-2110724_640.jpg")'></div>
+                            <div class="top-txt" >
+                                <h4>{{$lesson->name}}</h4>
+                                <span class="lesson-number">{{$lesson->index}}</span>
+                            </div>
+                            <span class="go-link" >
+                                <i class="fas fa-chevron-circle-right"></i>
+                            </span>
+                        </a>
+                    @endforeach
+                </div>
             </div>
         </section>
     </section>

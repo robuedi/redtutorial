@@ -15,6 +15,24 @@
   transition: left .5s;
   z-index: 50;
 
+  background-position: center;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.6;
+    background: -webkit-linear-gradient(left top,  #bc519e, #3d6098);
+    background: -o-linear-gradient(left top,  #bc519e, #3d6098);
+    background: -moz-linear-gradient(left top,  #bc519e, #3d6098);
+    background: linear-gradient(to left top , #bc519e, #3d6098);
+    z-index: 1;
+  }
+
+
   @media (min-width: $screen-xl) {
     width: $sidebar-xl;
   }
@@ -258,6 +276,7 @@
   text-align: right;
   margin: 16px 0px;
   text-decoration: none;
+  font-family: 'Fredericka the Great', cursive;
 
   .red{
     display: block;

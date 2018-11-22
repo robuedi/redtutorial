@@ -34,10 +34,16 @@ Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')
         //Lessons
         Route::resource('/lessons', 'LessonsController');
 
+        //Lessons Sections
+        Route::get('/lesson-section/create/{parent_id}', 'LessonsSectionsController@create');
+        Route::resource('/lesson-section', 'LessonsSectionsController');
+
         //Media Library
         Route::get('/media-library/', 'MediaLibraryController@index');
         Route::get('/media-library/add', 'MediaLibraryController@add');
+        Route::get('/media-library/add/{item_type}/{item_id}', 'MediaLibraryController@addToItem');
         Route::post('/media-library/upload', 'MediaLibraryController@upload');
+        Route::post('/media-library/upload/{item_type}/{item_id}', 'MediaLibraryController@uploadToItem');
         Route::get('/media-library/delete/{id}', 'MediaLibraryController@delete');
         Route::get('/media-library/popup_browse', 'MediaLibraryController@popup_browse');
         Route::get('/media-library/popup_upload', 'MediaLibraryController@popup_upload');

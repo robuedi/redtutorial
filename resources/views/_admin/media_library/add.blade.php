@@ -34,7 +34,7 @@
 
     {!! \App\Libraries\UIMessage::get() !!}
 
-    <section id="widget-grid" class="">
+    <section id="widget-grid" class="" data-upload-item = "@if(isset($item_type) && isset($item_id))/{{$item_type}}/{{$item_id}}@endif">
         <div class="row">
             <div class="col-xs-12">
 

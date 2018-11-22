@@ -14,34 +14,34 @@
 
 @section('content')
 
-    <section class="courses-section">
-        <div class="header-section" style='background-image: url("/assets/img/php-elephant.jpg")'>
+    <section class="courses-section" >
+        <section class="header-section" style='background-image: url("/assets/img/php-elephant.jpg")'>
             <div class="heading-inner-container">
                 <h1>{{$course->name}}</h1>
             </div>
-        </div>
+        </section>
 
-        <section class="tutorial-content">
-            <ul>
-            @foreach($chapters as $chapter)
-                <li class="option">
-                    <a href="/tutorial/{{$course->slug.'/'.$chapter->slug}}" class="inner-content">
-                        <div class="chapter-icon">
-                            <div class="chapter-icon-border">
-                                <div class="chapter-icon-inner">
-                                    <i class="{{$chapter->symbol_class}}"></i>
-                                </div>
-                            </div>
-                        </div>
+        <section class="tutorial-content" >
+
+            <div class="list-container">
+
+                <div class="list-items">
+                @foreach($chapters as $index => $chapter)
+                    <a href="/tutorial/{{$course->slug.'/'.$chapter->slug}}" class="option @if(rand(0,1))  @if(rand(0,1)) messy-option-up @else messy-option-down @endif @endif" style='background-position: -{{$index*150}}px {{$index*150}}px;background-image: url("/assets/img/php-elephant.jpg")'>
                         <div class="text-description">
                             <h3 >
                                 {{$chapter->name}}
                             </h3>
+                            <p class="lessons-count">23 Lessons</p>
+                        </div>
+                        <div class="chapter-icon">
+                            <i class="{{$chapter->symbol_class}}"></i>
                         </div>
                     </a>
-                </li>
-            @endforeach
-            </ul>
+                @endforeach
+                </div>
+            </div>
+
         </section>
 
     </section>

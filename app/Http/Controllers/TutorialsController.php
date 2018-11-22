@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\LessonSection;
+use App\LessonSectionOption;
 use View;
 use App\Course;
 use App\Lesson;
@@ -100,7 +102,7 @@ class TutorialsController extends Controller
                 ->where('co.is_public', 1)
                 ->where('ch.is_public', 1)
                 ->where('le.is_public', 1)
-                ->selectRaw('co.id as course_id, co.name as course_name, co.slug as course_slag, ch.name as chapter_name, ch.slug as chapter_slag, le.name as lesson_name, le.description as lesson_description, le.content as lesson_content')
+                ->selectRaw('co.id as course_id, co.name as course_name, co.slug as course_slag, ch.name as chapter_name, ch.slug as chapter_slag, le.parent_id as chapter_id, le.order_weight as lesson_order, le.id as lesson_id, le.name as lesson_name, le.description as lesson_description')
                 ->first();
 
         //return 404 if not found
@@ -109,14 +111,54 @@ class TutorialsController extends Controller
             abort(404);
         }
 
+        //get lesson sections
+        $lesson_sections_ = LessonSection::where('lesson_id', $lesson->lesson_id)
+                            ->where('is_public', 1);
+
+        //get ids
+        $lesson_sections_ids = $lesson_sections_->pluck('id');
+
+        //get lessons
+        $lesson_sections = $lesson_sections_->get();
+
+        //get quizzes answers
+        $quiz_answers = LessonSectionOption::whereIn('lesson_section_id', $lesson_sections_ids)
+                        ->where('is_public', 1)
+                        ->orderBy('order_weight')
+                        ->get();
+
+        //check we have answers
+        if($quiz_answers)
+        {
+            $quiz_answers = $quiz_answers->groupBy('lesson_section_id')
+                            ->all();
+        }
+
+
+        //get the next lesson
+        $next_lesson = Lesson::where('lessons.order_weight', '>', $lesson->lesson_order)
+                        ->where('lessons.parent_id', $lesson->chapter_id)
+                        ->where('lessons.is_public',1)
+                        ->join('lessons_sections', 'lessons_sections.lesson_id', '=', 'lessons.id')
+                        ->where('lessons_sections.is_public', 1)
+                        ->first();
+
+        //next lesson slug
+        $next_slug = '';
+        if($next_lesson)
+            $next_slug = $next_lesson->slug;
+
         //set meta
         $meta['keywords'] = 'course, learn, '.$lesson->course_name.' '.$lesson->chapter_name.' '.$lesson->lesson_name;
         $meta['description'] = 'Learn '.$lesson->course_name.' '.$lesson->chapter_name.':  '.$lesson->lesson_name;
 
         return View::make('tutorials.lesson', [
-            'lesson'    => $lesson,
-            'meta'      => $meta,
-            'course_id' => $lesson->course_id
+            'lesson'            => $lesson,
+            'lesson_sections'   => $lesson_sections,
+            'meta'              => $meta,
+            'course_id'         => $lesson->course_id,
+            'next_slug'         => $next_slug,
+            'quiz_answers'      => $quiz_answers
         ]);
     }
 

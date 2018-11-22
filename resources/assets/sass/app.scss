@@ -2,7 +2,7 @@
 @import "base/variables";
 @import "base/mixin";
 
-//Normalize
+//Libs
 @import "libs/normalize8.scss";
 @import "libs/cookieBar.scss";
 
@@ -13,7 +13,7 @@
 //Partials
 @import "partials/master";
 @import "partials/header";
-@import "partials/sidebar";
+@import "partials/navigation";
 
 //Pages
 @import "pages/admin_login";
@@ -21,8 +21,8 @@
 @import "pages/error_page";
 @import "pages/home";
 @import "pages/static_page";
-@import "pages/tutorials";
 @import "pages/courses";
 @import "pages/chapters";
+@import "pages/lessons";
 
 

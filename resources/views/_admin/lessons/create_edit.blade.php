@@ -15,10 +15,7 @@
     <script src="/assets/js/libs/prism/prism.js"></script>
     <script>
         $(function (){
-            CKEDITOR.editorConfig = function( config )
-            {
-                config.extraPlugins = 'popup';
-            };
+
 
             CKEDITOR.replace( 'text_content' ,
             {
@@ -29,8 +26,16 @@
                 extraPlugins:'tab,codesnippet,imagebrowser',
                 codeSnippet_theme: 'monokai_sublime',
                 imageBrowser_listUrl: '/admin/media-library/ckeditor',
-
-        });
+                enterMode: CKEDITOR.ENTER_BR,
+                autoParagraph: false,
+                fillEmptyBlocks: false,
+                on: {'instanceReady': function (evt) { evt.editor.execCommand('');}}
+            });
+            // CKEDITOR.editorConfig = function( config )
+            // {
+            //     config.extraPlugins = 'popup';
+            //
+            // };
 
 
             // $('.snippet').each(function (index) {
@@ -146,56 +151,74 @@
 
                         </div>
 
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
                         <div class="jarviswidget" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
                             <header>
                                 <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                <h2>@lang('admin_lessons.content') </h2>
+                                <h2>@lang('admin_lessons.sections') </h2>
 
+                                <div class="widget-toolbar" role="menu">
 
-                                <ul id="widget-tab-1" class="nav nav-tabs pull-right">
-
-                                    <li class="active ">
-
-                                        <a data-toggle="tab" href="#content_editor"> <i class="fa fa-lg fa-arrow-circle-o-down"></i> <span class="hidden-mobile hidden-tablet"> @lang('admin_lessons.editor') </span> </a>
-
-                                    </li>
-
-                                    <li class="">
-                                        <a data-toggle="tab" href="#preview"> <i class="fa fa-lg fa-arrow-circle-o-up"></i> <span class="hidden-mobile hidden-tablet"> @lang('admin_lessons.preview') </span></a>
-                                    </li>
-
-                                </ul>
+                                    <div class="btn-group">
+                                        <a href="{{url(config('app.admin_route').'/lesson-section/create/'.$lesson->id)}}" class="btn btn-xs btn-success">
+                                            Add new
+                                        </a>
+                                    </div>
+                                </div>
 
                             </header>
 
                             <div role="content" >
-                                <div class="widget-body no-padding ">
+                                <div class="widget-body no-padding">
 
-                                    <div class="tab-content">
-                                        {{--Editor--}}
-                                        <div class="tab-pane fade in active" id="content_editor">
-                                            <textarea id="text_content" rows="3" type="text" name="content" placeholder="Content" class="custom-scroll" >{{old('content', $lesson->content)}}</textarea>
-                                        </div>
-
-                                        {{--Preview--}}
-                                        <div class="tab-pane fade " id="preview">
-                                            <div class="text-content-preview">
-                                                {!! old('content', '') !!}
-                                            </div>
-                                        </div>
+                                    @if(count($lesson_sections))
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Order Weight</th>
+                                                <th>Is public</th>
+                                                <th>Is draft</th>
+                                                <th>Has content</th>
+                                                <th>Update at</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($lesson_sections as $lesson_section)
+                                                <tr>
+                                                    <td>@if($lesson_section->name){{$lesson_section->name}}@else <i>untitled</i> @endif</td>
+                                                    <td>{{$lesson_section->type}}</td>
+                                                    <td>{{$lesson_section->order_weight}}</td>
+                                                    <td>@if($lesson_section->is_public) Yes @else No @endif</td>
+                                                    <td>@if($lesson_section->is_draft) Yes @else No @endif</td>
+                                                    <td>@if($lesson_section->content) Yes @else Empty @endif</td>
+                                                    <td>{{$lesson_section->updated_at}}</td>
+                                                    <td class="text-center">
+                                                        <a href="{{url(config('app.admin_route').'/lesson-section/'.$lesson_section->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
+                                                        @if(!$lesson_section->content)
+                                                            <a href="javascript:deleteRouteObject('{{url(config('app.admin_route').'/lesson-section/'.$lesson_section->id)}}')" class="btn btn-sm btn-danger btn-delete apply-tooltip" data-method="DELETE" title="Delete" data-warning="Are you sure you want to delete this section?"><i class="glyphicon glyphicon-trash"></i></a>
+                                                        @endif</td>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
+                                    @else
+                                        <div class="alert alert-info">
+                                            No sections found
+                                        </div>
+                                    @endif
+
                                 </div>
                             </div>
 
                         </div>
+
                     </div>
                 </div>
-
 
             </div>
 

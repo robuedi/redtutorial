@@ -11,7 +11,7 @@
 
 @section('content')
 
-    <section class="home-container" >
+    <section class="home-container" style='background-image: url("/assets/img/daylight-environment-exploration-1123484.jpg")' >
         <section class="page-title">
             <h1>Tutorials </h1>
         </section>

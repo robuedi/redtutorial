@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::group(array('namespace' => 'Api', 'prefix' => 'v1'), function(){
+    Route::post('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}/{quiz_id}', 'TutorialsLessonsQuizzesController@validateQuiz');
 });
