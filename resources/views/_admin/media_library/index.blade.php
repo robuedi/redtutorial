@@ -12,6 +12,31 @@
 @stop
 
 @section('stylesheets')
+    <style>
+        .img-col-container{
+            background-image: -webkit-gradient(linear,left top,right bottom,color-stop(0.25,rgba(0,0,0,.03)),color-stop(0.25,transparent),color-stop(0.5,transparent),color-stop(0.5,rgba(0,0,0,.03)),color-stop(0.75,rgba(0,0,0,.03)),color-stop(0.75,transparent),to(transparent));
+            background-image: -webkit-linear-gradient(135deg,rgba(0,0,0,.03)25%,transparent 25%,transparent 50%,rgba(0,0,0,.03)50%,rgba(0,0,0,.03)75%,transparent 75%,transparent);
+            background-image: -moz-linear-gradient(135deg,rgba(0,0,0,.03)25%,transparent 25%,transparent 50%,rgba(0,0,0,.03)50%,rgba(0,0,0,.03)75%,transparent 75%,transparent);
+            background-image: -ms-linear-gradient(135deg,rgba(0,0,0,.03)25%,transparent 25%,transparent 50%,rgba(0,0,0,.03)50%,rgba(0,0,0,.03)75%,transparent 75%,transparent);
+            background-image: -o-linear-gradient(135deg,rgba(0,0,0,.03)25%,transparent 25%,transparent 50%,rgba(0,0,0,.03)50%,rgba(0,0,0,.03)75%,transparent 75%,transparent);
+            background-image: linear-gradient(135deg,rgba(0,0,0,.03)25%,transparent 25%,transparent 50%,rgba(0,0,0,.03)50%,rgba(0,0,0,.03)75%,transparent 75%,transparent);
+            background-color: #FAFCFD;
+            background-size: 16px 16px;
+            width: 120px;
+            height: 80px;
+            position: relative !important;
+        }
+        .uploaded-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            height: auto;
+            max-height: 80px;
+            max-width: 120px;
+        }
+    </style>
 @stop
 
 @section('content')
@@ -90,6 +115,9 @@
                                         <tr>
                                             <th style="width:80px">@lang('admin_general.listing_thumbnail')</th>
                                             <th><a class="{{ $listing->sortDir("name") }}" href="{{ $listing->sortLink("name") }}"><span>@lang('admin_general.listing_name')</span></a></th>
+                                            <th style="width:100px">
+                                                <a class="{{ $listing->sortDir("item_type") }}" href="{{ $listing->sortLink("item_type") }}"><span>Usage</span></a>
+                                            </th>
                                             <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>@lang('admin_general.listing_date_created')</span></a></th>
                                             <th style="width:120px; text-align:center"><span>@lang('admin_general.listing_actions')</span></th>
                                         </tr>
@@ -98,12 +126,12 @@
                                         <?php $results_arr = $results->items() ?>
                                         @foreach($results_arr as $r)
                                             <tr>
-                                                <td>
+                                                <td class="img-col-container" >
                                                     @if (in_array($r->type, array('jpg','gif','png')))
                                                         @if (File::exists($r->path))
-                                                            <img src="{{URL::to($r->url . '?resize=w[80]h[60]e[true]s[true]')}}" width="80" height="60" alt="{{ $r->name }}">
+                                                            <img class="uploaded-img" src="{{URL::to($r->url . '?resize=w[80]h[60]e[true]s[true]')}}" alt="{{ $r->name }}">
                                                         @else
-                                                            <img src="{{URL::asset('assets/admin/img/missing-picture.png?resize=w[80]h[60]e[true]s[true]')}}" width="80" height="60" widthalt="{{ $r->name }}">
+                                                            <img class="uploaded-img" src="{{URL::asset('assets/admin/img/missing-picture.png?resize=w[80]h[60]e[true]s[true]')}}"  alt="{{ $r->name }}">
                                                         @endif
                                                     @else
                                                         <div class="file-thumbnail">
@@ -114,6 +142,16 @@
                                                 <td>
                                                     <div>{{ $r->name }}</div>
                                                     <div class="text-muted"><a target="_blank" href="{{URL::to($r->url)}}" title="View file"><small>{{URL::to($r->url)}}</small></a></div>
+                                                </td>
+                                                <td >   @if(!empty($r->item_type))
+                                                            @if($r->item_type == 'course')
+                                                                <a href="{{URL::to(config('app.admin_route').'/courses/'.$r->item_id.'/edit')}}">{{ $r->item_type }}</a>
+                                                            @else
+                                                                {{ $r->item_type }}
+                                                            @endif
+                                                        @else
+                                                            -
+                                                        @endif
                                                 </td>
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>
                                                 <td style="text-align:center;">

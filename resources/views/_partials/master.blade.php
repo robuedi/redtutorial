@@ -17,7 +17,7 @@
 
         <meta name="theme-color" content="#e62c33">
 
-        <link rel="icon" href="/assets/img/red-tutorial.ico">
+        <link rel="icon" href="/assets/img/logo.ico">
         <link rel="stylesheet" type="text/css" href="/assets/css/app.min.css?v=1">
 
         @yield('stylesheets')
@@ -25,8 +25,9 @@
         <!-- Main Font -->
         <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-        <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,700" rel="stylesheet">
 
         {{--<!--[if lt IE 9]>--}}
         {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>--}}

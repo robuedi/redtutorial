@@ -27,6 +27,64 @@
 
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="/assets/_admin/css/tree-view-section.css">
+    <style>
+        .item-image-container {
+            background-image: -webkit-gradient(linear,left top,right bottom,color-stop(0.25,rgba(0,0,0,.03)),color-stop(0.25,transparent),color-stop(0.5,transparent),color-stop(0.5,rgba(0,0,0,.03)),color-stop(0.75,rgba(0,0,0,.03)),color-stop(0.75,transparent),to(transparent));
+            background-image: -webkit-linear-gradient(135deg,rgba(0,0,0,.03)25%,transparent 25%,transparent 50%,rgba(0,0,0,.03)50%,rgba(0,0,0,.03)75%,transparent 75%,transparent);
+            background-image: -moz-linear-gradient(135deg,rgba(0,0,0,.03)25%,transparent 25%,transparent 50%,rgba(0,0,0,.03)50%,rgba(0,0,0,.03)75%,transparent 75%,transparent);
+            background-image: -ms-linear-gradient(135deg,rgba(0,0,0,.03)25%,transparent 25%,transparent 50%,rgba(0,0,0,.03)50%,rgba(0,0,0,.03)75%,transparent 75%,transparent);
+            background-image: -o-linear-gradient(135deg,rgba(0,0,0,.03)25%,transparent 25%,transparent 50%,rgba(0,0,0,.03)50%,rgba(0,0,0,.03)75%,transparent 75%,transparent);
+            background-image: linear-gradient(135deg,rgba(0,0,0,.03)25%,transparent 25%,transparent 50%,rgba(0,0,0,.03)50%,rgba(0,0,0,.03)75%,transparent 75%,transparent);
+            background-color: #FAFCFD;
+            width: 250px;
+            height: 200px;
+            position: relative;
+            background-size: 16px 16px;
+            border: 1px solid #ddd;
+
+        }
+        .item-image-container .img-controllers {
+            z-index: 10;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        .item-image-container:after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.0);
+            transition: background-color 0.3s;
+            z-index: 3;
+        }
+        .item-image-container:hover:after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.3);
+            z-index: 3;
+        }
+        .item-image-container:hover .img-controllers{
+            display: initial;
+        }
+        .item-image-container .item-image {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            max-width: 100%;
+            max-height: 100%;
+            z-index: 1;
+        }
+    </style>
 @stop
 
 @section('content')
@@ -101,6 +159,23 @@
                                         <textarea rows="3" type="text" id="description_editor" name="description" placeholder="Description" class="custom-scroll" >{{old('description', $course->description)}}</textarea>
                                     </label>
                             </section>
+
+                            @if($course->id)
+                            <section>
+                                <label class="label">Image</label>
+                                @if($image)
+                                    <div class="item-image-container">
+                                        <div class="img-controllers">
+                                            <a href="{{url(config('app.admin_route').'/media-library/add/course/'.$course->id)}}" title="Edit" class="btn btn-primary"><i class="fa fa-fw fa-pencil-square-o"></i></a>
+                                            <button title="Delete" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+                                        </div>
+                                        <img class="item-image" src="{{URL::to($image->url)}}" >
+                                    </div>
+                                @else
+                                    <a class="btn btn-primary" href="{{url(config('app.admin_route').'/media-library/add/course/'.$course->id)}}">Upload Image</a>
+                                @endif
+                            </section>
+                            @endif
 
                         </div>
                     </div>

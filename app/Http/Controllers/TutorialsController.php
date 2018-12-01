@@ -10,6 +10,7 @@ use App\Course;
 use App\Lesson;
 use DB;
 use Illuminate\Support\Facades\Log;
+use App\MediaFileToItem;
 
 class TutorialsController extends Controller
 {
@@ -32,15 +33,22 @@ class TutorialsController extends Controller
                         ->get();
 
 
+        //get image
+        $course_image = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')
+            ->where('item_id', $course->id)
+            ->where('item_type', 'course')
+            ->first();
+
         //set meta
         $meta['keywords'] = 'course, learn, '.$course->name;
         $meta['description'] = 'Learn '.$course->name;
 
         return View::make('tutorials.course', [
-            'course'    => $course,
-            'meta'      => $meta,
-            'course_id' => $course->id,
-            'chapters'  => $chapters
+            'course'        => $course,
+            'meta'          => $meta,
+            'course_id'     => $course->id,
+            'chapters'      => $chapters,
+            'course_image'  => $course_image
         ]);
     }
 
@@ -78,6 +86,12 @@ class TutorialsController extends Controller
             $lesson_i++;
         }
 
+        //get image
+        $course_image = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')
+            ->where('item_id', $chapter->course_id)
+            ->where('item_type', 'course')
+            ->first();
+
         //set meta
         $meta['keywords'] = 'course, learn, '.$chapter->course_name.' '.$chapter->chapter_name;
         $meta['description'] = 'Learn '.$chapter->course_name.' - '.$chapter->chapter_name;
@@ -86,7 +100,8 @@ class TutorialsController extends Controller
             'chapter'   => $chapter,
             'meta'      => $meta,
             'course_id' => $chapter->course_id,
-            'lessons'   => $lessons
+            'lessons'   => $lessons,
+            'course_image'   => $course_image
         ]);
     }
 
@@ -148,6 +163,12 @@ class TutorialsController extends Controller
         if($next_lesson)
             $next_slug = $next_lesson->slug;
 
+        //get image
+        $course_image = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')
+            ->where('item_id', $lesson->course_id)
+            ->where('item_type', 'course')
+            ->first();
+
         //set meta
         $meta['keywords'] = 'course, learn, '.$lesson->course_name.' '.$lesson->chapter_name.' '.$lesson->lesson_name;
         $meta['description'] = 'Learn '.$lesson->course_name.' '.$lesson->chapter_name.':  '.$lesson->lesson_name;
@@ -158,7 +179,8 @@ class TutorialsController extends Controller
             'meta'              => $meta,
             'course_id'         => $lesson->course_id,
             'next_slug'         => $next_slug,
-            'quiz_answers'      => $quiz_answers
+            'quiz_answers'      => $quiz_answers,
+            'course_image'   => $course_image
         ]);
     }
 

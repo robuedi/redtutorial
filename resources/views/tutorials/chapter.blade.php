@@ -15,7 +15,7 @@
 @section('content')
 
     <section class="chapters-section" >
-        <div class="header-section" style='background-image: url("/assets/img/php-elephant.jpg")'>
+        <div class="header-section" @if($course_image) style='background-image: url("/{{$course_image->url}}")' @endif>
             <div class="subtitle">
                 <h2>
                     <a href="/tutorial/{{$chapter->course_slug}}"><i class="fas fa-angle-left"></i> Chapters</a>

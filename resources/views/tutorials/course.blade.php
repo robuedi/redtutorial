@@ -15,7 +15,8 @@
 @section('content')
 
     <section class="courses-section" >
-        <section class="header-section" style='background-image: url("/assets/img/php-elephant.jpg")'>
+        {{Log::info($course_image)}}
+        <section class="header-section" @if($course_image) style='background-image: url("/{{$course_image->url}}")' @endif>
             <div class="heading-inner-container">
                 <h1>{{$course->name}}</h1>
             </div>
@@ -27,7 +28,7 @@
 
                 <div class="list-items">
                 @foreach($chapters as $index => $chapter)
-                    <a href="/tutorial/{{$course->slug.'/'.$chapter->slug}}" class="option @if(rand(0,1))  @if(rand(0,1)) messy-option-up @else messy-option-down @endif @endif" style='background-position: -{{$index*150}}px {{$index*150}}px;background-image: url("/assets/img/php-elephant.jpg")'>
+                    <a href="/tutorial/{{$course->slug.'/'.$chapter->slug}}" class="option @if(rand(0,1))  @if(rand(0,1)) messy-option-up @else messy-option-down @endif @endif" @if($course_image) style='background-position: -{{$index*150}}px {{$index*150}}px;background-image: url("/{{$course_image->url}}")' @endif >
                         <div class="text-description">
                             <h3 >
                                 {{$chapter->name}}

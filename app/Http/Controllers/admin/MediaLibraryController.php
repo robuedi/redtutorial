@@ -6,6 +6,7 @@ use App\Libraries\Listing;
 use App\Libraries\Upload;
 use App\Libraries\UIMessage;
 use App\Libraries\MediaFilesToItemLib;
+use App\MediaFileToItem;
 use Redirect;
 use View;
 use App\Http\Controllers\Controller;
@@ -26,9 +27,11 @@ class MediaLibraryController extends Controller
         // settings
         $query_data = array(
 
-            'fields' => "*",
+            'fields' => "m.*, mf.item_type, mf.item_id",
 
-            'body' => "FROM media_files WHERE (1) {filters}",
+            'body' => "FROM media_files as m 
+                        LEFT JOIN media_files_to_items mf ON m.id = mf.file_id
+                        WHERE (1) {filters}",
 
             'filters' => array(
 
@@ -39,8 +42,8 @@ class MediaLibraryController extends Controller
             'sortables' => array(
 
                 'name' => '',
-                'created_at' => 'desc'
-
+                'item_type' => '',
+                'created_at' => 'desc',
             )
         );
 
@@ -57,10 +60,22 @@ class MediaLibraryController extends Controller
         return View::make('_admin.media_library.add');
     }
 
+    public function editAdd()
+    {
+        return View::make('_admin.media_library.edit_add');
+    }
+
     public function addToItem($item_type, $item_id)
     {
-        return View::make('_admin.media_library.add', [
+        //get any existing img for item
+        $img = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')
+            ->where('item_id', $item_id)
+            ->where('item_type', $item_type)
+            ->first();
+
+        return View::make('_admin.media_library.edit_add', [
             'item_type' => $item_type,
+            'img'       => $img,
             'item_id'   => $item_id,
         ]);
     }
@@ -96,7 +111,6 @@ class MediaLibraryController extends Controller
 
     public function uploadToItem($item_type, $item_id)
     {
-        $new_media_files_item = new MediaFilesToItemLib($item_type, $item_id);
         // initializez libraria de upload
         $upload = new Upload();
 
@@ -119,9 +133,39 @@ class MediaLibraryController extends Controller
                 'updated_at' => date('Y-m-d H:i:s')
             ));
 
-            //new record for media to item
+            //delete the existing img for the item
+            $current_file_to_item = MediaFileToItem::where('item_id', $item_id)
+                ->where('item_type', $item_type)->get();
 
-            Media;
+            if($current_file_to_item)
+            {
+                foreach ($current_file_to_item as $file_to_item)
+                {
+                    //check  if exist
+                    $file = MediaFile::findOrFail($file_to_item->file_id);
+
+                    // remove from db
+                    DB::table('media_files')
+                        ->where('id', $file_to_item->file_id)
+                        ->delete();
+
+                    if($file)
+                    {
+                        // remove from disc
+                        $file_path = $file->name . '/' . $file->name;
+                        if (file_exists($file_path))
+                            @unlink($file_path);
+                    }
+
+                    //delete current file to item link
+                    DB::table('media_files_to_items')
+                        ->where('id', $file_to_item->id)
+                        ->delete();
+                }
+            }
+
+            //new record for media to item
+            $media_to_item = new MediaFileToItem();
             $media_to_item->file_id     = $upload_response['id'];
             $media_to_item->item_id     = $item_id;
             $media_to_item->item_type   = $item_type;

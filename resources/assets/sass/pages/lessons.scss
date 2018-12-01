@@ -1,5 +1,5 @@
 .lesson-main-container {
-  background-color: $brand-second;
+  background-color: #fefefe;
   min-height: calc(100vh - 93px);
 
   .tutorial-name{
@@ -7,6 +7,7 @@
     margin: 0px;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     position: relative;
     font-family: $font-family;
     flex: 1;
@@ -29,7 +30,7 @@
 
     .subtitle{
       display: inline-block;
-      background-color: $brand-second;
+      background-color: #FFF;
 
       h2 {
         position: relative;
@@ -75,7 +76,7 @@
 
       h1 {
         padding: 20px 40px 20px 75px;
-        background-color: $brand-second;
+        background-color: #FFF;
         display: inline-block;
         position: relative;
         z-index: 1;
@@ -97,24 +98,19 @@
 
     .lessons-list {
       text-align: left;
-      width: 850px;
+      width: 750px;
       max-width: 100%;
       padding: 5px;
       position: relative;
       display: inline-block;
       margin-bottom: 80px;
-      margin-top: 30px;
 
       .lesson-container{
         display: none;
-        border-radius: 4px;
-        background-color: #fefefe;
-        padding: 20px 40px 20px;
-        border: 1px solid #ddd;
-        //box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+        background-color: transparent;
 
         > p{
-          font-size: 16px;
+          font-size: 18px;
           line-height: 1.5;
 
         }
@@ -135,8 +131,7 @@
           word-wrap: break-word;       /* Internet Explorer 5.5+ */
 
           code {
-            background-color: $brand-second;
-            border-radius: 4px;
+            background-color: #f3f3f3;
             padding: 10px;
           }
         }
@@ -152,7 +147,6 @@
             .input-label{
               cursor: pointer;
               box-shadow: 1px 1px 1px 1px #ddd;
-              border-radius: 2px;
               border: 1px solid #aaa;
               display: block;
               padding: 10px 15px;
@@ -211,7 +205,6 @@
 
       span {
         display: inline-block;
-        border-radius: 4px;
         padding: 10px;
         font-size: 20px;
         border: 1px solid #eee;

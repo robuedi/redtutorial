@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\MediaFileToItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Libraries\Listing;
@@ -98,9 +99,16 @@ class CoursesController extends Controller
         $hierarchy_item->setPointingID($id.'course');
         $curses_hierarchy_map = $hierarchy_item->getHierarchyList();
 
+        //get image
+        $image = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')
+                    ->where('item_id', $course->id)
+                    ->where('item_type', 'course')
+                    ->first();
+
         return View::make('_admin.courses.create_edit', [
                 'course' => $course,
-                'curses_hierarchy_map'  => json_encode($curses_hierarchy_map)
+                'curses_hierarchy_map'  => json_encode($curses_hierarchy_map),
+                'image'  => $image
             ]);
     }
 

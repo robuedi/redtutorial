@@ -1,12 +1,13 @@
 .chapters-section{
   min-height: calc(100vh - 93px);
-  background-color: $brand-second;
+  background-color: #FFF;
 
   .header-section {
     padding: 100px 75px 100px 0px;
     margin: 0px;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     position: relative;
     font-family: $font-family;
 
@@ -27,7 +28,7 @@
 
     .subtitle{
       display: inline-block;
-      background-color: $brand-second;
+      background-color: #FFF;
 
       h2 {
         position: relative;
@@ -57,7 +58,7 @@
 
       h1 {
         padding: 20px 40px 20px 75px;
-        background-color: $brand-second;
+        background-color: #FFF;
         display: inline-block;
         position: relative;
         z-index: 1;
@@ -99,7 +100,7 @@
         box-sizing: border-box;
         min-height: 240px;
         margin: 20px;
-        box-shadow: 0px 0px 1px 1px #ccc;
+        box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.6);
         position: relative;
         text-decoration: none;
         flex: 0 0 220px;
@@ -116,7 +117,7 @@
         }
 
         &:hover{
-          box-shadow: 0px 0px 2px 1px #aaa;
+          box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.7);
         }
 
 

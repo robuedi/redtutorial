@@ -41,6 +41,7 @@ Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')
         //Media Library
         Route::get('/media-library/', 'MediaLibraryController@index');
         Route::get('/media-library/add', 'MediaLibraryController@add');
+        Route::get('/media-library/edit-add', 'MediaLibraryController@editAdd');
         Route::get('/media-library/add/{item_type}/{item_id}', 'MediaLibraryController@addToItem');
         Route::post('/media-library/upload', 'MediaLibraryController@upload');
         Route::post('/media-library/upload/{item_type}/{item_id}', 'MediaLibraryController@uploadToItem');

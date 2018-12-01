@@ -19,8 +19,10 @@
             <h1>Contact Us</h1>
         </div>
         <div class="content">
-            <div class="feedback">
-                {!! \App\Libraries\UIMessage::get() !!}
+            <div class="feedback-container">
+                <div class="feedback">
+                    {!! \App\Libraries\UIMessage::get() !!}
+                </div>
             </div>
             <form class="contact-form" enctype="application/x-www-form-urlencoded" action="/contact-us" method="POST">
                 {{ csrf_field() }}

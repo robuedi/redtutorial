@@ -32,26 +32,50 @@ textarea:focus, input:focus, button:focus{
 .logo-txt {
   display: inline-block;
   text-align: right;
-  margin: 16px 0px;
+  margin: 8px 0px;
   text-decoration: none;
-  font-family: 'Fredericka the Great', cursive;
+  height: 44px;
+  vertical-align: middle;
+  line-height: 44px;
 
   .red{
-    display: block;
-    color: $brand-primary;
+
+    vertical-align: middle;
+    font-family: 'Fjalla One', sans-serif;
+    //-webkit-text-stroke: 1px #FFF;
+    display: inline-block;
+    color: #FFF;
+    background-color: $brand-primary;
     text-transform: uppercase;
-    font-size: 35px;
-    letter-spacing: 6px;
-    font-weight: lighter;
+    font-size: 26px;
+    letter-spacing: 0px;
+    font-weight: 900;
     text-align: center;
+    line-height: 1;
+    //-webkit-text-stroke: 2px #E62C33;
+    //padding: 0px 1px;
+    border-radius: 50%;
+    height: 42px;
+    width: 42px;
+    border: 1px solid $brand-primary;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 8px 0px;
   }
   .tutorial{
-    display: block;
-    color: $text-color-sidebar;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: lighter;
-    letter-spacing: 6px;
+    padding: 0px 2px;
+    line-height: 44px;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 26px;
+    text-transform: capitalize;
+    font-weight: 400;
+    letter-spacing: -4px;
     text-align: center;
+    //border-top: 2px solid #E62C33;
+    //border-bottom: 2px solid #E62C33;
+    //-webkit-text-stroke: 1px #FFF;
+    color: #000;
+    font-family: monospace;
   }
 }

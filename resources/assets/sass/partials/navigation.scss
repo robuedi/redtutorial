@@ -3,6 +3,7 @@
   position: relative;
   z-index: 100;
   box-shadow: 2px 0px 2px 1px rgba(0,0,0,0.2);
+  height: 74px;
 
   .nav-inner {
     display: inline-block;
@@ -13,12 +14,16 @@
     vertical-align: bottom;
 
     .logo-txt{
-      .red, .tutorial{
-        line-height: 1.15;
+      margin: 12px;
+      margin-right: 30px;
+
+      img {
+        height: 60px;
       }
     }
 
     .navigation-links {
+      vertical-align: middle;
       display: inline-block;
       margin: 0;
       list-style: none;
@@ -36,6 +41,8 @@
           transition: color .5s;
           font-size: 18px;
           text-transform: uppercase;
+          letter-spacing: 1px;
+          font-weight: 100;
 
           &.active, &:hover {
             color: $brand-primary;

@@ -2,12 +2,12 @@
 
     <div class="nav-inner">
         <a href="/" class="logo-txt">
-            <span class="red">RED</span>
-            <span class="tutorial">Tutorial</span>
+{{--            <img src="{{URL::to('/assets/')}}/img/logo4.png">--}}
+            <span class="red">RED</span><span class="tutorial">Tutorial</span>
         </a>
 
         <ul class="navigation-links">
-            <li ><a href="#"  >My Account</a></li>
+            {{--<li ><a href="#"  >My Account</a></li>--}}
             <li><a href="/" class="@if(url()->current() === url('/')) active @endif" >Tutorials</a></li>
             <li><a href="/contact-us" class="@if(url()->current() === url('/contact-us')) active @endif" >Contact Us</a></li>
             @foreach($static_pages as $page)

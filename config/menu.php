@@ -132,6 +132,11 @@ return array(
                     "url"       => "/media-library/add",
                     "aliases"   => array(),
                 ),
+                '3' => array(
+                    "name"      => "Edit - upload new",
+                    "url"       => "/media-library/edit-add",
+                    "aliases"   => array(),
+                ),
             ),
         )
     ),

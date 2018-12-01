@@ -4,7 +4,7 @@
  $(function(){
     $('.fileslist').html('');
 
-    var itemLink = $('[data-upload-item]').attr('data-upload-item');
+     var itemLink = $('[data-upload-item]').attr('data-upload-item');
 
      var uploader = new plupload.Uploader({
          headers: {
@@ -27,10 +27,11 @@
 
          init: {
              PostInit: function() {
-                 $('#uploadfiles').onclick = function() {
+                 $('#uploadfiles').on('click',function() {
+                     console.log('upload btn');
                      uploader.start();
                      return false;
-                 };
+                 });
              },
 
              FilesAdded: function(up, files) {
