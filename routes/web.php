@@ -89,3 +89,6 @@ Route::get('/info/{url}', 'StaticPagesController@index');
 Route::get('/contact-us', 'ContactController@index');
 Route::post('/contact-us', 'ContactController@saveMessage');
 
+Route::get('/images/uploads/media_library/{year}/{month}/{file_name}', 'ImageController@showMediaImage')->where('year', '[0-9]{4}')->where('month', '[0-9]{2}');
+Route::get('/images/assets/img/{file_name}', 'ImageController@showAssetImage');
+

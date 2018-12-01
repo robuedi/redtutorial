@@ -15,7 +15,7 @@
 @section('content')
 
     <section class="chapters-section" >
-        <div class="header-section" @if($course_image) style='background-image: url("/{{$course_image->url}}")' @endif>
+        <div class="header-section" @if($course_image) style='background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif>
             <div class="subtitle">
                 <h2>
                     <a href="/tutorial/{{$chapter->course_slug}}"><i class="fas fa-angle-left"></i> Chapters</a>
@@ -31,7 +31,7 @@
                 <div class="lesson-choosing">
                     @foreach($lessons as $lesson)
                         <a href="/tutorial/{{$chapter->course_slug.'/'.$chapter->chapter_slug.'/'.$lesson->slug}}" class="option @if(rand(0,1)) option-square @else option-circle @endif option-pos-{{rand(1,6)}}" >
-                            <div class="bck-img" style='background-image: url("/assets/img/background-texture-2110724_640.jpg")'></div>
+                            <div class="bck-img" style='background-image: url("/images/assets/img/background-texture-2110724_640.jpg?w=210&fit=contain")'></div>
                             <div class="top-txt" >
                                 <h4>{{$lesson->name}}</h4>
                                 <span class="lesson-number">{{$lesson->index}}</span>
