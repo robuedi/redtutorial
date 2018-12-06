@@ -4,6 +4,16 @@
   z-index: 100;
   box-shadow: 2px 0px 2px 1px rgba(0,0,0,0.2);
   height: 74px;
+  background-color: #FFF;
+
+  @media (max-width: $screen-md-max) {
+    text-align: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+  }
 
   .nav-inner {
     display: inline-block;
@@ -14,8 +24,15 @@
     vertical-align: bottom;
 
     .logo-txt{
+      position: relative;
+      z-index: 2;
       margin: 12px;
       margin-right: 30px;
+
+
+      @media (max-width: $screen-md-max) {
+        margin-top: 1px;
+      }
 
       img {
         height: 60px;
@@ -49,6 +66,77 @@
           }
         }
       }
+
+      @media (max-width: $screen-md-max) {
+        z-index: 1;
+        position: absolute;
+        height: calc(100vh - 50px);
+        transition: left .5s;
+        overflow: hidden;
+        width: 100vw;
+        top: 50px;
+        left: -100vw;
+        background-color: #FFF;
+        padding-top: 30px;
+        box-shadow: inset 2px 0px 2px 1px rgba(0,0,0,0.2);
+
+        li {
+          display: block;
+          border-bottom: 1px dashed #eee;
+
+          &:last-child{
+            border-bottom: none;
+          }
+
+          a {
+            font-size: 22px;
+          }
+        }
+
+      }
+    }
+
+    .trigger-sidebar {
+      z-index: 2;
+      display: inline-block;
+      float: right;
+      height: 40px;
+      width: 65px;
+      border-radius: 7px;
+      background-color: initial;
+      position: relative;
+      box-sizing: border-box;
+      border: none;
+
+      &:before, &:after{
+        content: "";
+        position: absolute;
+        height: 1px;
+        width: 30px;
+        background-color: $brand-primary;
+        left: 17px;
+        top: 15px;
+        transition: transform .5s;
+      }
+
+      &:after {
+        top: 24px;
+      }
+
+      &.trigger-open{
+        &:before {
+          top: 20px;
+          transform: rotate(45deg);
+        }
+        &:after {
+          top: 20px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    .trigger-open + .navigation-links {
+      left: 0px;
     }
   }
 }

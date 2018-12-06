@@ -19,7 +19,7 @@ class TutorialsController extends Controller
         return View::make('tutorials.index');
     }
 
-    public function showCourse(string $course_slug)
+    public function showChapters(string $course_slug)
     {
         //get the course
         $course = Course::where('slug', $course_slug)
@@ -27,9 +27,14 @@ class TutorialsController extends Controller
                     ->firstOrFail();
 
         //get chapters
-        $chapters = Course::where('parent_id', $course->id)
-                        ->where('is_public', 1)
-                        ->whereNotNull('slug')
+        $chapters = Course::join('lessons', 'courses.id', '=', 'lessons.parent_id')
+                        ->where('courses.parent_id', $course->id)
+                        ->where('courses.is_public', 1)
+                        ->where('lessons.is_public', 1)
+                        ->whereNotNull('courses.slug')
+                        ->groupBy('courses.id')
+                        ->selectRaw('courses.id, courses.name, courses.slug, courses.symbol_class, COUNT(lessons.id) AS lessons_number')
+                        ->orderBy('courses.order_weight')
                         ->get();
 
 
@@ -43,7 +48,7 @@ class TutorialsController extends Controller
         $meta['keywords'] = 'course, learn, '.$course->name;
         $meta['description'] = 'Learn '.$course->name;
 
-        return View::make('tutorials.course', [
+        return View::make('tutorials.chapters', [
             'course'        => $course,
             'meta'          => $meta,
             'course_id'     => $course->id,
@@ -52,7 +57,7 @@ class TutorialsController extends Controller
         ]);
     }
 
-    public function showChapter(string $course_slug, string $chapter_slug)
+    public function showLessons(string $course_slug, string $chapter_slug)
     {
 
         //get the chapter
@@ -96,7 +101,7 @@ class TutorialsController extends Controller
         $meta['keywords'] = 'course, learn, '.$chapter->course_name.' '.$chapter->chapter_name;
         $meta['description'] = 'Learn '.$chapter->course_name.' - '.$chapter->chapter_name;
 
-        return View::make('tutorials.chapter', [
+        return View::make('tutorials.lessons', [
             'chapter'   => $chapter,
             'meta'      => $meta,
             'course_id' => $chapter->course_id,
@@ -105,7 +110,7 @@ class TutorialsController extends Controller
         ]);
     }
 
-    public function showLesson(string $course_slug, string $chapter_slug, string $lesson_slug)
+    public function showLessonContent(string $course_slug, string $chapter_slug, string $lesson_slug)
     {
         //get the lesson
         $lesson = DB::table('courses as co')
@@ -173,7 +178,7 @@ class TutorialsController extends Controller
         $meta['keywords'] = 'course, learn, '.$lesson->course_name.' '.$lesson->chapter_name.' '.$lesson->lesson_name;
         $meta['description'] = 'Learn '.$lesson->course_name.' '.$lesson->chapter_name.':  '.$lesson->lesson_name;
 
-        return View::make('tutorials.lesson', [
+        return View::make('tutorials.lesson_content', [
             'lesson'            => $lesson,
             'lesson_sections'   => $lesson_sections,
             'meta'              => $meta,

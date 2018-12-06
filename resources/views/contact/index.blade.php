@@ -15,7 +15,7 @@
 @section('content')
 
     <section class="contact-us-page-content"  >
-        <div class="top-section" style='background-image: url("/assets/img/contact_us.jpg")'>
+        <div class="top-section" style='background-image: url("/images/assets/img/contact_us.jpg?w=1200&fit=contain")'>
             <h1>Contact Us</h1>
         </div>
         <div class="content">

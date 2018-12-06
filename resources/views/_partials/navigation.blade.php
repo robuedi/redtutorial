@@ -2,9 +2,12 @@
 
     <div class="nav-inner">
         <a href="/" class="logo-txt">
-{{--            <img src="{{URL::to('/assets/')}}/img/logo4.png">--}}
             <span class="red">RED</span><span class="tutorial">Tutorial</span>
         </a>
+
+        <button class="trigger-sidebar" type="button">
+
+        </button>
 
         <ul class="navigation-links">
             {{--<li ><a href="#"  >My Account</a></li>--}}

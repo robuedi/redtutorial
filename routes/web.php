@@ -78,9 +78,9 @@ Route::get('/', 'HomeController@index');
 
 //Tutorials
 Route::get('/tutorials', 'TutorialsController@index');
-Route::get('/tutorial/{course_slag}', 'TutorialsController@showCourse');
-Route::get('/tutorial/{course_slag}/{chapter_slag}', 'TutorialsController@showChapter');
-Route::get('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsController@showLesson');
+Route::get('/tutorial/{course_slag}', 'TutorialsController@showChapters');
+Route::get('/tutorial/{course_slag}/{chapter_slag}', 'TutorialsController@showLessons');
+Route::get('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsController@showLessonContent');
 
 //Info pages
 Route::get('/info/{url}', 'StaticPagesController@index');
@@ -89,6 +89,7 @@ Route::get('/info/{url}', 'StaticPagesController@index');
 Route::get('/contact-us', 'ContactController@index');
 Route::post('/contact-us', 'ContactController@saveMessage');
 
+//Glide - for images
 Route::get('/images/uploads/media_library/{year}/{month}/{file_name}', 'ImageController@showMediaImage')->where('year', '[0-9]{4}')->where('month', '[0-9]{2}');
 Route::get('/images/assets/img/{file_name}', 'ImageController@showAssetImage');
 
