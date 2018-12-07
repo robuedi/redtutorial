@@ -80,6 +80,10 @@
     z-index: 2;
     position: relative;
     background-color: #FFF;
+    
+    @media (max-width: 400px ) {
+      padding: 35px 0px;
+    }
 
     .list-container {
       text-align: center;
@@ -88,27 +92,36 @@
       max-width: 100%;
       display: inline-block;
 
+
+      @media (max-width: $screen-md-max) {
+        padding: 0;
+      }
+
+
       .list-items {
         //flex-wrap: wrap;
         text-align: left;
-        width: 100%;
+        max-width: 100%;
         position: relative;
         margin: 0;
         padding: 0;
         z-index: 2;
         //display: flex;
         list-style: none;
+        box-sizing: border-box;
 
+        @media (max-width: 991px) {
+          display: inline-block;
+          width: 600px;
+          padding: 0px 25px;
+        }
 
 
         li {
           position: relative;
           display: block;
-          //text-align: center;
+          padding: 25px;
 
-          //&:first-child, &:last-child{
-          //  width: 100%;
-          //}
           &:after{
             content: "";
             position: absolute;
@@ -117,25 +130,21 @@
             bottom: 0;
             width: 0px;
             border-left: 1px dashed $brand-primary;
-            //background-color: $brand-primary;
             z-index: 1;
           }
           &:before{
             content: attr(data-number);
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
-            left: calc(50% - 35px);
-            width: 70px;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            width: 40px;
             height: 70px;
             z-index: 2;
             background-color: #FFF;
-            //border: 1px dashed $brand-primary;
-            font-family: monospace;
-            border-radius: 50%;
+            font-family: $font-family-monospace;
             line-height: 70px;
             text-align: center;
-            //font-weight: bolder;
             font-size: 20px;
             color: $brand-primary;
           }
@@ -146,20 +155,75 @@
           &:last-child:after {
             bottom: 50%;
           }
-          &:nth-child(odd){
-
-            &:after{
-              //right: 0;
-            }
-          }
-
           &:nth-child(even){
             text-align: right;
+          }
 
-            &:after{
-              //left: 0;
+
+          @media (max-width: 991px) {
+            padding-left: 100px;
+            padding-right: 0px;
+
+            &:nth-child(even){
+              text-align: center;
+            }
+            text-align: center;
+
+            &:after, &:before{
+              left: 50px;
             }
           }
+
+          @media (max-width: 699px) {
+            padding-left: 70px;
+
+            &:after, &:before{
+              left: 35px;
+            }
+          }
+
+          @media (max-width: 590px) {
+            padding-left: 45px;
+
+            &:after, &:before{
+              left: 25px;
+            }
+          }
+
+          @media (max-width: 530px) {
+            padding-left: 45px;
+
+            &:after, &:before{
+              left: 14px;
+            }
+          }
+
+
+          //@media (max-width: 860px) {
+          //  margin-left: 60px;
+          //
+          //  &:after, &:before{
+          //    left: 100px;
+          //  }
+          //
+          //}
+          //
+          //@media (max-width: 740px) {
+          //  padding-left: 100px;
+          //
+          //  &:after, &:before{
+          //    left: 80px;
+          //  }
+          //
+          //}
+          //@media (max-width: 640px) {
+          //  padding-left: 90px;
+          //
+          //  &:after, &:before{
+          //    left: 60px;
+          //  }
+          //}
+
         }
 
         .option {
@@ -174,13 +238,24 @@
           display: inline-block;
           //background-color: #FFF;
           min-height: 200px;
-          margin: 15px;
           //border: 1px dashed #FFF;
           box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.6);
           background-position: center;
           background-size: cover;
           background-repeat: repeat;
           transition: box-shadow .5s;
+
+          @media (max-width: 991px) {
+            width: 420px;
+            min-height: 180px;
+
+            .text-description {
+              h3 {
+                font-size: 19px;
+              }
+            }
+          }
+
 
           &:hover{
             box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.7);
@@ -300,7 +375,7 @@
             position: relative;
             z-index: 2;
             color: #FFF;
-            font-family: monospace;
+            font-family: $font-family-monospace;
 
 
             .lessons-count{

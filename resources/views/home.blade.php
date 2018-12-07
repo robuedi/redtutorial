@@ -17,20 +17,22 @@
         </section>
 
 
-        <section class="page-content" >
-            @foreach($courses as $course)
-            <div class="course-item" >
-                <div class="inner-container" >
-                    <h2 >{{$course->name}} <small>Course</small></h2>
-                    <div class="txt-content">
-                        {!! $course->description !!}
+        <section class="page-content-container">
+            <div class="page-content" >
+                @foreach($courses as $course)
+                    <div class="course-item" >
+                        <div class="inner-container" >
+                            <h2 >{{$course->name}} <small>Course</small></h2>
+                            <div class="txt-content">
+                                {!! $course->description !!}
+                            </div>
+                            <a class="start-course" href="/tutorial/{{$course->slug}}">
+                                <span>Start now</span> <i class="fas fa-chevron-circle-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <a class="start-course" href="/tutorial/{{$course->slug}}">
-                        <span>Start now</span> <i class="fas fa-chevron-circle-right"></i>
-                    </a>
-                </div>
+                @endforeach
             </div>
-            @endforeach
         </section>
     </section>
 

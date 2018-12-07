@@ -13,6 +13,14 @@
     left: 0;
     right: 0;
     height: 50px;
+
+    &.scroll-show-hide-enabled{
+      transition: top .5s;
+
+      &.scroll-hide {
+        top: -50px;
+      }
+    }
   }
 
   .nav-inner {
@@ -97,8 +105,8 @@
     }
 
     .trigger-sidebar {
+      display: none;
       z-index: 2;
-      display: inline-block;
       float: right;
       height: 40px;
       width: 65px;
@@ -107,6 +115,10 @@
       position: relative;
       box-sizing: border-box;
       border: none;
+
+      @media (max-width: $screen-md-max) {
+        display: inline-block;
+      }
 
       &:before, &:after{
         content: "";

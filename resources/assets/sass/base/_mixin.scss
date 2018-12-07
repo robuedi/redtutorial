@@ -31,3 +31,8 @@ a {
     color: $brand-primary;
   }
 }
+
+@font-face {
+  font-family: 'MonoFont';
+  src:  url('../../../../fonts/DejaVuSansMono.ttf') format('truetype');
+}

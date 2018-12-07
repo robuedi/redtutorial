@@ -96,6 +96,11 @@
 
     @include container-sizing();
 
+    @media (max-width: 600px) {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+
     .lesson-progress-container{
       text-align: center;
 
@@ -170,6 +175,7 @@
       display: inline-block;
       margin-bottom: 80px;
       min-height: 350px;
+      box-sizing: border-box;
 
       .lesson-container{
         display: none;
