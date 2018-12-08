@@ -56,7 +56,7 @@ class ImageController extends Controller
                 'w' => Input::get('w'),
                 'h' => Input::get('h'),
                 'fit' => Input::get('fit', 'crop'),
-                'filt' => Input::get('filt', 'greyscale'),
+//                'filt' => Input::get('filt', ''),
             ]
         );
     }

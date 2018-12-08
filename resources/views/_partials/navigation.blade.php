@@ -5,9 +5,7 @@
             <span class="red">RED</span><span class="tutorial">Tutorial</span>
         </a>
 
-        <button class="trigger-sidebar" type="button">
-
-        </button>
+        <div class="trigger-sidebar" ></div>
 
         <ul class="navigation-links">
             {{--<li ><a href="#"  >My Account</a></li>--}}

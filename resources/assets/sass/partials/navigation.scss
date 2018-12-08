@@ -115,6 +115,8 @@
       position: relative;
       box-sizing: border-box;
       border: none;
+      top: 5px;
+      cursor: pointer;
 
       @media (max-width: $screen-md-max) {
         display: inline-block;
