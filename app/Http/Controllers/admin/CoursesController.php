@@ -186,14 +186,7 @@ class CoursesController extends Controller
             $rules['slug'] = 'required|max:100';
             $messages['slug.required']  = 'Field slug required if not draft';
         }
-
-        //if public not allowed draft
-        if($request->input('is_public')&&$request->input('is_draft'))
-        {
-            $rules['no_pubic_while_draft']              = 'required';
-            $messages['no_pubic_while_draft.required']  = 'Public not allowed when draft';
-        }
-
+        
         $validator = Validator::make(Input::all(), $rules, $messages);
 
         if ($validator->fails())
