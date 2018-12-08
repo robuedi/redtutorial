@@ -8,17 +8,19 @@
  
 .cookie-message {
   position:fixed;
-  top:0;left:0;right:0;
+  bottom:0;
+  left:0;
+  right:0;
   padding:10px;
-  background:#fff;
+  background:#FFF;
   border-bottom:1px solid #ccc;
   box-shadow:0px 0px 3px #ccc;
-  z-index: 99;
+  z-index: 1000;
   display: none;
-
+  font-size: 20px;
 
   @media (min-width: $screen-md-max) {
-    padding-right: 80px;
+    padding-right: 100px;
   }
 
   @media (max-width: $screen-md-max) {
@@ -31,6 +33,7 @@
     position: absolute;
     right: 10px;
     font-weight: 800;
+    font-size: 22px;
 
     @media (min-width: $screen-lg) {
       top: 10px;

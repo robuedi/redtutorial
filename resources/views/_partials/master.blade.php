@@ -42,16 +42,15 @@
 
     <body>
 
+        <aside class="cookie-message">
+            This website uses cookies to improve user experience. By using this website you consent to all cookies in accordance with our Cookie Policy.
+        </aside>
+
         @include('_partials.navigation', array('static_pages' => \App\Libraries\MenuClientStatic::getStaticMenu()))
 
         <main>
             @yield('content')
         </main>
-
-
-        <aside class="cookie-message">
-            This website uses cookies to improve user experience. By using this website you consent to all cookies in accordance with our Cookie Policy.
-        </aside>
 
         <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
