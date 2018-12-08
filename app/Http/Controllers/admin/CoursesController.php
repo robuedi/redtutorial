@@ -144,7 +144,6 @@ class CoursesController extends Controller
             if($request->input('enabled_slug_edit')){
                 $course->slug          = $request->input('slug');
             }
-            $course->level = 0;
             $course->parent_id = null;
             $course->save();
 
