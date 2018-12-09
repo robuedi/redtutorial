@@ -87,7 +87,7 @@
                         <div class="widget-body smart-form ">
 
                             <section>
-                                <label class="label">Name</label>
+                                <label class="label">Name <span class="req">*</span></label>
                                 <label class="input">
                                     <input type="text" name="name" placeholder="Name" class="form-control input-sm" value="{{old('name', $chapter->name)}}">
                                 </label>
@@ -145,10 +145,17 @@
                                         </div>
                                         <div class="tab-pane fade " id="hr2">
                                             <section class="smart-form">
+
                                                 <section>
                                                     <label class="label toggle-inline">Is public <span class="req">*</span></label>
                                                     <label class="toggle" >
-                                                        <input type="checkbox" name="is_public" @if(old('is_public', $chapter->is_public)) checked="checked" @endif>
+                                                        <input type="checkbox" name="is_public" value="1"
+                                                               @if(!count(old()) && $chapter->is_public == 1)
+                                                               checked
+                                                               @elseif(old('is_public') == 1)
+                                                               checked
+                                                                @endif
+                                                        >
                                                         <i data-swchon-text="YES" data-swchoff-text="NO"></i>
                                                     </label>
                                                 </section>
@@ -156,7 +163,12 @@
                                                 <section>
                                                     <label class="label toggle-inline">Is draft <span class="req">*</span></label>
                                                     <label class="toggle" >
-                                                        <input type="checkbox" name="is_draft" @if(old('is_draft', $chapter->is_draft)) checked="checked" @endif>
+                                                        <input type="checkbox" name="is_draft" value="1"
+                                                               @if(!count(old()) && $chapter->is_draft == 1)
+                                                               checked
+                                                               @elseif(old('is_draft') == 1)
+                                                               checked
+                                                                @endif>
                                                         <i data-swchon-text="YES" data-swchoff-text="NO"></i>
                                                     </label>
                                                 </section>

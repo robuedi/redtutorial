@@ -215,17 +215,28 @@
                                 <div class="tab-pane fade @if(!$course->id) in active @endif " id="hr2">
                                     <section class="smart-form">
                                         <section>
-                                            <label class="label toggle-inline">Is public fix old input checkbox</label>
+                                            <label class="label toggle-inline">Is public</label>
                                             <label class="toggle" >
-                                                <input type="checkbox" name="is_public" value="1" @if((string)old('is_public', $course->is_public) === '1') checked @endif>
+                                                <input type="checkbox" name="is_public" value="1"
+                                                       @if(!count(old()) && $course->is_public == 1)
+                                                            checked
+                                                       @elseif(old('is_public') == 1)
+                                                            checked
+                                                       @endif
+                                                >
                                                 <i data-swchon-text="YES" data-swchoff-text="NO"></i>
                                             </label>
                                         </section>
 
                                         <section>
-                                            <label class="label toggle-inline">Is draft {{old('is_draft')}} </label>
+                                            <label class="label toggle-inline">Is draft </label>
                                             <label class="toggle" >
-                                                <input type="checkbox" name="is_draft" value="1" @if((string)old('is_draft', $course->is_draft) === '1') checked @endif>
+                                                <input type="checkbox" name="is_draft" value="1"
+                                                        @if(!count(old()) && $course->is_draft == 1)
+                                                            checked
+                                                        @elseif(old('is_draft') == 1)
+                                                            checked
+                                                        @endif>
                                                 <i data-swchon-text="YES" data-swchoff-text="NO"></i>
                                             </label>
                                         </section>

@@ -20,6 +20,7 @@ use App\Lesson;
 use App\Libraries\UIMessage;
 use Redirect;
 use App\Libraries\CoursesHierarchy\CoursesHierarchyFactory;
+use Form;
 
 class CoursesController extends Controller
 {
@@ -180,11 +181,11 @@ class CoursesController extends Controller
                 ||
                 (empty($request->input('slug'))&& $request->input('enabled_slug_edit'))
             )
-            && !$request->input('is_draft')
+            && $request->input('is_public')
         )
         {
             $rules['slug'] = 'required|max:100';
-            $messages['slug.required']  = 'Field slug required if not draft';
+            $messages['slug.required']  = 'Field slug required if public';
         }
         
         $validator = Validator::make(Input::all(), $rules, $messages);

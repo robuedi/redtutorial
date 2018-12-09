@@ -128,8 +128,10 @@ $(function () {
                                     //show feedback
                                     that.showFeedback('success', response.response.message);
 
-                                    //move next
-                                    that.moveToNextSectionOrLection();
+                                    setTimeout(function () {
+                                        //move next
+                                        that.moveToNextSectionOrLection();
+                                    }, 1500);
                                 }
                                 else //incorrect response
                                 {
@@ -138,31 +140,46 @@ $(function () {
                             }
                             else
                             {
-                                that.showFeedback('warning', 'Something went wrong.')
+                                that.showFeedback('warning', 'Something went wrong')
                             }
                         },
                         error: function () {
-                            that.showFeedback('warning', 'Something went wrong.')
+                            that.showFeedback('warning', 'Something went wrong')
                         }
                     })
                 }
                 else
                 {
-                    that.showFeedback('warning', 'No option selected.');
+                    that.showFeedback('warning', 'No option selected');
                 }
             },
             showFeedback: function (type, msg) {
                 //set message
-                var html = '<div class="ui-feedback '+type+'">\n' +
-                    '<span>\n' +
-                    msg +
-                    '</span>\n' +
-                    '</div>'
+                var html = $('<div class="ui-feedback hidden-temp '+type+'">\n' +
+                                '<span>\n' +
+                                    msg +
+                                '</span>\n' +
+                            '</div>');
 
                 //append to active section
                 this.clearFeedback();
                 var activeSection = this.sections.filter('.active');
                 activeSection.append(html);
+
+                //show message
+                setTimeout(function () {
+                   $(html).removeClass('hidden-temp');
+                }, 20);
+
+                //hide message
+                setTimeout(function () {
+                   $(html).addClass('hidden-temp');
+                }, 2500);
+
+                //remove message
+                setTimeout(function () {
+                   $(html).remove();
+                }, 3050);
             },
             clearFeedback: function () {
                 var activeSection = this.sections.filter('.active');

@@ -67,7 +67,7 @@ class TutorialsLessonsQuizzesController
                 $api_response = [
                     'status'    => 'error',
                     'response'  => [
-                        'message' => 'Lesson not found.',
+                        'message' => 'Lesson not found',
                         'action'  => ''
                     ]
                 ];
@@ -90,7 +90,7 @@ class TutorialsLessonsQuizzesController
                 $api_response = [
                     'status'    => 'error',
                     'response'  => [
-                        'message' => 'Options - quiz not found.',
+                        'message' => 'Options - quiz not found',
                         'action'  => '',
                     ]
                 ];
@@ -113,7 +113,7 @@ class TutorialsLessonsQuizzesController
                 $api_response = [
                     'status'    => 'success',
                     'response'  => [
-                        'message' => 'Correct response',
+                        'message' => 'Correct answer',
                         'action'  => 'pass',
                     ]
                 ];
@@ -123,7 +123,7 @@ class TutorialsLessonsQuizzesController
                 $api_response = [
                     'status'    => 'success',
                     'response'  => [
-                        'message' => 'Incorrect response',
+                        'message' => 'Incorrect answer',
                         'action'  => 'no_pass',
                     ]
                 ];
