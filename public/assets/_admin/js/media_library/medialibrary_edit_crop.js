@@ -12,10 +12,8 @@ $(function () {
     var $download = $('#download');
 
 
-    var originalImageURL = $image.attr('src');
-    var uploadedImageName = originalImageURL.replace(/^.*[\\\/]/, '');
-    var uploadedImageType = 'image/'+uploadedImageName.split('.').pop();
-    var uploadedImageURL;
+    var uploadedImageName;
+    var uploadedImageType;
 
     var $dataHeight = $('#dataHeight');
     var $dataWidth = $('#dataWidth');
@@ -36,8 +34,11 @@ $(function () {
     // Cropper
     $image.on({
         ready: function (e) {
-            console.log(e);
-            console.log(e.type);
+            // console.log(e);
+
+            var originalImageURL = $image.attr('src');
+            uploadedImageName = originalImageURL.replace(/^.*[\\\/]/, '');
+            uploadedImageType = 'image/'+uploadedImageName.split('.').pop();
         },
         cropstart: function (e) {
             console.log(e.type, e.action);
