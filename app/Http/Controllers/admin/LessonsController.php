@@ -87,7 +87,8 @@ class LessonsController extends Controller
             'courses'       => $courses,
             'chapters'      => $chapters,
             'curses_hierarchy'      => json_encode($curses_hierarchy),
-            'curses_hierarchy_map'  => json_encode($curses_hierarchy_map)
+            'curses_hierarchy_map'  => json_encode($curses_hierarchy_map),
+            'lesson_sections'       => [],
         ]);
     }
 
