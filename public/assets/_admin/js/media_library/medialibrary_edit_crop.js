@@ -23,7 +23,7 @@ $(function () {
     var options = {
         // preview: '.img-preview',
         crop: function (e) {
-            console.log(e);
+            // console.log(e);
             $dataHeight.text(Math.round(e.detail.height));
             $dataWidth.text(Math.round(e.detail.width));
             $dataX.text(Math.round(e.detail.x));
@@ -31,29 +31,45 @@ $(function () {
         }
     };
 
+    var uploadedFile = false;
+    $('#inputImage').on('change', function () {
+        var fileInput = document.getElementById('inputImage');
+        var filename = fileInput.files[0].name;
+
+        uploadedImageName = filename.replace(/^.*[\\\/]/, '');
+        uploadedImageType = 'image/'+uploadedImageName.split('.').pop();
+        uploadedFile = true;
+    });
+
     // Cropper
     $image.on({
         ready: function (e) {
-            // console.log(e);
 
-            var originalImageURL = $image.attr('src');
-            uploadedImageName = originalImageURL.replace(/^.*[\\\/]/, '');
-            uploadedImageType = 'image/'+uploadedImageName.split('.').pop();
+            if(!uploadedFile)
+            {
+                var originalImageURL = $image.attr('src');
+                uploadedImageName = originalImageURL.replace(/^.*[\\\/]/, '');
+                uploadedImageType = 'image/'+uploadedImageName.split('.').pop();
+            }
+            else
+            {
+                uploadedFile = false;
+            }
         },
         cropstart: function (e) {
-            console.log(e.type, e.action);
+            // console.log(e.type, e.action);
         },
         cropmove: function (e) {
-            console.log(e.type, e.action);
+            // console.log(e.type, e.action);
         },
         cropend: function (e) {
-            console.log(e.type, e.action);
+            // console.log(e.type, e.action);
         },
         crop: function (e) {
-            console.log(e.type, e.x, e.y, e.width, e.height, e.rotate, e.scaleX, e.scaleY);
+            // console.log(e.type, e.x, e.y, e.width, e.height, e.rotate, e.scaleX, e.scaleY);
         },
         zoom: function (e) {
-            console.log(e.type, e.ratio);
+            // console.log(e.type, e.ratio);
         }
     }).cropper(options);
 
@@ -82,7 +98,7 @@ $(function () {
                     try {
                         data.option = JSON.parse($target.val());
                     } catch (e) {
-                        console.log(e.message);
+                        // console.log(e.message);
                     }
                 }
             }
@@ -146,7 +162,7 @@ $(function () {
                 try {
                     $target.val(JSON.stringify(result));
                 } catch (e) {
-                    console.log(e.message);
+                    // console.log(e.message);
                 }
             }
 
