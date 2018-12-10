@@ -11,9 +11,9 @@ $(function () {
     var $image = $('#image');
     var $download = $('#download');
 
-
     var uploadedImageName;
     var uploadedImageType;
+    var uploadedImageURL;
 
     var $dataHeight = $('#dataHeight');
     var $dataWidth = $('#dataWidth');
