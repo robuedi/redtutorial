@@ -11,49 +11,8 @@
 @section('scripts')
     <script src="/assets/_admin/js/tree-view-section.js"></script>
     <script src="/assets/_admin/js/general.js"></script>
-    <script src="/assets/_admin/js/libs/ckeditor_4.10.0_full/ckeditor.js"></script>
-    <script src="/assets/js/libs/prism/prism.js"></script>
     <script>
         $(function (){
-
-
-            CKEDITOR.replace( 'text_content' ,
-            {
-                // toolbar : 'deadsimple',
-                uiColor : '#F5F5F5',
-                allowedContent: true,
-                height: '200px',
-                extraPlugins:'tab,codesnippet,imagebrowser',
-                codeSnippet_theme: 'monokai_sublime',
-                imageBrowser_listUrl: '/admin/media-library/ckeditor',
-                enterMode: CKEDITOR.ENTER_BR,
-                autoParagraph: false,
-                fillEmptyBlocks: false,
-                on: {'instanceReady': function (evt) { evt.editor.execCommand('');}}
-            });
-            // CKEDITOR.editorConfig = function( config )
-            // {
-            //     config.extraPlugins = 'popup';
-            //
-            // };
-
-
-            // $('.snippet').each(function (index) {
-            //     var script_type = $(this).attr('data-type');
-            //     $(this).attr('data-order', index);
-            //
-            //     const flask = new CodeFlask('.'+this.className+'[data-order="'+index+'"]', { language: script_type });
-            //
-            // })
-
-            // ClassicEditor.create( document.querySelector( '#text_content' ), {
-            //     ckfinder: {
-            //         uploadUrl: '/media-library/ckeditor'
-            //     }
-            // } );
-            // ClassicEditor.create( document.querySelector( '#description_editor' ) );
-            // console.log(ClassicEditor.build.plugins.map( plugin => plugin.pluginName ));
-
 
             $('.curses-hierarchy').select2({
                 searchInputPlaceholder: 'Please select',
@@ -78,7 +37,6 @@
 
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="/assets/_admin/css/tree-view-section.css">
-    <link rel="stylesheet" type="text/css" href="/assets/js/libs/prism/prism.css">
 @stop
 
 @section('content')
