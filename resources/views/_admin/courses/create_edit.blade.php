@@ -89,7 +89,7 @@
 
 @section('content')
 
-<form action="{{url(config('app.admin_route').'/courses').'/'.$course->id}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
+<form action="{{url(config('app.admin_route').'/courses/'.$course->id)}}" enctype="application/x-www-form-urlencoded" method="post" class="form-horizontal form-edit  " autocomplete="off" >
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-6">
             <h1 class="page-title txt-color-blueDark">

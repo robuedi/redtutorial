@@ -235,7 +235,7 @@ class CoursesController extends Controller
         $linked_chapters = Course::where('parent_id', $id)
                                 ->count();
 
-        $linked_lesson = Lesson::where('course_id', $id)
+        $linked_lesson = Lesson::where('parent_id', $id)
                                 ->count();
 
         //check
