@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.85.1",
+            "version": "3.86.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e232d117d0124ccb7059cd6db90f45dd23cda3f3"
+                "reference": "50224232ac7a4e2a6fa4ebbe0281e5b7503acf76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e232d117d0124ccb7059cd6db90f45dd23cda3f3",
-                "reference": "e232d117d0124ccb7059cd6db90f45dd23cda3f3",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/50224232ac7a4e2a6fa4ebbe0281e5b7503acf76",
+                "reference": "50224232ac7a4e2a6fa4ebbe0281e5b7503acf76",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-01-11T19:22:05+00:00"
+            "time": "2019-01-18T21:10:44+00:00"
         },
         {
             "name": "cartalyst/sentinel",
@@ -4257,16 +4257,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.1",
+            "version": "7.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c23d78776ad415d5506e0679723cb461d71f488f"
+                "reference": "7c89093bd00f7d5ddf0ab81dee04f801416b4944"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c23d78776ad415d5506e0679723cb461d71f488f",
-                "reference": "c23d78776ad415d5506e0679723cb461d71f488f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7c89093bd00f7d5ddf0ab81dee04f801416b4944",
+                "reference": "7c89093bd00f7d5ddf0ab81dee04f801416b4944",
                 "shasum": ""
             },
             "require": {
@@ -4337,7 +4337,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-12-12T07:20:32+00:00"
+            "time": "2019-01-15T08:19:08+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
