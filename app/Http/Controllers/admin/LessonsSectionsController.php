@@ -78,6 +78,16 @@ class LessonsSectionsController extends Controller
             ],
         );
 
+        //make sure the options are valid
+        foreach ( (array)$request->input('option_data.value') as $key => $value)
+        {
+            //check if they have label and value
+            if(empty((string)$value) || empty((string)$request->input('option_data.label')[$key]))
+            {
+                $rules['both_option_label_and_value'] = 'required';
+            }
+        }
+
         $validator = Validator::make(Input::all(), $rules);
 
         if ($validator->fails())

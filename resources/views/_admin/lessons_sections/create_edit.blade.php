@@ -62,11 +62,22 @@
                 $(newOption).find('select').removeAttr('disabled');
                 $('[data-options-container]').append(newOption);
                 newOption.find('select').select2();
+
+                //hide info message
+                $('.quiz-options-list').find('.alert.alert-info').addClass('hidden');
             })
 
             //delete options
             $(document).on('click', '[data-delete-option]', function () {
                $(this).closest('tr').remove();
+
+               var otherOptions = $('.quiz-options-list tbody tr:not([data-template-option])');
+
+               if(otherOptions.length == 0)
+               {
+                   //show info message
+                   $('.quiz-options-list').find('.alert.alert-info').removeClass('hidden');
+               }
             });
 
             //make the options sortable
@@ -220,7 +231,7 @@
                             </div>
                         </header>
 
-                        <div role="content" >
+                        <div role="content" class="quiz-options-list">
                             <div class="widget-body no-padding smart-form">
                                 <div class="table-responsive ">
                                     <table class="table table-bordered table-striped table-sortable">
@@ -310,11 +321,9 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                @if((!isset($options))||!count($options))
-                                    <div class="alert alert-info">
-                                        No options found
-                                    </div>
-                                @endif
+                                <div class="alert alert-info @if(!empty($options)) hidden @endif">
+                                    No options found
+                                </div>
 
                                 <footer class="text-right">
                                     <div class="btn-group">
