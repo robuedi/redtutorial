@@ -120,7 +120,7 @@
         li {
           position: relative;
           display: block;
-          padding: 25px;
+          padding: 0px 25px;
 
           &:after{
             content: "";
@@ -197,33 +197,6 @@
               left: 14px;
             }
           }
-
-
-          //@media (max-width: 860px) {
-          //  margin-left: 60px;
-          //
-          //  &:after, &:before{
-          //    left: 100px;
-          //  }
-          //
-          //}
-          //
-          //@media (max-width: 740px) {
-          //  padding-left: 100px;
-          //
-          //  &:after, &:before{
-          //    left: 80px;
-          //  }
-          //
-          //}
-          //@media (max-width: 640px) {
-          //  padding-left: 90px;
-          //
-          //  &:after, &:before{
-          //    left: 60px;
-          //  }
-          //}
-
         }
 
         .option {
@@ -256,7 +229,6 @@
             }
           }
 
-
           &:hover{
             box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.7);
           }
@@ -280,7 +252,7 @@
             right: 0;
             bottom: 0px;
             left: 0;
-            opacity: 0.5;
+            opacity: 0.7;
             background: -webkit-linear-gradient(left top,  #bc519e, #3d6098);
             background: -o-linear-gradient(left top,  #bc519e, #3d6098);
             background: -moz-linear-gradient(left top,  #bc519e, #3d6098);
@@ -313,62 +285,9 @@
           &:hover{
 
             .chapter-icon i{
-              -webkit-text-stroke: 6px rgba($brand-primary, 0.6);
+              -webkit-text-stroke: 6px rgba($brand-primary, 0.4);
             }
           }
-
-          //&.messy-option-up{
-          //  .chapter-icon {
-          //    top: -5px;
-          //    bottom: 5px;
-          //    transform: rotate(2deg);
-          //  }
-          //
-          //  .text-description {
-          //    //top: -5px;
-          //    left: 5px;
-          //    //transform: rotate(3deg);
-          //  }
-          //
-          //  &:after {
-          //    top: -5px;
-          //    bottom: 5px;
-          //    transform: rotate(2deg);
-          //  }
-          //
-          //  &:before {
-          //    top: 0px;
-          //    bottom: 10px;
-          //    transform: rotate(2deg);
-          //  }
-          //
-          //}
-
-          //&.messy-option-down{
-          //  .chapter-icon {
-          //    top: 10px;
-          //    bottom: -5px;
-          //    transform: rotate(2deg);
-          //  }
-          //
-          //  .text-description {
-          //    //top: 5px;
-          //    left: 5px;
-          //    //transform: rotate(3deg);
-          //  }
-          //
-          //  &:after {
-          //    top: 5px;
-          //    bottom: -5px;
-          //    transform: rotate(2deg);
-          //  }
-          //
-          //  &:before {
-          //    top: 10px;
-          //    bottom: 0px;
-          //    transform: rotate(2deg);
-          //  }
-          //}
 
           .text-description {
             background-color: transparent;
@@ -385,7 +304,6 @@
 
             h3{
               margin: 0;
-              letter-spacing: 1px;
               font-weight: 400;
               font-size: 28px;
               text-decoration: none;

@@ -1,3 +1,4 @@
+// npm install gulp gulp-sass gulp-rename gulp-concat gulp-uglify
 var gulp = require('gulp');
 
 var sass = require('gulp-sass');
