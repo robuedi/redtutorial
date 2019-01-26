@@ -9,7 +9,7 @@ var uglify = require('gulp-uglify');
 
 //sass
 gulp.task('sass', function () {
-    return gulp.src('./resources/assets/sass/app.scss')
+    return gulp.src('./resources/sass/app.scss')
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(rename("app.min.css"))
         .pipe(gulp.dest('./public/assets/css'));
@@ -17,7 +17,7 @@ gulp.task('sass', function () {
 
 //js
 gulp.task('js', function() {
-    return gulp.src(['./resources/assets/js/libs/**/*.js', './resources/assets/js/user_defined/**/*.js'])
+    return gulp.src(['./resources/js/libs/**/*.js', './resources/js/user_defined/**/*.js'])
         .pipe(concat('scripts.js'))
         .pipe(uglify())
         .pipe(rename('scripts.min.js'))
@@ -26,6 +26,6 @@ gulp.task('js', function() {
 
 //watch
 gulp.task('default', function () {
-    gulp.watch('./resources/assets/sass/**/*.scss', ['sass']);
-    gulp.watch(['./resources/assets/js/libs/**/*.js', './resources/assets/js/user_defined/**/*.js'], ['js']);
+    gulp.watch('./resources/sass/**/*.scss', ['sass']);
+    gulp.watch(['./resources/js/libs/**/*.js', './resources/js/user_defined/**/*.js'], ['js']);
 });
