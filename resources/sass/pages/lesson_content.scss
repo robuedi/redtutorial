@@ -259,20 +259,37 @@
             .input-label{
               cursor: pointer;
               box-shadow: 1px 1px 1px 1px rgba(150,150,150,0.2);
-              border: 1px solid #aaa;
+              border: 1px solid #ccc;
               display: block;
-              padding: 10px 15px;
+              padding: 10px 15px 10px 30px;
               margin-bottom: 10px;
+              position: relative;
 
               &:hover {
                 background-color: #eee;
               }
+
+              &:before {
+                position: absolute;
+                content: '';
+                top: 1px;
+                bottom: 1px;
+                width: 6px;
+                left: 1px;
+                background-color: #ccc;
+                z-index: 2;
+              }
             }
 
-            input:checked + .input-label {
-              border-left: 8px solid #aaa;
-              padding-left: 8px;
-
+            input:checked + .input-label:after {
+              position: absolute;
+              content: '';
+              top: 1px;
+              bottom: 1px;
+              width: 6px;
+              left: 1px;
+              background-color: #000;
+              z-index: 2;
             }
           }
         }
