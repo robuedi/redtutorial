@@ -25,7 +25,7 @@
         <!-- Main Font -->
         <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
         {{-- FOR LOGO REMOVE IT--}}
         <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">

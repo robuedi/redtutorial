@@ -196,6 +196,22 @@
           }
         }
 
+        span.marker{
+          position: relative;
+          display: block;
+          padding-left: 30px;
+
+          &:after{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            bottom: 0;
+            font-family: $font-font-awesome;
+            content: '\f12a';
+          }
+        }
+
         p:empty {
           display:none
         }
