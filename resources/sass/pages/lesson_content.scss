@@ -165,7 +165,7 @@
         }
       }
     }
-
+    
     .lessons-list {
       text-align: left;
       width: 750px;
@@ -182,6 +182,11 @@
         background-color: transparent;
         position: relative;
 
+        h3 {
+          font-size: 24px;
+          letter-spacing: 0.5px;
+        }
+
         > p{
           font-size: 18px;
           line-height: 1.5;
@@ -197,19 +202,9 @@
         }
 
         span.marker{
-          position: relative;
-          display: block;
-          padding-left: 30px;
-
-          &:after{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 10px;
-            bottom: 0;
-            font-family: $font-font-awesome;
-            content: '\f12a';
-          }
+          font-weight: 800;
+          font-size: 17px;
+          letter-spacing: 0.6px;
         }
 
         p:empty {
@@ -245,7 +240,7 @@
         }
 
         pre{
-          margin: 10px 0px;
+          margin: 22px 0px;
           white-space: pre-wrap;       /* css-3 */
           white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
           white-space: -pre-wrap;      /* Opera 4-6 */
