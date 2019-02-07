@@ -188,18 +188,26 @@
           margin-bottom: 20px;
         }
 
-        > p{
+        p{
           font-size: 18px;
           line-height: 1.5;
+        }
 
-          strong {
-            background-color: #efefef;
-            padding: 0px 5px;
-            border-radius: 5px;
-            font-weight: 400;
-            color: #E62C33;
-            text-shadow: 0 1px white;
+        ul > li {
+          padding-bottom: 15px;
+
+          &:last-child {
+            padding-bottom: 0;
           }
+        }
+
+        strong {
+          background-color: #efefef;
+          padding: 0px 5px;
+          border-radius: 5px;
+          font-weight: 400;
+          color: #E62C33;
+          text-shadow: 0 1px white;
         }
 
         span.marker{
