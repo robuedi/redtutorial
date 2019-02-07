@@ -1,5 +1,5 @@
 .courses-section {
-  min-height: calc(100vh - 93px);
+  min-height: $full-height-minus-footer-header;
   background-color: $brand-second;
 
   .header-section{
@@ -233,17 +233,17 @@
             box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.7);
           }
 
-          &:before {
-            content: " ";
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            bottom: 5px;
-            left: 5px;
-            opacity: 0.6;
-            z-index: 2;
-            border: 1px dashed #fff;
-          }
+          //&:before {
+          //  content: " ";
+          //  position: absolute;
+          //  top: 5px;
+          //  right: 5px;
+          //  bottom: 5px;
+          //  left: 5px;
+          //  opacity: 0.6;
+          //  z-index: 2;
+          //  border: 1px dashed #fff;
+          //}
 
           &:after {
             content: " ";

@@ -26,10 +26,10 @@
     h1{
       position: relative;
       z-index: 2;
-      background-color: $brand-second;
       padding: 20px 20px 20px 75px;
       margin: 0;
       display: inline-block;
+      background-color: #FFF;
 
       @include main-page-header();
       @include main-page-header-left-padding();
@@ -72,7 +72,7 @@
           .required-status{
             float: right;
             font-weight: 400;
-            opacity: 0.4;
+            opacity: 0.7;
             font-size: 14px;
           }
         }
@@ -91,9 +91,7 @@
           padding: 3px;
           width: 100%;
           font-size: 18px;
-          background-color: #f7f7f7;
-          border: none;
-          border-bottom: 1px solid $brand-primary;
+          border: 1px solid #000;
         }
 
         .verification-input-container {

@@ -1,6 +1,6 @@
 .lesson-main-container {
   background-color: #fdfdfd;
-  min-height: calc(100vh - 93px);
+  min-height: $full-height-minus-footer-header;
 
   .tutorial-name{
     padding: 100px 75px 100px 0px;
@@ -185,6 +185,7 @@
         h3 {
           font-size: 24px;
           letter-spacing: 0.5px;
+          margin-bottom: 20px;
         }
 
         > p{

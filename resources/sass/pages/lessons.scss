@@ -1,5 +1,5 @@
 .chapters-section{
-  min-height: calc(100vh - 93px);
+  min-height: $full-height-minus-footer-header;
   background-color: #FFF;
 
   .header-section {
@@ -226,7 +226,7 @@
             margin: 5px;
             box-sizing: border-box;
             height: calc(100% - 10px);
-            border: 1px dashed #fff;
+            //border: 1px dashed #fff;
             padding: 5px;
             z-index: 2;
 

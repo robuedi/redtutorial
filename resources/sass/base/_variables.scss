@@ -55,6 +55,10 @@ $white: #FFF;
 
 $padding-content-top: 100px;
 
+//footer : 41
+//header  : 93
+$full-height-minus-footer-header: calc(100vh - 115px);
+
 // Buttons
 $btn-default-color: $text-color;
 
