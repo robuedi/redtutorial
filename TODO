@@ -13,3 +13,7 @@ CLIENT SIDE
 
 LATER
 - make homepage image dynamic (possible changed from configuration admin)
+
+
+Bugs:
+- quiz lessons section doesn't allow the label 0
