@@ -45,7 +45,11 @@
             <div class="lessons-list" id="lessons_list">
                 @foreach($lesson_sections as $index => $lesson_section)
                     <div class="lesson-container @if($index == 0) active @endif">
-                        @if(!empty($lesson_section->name))<h3>{{$lesson_section->name}}</h3>@endif
+                        @if(!empty($lesson_section->name))
+                            <h3>{{$lesson_section->name}}</h3>
+                        @elseif($index == 0 && !empty($lesson->lesson_name))
+                            <h3>{{$lesson->lesson_name}}</h3>
+                        @endif
                         {!! $lesson_section->content !!}
 
                         @if($lesson_section->type == 'quiz' && isset($quiz_answers[$lesson_section->id]))
