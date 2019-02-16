@@ -27,6 +27,8 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Pacifico" rel="stylesheet">
+
 
         {{-- FOR LOGO REMOVE IT--}}
         <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
