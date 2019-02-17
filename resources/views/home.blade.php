@@ -10,9 +10,8 @@
 @stop
 
 @section('content')
-
     <section class="home-container"
-             style='background-image: url("/images/uploads/media_library/2019/01/adventure-cliff-cold-1297074.jpg?w=1200&fit=contain")' >
+             style='background-image: url("/images/uploads/media_library/2019/02/beach-bird-s-eye-view-coast-50594.jpg?w=1200&fit=contain")' >
         <section class="page-title">
             <h1>Tutorials </h1>
         </section>
