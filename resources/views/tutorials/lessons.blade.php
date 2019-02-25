@@ -31,7 +31,6 @@
                 @foreach($lessons as $lesson)
                     <article class="option-container">
                         <a href="/tutorial/{{$chapter->course_slug.'/'.$chapter->chapter_slug.'/'.$lesson->slug}}" class="option" >
-                            <div class="bck-img" style='background-image: url("/images/assets/img/background-texture-2110724_640.jpg?w=210&fit=contain")'></div>
                             <header class="top-txt" >
                                 <h4>{{$lesson->name}}</h4>
                             </header>

@@ -18,7 +18,7 @@
       right: 0;
       bottom: 0;
       left: 0;
-      opacity: 0.6;
+      opacity: 0.4;
       background: -webkit-linear-gradient(left top,  #bc519e, #3d6098);
       background: -o-linear-gradient(left top,  #bc519e, #3d6098);
       background: -moz-linear-gradient(left top,  #bc519e, #3d6098);
@@ -128,96 +128,14 @@
           display: block;
           height: 100%;
           box-sizing: border-box;
-          box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.6);
           position: relative;
           text-decoration: none;
           font-size: 22px;
           color: #000;
           max-width: 100%;
           overflow: hidden;
+          border: 1px dashed #000;
 
-          &:hover{
-            box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.7);
-          }
-
-
-          //&.option-circle{
-          //  &:before {
-          //    content: " ";
-          //    position: absolute;
-          //    width: 60px;
-          //    height: 60px;
-          //    opacity: 0.4;
-          //    border: 5px solid rgba(250, 250, 250, 0.4);
-          //    z-index: 2;
-          //  }
-          //}
-          //&.option-square{
-          //  &:before {
-          //    content: " ";
-          //    position: absolute;
-          //    width: 60px;
-          //    height: 60px;
-          //    border-radius: 50%;
-          //    opacity: 0.4;
-          //    border: 5px solid rgba(250, 250, 250, 0.4);
-          //    z-index: 2;
-          //  }
-          //}
-          //
-          //&.option-pos-1:before{
-          //  bottom: -25px;
-          //  left: -15px;
-          //}
-          //&.option-pos-2:before{
-          //  top: 65px;
-          //  right: 5px;
-          //}
-          //&.option-pos-3:before {
-          //  bottom: -25px;
-          //  left: -5px;
-          //}
-          //&.option-pos-4:before {
-          //  top: 45px;
-          //  right: -10px;
-          //}
-          //&.option-pos-5:before {
-          //  bottom: 25px;
-          //  right: 15px;
-          //}
-          //&.option-pos-6:before {
-          //  bottom: -45px;
-          //  left: 17px;
-          //}
-
-          &:after {
-            content: " ";
-            position: absolute;
-            top: 0;
-            right: -1px;
-            bottom: 0;
-            left: 0;
-            opacity: 0.6;
-            background: -webkit-linear-gradient(left top,  #bc519e, #3d6098);
-            background: -o-linear-gradient(left top,  #bc519e, #3d6098);
-            background: -moz-linear-gradient(left top,  #bc519e, #3d6098);
-            background: linear-gradient(to left top , #bc519e, #3d6098);
-            z-index: 1;
-          }
-
-          .bck-img {
-            position: absolute;
-            z-index: 0;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            filter: blur(1px);
-            -webkit-filter: blur(1px);
-          }
 
           .top-txt{
             background-repeat: repeat;
@@ -231,13 +149,12 @@
             z-index: 2;
 
             h4 {
-              font-family: $font-family-monospace;
               position: relative;
               z-index: 2;
               margin: 0;
               font-weight: 400;
-              font-size: 20px;
-              color: #FFF;
+              font-size: 22px;
+              color: #000;
 
               @media (max-width: 600px) {
                 font-size: 18px;
@@ -255,7 +172,7 @@
             padding: 10px;
 
             .lesson-number {
-              color: #FFF;
+              color: #000;
               font-size: 16px;
 
               @media (max-width: 600px) {
@@ -264,20 +181,14 @@
             }
 
             i {
-              font-size: 60px;
-              color: transparent;
-              -webkit-text-stroke: 6px rgba(250,250,250,0.4);
+              font-size: 20px;
+              color: $brand-primary;
               position: absolute;
               z-index: 2;
               transition: -webkit-text-stroke .3s;
-              right: -12px;
-              bottom: -11px;
+              right: 5px;
+              bottom: 5px;
             }
-
-          }
-
-          &:hover .go-link i{
-            -webkit-text-stroke: 6px rgba($brand-primary,0.4);
 
           }
         }

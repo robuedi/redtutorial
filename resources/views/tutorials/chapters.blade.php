@@ -23,25 +23,27 @@
 
         <section class="tutorial-content" >
 
+
             <div class="list-container">
 
-                <ul class="list-items">
+                <ol class="list-items">
                 @foreach($chapters as $index => $chapter)
-                    <li data-number="{{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}">
-                        <a href="/tutorial/{{$course->slug.'/'.$chapter->slug}}" class="option @if(rand(0,1))  @if(rand(0,1)) messy-option-up @else messy-option-down @endif @endif" @if($course_image) style='background-position: -{{$index*150}}px {{$index*150}}px;background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif >
-                            <div class="text-description">
-                                <h3 >
-                                    {{$chapter->name}}
-                                </h3>
-                                <p class="lessons-count">{{$chapter->lessons_number}} Lessons</p>
-                            </div>
-                            <div class="chapter-icon">
-                                <i class="{{$chapter->symbol_class}}"></i>
-                            </div>
+                    <li >
+                        <a href="/tutorial/{{$course->slug.'/'.$chapter->slug}}" class="option" >
+                            <span class="course-number">
+                                {{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}.
+                            </span>
+                            <h3 >
+                                {{$chapter->name}}
+                                <span style="color: #E62C33; float: right">{{rand(0, 100)}}%</span>
+                            </h3>
+                            <p class="sub-details">
+                                <span class="lessons-count">{{$chapter->lessons_number}} Lessons</span>
+                            </p>
                         </a>
                     </li>
                 @endforeach
-                </ul>
+                </ol>
             </div>
 
         </section>

@@ -11,11 +11,11 @@
 
 @section('content')
     <section class="home-container"
-             style='background-image: url("/images/uploads/media_library/2019/02/cereals-100263_1920.jpg?w=1200&fit=contain")' >
+    >
              {{--style='background-image: url("/images/uploads/media_library/2019/02/beach-bird-s-eye-view-coast-50594.jpg?w=1200&fit=contain")' >--}}
         {{--/home/eduard/Projects/redtutorial/public/uploads/media_library/2019/02/alberta-amazing-attraction-417074.jpg--}}
         <section class="page-title">
-            <h1>Tutorials </h1>
+            <h1>Step by step tutorials </h1>
         </section>
 
 
