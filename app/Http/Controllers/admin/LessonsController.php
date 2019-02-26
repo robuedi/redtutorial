@@ -40,8 +40,9 @@ class LessonsController extends Controller
                         WHERE(1) {filters}",
 
             'filters' => array(
-                'name' => "AND name LIKE '%{name}%'",
-                'is_public' => "AND is_public = {is_public}"
+                'name'      => "AND name LIKE '%{name}%'",
+                'is_public' => "AND is_public = {is_public}",
+                'parent_id' => "AND parent_id = {parent_id}"
             ),
 
             'sortables' => array(
@@ -56,10 +57,15 @@ class LessonsController extends Controller
         $listing = new Listing($query_data);
         $results = $listing->results();
 
+        //get chapters
+        $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
+        $curses_hierarchy = $hierarchy_item->getHierarchyList();
+
         // display
         return View::make('_admin.lessons.index', array(
-            'results' => $results,
-            'listing' => $listing,
+            'results'           => $results,
+            'listing'           => $listing,
+            'curses_hierarchy'  => json_encode($curses_hierarchy)
         ));
     }
 

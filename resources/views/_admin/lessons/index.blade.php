@@ -9,6 +9,28 @@
 @stop
 
 @section('scripts')
+    <script>
+        $(function (){
+
+            $('.curses-hierarchy').select2({
+                searchInputPlaceholder: 'Please select',
+                allowClear: true,
+                width: 'resolve',
+                dropdownAutoWidth: true,
+                data: {
+                    results: JSON.parse($('[data-curses-hierarchy]').attr('data-curses-hierarchy')),
+                    text: "name"
+                },
+                formatSelection: function(item) {
+                    return item.name
+                },
+                formatResult: function(item) {
+                    return item.name
+                }
+            });
+
+        });
+    </script>
 @stop
 
 @section('stylesheets')
@@ -63,6 +85,14 @@
                                                         <option value="1" @if(Illuminate\Support\Facades\Input::get('is_public') == "1") selected @endif>YES</option>
                                                         <option value="0" @if(Illuminate\Support\Facades\Input::get('is_public') == "0") selected @endif>NO</option>
                                                     </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label >Chapter <span class="req">*</span></label>
+                                                    <input name="parent_id" type="hidden" class="curses-hierarchy display-block" data-placeholder="@lang('admin_general.select_placeholder')" value="{{Illuminate\Support\Facades\Input::get('parent_id')}}">
+                                                    <span class="hidden" data-curses-hierarchy='{!! $curses_hierarchy !!}' ></span>
                                                 </div>
                                             </div>
                                         </div>
