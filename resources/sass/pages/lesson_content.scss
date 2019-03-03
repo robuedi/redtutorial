@@ -4,7 +4,7 @@
 
   .tutorial-name{
     padding: 100px 75px 100px 0px;
-    margin: 0px;
+    margin: 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -111,7 +111,6 @@
         display: inline-block;
         text-align: left;
         margin-bottom: 10px;
-        //background-color: $brand-primary;
 
         .quiz-sign, .text-sign{
           font-size: 16px;
@@ -120,10 +119,8 @@
           width: 26px;
           box-sizing: border-box;
           display: inline-block;
-          //box-shadow: 0px 0px 2px 1px rgba(0,0,0, 0.1);
           position: relative;
           margin-right: 5px;
-          //background-color: $brand-primary;
           color: #000;
           border: 1px solid #000;
           background-color: #FFF;
@@ -203,7 +200,7 @@
 
         strong {
           background-color: #efefef;
-          padding: 0px 5px;
+          padding: 0 5px;
           border-radius: 5px;
           font-weight: 400;
           color: #E62C33;
@@ -249,19 +246,17 @@
         }
 
         pre{
-          margin: 22px 0px;
+          margin: 22px 0;
           white-space: pre-wrap;       /* css-3 */
           white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-          white-space: -pre-wrap;      /* Opera 4-6 */
           white-space: -o-pre-wrap;    /* Opera 7 */
           word-wrap: break-word;       /* Internet Explorer 5.5+ */
 
           code {
-            //font-family: $font-family-monospace;
             background-color: #F9F9FD;
             padding: 25px 10px 25px 15px;
             border-left: 2px solid #bbb;
-            box-shadow: 0px 0px 1px 1px rgba(100,100,100,0.2);
+            box-shadow: 0 0 1px 1px rgba(100,100,100,0.2);
           }
         }
 
@@ -270,12 +265,12 @@
           border-collapse: collapse;
 
           tr:nth-child(odd) td{
-            background-color: rgba(240,240,240, 0.3);
+            background-color: rgba(225,225,225, 0.3);
 
           }
 
           td{
-            border-bottom: 1px solid rgba(#000, 0.1);
+            border-bottom: 1px solid rgba(200,200,200, 0.2);
             padding: 15px 10px;
           }
 
@@ -352,7 +347,7 @@
         &:hover i{
           border-radius: 50%;
           color: #000;
-          box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
         }
       }
 
@@ -365,20 +360,17 @@
 
         &:hover i{
           border-radius: 50%;
-          box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
         }
       }
 
     }
 
     .ui-feedback {
-      margin: 0px;
-      //transition: max-height .5s, padding .5s;
-      //max-height: 200px;
+      margin: 0;
       height: 0;
       overflow: visible;
       position: relative;
-      //padding: 15px 0px 15px;
       box-sizing: border-box;
       text-align: right;
       z-index: 1;
@@ -414,7 +406,7 @@
 @keyframes removeToLeft {
   0% {
     right: auto;
-    left: 0vw;
+    left: 0;
     overflow: hidden;
   }
   50% {
@@ -437,14 +429,14 @@
     transform: scale(1,1);
   }
   100%{
-    right: 0vw;
+    right: 0;
   }
 }
 
 @keyframes removeToRight {
   0% {
     left: auto;
-    right: 0vw;
+    right: 0;
     overflow: hidden;
   }
   50% {
@@ -467,7 +459,7 @@
     transform: scale(1,1);
   }
   100%{
-    left: 0vw;
+    left: 0;
   }
 }
 
