@@ -49,7 +49,8 @@ class LessonsController extends Controller
                 'name'          => '',
                 'is_public'     => '',
                 'created_at'    => '',
-                'updated_at'    => 'asc'
+                'updated_at'    => '',
+                'order_weight'  => 'asc'
             )
         );
 
@@ -117,6 +118,7 @@ class LessonsController extends Controller
 
         //get lesson sections
         $lesson_sections = LessonSection::where('lesson_id', $lesson->id)
+                            ->orderBy('order_weight')
                             ->get();
 
         return View::make('_admin.lessons.create_edit', [
