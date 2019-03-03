@@ -80,6 +80,7 @@ class TutorialsController extends Controller
         $lessons = Lesson::where('parent_id', $chapter->chapter_id)
             ->where('is_public', 1)
             ->whereNotNull('slug')
+            ->orderBy('order_weight')
             ->get();
 
         //set index
@@ -133,6 +134,7 @@ class TutorialsController extends Controller
 
         //get lesson sections
         $lesson_sections_ = LessonSection::where('lesson_id', $lesson->lesson_id)
+                            ->orderBy('order_weight')
                             ->where('is_public', 1);
 
         //get ids
@@ -161,6 +163,7 @@ class TutorialsController extends Controller
                         ->where('lessons.is_public',1)
                         ->join('lessons_sections', 'lessons_sections.lesson_id', '=', 'lessons.id')
                         ->where('lessons_sections.is_public', 1)
+                        ->orderBy('lessons.order_weight')
                         ->first();
 
         //next lesson slug
