@@ -266,8 +266,28 @@
         }
 
         > table {
-          td {
-            padding: 5px;
+          max-width: 100%;
+          border-collapse: collapse;
+
+          tr:nth-child(odd) td{
+            background-color: rgba(240,240,240, 0.3);
+
+          }
+
+          td{
+            border-bottom: 1px solid rgba(#000, 0.1);
+            padding: 15px 10px;
+          }
+
+          td, th {
+            vertical-align: top;
+
+          }
+          th {
+            font-size: 18px;
+            border-bottom: 1px solid #000;
+            border-top: 1px solid #000;
+            padding: 12px 10px;
           }
         }
 
