@@ -120,15 +120,22 @@
             transition: box-shadow .5s;
             color: #000;
 
+            .completion-percentage {
+              color: #E62C33;
+              float: right;
+              font-size: 22px;
+            }
+
             .course-number {
-              font-family: $font-family-monospace;
               position: absolute;
               top: 0;
               left: 0;
               transform: translateX(-100%);
               color: $brand-primary;
-              font-weight: 900;
-              font-size: 32px;
+              font-weight: 400;
+              font-size: 40px;
+              line-height: 35px;
+              padding-right: 5px;
             }
 
             .sub-details{

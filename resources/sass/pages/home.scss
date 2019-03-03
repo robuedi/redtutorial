@@ -22,13 +22,9 @@
     content: '';
   }
 
-
   .page-title {
-    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);
     box-sizing: border-box;
-    color: $brand-primary;
     font-weight: lighter;
-    background-color: #FFF;
     margin: 75px 75px 0px 0px;
     padding: 30px 75px;
     display: inline-block;
@@ -40,6 +36,22 @@
 
     h1 {
       margin: 0;
+      padding-right: 60px;
+
+      .part-one {
+        color: $brand-primary;
+        display: block;
+        font-size: 60px;
+        font-family: 'Yesteryear', cursive;
+      }
+
+      .part-two {
+        position: relative;
+        color: #000;
+        font-size: 30px;
+        right: -60px;
+        float: right;
+      }
 
       @include main-page-header();
     }
@@ -113,24 +125,13 @@
 
         .inner-container{
           height: 100%;
-          border: 1px dashed #000;
           text-align: left;
           box-sizing: border-box;
           padding: 25px;
           padding-bottom: 55px;
           position: relative;
+          border: 1px dashed #000;
 
-          //&:after{
-          //  content: '';
-          //  top: 0;
-          //  bottom: 0;
-          //  left: 0;
-          //  right: 0;
-          //  z-index: 0;
-          //  position: absolute;
-          //  background: #fff;
-          //  opacity: 0.2;
-          //}
 
           h2{
             position: relative;

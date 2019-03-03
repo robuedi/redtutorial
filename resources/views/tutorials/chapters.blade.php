@@ -35,7 +35,7 @@
                             </span>
                             <h3 >
                                 {{$chapter->name}}
-                                <span style="color: #E62C33; float: right">{{rand(0, 100)}}%</span>
+                                <span class="completion-percentage" >{{rand(0, 100)}}%</span>
                             </h3>
                             <p class="sub-details">
                                 <span class="lessons-count">{{$chapter->lessons_number}} Lessons</span>
