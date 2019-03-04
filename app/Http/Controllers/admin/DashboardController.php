@@ -21,18 +21,15 @@ class DashboardController extends Controller
     function index()
     {
         //Courses
-        $public_courses = Course::whereNull('parent_id')
-                    ->selectRaw('COUNT(id) as public')
+        $public_courses = Course::selectRaw('COUNT(id) as public')
                     ->where('is_public', 1)
                     ->first();
 
-        $draft_courses = Course::whereNull('parent_id')
-                    ->selectRaw('COUNT(id) as draft')
+        $draft_courses = Course::selectRaw('COUNT(id) as draft')
                     ->where('is_draft', 1)
                     ->first();
 
-        $total_courses = Course::whereNull('parent_id')
-                    ->selectRaw('COUNT(id) as total')
+        $total_courses = Course::selectRaw('COUNT(id) as total')
                     ->first();
 
         //Chapters
