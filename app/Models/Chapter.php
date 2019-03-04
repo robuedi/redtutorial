@@ -12,12 +12,12 @@ class Chapter extends Model
 
     public function course()
     {
-        return $this->belongsTo(Course::class, 'parent_id','id');
+        return $this->belongsTo(Course::class, 'course_id','id');
     }
 
     public function lessons()
     {
-        return $this->hasMany(Lesson::class, 'parent_id', 'id');
+        return $this->hasMany(Lesson::class, 'chapter_id', 'id');
     }
 }
 
