@@ -26,7 +26,7 @@ class CoursesHierarchyFactory implements ICoursesHierarchyFactory
 
             //chapters
             $chapters = Chapter::orderBy('order_weight')
-                ->get()->groupBy('parent_id');
+                ->get()->groupBy('course_id');
 
             //lessons
             $lessons = [];
@@ -36,24 +36,24 @@ class CoursesHierarchyFactory implements ICoursesHierarchyFactory
         elseif ($type == 'client')
         {
             //courses
-            $courses = Course::whereNull('parent_id')
-                ->where('is_public',1)
+            $courses = Course::where('is_public',1)
                 ->where('is_draft',0)
                 ->orderBy('order_weight')
                 ->get();
 
             //chapters
-            $chapters = Chapter::where('is_public',1)
+            $chapters = Chapter::whereNotNull('course_id')
+                ->where('is_public',1)
                 ->where('is_draft',0)
                 ->orderBy('order_weight')
-                ->get()->groupBy('parent_id');
+                ->get()->groupBy('course_id');
 
             //lessons
-            $lessons = Lesson::whereNotNull('parent_id')
+            $lessons = Lesson::whereNotNull('chapter_id')
                 ->orderBy('order_weight')
                 ->where('is_public',1)
                 ->where('is_draft',0)
-                ->get()->groupBy('parent_id');
+                ->get()->groupBy('chapter_id');
 
             $courses_hierarchy = new CoursesHierarchyClient($courses, $chapters, $lessons);
 

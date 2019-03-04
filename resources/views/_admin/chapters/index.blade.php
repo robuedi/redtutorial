@@ -167,7 +167,7 @@
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>
                                                 <td class="format-momentjs">{{ $r->updated_at }}</td>
                                                 <td style="text-align:center; min-width: 150px">
-                                                    <a href="{{url(config('app.admin_route').'/lessons?parent_id='.$r->id)}}" class="btn btn-sm btn-warning apply-tooltip" title="View lessons"><i class="fa fa-md fa-fw fa-bookmark"></i></a>&nbsp;
+                                                    <a href="{{url(config('app.admin_route').'/lessons?chapter='.$r->id)}}" class="btn btn-sm btn-warning apply-tooltip" title="View lessons"><i class="fa fa-md fa-fw fa-bookmark"></i></a>&nbsp;
                                                     <a href="{{url(config('app.admin_route').'/chapters/'.$r->id)}}/edit" class="btn btn-sm btn-info apply-tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;
                                                     @if(empty ($r->code_page ))
                                                         <a href="javascript:deleteRouteObject('{{url(config('app.admin_route').'/chapters/'.$r->id)}}')" class="btn btn-sm btn-danger btn-delete apply-tooltip" data-method="DELETE" title="Delete" data-warning="Are you sure?"><i class="glyphicon glyphicon-trash"></i></a>

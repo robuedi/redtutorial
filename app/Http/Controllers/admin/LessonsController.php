@@ -42,7 +42,7 @@ class LessonsController extends Controller
             'filters' => array(
                 'name'      => "AND name LIKE '%{name}%'",
                 'is_public' => "AND is_public = {is_public}",
-                'parent_id' => "AND parent_id = {parent_id}"
+                'chapter' => "AND chapter_id = {chapter}"
             ),
 
             'sortables' => array(
@@ -173,7 +173,7 @@ class LessonsController extends Controller
             if($request->input('enabled_slug_edit')){
                 $lesson->slug       = $request->input('slug');
             }
-            $lesson->parent_id = $request->input('parent_id');
+            $lesson->chapter_id = $request->input('chapter_id');
             $lesson->save();
 
             //send user back
@@ -222,7 +222,7 @@ class LessonsController extends Controller
             if($request->input('enabled_slug_edit')){
                 $lesson->slug       = $request->input('slug');
             }
-            $lesson->parent_id = $request->input('parent_id');
+            $lesson->chapter_id = $request->input('chapter_id');
             $lesson->save();
 
             //send user back
@@ -257,13 +257,13 @@ class LessonsController extends Controller
         }
 
         //get parent id
-        $parent_id = $lesson->parent_id;
+        $chapter_id = $lesson->chapter_id;
 
         //delete lesson
         $lesson->delete();
 
         //update weight, get lessons
-        $lessons = Lesson::where('parent_id', $parent_id)
+        $lessons = Lesson::where('chapter_id', $chapter_id)
             ->orderBy('order_weight')
             ->get();
 

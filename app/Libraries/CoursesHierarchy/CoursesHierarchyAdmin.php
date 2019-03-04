@@ -14,9 +14,9 @@ use URL;
 class CoursesHierarchyAdmin extends CoursesHierarchy implements ICoursesHierarchy
 {
     public function setDefaultAdminLessons(){
-        $lessons = Lesson::whereNotNull('parent_id')
+        $lessons = Lesson::whereNotNull('chapter_id')
             ->orderBy('order_weight')
-            ->get()->groupBy('parent_id');
+            ->get()->groupBy('chapter_id');
 
         $this->setLessons($lessons);
     }
@@ -46,7 +46,7 @@ class CoursesHierarchyAdmin extends CoursesHierarchy implements ICoursesHierarch
             'name'          => $chapter->inherit_level.$chapter->name,
             'clear_name'    => $chapter->name,
             'type'          => 'chapter',
-            'parent_id'     => $chapter->parent_id,
+            'parent_id'     => $chapter->course_id,
             'is_public'     => $chapter->is_public,
             'is_draft'      => $chapter->is_draft,
             'link'          => URL::to(config('app.admin_route').'/chapters/'.$chapter->id.'/edit'),
@@ -64,7 +64,7 @@ class CoursesHierarchyAdmin extends CoursesHierarchy implements ICoursesHierarch
             'name'          => $lesson->name,
             'clear_name'    => $lesson->name,
             'type'          => 'lesson',
-            'parent_id'     => $lesson->parent_id,
+            'parent_id'     => $lesson->chapter_id,
             'is_public'     => $lesson->is_public,
             'is_draft'      => $lesson->is_draft,
             'link'          => URL::to(config('app.admin_route').'/lessons/'.$lesson->id.'/edit'),

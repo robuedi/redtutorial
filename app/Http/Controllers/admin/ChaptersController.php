@@ -29,14 +29,14 @@ class ChaptersController extends Controller
             'fields' => "co.id, co.name, c.name as course_name, co.is_public, co.is_draft, co.created_at, co.updated_at, co.order_weight",
 
             'body' => "FROM chapters co
-                        INNER JOIN courses c ON co.parent_id = c.id
+                        INNER JOIN courses c ON co.course_id = c.id
                         WHERE (1) {filters}",
 
             'filters' => array(
                 'name' => "AND co.name LIKE '%{name}%'",
                 'is_public' => "AND co.is_public = {is_public}",
                 'is_draft' => "AND co.is_draft = {is_draft}",
-                'course' => "AND co.parent_id = {course}",
+                'course' => "AND co.course_id = {course}",
                 'slug' => "AND co.slug = '%{slug}%'"
             ),
 
@@ -128,7 +128,7 @@ class ChaptersController extends Controller
         $rules = array(
             'name'                  => 'required',
             'order_weight'          => 'required',
-            'parent_id'             => 'required|integer',
+            'course_id'             => 'required|integer',
         );
 
         //if not draft and slug is empty
@@ -151,7 +151,7 @@ class ChaptersController extends Controller
             $chapter->description   = $request->input('description');
             $chapter->is_public     = $request->input('is_public') ? 1 : 0;
             $chapter->order_weight  = $request->input('order_weight');
-            $chapter->parent_id     = $request->input('parent_id');
+            $chapter->course_id     = $request->input('course_id');
 
             if($request->input('enabled_slug_edit')){
                 $chapter->slug          = $request->input('slug');
@@ -180,7 +180,7 @@ class ChaptersController extends Controller
         $rules = array(
             'name'                  => 'required',
             'order_weight'          => 'required',
-            'parent_id'             => 'required|integer',
+            'course_id'             => 'required|integer',
         );
 
         //if not draft and no slug
@@ -215,7 +215,7 @@ class ChaptersController extends Controller
             $chapter->is_public = $request->input('is_public') ? 1 : 0;
             $chapter->is_draft = $request->input('is_draft') ? 1 : 0;
             $chapter->order_weight = $request->input('order_weight');
-            $chapter->parent_id = $request->input('parent_id');
+            $chapter->course_id = $request->input('course_id');
             if($request->input('enabled_slug_edit')){
                 $chapter->slug          = $request->input('slug');
             }
@@ -244,7 +244,7 @@ class ChaptersController extends Controller
             abort(404);
 
         //check if chapters or lessons linked with the chapter
-        $linked_chapters = Chapter::where('parent_id', $id)
+        $linked_chapters = Chapter::where('course_id', $id)
             ->count();
 
         $linked_lesson = Lesson::where('course_id', $id)
@@ -268,11 +268,11 @@ class ChaptersController extends Controller
         }
 
         //delete chapter
-        $parent_id = $chapter->parent_id;
+        $course_id = $chapter->course_id;
         $chapter->delete();
 
         //update weight
-        $chapters = Chapter::where('parent_id', $parent_id)
+        $chapters = Chapter::where('course_id', $course_id)
             ->orderBy('order_weight')
             ->get();
 

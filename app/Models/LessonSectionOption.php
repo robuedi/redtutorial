@@ -12,6 +12,11 @@ use Illuminate\Database\Eloquent\Model;
 class LessonSectionOption extends Model
 {
     protected $table = 'lessons_sections_options';
+
+    public function lessonSection()
+    {
+        return $this->belongsTo(LessonSection::class, 'lesson_section_id', 'id')->whereType('quiz');
+    }
 }
 
 

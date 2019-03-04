@@ -28,8 +28,8 @@ class TutorialsController extends Controller
                     ->firstOrFail();
 
         //get chapters
-        $chapters = Chapter::join('lessons', 'chapters.id', '=', 'lessons.parent_id')
-                        ->where('chapters.parent_id', $course->id)
+        $chapters = Chapter::join('lessons', 'chapters.id', '=', 'lessons.chapter_id')
+                        ->where('chapters.course_id', $course->id)
                         ->where('chapters.is_public', 1)
                         ->where('lessons.is_public', 1)
                         ->whereNotNull('chapters.slug')
@@ -62,8 +62,8 @@ class TutorialsController extends Controller
     {
 
         //get the chapter
-        $chapter = DB::table('courses as co')
-                    ->join('chapters as ch', 'co.id', '=', 'ch.parent_id')
+        $lesson_info = DB::table('courses as co')
+                    ->join('chapters as ch', 'co.id', '=', 'ch.course_id')
                     ->where('co.slug', $course_slug)
                     ->where('ch.slug', $chapter_slug)
                     ->where('co.is_public', 1)
@@ -72,13 +72,13 @@ class TutorialsController extends Controller
                     ->first();
 
         //return 404 if not found
-        if(!$chapter)
+        if(!$lesson_info)
         {
             abort(404);
         }
 
         //get chapters
-        $lessons = Lesson::where('parent_id', $chapter->chapter_id)
+        $lessons = Lesson::where('chapter_id', $lesson_info->chapter_id)
             ->where('is_public', 1)
             ->whereNotNull('slug')
             ->orderBy('order_weight')
@@ -95,18 +95,18 @@ class TutorialsController extends Controller
 
         //get image
         $course_image = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')
-            ->where('item_id', $chapter->course_id)
+            ->where('item_id', $lesson_info->course_id)
             ->where('item_type', 'course')
             ->first();
 
         //set meta
-        $meta['keywords'] = 'course, learn, '.$chapter->course_name.' '.$chapter->chapter_name;
-        $meta['description'] = 'Learn '.$chapter->course_name.' - '.$chapter->chapter_name;
+        $meta['keywords'] = 'course, learn, '.$lesson_info->course_name.' '.$lesson_info->chapter_name;
+        $meta['description'] = 'Learn '.$lesson_info->course_name.' - '.$lesson_info->chapter_name;
 
         return View::make('tutorials.lessons', [
-            'chapter'   => $chapter,
+            'chapter'   => $lesson_info,
             'meta'      => $meta,
-            'course_id' => $chapter->course_id,
+            'course_id' => $lesson_info->course_id,
             'lessons'   => $lessons,
             'course_image'   => $course_image
         ]);
@@ -116,15 +116,15 @@ class TutorialsController extends Controller
     {
         //get the lesson
         $lesson = DB::table('courses as co')
-                ->join('chapters as ch', 'co.id', '=', 'ch.parent_id')
-                ->join('lessons as le', 'ch.id', '=', 'le.parent_id')
+                ->join('chapters as ch', 'co.id', '=', 'ch.course_id')
+                ->join('lessons as le', 'ch.id', '=', 'le.chapter_id')
                 ->where('co.slug', $course_slug)
                 ->where('ch.slug', $chapter_slug)
                 ->where('le.slug', $lesson_slug)
                 ->where('co.is_public', 1)
                 ->where('ch.is_public', 1)
                 ->where('le.is_public', 1)
-                ->selectRaw('co.id as course_id, co.name as course_name, co.slug as course_slag, ch.name as chapter_name, ch.slug as chapter_slag, le.parent_id as chapter_id, le.order_weight as lesson_order, le.id as lesson_id, le.name as lesson_name, le.description as lesson_description')
+                ->selectRaw('co.id as course_id, co.name as course_name, co.slug as course_slag, ch.name as chapter_name, ch.slug as chapter_slag, le.chapter_id as chapter_id, le.order_weight as lesson_order, le.id as lesson_id, le.name as lesson_name, le.description as lesson_description')
                 ->first();
 
         //return 404 if not found
@@ -160,7 +160,7 @@ class TutorialsController extends Controller
 
         //get the next lesson
         $next_lesson = Lesson::where('lessons.order_weight', '>', $lesson->lesson_order)
-                        ->where('lessons.parent_id', $lesson->chapter_id)
+                        ->where('lessons.chapter_id', $lesson->chapter_id)
                         ->where('lessons.is_public',1)
                         ->join('lessons_sections', 'lessons_sections.lesson_id', '=', 'lessons.id')
                         ->where('lessons_sections.is_public', 1)
