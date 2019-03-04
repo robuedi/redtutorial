@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Chapter;
 use App\MediaFileToItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -36,7 +37,7 @@ class CoursesController extends Controller
             'fields' => "co.id, co.name, co.is_public, co.is_draft, co.created_at, co.updated_at, co.order_weight, co.slug",
 
             'body' => "FROM courses co
-                        WHERE parent_id IS NULL {filters}",
+                        WHERE (1) {filters}",
 
             'filters' => array(
                 'name' => "AND name LIKE '%{name}%'",
@@ -69,7 +70,7 @@ class CoursesController extends Controller
     {
         $new_course = new Course();
         //get current max order;
-        $max_order_number = Course::whereNull('parent_id')->max('order_weight');
+        $max_order_number = Course::max('order_weight');
         $new_course->order_weight = (int)$max_order_number+1;
         $new_course->is_draft = 1;
 
@@ -87,8 +88,7 @@ class CoursesController extends Controller
     function edit($id)
     {
         //get course
-        $course = Course::where('id', $id)->whereNull('parent_id')
-                    ->first();
+        $course = Course::where('id', $id)->first();
 
         //check if exist
         if(!$course)
@@ -145,7 +145,6 @@ class CoursesController extends Controller
             if($request->input('enabled_slug_edit')){
                 $course->slug          = $request->input('slug');
             }
-            $course->parent_id = null;
             $course->save();
 
             //send user back
@@ -224,15 +223,14 @@ class CoursesController extends Controller
 
     public function destroy($id)
     {
-        $course = Course::where('id', $id)->whereNull('parent_id')
-            ->first();
+        $course = Course::where('id', $id)->first();
 
         //check if exist
         if(!$course)
             abort(404);
 
         //check if chapters or lessons linked with the course
-        $linked_chapters = Course::where('parent_id', $id)
+        $linked_chapters = Chapter::where('parent_id', $id)
                                 ->count();
 
         $linked_lesson = Lesson::where('parent_id', $id)
@@ -259,8 +257,7 @@ class CoursesController extends Controller
         $course->delete();
 
         //update weight
-        $courses = Course::whereNull('parent_id')
-                            ->orderBy('order_weight')
+        $courses = Course::orderBy('order_weight')
                             ->get();
 
         $i = 1;

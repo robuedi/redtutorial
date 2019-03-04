@@ -50,7 +50,7 @@ class TutorialsLessonsQuizzesController
         {
             //get the lesson
             $lesson = DB::table('courses as co')
-                ->join('courses as ch', 'co.id', '=', 'ch.parent_id')
+                ->join('chapters as ch', 'co.id', '=', 'ch.parent_id')
                 ->join('lessons as le', 'ch.id', '=', 'le.parent_id')
                 ->where('co.slug', $course_slug)
                 ->where('ch.slug', $chapter_slug)

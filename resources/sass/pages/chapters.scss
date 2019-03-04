@@ -100,6 +100,28 @@
         list-style: none;
         box-sizing: border-box;
 
+
+        &:before {
+          content: '';
+          border-right: 1px dashed rgba($brand-primary, 0.5);
+          bottom: -40px;
+          top: -40px;
+          width: 1px;
+          right: 0;
+          position: absolute;
+        }
+
+        //&:after{
+        //  content: '';
+        //  border-top: 1px dashed $brand-primary;
+        //  left: 20%;
+        //  top: 0px;
+        //  bottom: 0%;
+        //  width: 1px;
+        //  position: absolute;
+        //
+        //}
+        
         li {
           position: relative;
           padding: 10px;
@@ -113,7 +135,7 @@
             position: relative;
             box-sizing: border-box;
             display: inline-block;
-            min-height: 110px;
+            min-height: 80px;
             background-position: center;
             background-size: cover;
             background-repeat: repeat;
@@ -123,19 +145,19 @@
             .completion-percentage {
               color: #E62C33;
               float: right;
-              font-size: 22px;
+              font-size: 20px;
             }
 
             .course-number {
               position: absolute;
               top: 0;
-              left: 0;
+              left: 10px;
               transform: translateX(-100%);
               color: $brand-primary;
-              font-weight: 400;
+              font-weight: 300;
               font-size: 40px;
               line-height: 35px;
-              padding-right: 5px;
+              font-family: 'Lato';
             }
 
             .sub-details{
@@ -147,12 +169,55 @@
             }
 
             h3{
-              padding-bottom: 8px;
+              line-height: 29px;
+              padding-bottom: 4px;
               margin: 0;
               font-weight: 400;
               font-size: 22px;
               text-decoration: none;
-              border-bottom: 1px dashed;
+              position: relative;
+              padding-left: 20px;
+
+              &:before{
+                content: '';
+                bottom: 0px;
+                height: 6px;
+                width: 6px;
+                background-color: $brand-primary;
+                border-radius: 50%;
+                left: 0%;
+                position: absolute;
+                z-index: 2;
+              }
+
+              .route {
+                z-index: 1;
+                bottom: 2px;
+                height: 1px;
+                left: 0px;
+                right: -50%;
+                position: absolute;
+
+                &:after{
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  z-index: 2;
+                  content: '';
+                  position: absolute;
+                  background-image: linear-gradient(to right, transparent , #FFF); /* Standard syntax (must be last) */
+
+                }
+
+                .inner-route{
+                  border-bottom: 1px dashed;
+                  height: 0px;
+                  display: block;
+                  position: relative;
+                  z-index: 1;
+                }
+              }
             }
           }
         }

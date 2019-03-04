@@ -28,6 +28,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Pacifico" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
 
 
         {{-- FOR LOGO REMOVE IT--}}

@@ -8,6 +8,7 @@
 
 namespace App\Libraries\CoursesHierarchy;
 
+use App\Chapter;
 use App\Course;
 use App\Libraries;
 use Illuminate\Support\Facades\Log;
@@ -20,13 +21,11 @@ class CoursesHierarchyFactory implements ICoursesHierarchyFactory
         if ($type == 'admin')
         {
             //courses
-            $courses = Course::whereNull('parent_id')
-                ->orderBy('order_weight')
+            $courses = Course::orderBy('order_weight')
                 ->get();
 
             //chapters
-            $chapters = Course::whereNotNull('parent_id')
-                ->orderBy('order_weight')
+            $chapters = Chapter::orderBy('order_weight')
                 ->get()->groupBy('parent_id');
 
             //lessons
@@ -44,8 +43,7 @@ class CoursesHierarchyFactory implements ICoursesHierarchyFactory
                 ->get();
 
             //chapters
-            $chapters = Course::whereNotNull('parent_id')
-                ->where('is_public',1)
+            $chapters = Chapter::where('is_public',1)
                 ->where('is_draft',0)
                 ->orderBy('order_weight')
                 ->get()->groupBy('parent_id');

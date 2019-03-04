@@ -3,11 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Log;
 use URL;
 
-class Course extends Model
+class Chapter extends Model
 {
-    protected $table = 'courses';
+    protected $table = 'chapters';
 }
-
 

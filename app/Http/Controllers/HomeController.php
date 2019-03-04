@@ -17,7 +17,6 @@ class HomeController extends Controller
     {
 
         $courses = Course::where('is_public', 1)
-                    ->whereNull('parent_id')
                     ->select('name', 'slug', 'description')
                     ->get();
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Chapter;
 use App\LessonSection;
 use App\LessonSectionOption;
 use View;
@@ -27,14 +28,14 @@ class TutorialsController extends Controller
                     ->firstOrFail();
 
         //get chapters
-        $chapters = Course::join('lessons', 'courses.id', '=', 'lessons.parent_id')
-                        ->where('courses.parent_id', $course->id)
-                        ->where('courses.is_public', 1)
+        $chapters = Chapter::join('lessons', 'chapters.id', '=', 'lessons.parent_id')
+                        ->where('chapters.parent_id', $course->id)
+                        ->where('chapters.is_public', 1)
                         ->where('lessons.is_public', 1)
-                        ->whereNotNull('courses.slug')
-                        ->groupBy('courses.id')
-                        ->selectRaw('courses.id, courses.name, courses.slug, courses.symbol_class, COUNT(lessons.id) AS lessons_number')
-                        ->orderBy('courses.order_weight')
+                        ->whereNotNull('chapters.slug')
+                        ->groupBy('chapters.id')
+                        ->selectRaw('chapters.id, chapters.name, chapters.slug, COUNT(lessons.id) AS lessons_number')
+                        ->orderBy('chapters.order_weight')
                         ->get();
 
 
@@ -62,7 +63,7 @@ class TutorialsController extends Controller
 
         //get the chapter
         $chapter = DB::table('courses as co')
-                    ->join('courses as ch', 'co.id', '=', 'ch.parent_id')
+                    ->join('chapters as ch', 'co.id', '=', 'ch.parent_id')
                     ->where('co.slug', $course_slug)
                     ->where('ch.slug', $chapter_slug)
                     ->where('co.is_public', 1)
@@ -115,7 +116,7 @@ class TutorialsController extends Controller
     {
         //get the lesson
         $lesson = DB::table('courses as co')
-                ->join('courses as ch', 'co.id', '=', 'ch.parent_id')
+                ->join('chapters as ch', 'co.id', '=', 'ch.parent_id')
                 ->join('lessons as le', 'ch.id', '=', 'le.parent_id')
                 ->where('co.slug', $course_slug)
                 ->where('ch.slug', $chapter_slug)

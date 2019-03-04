@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Chapter;
 use View;
 use App\Http\Controllers\Controller;
 use App\Course;
@@ -35,18 +36,15 @@ class DashboardController extends Controller
                     ->first();
 
         //Chapters
-        $public_chapters = Course::whereNotNull('parent_id')
-                    ->selectRaw('COUNT(id) as public')
+        $public_chapters = Chapter::selectRaw('COUNT(id) as public')
                     ->where('is_public', 1)
                     ->first();
 
-        $draft_chapters = Course::whereNotNull('parent_id')
-                    ->selectRaw('COUNT(id) as draft')
+        $draft_chapters = Chapter::selectRaw('COUNT(id) as draft')
                     ->where('is_draft', 1)
                     ->first();
 
-        $total_chapters = Course::whereNotNull('parent_id')
-                    ->selectRaw('COUNT(id) as total')
+        $total_chapters = Chapter::selectRaw('COUNT(id) as total')
                     ->first();
 
         //Lessons

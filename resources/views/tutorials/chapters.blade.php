@@ -31,11 +31,14 @@
                     <li >
                         <a href="/tutorial/{{$course->slug.'/'.$chapter->slug}}" class="option" >
                             <span class="course-number">
-                                {{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}.
+                                {{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}
                             </span>
                             <h3 >
                                 {{$chapter->name}}
-                                <span class="completion-percentage" >{{rand(0, 100)}}%</span>
+                                <span class="route">
+                                    <span class="inner-route"></span>
+                                </span>
+                                <span class="completion-percentage" >@if($index < 2)100%@else &infin; @endif</span>
                             </h3>
                             <p class="sub-details">
                                 <span class="lessons-count">{{$chapter->lessons_number}} Lessons</span>

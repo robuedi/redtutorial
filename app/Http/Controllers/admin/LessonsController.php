@@ -79,8 +79,8 @@ class LessonsController extends Controller
         $new_lesson->order_weight = (int)$max_order_number+1;
         $new_lesson->is_draft = 1;
 
-        $courses = Course::whereNull('parent_id')->get();
-        $chapters = Course::whereNotNull('parent_id')->get();
+        $courses = Course::get();
+        $chapters = Chapter::get();
 
         //get map hierarchy
 
@@ -263,7 +263,7 @@ class LessonsController extends Controller
         $lesson->delete();
 
         //update weight, get lessons
-        $lessons = Course::where('parent_id', $parent_id)
+        $lessons = Lesson::where('parent_id', $parent_id)
             ->orderBy('order_weight')
             ->get();
 

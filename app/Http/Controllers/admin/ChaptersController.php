@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Chapter;
 use App\Libraries\CoursesHierarchy\CoursesHierarchyFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -27,9 +28,9 @@ class ChaptersController extends Controller
 
             'fields' => "co.id, co.name, c.name as course_name, co.is_public, co.is_draft, co.created_at, co.updated_at, co.order_weight",
 
-            'body' => "FROM courses co
+            'body' => "FROM chapters co
                         INNER JOIN courses c ON co.parent_id = c.id
-                        WHERE co.parent_id IS NOT NULL {filters}",
+                        WHERE (1) {filters}",
 
             'filters' => array(
                 'name' => "AND co.name LIKE '%{name}%'",
@@ -70,14 +71,13 @@ class ChaptersController extends Controller
 
     function create()
     {
-        $new_chapter = new Course();
+        $new_chapter = new Chapter();
 
         //by default is draft
         $new_chapter->is_draft = 1;
 
         //get current max order;
-        $max_order_number = Course::whereNotNull('parent_id')
-                            ->max('order_weight');
+        $max_order_number = Chapter::max('order_weight');
 
         $new_chapter->order_weight = (int)$max_order_number+1;
 
@@ -102,7 +102,7 @@ class ChaptersController extends Controller
 
     function edit($id)
     {
-        $chapter = Course::findOrFail($id);
+        $chapter = Chapter::findOrFail($id);
 
         //get hierarchy
         $hierarchy_item = CoursesHierarchyFactory::createHierarchyObject('admin');
@@ -146,13 +146,12 @@ class ChaptersController extends Controller
         else
         {
             //save course
-            $chapter = new Course();
+            $chapter = new Chapter();
             $chapter->name          = $request->input('name');
             $chapter->description   = $request->input('description');
             $chapter->is_public     = $request->input('is_public') ? 1 : 0;
             $chapter->order_weight  = $request->input('order_weight');
             $chapter->parent_id     = $request->input('parent_id');
-            $chapter->symbol_class  = $request->input('symbol_class');
 
             if($request->input('enabled_slug_edit')){
                 $chapter->slug          = $request->input('slug');
@@ -175,7 +174,7 @@ class ChaptersController extends Controller
 
     function update($id, Request $request)
     {
-        $chapter = Course::findOrFail($id);
+        $chapter = Chapter::findOrFail($id);
 
         // validate
         $rules = array(
@@ -213,7 +212,6 @@ class ChaptersController extends Controller
             //save course
             $chapter->name = $request->input('name');
             $chapter->description = $request->input('description');
-            $chapter->symbol_class = $request->input('symbol_class');
             $chapter->is_public = $request->input('is_public') ? 1 : 0;
             $chapter->is_draft = $request->input('is_draft') ? 1 : 0;
             $chapter->order_weight = $request->input('order_weight');
@@ -239,14 +237,14 @@ class ChaptersController extends Controller
 
     public function destroy($id)
     {
-        $chapter = Course::find($id);
+        $chapter = Chapter::find($id);
 
         //check if exist
         if(!$chapter)
             abort(404);
 
         //check if chapters or lessons linked with the chapter
-        $linked_chapters = Course::where('parent_id', $id)
+        $linked_chapters = Chapter::where('parent_id', $id)
             ->count();
 
         $linked_lesson = Lesson::where('course_id', $id)
@@ -274,7 +272,7 @@ class ChaptersController extends Controller
         $chapter->delete();
 
         //update weight
-        $chapters = Course::where('parent_id', $parent_id)
+        $chapters = Chapter::where('parent_id', $parent_id)
             ->orderBy('order_weight')
             ->get();
 
