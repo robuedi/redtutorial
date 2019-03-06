@@ -15,7 +15,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-position: right;
+    background-position: right bottom;
     background-image: url("/assets/img/architecture-building-city-1123982.jpg");
     background-size: contain;
     background-repeat: no-repeat;
@@ -105,6 +105,8 @@
         box-sizing: border-box;
         min-height: 200px;
         padding: 25px ;
+        background: repeating-linear-gradient(45deg,  rgba(#eee, 0.8),  rgba(#eee, 0.8) 1px, rgba(#eee, 0.6) 2px, rgba(#eee, 0.6) 3px);
+        margin-bottom: 40px;
 
         @media (max-width: 2000px) {
           width: 25%;

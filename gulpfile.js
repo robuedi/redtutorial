@@ -1,11 +1,13 @@
 // npm install gulp gulp-sass gulp-rename gulp-concat gulp-uglify
-var gulp = require('gulp');
+const gulp = require('gulp');
 
-var sass = require('gulp-sass');
-var rename = require("gulp-rename");
+const sass = require('gulp-sass');
+const rename = require("gulp-rename");
 
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
+
 
 //sass
 gulp.task('sass', function () {
@@ -19,6 +21,9 @@ gulp.task('sass', function () {
 gulp.task('js', function() {
     return gulp.src(['./resources/js/libs/**/*.js', './resources/js/user_defined/**/*.js'])
         .pipe(concat('scripts.js'))
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(uglify())
         .pipe(rename('scripts.min.js'))
         .pipe(gulp.dest('./public/assets/js'));
