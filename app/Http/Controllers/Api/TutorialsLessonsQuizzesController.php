@@ -18,13 +18,6 @@ class TutorialsLessonsQuizzesController
 {
     public function validateQuiz(string $course_slug, string $chapter_slug, string $lesson_slug, int $quiz_id, Request $request)
     {
-        $api_response = [
-            'status'    => 'error',
-            'response'  => [
-                'message' => 'Something went wrong',
-                'action'  => ''
-            ]
-        ];
 
         // validate
         $rules = array(
@@ -50,8 +43,8 @@ class TutorialsLessonsQuizzesController
         {
             //get the lesson
             $lesson = DB::table('courses as co')
-                ->join('chapters as ch', 'co.id', '=', 'ch.parent_id')
-                ->join('lessons as le', 'ch.id', '=', 'le.parent_id')
+                ->join('chapters as ch', 'co.id', '=', 'ch.course_id')
+                ->join('lessons as le', 'ch.id', '=', 'le.chapter_id')
                 ->where('co.slug', $course_slug)
                 ->where('ch.slug', $chapter_slug)
                 ->where('le.slug', $lesson_slug)
