@@ -46,7 +46,7 @@ class ChaptersController extends Controller
                 'co.is_draft'       => '',
                 'co.created_at'     => '',
                 'co.updated_at'     => '',
-                'c.name'            => 'asc',
+                'c.name'            => '',
                 'co.order_weight'   => 'asc'
             )
         );
