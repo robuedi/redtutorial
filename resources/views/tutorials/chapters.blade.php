@@ -38,7 +38,8 @@
                                 <span class="route">
                                     <span class="inner-route"></span>
                                 </span>
-                                <span class="completion-percentage" >@if($index < 2)100%@else &infin; @endif</span>
+                                <span class="completion-percentage" >100%</span>
+{{--                                <span class="completion-percentage" >@if($index < 2)100%@else &infin; @endif</span>--}}
                             </h3>
                             <p class="sub-details">
                                 <span class="lessons-count">{{$chapter->lessons_number}} Lessons</span>

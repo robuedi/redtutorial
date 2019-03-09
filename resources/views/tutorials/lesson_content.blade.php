@@ -47,8 +47,6 @@
                     <div class="lesson-container @if($index == 0) active @endif">
                         @if(!empty($lesson_section->name))
                             <h3>{{$lesson_section->name}}</h3>
-                        @elseif($index == 0)
-                            <h3>Insight</h3>
                         @endif
                         {!! $lesson_section->content !!}
 
