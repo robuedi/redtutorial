@@ -91,7 +91,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label >Chapter <span class="req">*</span></label>
-                                                    <input name="chapter_id" type="hidden" class="curses-hierarchy display-block" data-placeholder="@lang('admin_general.select_placeholder')" value="{{Illuminate\Support\Facades\Input::get('chapter_id')}}">
+                                                    <input name="chapter" type="hidden" class="curses-hierarchy display-block" data-placeholder="@lang('admin_general.select_placeholder')" value="{{Illuminate\Support\Facades\Input::get('chapter')}}">
                                                     <span class="hidden" data-curses-hierarchy='{!! $curses_hierarchy !!}' ></span>
                                                 </div>
                                             </div>
