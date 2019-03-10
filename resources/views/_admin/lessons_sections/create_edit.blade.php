@@ -357,6 +357,8 @@
 
                                 <section class="smart-form">
 
+                                    <p style="color:red">Add ability to move sections between lessons</p>
+
                                     <section>
                                         <label class="label toggle-inline">Type <span class="req">*</span></label>
                                         <label class="input" >
@@ -367,8 +369,6 @@
                                             </select>
                                         </label>
                                     </section>
-
-
 
                                     <section>
                                         <label class="label toggle-inline">Is public <span class="req">*</span></label>
