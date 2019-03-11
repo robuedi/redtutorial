@@ -1,4 +1,4 @@
-.contact-us-page-content {
+.sign-in-page {
   font-family: $font-family;
 
   .top-section {
@@ -44,7 +44,7 @@
       .feedback{
         text-align: left;
         display: inline-block;
-        width: 450px;
+        width: 400px;
         max-width: 100%;
 
         .alert {
@@ -53,18 +53,39 @@
       }
     }
 
-    form{
-      text-align: left;
+    .choose-action div{
+      width: 400px;
       display: inline-block;
+      max-width: 100%;
+      margin-bottom: 30px;
+
+      h2{
+        cursor: pointer;
+        display: inline-block;
+        width: 49.5%;
+        box-sizing: border-box;
+        transition: color .2s;
+
+        &.active {
+          color: $brand-primary;
+        }
+
+        &:first-child {
+          border-right: 1px solid #000;
+        }
+      }
+    }
+
+    form.sign-in-forms{
+      text-align: left;
+      max-width: 100%;
+      display: none;
+
+      &.active{
+        display: inline-block;
+      }
 
       .form-input {
-        input {
-
-          &.verification-input{
-            margin-left: 55px;
-            width: calc(100% - 55px);
-          }
-        }
 
         .verification-input-container {
           position: relative;
@@ -76,10 +97,8 @@
             left: 0;
           }
         }
-
       }
     }
 
   }
-
 }

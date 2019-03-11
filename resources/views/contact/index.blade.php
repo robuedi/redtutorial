@@ -24,37 +24,37 @@
                     {!! \App\Libraries\UIMessage::get() !!}
                 </div>
             </div>
-            <form class="contact-form" enctype="application/x-www-form-urlencoded" action="/contact-us" method="POST">
+            <form class="contact-form form-item" enctype="application/x-www-form-urlencoded" action="/contact-us" method="POST">
                 {{ csrf_field() }}
                 <section class="form-input">
-                    <label>Name <span class="required-status">required</span></label>
+                    <label>Name <span class="required-status"></span></label>
                     <input type="text" name="name" value="{{old('name')}}">
                 </section>
 
                 <section class="form-input">
-                    <label>Email <span class="required-status">required</span></label>
+                    <label>Email <span class="required-status"></span></label>
                     <input type="text" name="email" value="{{old('email')}}">
                 </section>
 
                 <section class="form-input">
-                    <label>Subject <span class="required-status">optional</span></label>
+                    <label>Subject </label>
                     <input type="text" name="subject" value="{{old('subject')}}">
                 </section>
 
                 <section class="form-input">
-                    <label>Message <span class="required-status">required</span></label>
+                    <label>Message <span class="required-status"></span></label>
                     <textarea rows="5" name="message">{{old('message')}}</textarea>
                 </section>
 
                 <section class="form-input">
-                    <label>Verification <span class="required-status">required</span></label>
+                    <label>Verification <span class="required-status"></span></label>
                     <div class="verification-input-container">
                         <span class="verification-text">{{$verification_nr[0]}} + {{$verification_nr[1]}} = </span><input class="verification-input" type="text" name="verification" >
                     </div>
                 </section>
 
                 <section  class="form-input">
-                    <button class="submit-btn">Submit</button>
+                    <button class="btn-s-one">Submit</button>
                 </section>
             </form>
         </div>

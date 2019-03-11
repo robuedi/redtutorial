@@ -10,6 +10,7 @@
 @import "layout/helpers";
 @import "layout/buttons";
 @import "layout/elements";
+@import "layout/forms_inputs";
 
 //Partials
 @import "partials/master";
@@ -25,5 +26,6 @@
 @import "pages/chapters";
 @import "pages/lessons";
 @import "pages/lesson_content";
+@import "pages/sign_in";
 
 

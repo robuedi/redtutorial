@@ -25,3 +25,22 @@
     color: $white;
   }
 }
+
+.btn-s-one {
+  font-family: $font-family;
+  font-size: 20px;
+  cursor: pointer;
+  float: right;
+  background-color: #FFF;
+  box-shadow: 0px 0px 2px 1px #ddd;
+  padding: 15px 35px;
+  font-weight: 600;
+  transition: background-color .5s, border-color .5s;
+  border: 1px solid #000;
+
+  &:hover, &:focus {
+    background-color: $brand-primary ;
+    color: #fff;
+    border-color: $brand-primary;
+  }
+}

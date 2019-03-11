@@ -1,0 +1,33 @@
+.form-item{
+  width: 400px;
+  max-width: 100%;
+}
+
+.form-input {
+  max-width: 100%;
+  padding: 5px 0px 35px;
+
+  label{
+    font-size: 20px;
+    display: block;
+    padding-bottom: 5px;
+
+    .required-status:after{
+      content: "*";
+      color: $brand-primary;
+    }
+  }
+
+  input, textarea {
+    transition: border .5s;
+    padding: 8px;
+    width: 100%;
+    font-size: 18px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+
+    &:hover, &:focus {
+      border-color: $brand-primary;
+    }
+  }
+}
