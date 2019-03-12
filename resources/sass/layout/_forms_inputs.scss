@@ -19,6 +19,8 @@
   }
 
   input, textarea {
+    -webkit-appearance: none;
+    border-radius: unset;
     transition: border .5s;
     padding: 8px;
     width: 100%;

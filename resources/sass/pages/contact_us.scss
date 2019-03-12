@@ -40,19 +40,6 @@
     @include container-sizing();
     text-align: center;
 
-    .feedback-container{
-      .feedback{
-        text-align: left;
-        display: inline-block;
-        width: 450px;
-        max-width: 100%;
-
-        .alert {
-          margin-bottom: 40px;
-        }
-      }
-    }
-
     form{
       text-align: left;
       display: inline-block;

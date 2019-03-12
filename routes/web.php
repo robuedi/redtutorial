@@ -87,6 +87,10 @@ Route::get('/info/{url}', 'StaticPagesController@index');
 
 //Sign In
 Route::get('/sign-in', 'SignInController@index');
+Route::post('/sign-in', 'SignInController@doSignIn');
+
+//Register
+Route::post('/register', 'RegisterController@store');
 
 //Contact Us
 Route::get('/contact-us', 'ContactController@index');

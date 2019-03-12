@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 use View;
 use App\Libraries\Listing;
 use App\Models\Role;
-use App\User;
+use App\Models\User;
 use Sentinel;
 use Illuminate\Http\Request;
 use Validator;
@@ -245,7 +245,7 @@ class UsersManagementController extends Controller
             if(!$role)
             {
 
-                UIMessage::set('danger', "The user was created successfully.");
+                UIMessage::set('danger', "The role doesn't exist.");
                 return redirect()->back();
             }
 

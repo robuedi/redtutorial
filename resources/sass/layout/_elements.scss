@@ -43,3 +43,20 @@
     }
   }
 }
+
+.feedback-container{
+  .feedback{
+    text-align: left;
+    display: inline-block;
+    width: 400px;
+    max-width: 100%;
+
+    .alert {
+      background-color: #fff;
+      border: 1px dashed $brand-primary;
+      font-weight: 400;
+      letter-spacing: .5px;
+      margin-bottom: 40px;
+    }
+  }
+}

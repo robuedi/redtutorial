@@ -19,11 +19,6 @@
             <h1>Sign In / Register</h1>
         </div>
         <div class="content">
-            <div class="feedback-container">
-                <div class="feedback">
-                    {!! \App\Libraries\UIMessage::get() !!}
-                </div>
-            </div>
 
             <section class="choose-action" data-role="sign-choose-action">
                 <div>
@@ -35,6 +30,12 @@
                     </h2>
                 </div>
             </section>
+
+            <div class="feedback-container">
+                <div class="feedback">
+                    {!! \App\Libraries\UIMessage::get() !!}
+                </div>
+            </div>
 
             <form class="sign-in-forms form-item active" data-role="sign-in-form" data-type="register" enctype="application/x-www-form-urlencoded" action="/register" method="POST">
                 {{ csrf_field() }}
@@ -54,13 +55,13 @@
                 </section>
 
                 <section class="form-input">
-                    <label>Password <span class="required-status"></span></label>
+                    <label>Password <small>(minimum 6 characters)</small><span class="required-status"></span></label>
                     <input type="password" name="password" autocomplete="off">
                 </section>
 
                 <section class="form-input">
                     <label>Confirm Password <span class="required-status"></span></label>
-                    <input type="password" name="confirm_password" autocomplete="off">
+                    <input type="password" name="password_confirmation" autocomplete="off">
                 </section>
 
                 <section  class="form-input">
