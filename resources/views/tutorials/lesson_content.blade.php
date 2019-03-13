@@ -2,6 +2,7 @@
 
 @section('meta')
     <meta name="description" content="{{$meta['description']}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
 
 @section('title') {{$lesson->course_name}} @parent @stop

@@ -24,4 +24,9 @@ class User extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function lessonsSections()
+    {
+        return $this->belongsToMany(LessonSection::class,'users_to_lessons_sections', 'user_id', 'lesson_section_id');
+    }
 }

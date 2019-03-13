@@ -17,4 +17,9 @@ class Lesson extends Model
     {
         return $this->hasMany(LessonSection::class, 'lesson_id', 'id');
     }
+
+    public function publicLessonSections()
+    {
+        return $this->lessonSections()->where('is_public',1);
+    }
 }

@@ -54,19 +54,19 @@
 
         <main>
             @yield('content')
-            <section id="footer-container">
+        </main>
+        <footer id="footer-container">
                 <span class="copyright-container">
                     &copy; 2019 REDTutorial.com
                 </span>
-                <ul class="footer-links">
-                    @foreach(App\Libraries\MenuClientStatic::getStaticMenu() as $page)
-                        <li>
-                            <a href="/info/{{$page->slug}}" class="@if(url()->current() === url('/info/'.$page->slug)) active @endif" >{{$page->name}}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </section>
-        </main>
+            <ul class="footer-links">
+                @foreach(App\Libraries\MenuClientStatic::getStaticMenu() as $page)
+                    <li>
+                        <a href="/info/{{$page->slug}}" class="@if(url()->current() === url('/info/'.$page->slug)) active @endif" >{{$page->name}}</a>
+                    </li>
+                @endforeach
+            </ul>
+        </footer>
 
         <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

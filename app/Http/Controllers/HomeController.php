@@ -8,8 +8,12 @@
 
 namespace App\Http\Controllers;
 
+use App\LessonSection;
 use View;
 use App\Course;
+use Log;
+use App\Models\User;
+
 
 class HomeController extends Controller
 {

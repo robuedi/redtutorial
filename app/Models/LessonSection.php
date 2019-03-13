@@ -9,6 +9,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class LessonSection extends Model
 {
@@ -22,5 +23,10 @@ class LessonSection extends Model
     public function options()
     {
         return $this->hasMany(LessonSectionOption::class, 'lesson_section_id', 'id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class,'users_to_lessons_sections', 'lesson_section_id', 'user_id');
     }
 }

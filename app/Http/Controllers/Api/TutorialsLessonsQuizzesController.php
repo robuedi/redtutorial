@@ -8,11 +8,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use \Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Validator;
 use App\LessonSection;
 use Illuminate\Support\Facades\Input;
 use DB;
 use Illuminate\Http\Request;
+use App\UserToLessonSection;
+use Log;
 
 class TutorialsLessonsQuizzesController
 {
@@ -110,6 +113,26 @@ class TutorialsLessonsQuizzesController
                         'action'  => 'pass',
                     ]
                 ];
+
+                //save user progress
+                if(Sentinel::check()&&Sentinel::hasAccess('client'))
+                {
+                    $user =Sentinel::getUser();
+
+                    //new progress
+                    $check_progress = UserToLessonSection::where('user_id', $user->id)
+                                        ->where('lesson_section_id', $quiz_id)
+                                        ->count();
+
+                    if(!$check_progress)
+                    {
+                        $new_progress                       = new UserToLessonSection();
+                        $new_progress->user_id              = $user->id;
+                        $new_progress->lesson_section_id    = $quiz_id;
+                        $new_progress->save();
+                    }
+
+                }
             }
             else
             {

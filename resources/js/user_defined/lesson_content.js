@@ -114,11 +114,11 @@ $(function () {
 
                     //check response
                     $.ajax({
-                        url: '/api/v1'+window.location.pathname+window.location.search + '/' + verification_quiz,
+                        url: '/ajax/v1'+window.location.pathname+window.location.search + '/' + verification_quiz,
                         method: 'POST',
                         dataType: 'json',
                         async: true,
-                        data: {response: arrValues},
+                        data: {response: arrValues, _token: $('meta[name="csrf-token"]').attr('content')},
                         success: function (response) {
                             if(response.status == 'success')
                             {

@@ -100,3 +100,7 @@ Route::post('/contact-us', 'ContactController@saveMessage');
 Route::get('/images/uploads/media_library/{year}/{month}/{file_name}', 'ImageController@showMediaImage')->where('year', '[0-9]{4}')->where('month', '[0-9]{2}');
 Route::get('/images/assets/img/{file_name}', 'ImageController@showAssetImage');
 
+Route::group(array('namespace' => 'Api', 'prefix' => 'ajax/v1'), function(){
+    Route::post('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}/{quiz_id}', 'TutorialsLessonsQuizzesController@validateQuiz');
+});
+

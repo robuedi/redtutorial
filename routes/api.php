@@ -17,6 +17,3 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::group(array('namespace' => 'Api', 'prefix' => 'v1'), function(){
-    Route::post('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}/{quiz_id}', 'TutorialsLessonsQuizzesController@validateQuiz');
-});

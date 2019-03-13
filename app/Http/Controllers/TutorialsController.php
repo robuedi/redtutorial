@@ -12,6 +12,7 @@ use App\Lesson;
 use DB;
 use Illuminate\Support\Facades\Log;
 use App\MediaFileToItem;
+use Sentinel;
 
 class TutorialsController extends Controller
 {
@@ -38,6 +39,7 @@ class TutorialsController extends Controller
                         ->orderBy('chapters.order_weight')
                         ->get();
 
+        $chapters = Chapter::addCurrentUserCompletionStatus($chapters);
 
         //get image
         $course_image = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')

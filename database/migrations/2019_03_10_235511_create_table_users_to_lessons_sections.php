@@ -13,8 +13,10 @@ class CreateTableUsersToLessonsSections extends Migration
      */
     public function up()
     {
-        Schema::create('table_users_to_lessons_sections', function (Blueprint $table) {
+        Schema::create('users_to_lessons_sections', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->index();
+            $table->integer('lesson_section_id')->index();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateTableUsersToLessonsSections extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_users_to_lessons_sections');
+        Schema::dropIfExists('users_to_lessons_sections');
     }
 }
