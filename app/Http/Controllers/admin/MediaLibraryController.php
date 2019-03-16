@@ -11,7 +11,7 @@ use Redirect;
 use View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\Models\MediaFile;
+use App\MediaFile;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\URL;
 use Log;

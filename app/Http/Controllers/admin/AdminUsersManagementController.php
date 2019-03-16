@@ -11,8 +11,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use View;
 use App\Libraries\Listing;
-use App\Models\Role;
-use App\Models\User;
+use App\Role;
+use App\User;
 use Sentinel;
 use Illuminate\Http\Request;
 use Validator;
@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Input;
 use Log;
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 
-class UsersManagementController extends Controller
+class AdminUsersManagementController extends Controller
 {
     public function index($type)
     {

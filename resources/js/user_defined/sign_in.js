@@ -1,16 +1,30 @@
 $(function () {
     //change active form
-    $('[data-role="sign-choose-action"] [data-action]').on('click', function () {
+    $('[data-role="choose-action"] [data-action]').on('click', function () {
         //make only this button active
         $(this).parent().find('[data-action]').removeClass('active');
         $(this).addClass('active');
 
         //change active form
         //hide form
-        $('[data-role="sign-in-form"]').removeClass('active');
+        $('[data-role="choose-action-container"][data-type]').removeClass('active');
 
         //show form
         var currentActiveForm = $(this).data('action');
-        $('[data-role="sign-in-form"][data-type="'+currentActiveForm+'"]').addClass('active');
+        $('[data-role="choose-action-container"][data-type="'+currentActiveForm+'"]').addClass('active');
+    })
+
+    //tag that class on click to itself
+    $('[data-self-add-class]').on('click', function () {
+        var className = $(this).data('self-add-class');
+
+        if($(this).hasClass(className))
+        {
+            $(this).removeClass(className);
+        }
+        else
+        {
+            $(this).addClass(className);
+        }
     })
 });

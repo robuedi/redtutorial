@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: eduard
- * Date: 11/03/19
- * Time: 00:02
+ * Date: 16/03/19
+ * Time: 17:51
  */
 
 namespace App\Http\Controllers;
@@ -18,10 +18,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Log;
 
-class RegisterController extends Controller
+class UserRegisterController extends Controller
 {
-
-    public function store(Request $request)
+    public function register(Request $request)
     {
 
         // validate

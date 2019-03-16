@@ -12,7 +12,7 @@ use App\LessonSection;
 use View;
 use App\Course;
 use Log;
-use App\Models\User;
+use App\User;
 
 
 class HomeController extends Controller

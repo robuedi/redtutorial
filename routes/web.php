@@ -56,13 +56,13 @@ Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')
         Route::post('/user-profile', 'UserProfileController@update');
 
         //User Management
-        Route::get('/users-management/{type}', 'UsersManagementController@index');
-        Route::get('/users-management/{type}/{id}/edit', 'UsersManagementController@edit');
-        Route::get('/users-management/{type}/create', 'UsersManagementController@create');
-        Route::post('/users-management', 'UsersManagementController@store');
-        Route::put('/users-management/{id}', 'UsersManagementController@update');
-        Route::delete('/users-management/{id}', 'UsersManagementController@destroy');
-        Route::delete('/users-management/{id}/deactivate', 'UsersManagementController@toggleActivation');
+        Route::get('/users-management/{type}', 'AdminUsersManagementController@index');
+        Route::get('/users-management/{type}/{id}/edit', 'AdminUsersManagementController@edit');
+        Route::get('/users-management/{type}/create', 'AdminUsersManagementController@create');
+        Route::post('/users-management', 'AdminUsersManagementController@store');
+        Route::put('/users-management/{id}', 'AdminUsersManagementController@update');
+        Route::delete('/users-management/{id}', 'AdminUsersManagementController@destroy');
+        Route::delete('/users-management/{id}/deactivate', 'AdminUsersManagementController@toggleActivation');
 
         //Static Pages
         Route::resource('/static-pages', 'StaticPagesController');
@@ -85,12 +85,17 @@ Route::get('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsCon
 //Info pages
 Route::get('/info/{url}', 'StaticPagesController@index');
 
-//Sign In
-Route::get('/sign-in', 'SignInController@index');
-Route::post('/sign-in', 'SignInController@doSignIn');
+//User Sign In
+Route::get('/user/sign-in', 'UserSignInController@index');
+Route::post('/user/sign-in', 'UserSignInController@doSignIn');
+Route::get('/user/logout', 'UserSignInController@logout');
 
-//Register
-Route::post('/register', 'RegisterController@store');
+//User Register
+Route::post('/user/register', 'UserRegisterController@register');
+
+//User Profile
+Route::post('/user/update-profile', 'UserProfileController@updateProfile');
+Route::get('/user/profile', 'UserProfileController@profile');
 
 //Contact Us
 Route::get('/contact-us', 'ContactController@index');

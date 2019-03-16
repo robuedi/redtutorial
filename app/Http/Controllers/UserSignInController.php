@@ -20,7 +20,7 @@ use Session;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use App\Libraries\UIMessage;
 
-class SignInController extends Controller
+class UserSignInController extends Controller
 {
     public function index()
     {
@@ -30,12 +30,12 @@ class SignInController extends Controller
             if (Sentinel::check() && (Sentinel::hasAccess('client')))
                 return Redirect::intended('/');
             else
-                return View::make('sign_in.index');
+                return View::make('user.sign_in_or_register');
 
         } catch (NotActivatedException $e) {
 
             UIMessage::set('danger', 'Account not activated.');
-            return View::make('sign_in.index');
+            return View::make('user.sign_in_or_register');
 
         }
     }

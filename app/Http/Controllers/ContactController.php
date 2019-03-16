@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContactMessageToUser;
+use App\ContactMessageToUser;
 use App\Rules\CustomSumVerification;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Libraries\UIMessage;
 use Illuminate\Support\Facades\Session;
-use App\Models\ContactMessage;
+use App\ContactMessage;
 use Sentinel;
 use Log;
 

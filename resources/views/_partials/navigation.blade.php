@@ -12,9 +12,9 @@
             <li><a href="/" class="@if(url()->current() === url('/')) active @endif" >Tutorials</a></li>
             <li><a href="/contact-us" class="@if(url()->current() === url('/contact-us')) active @endif" >Contact Us</a></li>
             @if(\Cartalyst\Sentinel\Laravel\Facades\Sentinel::check()&&\Cartalyst\Sentinel\Laravel\Facades\Sentinel::hasAccess('client'))
-                <li><a href="/profile" class="@if(url()->current() === url('/profile')) active @endif" >Profile</a></li>
+                <li><a href="/user/profile" class="@if(url()->current() === url('/user/profile')) active @endif" >Profile</a></li>
             @else
-                <li><a href="/sign-in" class="@if(url()->current() === url('/register')) active @endif" >Sign In / Register</a></li>
+                <li><a href="/user/sign-in" class="@if(url()->current() === url('/user/sign-in')) active @endif" >Sign In / Register</a></li>
             @endif
         </ul>
     </div>

@@ -1,7 +1,7 @@
 @extends('_partials.master')
 
 @section('meta')
-    <meta name="description" content="Sign In">
+    <meta name="description" content="Sign in, register, profile">
 @stop
 
 @section('title') Sign In @parent @stop
@@ -20,7 +20,7 @@
         </div>
         <div class="content">
 
-            <section class="choose-action" data-role="sign-choose-action">
+            <section class="choose-action" data-role="choose-action">
                 <div>
                     <h2 class="active" data-action="register">
                         Register
@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-            <form class="sign-in-forms form-item active" data-role="sign-in-form" data-type="register" enctype="application/x-www-form-urlencoded" action="/register" method="POST">
+            <form class="sign-in-forms form-item active" data-role="choose-action-container" data-type="register" enctype="application/x-www-form-urlencoded" action="/user/register" method="POST">
                 {{ csrf_field() }}
                 <section class="form-input">
                     <label>First name <span class="required-status"></span></label>
@@ -69,7 +69,7 @@
                 </section>
             </form>
 
-            <form class="sign-in-forms form-item" data-role="sign-in-form" data-type="sign-in" enctype="application/x-www-form-urlencoded" action="/sign-in" method="POST">
+            <form class="sign-in-forms form-item" data-role="choose-action-container" data-type="sign-in" enctype="application/x-www-form-urlencoded" action="/user/sign-in" method="POST">
                 {{ csrf_field() }}
                 <section class="form-input">
                     <label>Email <span class="required-status"></span></label>

@@ -11,8 +11,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Libraries\Listing;
-use App\Models\ContactMessage;
-use App\Models\ContactMessageToUser;
+use App\ContactMessage;
+use App\ContactMessageToUser;
 use Sentinel;
 use App\Libraries\UIMessage;
 use Illuminate\Support\Facades\View;
