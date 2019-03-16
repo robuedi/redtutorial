@@ -9,7 +9,7 @@
 namespace App\Libraries;
 
 
-use App\Models\ContactMessageToUser;
+use App\ContactMessageToUser;
 use Sentinel;
 
 class MenuUserContactMessages

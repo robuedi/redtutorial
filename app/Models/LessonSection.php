@@ -9,7 +9,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use User;
 
 class LessonSection extends Model
 {
