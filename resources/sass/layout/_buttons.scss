@@ -8,12 +8,12 @@
 
   &:hover {
     background-color: $brand-primary;
-    color: $white;
+    color: $white-color;
   }
 }
 .red-button-second {
   padding: 10px 25px;
-  color: $white;
+  color: $white-color;
   border: 1px solid $brand-primary;
   cursor: pointer;
   background-color: rgba(0,0,0,0.4);
@@ -22,7 +22,7 @@
 
   &:hover {
     background-color: $brand-primary;
-    color: $white;
+    color: $white-color;
   }
 }
 
@@ -31,16 +31,16 @@
   font-size: 20px;
   cursor: pointer;
   float: right;
-  background-color: #FFF;
+  background-color: $white-color;
   box-shadow: 0px 0px 2px 1px #ddd;
   padding: 15px 35px;
   font-weight: 600;
   transition: background-color .5s, border-color .5s;
-  border: 1px solid #000;
+  border: 1px solid $text-color;
 
   &:hover, &:focus {
     background-color: $brand-primary ;
-    color: #fff;
+    color: $white-color;
     border-color: $brand-primary;
   }
 }

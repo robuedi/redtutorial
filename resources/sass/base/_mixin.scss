@@ -1,9 +1,9 @@
 
 @mixin container-sizing() {
-  padding: 50px 75px;
+  padding: 50px 30px;
 
-  @media (max-width: $screen-md-max) {
-    padding: 50px 30px;
+  @media (min-width: $screen-lg) {
+    padding: 50px 75px;
   }
 }
 
@@ -12,16 +12,16 @@
   font-size: 40px;
   font-weight: 400;
 
-  @media (max-width: $screen-md-max) {
+  @media (min-width: $screen-lg) {
     line-height: 1;
   }
 }
 
 @mixin main-page-header-left-padding(){
-  padding-left: 75px;
+  padding: 20px 50px;
 
-  @media (max-width: $screen-md-max) {
-    padding: 20px 50px;
+  @media (min-width: $screen-lg) {
+    padding-left: 75px;
   }
 
 }

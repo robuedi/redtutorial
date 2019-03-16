@@ -1,6 +1,6 @@
 .chapters-section{
   min-height: $full-height-minus-footer-header;
-  background-color: #FFF;
+  background-color: $white-color;
 
   .header-section {
     padding: 100px 75px 100px 0px;
@@ -28,7 +28,7 @@
 
     .subtitle{
       display: inline-block;
-      background-color: #FFF;
+      background-color: $white-color;
 
       h2 {
         position: relative;
@@ -45,7 +45,7 @@
           text-decoration: none;
 
           &:hover{
-            color: #FFF;
+            color: $white-color;
           }
         }
 
@@ -58,7 +58,7 @@
 
       h1 {
         padding: 20px 40px 20px 75px;
-        background-color: #FFF;
+        background-color: $white-color;
         display: inline-block;
         position: relative;
         z-index: 1;
@@ -131,10 +131,10 @@
           position: relative;
           text-decoration: none;
           font-size: 22px;
-          color: #000;
+          color: $text-color;
           max-width: 100%;
           //overflow: hidden;
-          border: 1px dashed #000;
+          border: 1px dashed $text-color;
 
           .top-txt{
             background-repeat: repeat;
@@ -143,7 +143,6 @@
             margin: 5px;
             box-sizing: border-box;
             height: calc(100% - 10px);
-            //border: 1px dashed #fff;
             padding: 5px;
             z-index: 2;
 
@@ -153,7 +152,7 @@
               margin: 0;
               font-weight: 400;
               font-size: 22px;
-              color: #000;
+              color: $text-color;
 
               @media (max-width: 600px) {
                 font-size: 18px;
@@ -171,7 +170,7 @@
             padding: 10px;
 
             .lesson-number {
-              color: #000;
+              color: $text-color;
               font-size: 16px;
 
               @media (max-width: 600px) {

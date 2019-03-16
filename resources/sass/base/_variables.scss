@@ -1,83 +1,21 @@
-
-// Main theme color
-// brand colors
-/*
-#f05256
-#2f4050
-#516f79
-
-#e3eaf4
-#d8d8d8
-#ebebeb
-
-#fafafa
-*/
-
-// Body
-$body-bg: #FFF;
-
-// Borders
-$laravel-border-color: darken($body-bg, 10%);
-$list-group-border: $laravel-border-color;
-$navbar-default-border: $laravel-border-color;
-$panel-default-border: $laravel-border-color;
-$panel-inner-border: $laravel-border-color;
-
 // Brands
 $brand-primary: #E62C33;
-$brand-second: #eee;
-$brand-third: #000;
 
-$brand-blue-brighter: #516f79;
-
-$brand-grey1: #e3eaf4;
-$brand-grey2: #e9e9e9;
-$brand-grey3: #ebebeb;
-
-$shadow-color: #DDD;
-//$brand-info: #ececec;
-//$brand-success: #44566c;
-//$brand-warning: #201b22;
-//$brand-danger: #c3423d;
+$white-color: #FFF;
 
 // Typography
 $font-family: 'Lato', sans-serif;
 $font-family-monospace: 'MonoFont', monospace;
 $font-font-awesome: "Font Awesome 5 Free";
-$font-size-base: 14px;
-$line-height-base: 1.6;
 $text-color: #000;
-$text-color-sidebar: #000;
 
-// sidebar
-$brand-dark: #EEE;
-$white: #FFF;
 
-$padding-content-top: 100px;
-
-//footer : 41
-//header  : 93
 $full-height-minus-footer-header: calc(100vh - 115px);
 $homepage-full-height-minus-footer-header: calc(100vh - 74px);
 
-// Buttons
-$btn-default-color: $text-color;
-
-// Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
-
-// Panels
-$panel-default-heading-bg: #fff;
-
-//c3423d 4b5e65
-//#2f435e, #44566c, #ececec, #201b22
-
-//grid breakpoints:
+//Grid breakpoints:
 // Small screen / phone
 $screen-sm: 576px;
-$screen-sm-max: 767px;
 
 // Medium screen / tablet
 $screen-md: 768px;
@@ -85,12 +23,6 @@ $screen-md-max: 991px;
 
 // Large screen / desktop
 $screen-lg: 992px;
-$screen-lg-max: 1199px;
 
 // Extra large screen / wide desktop
 $screen-xl: 1200px;
-
-//setting the sidebar with and content width
-//that are depending one in another
-$sidebar-lg: 300px;
-$sidebar-xl: 28%;

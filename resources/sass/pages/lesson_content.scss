@@ -30,7 +30,7 @@
 
     .subtitle{
       display: inline-block;
-      background-color: #FFF;
+      background-color: $white-color;
 
       h2 {
         position: relative;
@@ -47,7 +47,7 @@
           text-decoration: none;
 
           &:hover{
-            color: #FFF;
+            color: $white-color;
           }
         }
 
@@ -76,7 +76,7 @@
 
       h1 {
         padding: 20px 40px 20px 75px;
-        background-color: #FFF;
+        background-color: $white-color;
         display: inline-block;
         position: relative;
         z-index: 1;
@@ -121,9 +121,9 @@
           display: inline-block;
           position: relative;
           margin-right: 5px;
-          color: #000;
-          border: 1px solid #000;
-          background-color: #FFF;
+          color: $text-color;
+          border: 1px solid $text-color;
+          background-color: $white-color;
           font-weight: 900;
           cursor: not-allowed;
           padding: 1px;
@@ -139,24 +139,24 @@
             box-sizing: border-box;
 
             i {
-              border: 1px solid #FFF;
+              border: 1px solid $white-color;
             }
           }
 
           &.active{
             cursor: pointer;
-            background-color: #000;
-            color: #FFF;
+            background-color: $text-color;
+            color: $white-color;
             i {
-              border: 1px solid #000;
+              border: 1px solid $text-color;
             }
           }
           &.pre-active{
-            color: #000;
+            color: $text-color;
             cursor: pointer;
 
             i {
-              border: 1px solid #000;
+              border: 1px solid $text-color;
             }
           }
         }
@@ -253,6 +253,7 @@
           word-wrap: break-word;       /* Internet Explorer 5.5+ */
 
           code {
+            font-family: $font-family-monospace;
             background-color: #F9F9FD;
             padding: 25px 10px 25px 15px;
             border-left: 2px solid #bbb;
@@ -295,8 +296,8 @@
           }
           th {
             font-size: 16px;
-            border-bottom: 1px solid #000;
-            border-top: 1px solid #000;
+            border-bottom: 1px solid $text-color;
+            border-top: 1px solid $text-color;
             padding: 10px 5px;
             word-wrap: break-word;
             overflow-wrap: break-word;
@@ -351,7 +352,7 @@
               bottom: 1px;
               width: 6px;
               left: 1px;
-              background-color: #000;
+              background-color: $text-color;
               z-index: 2;
             }
           }
@@ -368,7 +369,7 @@
 
         &:hover i{
           border-radius: 50%;
-          color: #000;
+          color: $text-color;
           box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
         }
       }
@@ -401,7 +402,7 @@
         display: inline-block;
         padding: 15px;
         font-size: 20px;
-        border: 1px solid #000;
+        border: 1px solid $text-color;
         font-weight: 600;
         position: relative;
         transform: translateY(0);

@@ -23,17 +23,13 @@
         @yield('stylesheets')
 
         <!-- Main Font -->
-        <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Pacifico" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
 
 
         {{-- FOR LOGO REMOVE IT--}}
         <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
 
         {{--<!--[if lt IE 9]>--}}
         {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>--}}
@@ -52,13 +48,9 @@
 
         @include('_partials.navigation', array('static_pages' => \App\Libraries\MenuClientStatic::getStaticMenu()))
 
-        <main>
-            @yield('content')
-        </main>
+        @yield('content')
+
         <footer id="footer-container">
-                <span class="copyright-container">
-                    &copy; 2019 REDTutorial.com
-                </span>
             <ul class="footer-links">
                 @foreach(App\Libraries\MenuClientStatic::getStaticMenu() as $page)
                     <li>
@@ -66,6 +58,9 @@
                     </li>
                 @endforeach
             </ul>
+            <p class="copyright-container">
+                &copy; 2019 REDTutorial.com
+            </p>
         </footer>
 
         <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->

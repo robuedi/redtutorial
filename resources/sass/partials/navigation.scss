@@ -1,26 +1,27 @@
 #main_navigation{
-  text-align: center;
-  position: relative;
+  text-align: left;
+  position: fixed;
   z-index: 100;
   box-shadow: 2px 0px 2px 1px rgba(0,0,0,0.1);
-  height: 74px;
-  background-color: #FFF;
+  background-color: $white-color;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
 
-  @media (max-width: $screen-md-max) {
-    text-align: left;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
+  &.scroll-show-hide-enabled{
+    transition: top .5s;
 
-    &.scroll-show-hide-enabled{
-      transition: top .5s;
-
-      &.scroll-hide {
-        top: -50px;
-      }
+    &.scroll-hide {
+      top: -50px;
     }
+  }
+
+
+  @media (min-width: $screen-md) {
+    height: 74px;
+    text-align: center;
+    position: relative;
   }
 
   .nav-inner {
@@ -48,20 +49,48 @@
     }
 
     .navigation-links {
-      vertical-align: middle;
-      display: inline-block;
+      z-index: 1;
+      position: absolute;
+      height: calc(100vh - 50px);
+      transition: left .5s;
+      overflow: hidden;
+      width: 100vw;
+      top: 50px;
+      left: -100vw;
+      background-color: $white-color;
+      padding-top: 30px;
       margin: 0;
-      list-style: none;
-      padding: 0;
+      box-sizing: border-box;
+
+      @media (min-width: $screen-md) {
+        position: relative;
+        vertical-align: middle;
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+        height: auto;
+        width: auto;
+        top: auto;
+        left: auto;
+      }
 
       li {
-        display: inline-block;
+        display: block;
         padding: 22px;
+
+        &:last-child{
+          border-bottom: none;
+
+        }
+
+        @media (min-width: $screen-md) {
+          display: inline-block;
+        }
 
         a {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          color: #000;
+          color: $text-color;
           text-decoration: none;
           transition: color .5s;
           font-size: 18px;
@@ -69,43 +98,20 @@
           letter-spacing: 1px;
           font-weight: 400;
 
+
+          @media (min-width: $screen-md) {
+            font-size: 22px;
+          }
+
           &.active, &:hover {
             color: $brand-primary;
           }
         }
       }
-
-      @media (max-width: $screen-md-max) {
-        z-index: 1;
-        position: absolute;
-        height: calc(100vh - 50px);
-        transition: left .5s;
-        overflow: hidden;
-        width: 100vw;
-        top: 50px;
-        left: -100vw;
-        background-color: #FFF;
-        padding-top: 30px;
-        box-shadow: inset 2px 0px 2px 1px rgba(0,0,0,0.2);
-
-        li {
-          display: block;
-          border-bottom: 1px dashed #eee;
-
-          &:last-child{
-            border-bottom: none;
-          }
-
-          a {
-            font-size: 22px;
-          }
-        }
-
-      }
     }
 
     .trigger-sidebar {
-      display: none;
+      display: inline-block;
       z-index: 2;
       float: right;
       height: 40px;
@@ -118,8 +124,8 @@
       top: 5px;
       cursor: pointer;
 
-      @media (max-width: $screen-md-max) {
-        display: inline-block;
+      @media (min-width: $screen-md) {
+        display: none;
       }
 
       &:before, &:after{

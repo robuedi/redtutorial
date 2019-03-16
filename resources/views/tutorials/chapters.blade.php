@@ -33,14 +33,15 @@
                             <span class="course-number">
                                 {{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}
                             </span>
-                            <h3 >
-                                {{$chapter->name}}
+                            <div class="top-level" >
+                                <h3>{{$chapter->name}}</h3>
+                                <span class="line-completion-indicator" style="width: {{$chapter->completion_percentage ?? 0}}%;"></span>
+                                <span class="dot-completion-indicator" style="left: {{$chapter->completion_percentage ?? 0}}%;"></span>
                                 <span class="route">
                                     <span class="inner-route"></span>
                                 </span>
-                                <span class="completion-percentage" >@if($chapter->completion_percentage ?? false){{$chapter->completion_percentage}}%@endif</span>
-{{--                                <span class="completion-percentage" >@if($index < 2)100%@else &infin; @endif</span>--}}
-                            </h3>
+                                <span class="completion-percentage" >@if($chapter->completion_percentage ?? false){{$chapter->completion_percentage}}% @else <span title="Symbol for empty">&empty;</span> @endif</span>
+                            </div>
                             <p class="sub-details">
                                 <span class="lessons-count">{{$chapter->lessons_number}} Lessons</span>
                             </p>

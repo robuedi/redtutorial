@@ -10,32 +10,26 @@
 @stop
 
 @section('content')
-    <section class="home-container"
-    >
-             {{--style='background-image: url("/images/uploads/media_library/2019/02/beach-bird-s-eye-view-coast-50594.jpg?w=1200&fit=contain")' >--}}
-        {{--/home/eduard/Projects/redtutorial/public/uploads/media_library/2019/02/alberta-amazing-attraction-417074.jpg--}}
+    <main id="home_container">
         <section class="page-title">
-            <h1><span class="part-one">Step by step tutorials,</span> <span class="part-two"> <strong>clear</strong> and <strong>easy</strong> to understand </span></h1>
+            <h1><span class="part-one">Step by step tutorials</span> <span class="part-two"> <strong>Clear</strong> and <strong>easy</strong> to understand </span></h1>
         </section>
 
 
-        <section class="page-content-container">
-            <div class="page-content" >
-                @foreach($courses as $course)
-                    <div class="course-item" >
-                        <div class="inner-container" >
-                            <h2 >{{$course->name}} <small>Course</small></h2>
-                            <div class="txt-content">
-                                {!! $course->description !!}
-                            </div>
-                            <a class="start-course" href="/tutorial/{{$course->slug}}">
-                                <span>Start now</span> <i class="fas fa-chevron-circle-right"></i>
-                            </a>
+        <section class="page-content" >
+            @foreach($courses as $course)
+                <div class="course-item" >
+                    <div class="inner-container" >
+                        <h2 >{{$course->name}} <small>Course</small></h2>
+                        <div class="txt-content">
+                            {!! $course->description !!}
                         </div>
+                        <a class="start-course" href="/tutorial/{{$course->slug}}">
+                            <span>Start now</span> <i class="fas fa-chevron-circle-right"></i>
+                        </a>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </section>
-    </section>
-
+    </main>
 @stop

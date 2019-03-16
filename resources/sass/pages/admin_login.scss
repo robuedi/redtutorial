@@ -1,5 +1,5 @@
 body#admin_authentication {
-  background-color: #FFF;
+  background-color: $white-color;
   height: 100%;
   font: $font-family;
 
@@ -29,7 +29,7 @@ body#admin_authentication {
       button.submit {
         display: block;
         background-color: #666;
-        color: #FFF;
+        color: $white-color;
         width: 100%;
         border: none;
         border-radius: 0;
@@ -110,7 +110,7 @@ body#admin_authentication {
     position: relative;
     &.alert-danger {
       border-color: #953b39;
-      color: #fff;
+      color: $white-color;
       background: #c26565;
       text-shadow: none;
     }

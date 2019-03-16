@@ -29,7 +29,7 @@
       padding: 20px 20px 20px 75px;
       margin: 0;
       display: inline-block;
-      background-color: #FFF;
+      background-color: $white-color;
 
       @include main-page-header();
       @include main-page-header-left-padding();
