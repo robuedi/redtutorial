@@ -39,7 +39,13 @@
 
 
             <section class="progress-content active" data-role="choose-action-container" data-type="progress">
-                <h3>Progress</h3>
+                @if($course_started)
+                    @foreach($course_started as $course)
+                        <h3>{{$course->name}}: {{$course->completion_percentage}}%</h3>
+                    @endforeach
+                @else
+                    Try some courses and return here to see the overall progress
+                @endif
             </section>
 
             <form class="form-item profile-info-content" data-role="choose-action-container" data-type="profile-info" enctype="application/x-www-form-urlencoded" action="/user/update-profile" method="POST">

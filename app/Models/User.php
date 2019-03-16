@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Log;
 
 class User extends Model
 {
@@ -29,4 +30,18 @@ class User extends Model
     {
         return $this->belongsToMany(LessonSection::class,'users_to_lessons_sections', 'user_id', 'lesson_section_id');
     }
+
+    public static function getUserCoursesStatus(int $user_id, bool $floor_rounded = true)
+    {
+        $courses = Course::where('status', 1)
+            ->get();
+
+        foreach ($courses as $course)
+        {
+            $course->completion_percentage = Course::getChapterCompletionStatus($course->id, $user_id);
+        }
+
+        return $courses ?? [];
+    }
+
 }

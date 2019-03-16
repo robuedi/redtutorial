@@ -13,6 +13,7 @@ use View;
 use App\Course;
 use Log;
 use App\User;
+use Sentinel;
 
 
 class HomeController extends Controller
@@ -21,8 +22,21 @@ class HomeController extends Controller
     {
 
         $courses = Course::whereIn('status', [1,2])
-                    ->select('name', 'slug', 'description', 'status')
+                    ->select('id','name', 'slug', 'description', 'status')
                     ->get();
+
+        $user = Sentinel::getUser();
+        //add progress
+        if($user)
+        {
+            foreach ($courses as $course)
+            {
+                if($course->status == 2)
+                    continue;
+
+                $course->completion_status = Course::getChapterCompletionStatus($course->id, $user->id);
+            }
+        }
 
         $meta['keywords'] = 'PHP, SQL, JavaScript, design patterns, SOLID principles';
         $meta['description'] = 'Learn programing, design patterns, SOLID principles';

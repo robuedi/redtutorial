@@ -8,6 +8,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Chapter;
+use App\Course;
+use App\Lesson;
+use App\LessonSection;
+use App\UserToLessonSection;
 use View;
 use App\User;
 use Sentinel;
@@ -26,7 +31,10 @@ class UserProfileController extends Controller
         {
             $user = Sentinel::getUser();
 
-            return View::make('user.profile', array('user' =>$user));
+            //get info about courses
+            $course_started = User::getUserCoursesStatus($user->id);
+
+            return View::make('user.profile', array('user' =>$user, 'course_started' => $course_started));
         }
         else
         {

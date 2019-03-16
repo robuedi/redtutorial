@@ -34,7 +34,11 @@ class TutorialsController extends Controller
                         ->orderBy('chapters.order_weight')
                         ->get();
 
-        $chapters = Chapter::addCurrentUserCompletionStatus($chapters);
+        $user = Sentinel::getUser();
+        if($user)
+        {
+            $chapters = Chapter::addCurrentUserCompletionStatus($user->id, $chapters);
+        }
 
         //get image
         $course_image = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')

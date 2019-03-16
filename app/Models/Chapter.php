@@ -27,10 +27,10 @@ class Chapter extends Model
         return $this->lessons()->where('is_public', 1);
     }
 
-    public static function addCurrentUserCompletionStatus(Collection $chapters) : Collection
+    public static function addCurrentUserCompletionStatus(int $user_id, Collection $chapters, bool $floor_rounded_percentage = true) : Collection
     {
-        //check if user logged
-        if(Sentinel::check()&&Sentinel::hasAccess('client')&&$chapters->isNotEmpty())
+        //check if we have chapters
+        if($chapters->isNotEmpty())
         {
             //get ids
             $chapters_ids = (clone $chapters)->pluck('id');
@@ -56,8 +56,7 @@ class Chapter extends Model
             $lessons = $lessons->groupBy('chapter_id');
 
             //get user's achived sections
-            $user = Sentinel::getUser();
-            $sections_to_user = UserToLessonSection::where('user_id', $user->id)
+            $sections_to_user = UserToLessonSection::where('user_id', $user_id)
                                     ->select('lesson_section_id')
                                     ->get()
                                     ->pluck('lesson_section_id')
@@ -75,7 +74,7 @@ class Chapter extends Model
             }
 
             //get percentage of completion per chapter
-            $chapters = $chapters->map(function ($item) use (&$lessons, &$lessons_sections, &$sections_to_user) {
+            $chapters = $chapters->map(function ($item) use (&$lessons, &$lessons_sections, &$sections_to_user, &$floor_rounded_percentage) {
 
                 //get lessons
                 if (!isset($lessons[$item->id]))
@@ -103,6 +102,12 @@ class Chapter extends Model
                 {
                     //percentage of completion
                     $item->completion_percentage = (int)((count($uncompleted_sections)*100)/count($chapter_lesson_section));
+                }
+
+                //check if rounded value
+                if($floor_rounded_percentage)
+                {
+                    $item->completion_percentage = (int)$item->completion_percentage;
                 }
 
                 return $item;
