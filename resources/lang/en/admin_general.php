@@ -27,6 +27,7 @@ return [
     'filters'               => 'Filters',
     'filters_name'          => 'Name',
     'filters_is_public'     => 'Is public',
+    'filters_status'        => 'Status',
     'filters_is_draft'      => 'Is draft',
     'filters_slug'          => 'Slug',
     'filters_submit'        => 'Submit',

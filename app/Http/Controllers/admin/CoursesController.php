@@ -34,21 +34,21 @@ class CoursesController extends Controller
         // settings
         $query_data = array(
 
-            'fields' => "co.id, co.name, co.is_public, co.is_draft, co.created_at, co.updated_at, co.order_weight, co.slug",
+            'fields' => "*",
 
-            'body' => "FROM courses co
+            'body' => "FROM courses 
                         WHERE (1) {filters}",
 
             'filters' => array(
                 'name' => "AND name LIKE '%{name}%'",
                 'is_draft' => "AND is_draft = {is_draft}",
-                'is_public' => "AND is_public = {is_public}"
+                'status' => "AND status = {status}",
             ),
 
             'sortables' => array(
-                'name'         => '',
-                'is_public'     => '',
-                'is_draft'     => '',
+                'name'          => '',
+                'status'        => '',
+                'is_draft'      => '',
                 'created_at'    => '',
                 'updated_at'    => '',
                 'order_weight'  => 'asc'
@@ -139,7 +139,7 @@ class CoursesController extends Controller
             $course = new Course();
             $course->name = $request->input('name');
             $course->description = $request->input('description');
-            $course->is_public = $request->input('is_public') ? 1 : 0;
+            $course->status = $request->input('status');
             $course->is_draft = $request->input('is_draft') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');
             if($request->input('enabled_slug_edit')){
@@ -171,16 +171,15 @@ class CoursesController extends Controller
             'order_weight' => 'required',
         );
 
-        //if not draft and no slug
         $messages = [];
         if(
-            //is not draft and no slug input and no slug saved
+            // no slug input and no slug saved
             (
                 (empty($request->input('slug'))&& empty($course->slug))
                 ||
                 (empty($request->input('slug'))&& $request->input('enabled_slug_edit'))
             )
-            && $request->input('is_public')
+            && $request->input('status')
         )
         {
             $rules['slug'] = 'required|max:100';
@@ -199,7 +198,7 @@ class CoursesController extends Controller
             //save course
             $course->name = $request->input('name');
             $course->description = $request->input('description');
-            $course->is_public = $request->input('is_public') ? 1 : 0;
+            $course->status = $request->input('status');
             $course->is_draft = $request->input('is_draft') ? 1 : 0;
             $course->order_weight = $request->input('order_weight');
             if($request->input('enabled_slug_edit')){

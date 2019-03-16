@@ -14,8 +14,8 @@
 
 @section('content')
 
-    <section class="chapters-section" >
-        <div class="header-section" @if($course_image) style='background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif>
+    <main class="chapters-section" >
+        <section class="header-section" @if($course_image) style='background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif>
             <div class="subtitle">
                 <h2>
                     <a href="/tutorial/{{$chapter->course_slug}}"><i class="fas fa-angle-left"></i> Chapters</a>
@@ -24,7 +24,7 @@
             <div class="heading-inner-container">
                 <h1>{{$chapter->chapter_name}}</h1>
             </div>
-        </div>
+        </section>
 
         <section class="chapter-container">
             <div class="lesson-choosing">
@@ -43,6 +43,6 @@
                 @endforeach
             </div>
         </section>
-    </section>
+    </main>
 
 @stop

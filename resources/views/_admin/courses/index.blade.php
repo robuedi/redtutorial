@@ -57,11 +57,12 @@
 
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label>@lang("admin_general.filters_is_public")</label>
-                                                    <select name="is_public" class="select2" data-placeholder="Please select" style="width: 100%">
+                                                    <label>@lang("admin_general.filters_status")</label>
+                                                    <select name="status" class="select2" data-placeholder="Please select" style="width: 100%">
                                                         <option value=""></option>
-                                                        <option value="1" @if(Illuminate\Support\Facades\Input::get('is_public') == "1") selected @endif>YES</option>
-                                                        <option value="0" @if(Illuminate\Support\Facades\Input::get('is_public') == "0") selected @endif>NO</option>
+                                                        <option value="0" @if(Illuminate\Support\Facades\Input::get('status') == "0") selected @endif>Non-public</option>
+                                                        <option value="1" @if(Illuminate\Support\Facades\Input::get('status') == "1") selected @endif>Public</option>
+                                                        <option value="2" @if(Illuminate\Support\Facades\Input::get('status') == "2") selected @endif>Inaccessible - public</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -109,7 +110,7 @@
                                         <thead>
                                         <tr>
                                             <th><a class="{{ $listing->sortDir("name") }}" href="{{ $listing->sortLink("name") }}"><span>Name</span></a></th>
-                                            <th style="width: 100px"><a class="{{ $listing->sortDir("is_public") }}" href="{{ $listing->sortLink("is_public") }}"><span>Is Public</span></a></th>
+                                            <th style="width: 100px"><a class="{{ $listing->sortDir("status") }}" href="{{ $listing->sortLink("status") }}"><span>Status</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("is_draft") }}" href="{{ $listing->sortLink("is_draft") }}"><span>Is Draft</span></a></th>
                                             <th style="width: 100px"><a class="{{ $listing->sortDir("order_weight") }}" href="{{ $listing->sortLink("order_weight") }}"><span>Order Weight</span></a></th>
                                             <th style="width:200px"><a class="{{ $listing->sortDir("created_at") }}" href="{{ $listing->sortLink("created_at") }}"><span>Date Created</span></a></th>
@@ -123,7 +124,7 @@
                                             <tr>
 
                                                 <td>{{ $r->name }}</td>
-                                                <td><span class="label {{ $r->is_public ? 'label-success': 'label-info' }}">{{ $r->is_public ? 'YES': 'NO' }}</span></td>
+                                                <td><span class="label {{ ($r->status === 1) ? 'label-success': ($r->status === 0 ? 'label-info' : 'label-warning') }}">{{ ($r->status === 1) ? 'Public': ($r->status === 0 ? 'Non-public' : 'Inaccessible - public') }}</span></td>
                                                 <td><span class="label {{ $r->is_draft ? 'label-success': 'label-info' }}">{{ $r->is_draft ? 'YES': 'NO' }}</span></td>
                                                 <td>{{ $r->order_weight }}</td>
                                                 <td class="format-momentjs">{{ $r->created_at }}</td>

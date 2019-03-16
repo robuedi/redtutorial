@@ -215,17 +215,12 @@
                                 <div class="tab-pane fade @if(!$course->id) in active @endif " id="hr2">
                                     <section class="smart-form">
                                         <section>
-                                            <label class="label toggle-inline">Is public</label>
-                                            <label class="toggle" >
-                                                <input type="checkbox" name="is_public" value="1"
-                                                       @if(!count(old()) && $course->is_public == 1)
-                                                            checked
-                                                       @elseif(old('is_public') == 1)
-                                                            checked
-                                                       @endif
-                                                >
-                                                <i data-swchon-text="YES" data-swchoff-text="NO"></i>
-                                            </label>
+                                            <label class="label toggle-inline">Status</label>
+                                            <select class="select2" name="status">
+                                                <option value="0" @if(old('status', $course->status) == 0) selected @endif >Non-public</option>
+                                                <option value="1" @if(old('status', $course->status) == 1) selected @endif >Public</option>
+                                                <option value="2" @if(old('status', $course->status) == 2) selected @endif >Inaccessible - public</option>
+                                            </select>
                                         </section>
 
                                         <section>

@@ -24,9 +24,11 @@
                         <div class="txt-content">
                             {!! $course->description !!}
                         </div>
+                        @if($course->status === 1)
                         <a class="start-course" href="/tutorial/{{$course->slug}}">
                             <span>Start now</span> <i class="fas fa-chevron-circle-right"></i>
                         </a>
+                        @endif
                     </div>
                 </div>
             @endforeach

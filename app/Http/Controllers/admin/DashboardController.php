@@ -22,11 +22,11 @@ class DashboardController extends Controller
     {
         //Courses
         $public_courses = Course::selectRaw('COUNT(id) as public')
-                    ->where('is_public', 1)
+                    ->where('status', 1)
                     ->first();
 
         $draft_courses = Course::selectRaw('COUNT(id) as draft')
-                    ->where('is_draft', 1)
+                    ->where('status', 1)
                     ->first();
 
         $total_courses = Course::selectRaw('COUNT(id) as total')

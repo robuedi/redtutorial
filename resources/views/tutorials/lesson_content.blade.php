@@ -20,7 +20,7 @@
 @stop
 
 @section('content')
-    <section class="lesson-main-container">
+    <main class="lesson-main-container">
         <section class="tutorial-name" @if($course_image) style='background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif >
             <div class="subtitle">
                 <h2>
@@ -71,6 +71,6 @@
                 <span data-next-lesson="/tutorial/{{$lesson->course_slag}}@if($next_slug)/{{$lesson->chapter_slag}}@endif" class="next-load"><i class="fas fa-chevron-circle-right"></i></span>
             </div>
         </section>
-    </section>
+    </main>
 
 @stop

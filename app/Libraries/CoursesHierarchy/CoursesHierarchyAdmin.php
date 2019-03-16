@@ -30,7 +30,7 @@ class CoursesHierarchyAdmin extends CoursesHierarchy implements ICoursesHierarch
             'type'          => 'course',
             'parent_id'     => 0,
             'link'          => URL::to(config('app.admin_route').'/courses/'.$course->id.'/edit'),
-            'is_public'     => $course->is_public,
+            'is_public'     => $course->status,
             'is_draft'      => $course->is_draft,
             'pointing_id'   => (string)$this->pointing_id === (string)$course->id.'course' ? 1 : 0,
             'children'      => $children

@@ -51,7 +51,7 @@ class TutorialsLessonsQuizzesController
                 ->where('co.slug', $course_slug)
                 ->where('ch.slug', $chapter_slug)
                 ->where('le.slug', $lesson_slug)
-                ->where('co.is_public', 1)
+                ->where('co.status', 1)
                 ->where('ch.is_public', 1)
                 ->where('le.is_public', 1)
                 ->selectRaw('le.id as lesson_id, le.name as lesson_name, le.description as lesson_description')

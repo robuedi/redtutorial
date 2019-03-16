@@ -20,8 +20,8 @@ class HomeController extends Controller
     function index()
     {
 
-        $courses = Course::where('is_public', 1)
-                    ->select('name', 'slug', 'description')
+        $courses = Course::whereIn('status', [1,2])
+                    ->select('name', 'slug', 'description', 'status')
                     ->get();
 
         $meta['keywords'] = 'PHP, SQL, JavaScript, design patterns, SOLID principles';

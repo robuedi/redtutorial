@@ -16,16 +16,11 @@ use Sentinel;
 
 class TutorialsController extends Controller
 {
-    public function index()
-    {
-        return View::make('tutorials.index');
-    }
-
     public function showChapters(string $course_slug)
     {
         //get the course
         $course = Course::where('slug', $course_slug)
-                    ->where('is_public', 1)
+                    ->where('status', 1)
                     ->firstOrFail();
 
         //get chapters
@@ -68,7 +63,7 @@ class TutorialsController extends Controller
                     ->join('chapters as ch', 'co.id', '=', 'ch.course_id')
                     ->where('co.slug', $course_slug)
                     ->where('ch.slug', $chapter_slug)
-                    ->where('co.is_public', 1)
+                    ->where('co.status', 1)
                     ->where('ch.is_public', 1)
                     ->selectRaw('co.id as course_id, co.name as course_name, ch.id as chapter_id, co.slug as course_slug, ch.name as chapter_name, ch.description as chapter_description, ch.slug as chapter_slug')
                     ->first();
@@ -123,7 +118,7 @@ class TutorialsController extends Controller
                 ->where('co.slug', $course_slug)
                 ->where('ch.slug', $chapter_slug)
                 ->where('le.slug', $lesson_slug)
-                ->where('co.is_public', 1)
+                ->where('co.status', 1)
                 ->where('ch.is_public', 1)
                 ->where('le.is_public', 1)
                 ->selectRaw('co.id as course_id, co.name as course_name, co.slug as course_slag, ch.name as chapter_name, ch.slug as chapter_slag, le.chapter_id as chapter_id, le.order_weight as lesson_order, le.id as lesson_id, le.name as lesson_name, le.description as lesson_description')

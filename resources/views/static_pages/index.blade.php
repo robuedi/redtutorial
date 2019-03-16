@@ -14,7 +14,7 @@
 
 @section('content')
 
-    <article class="static-page-content" >
+    <main id="static_page" >
         <header>
             <h1>{{$page->heading}}</h1>
         </header>
@@ -22,7 +22,7 @@
             {!! $page->content !!}
         </section>
 
-    </article>
+    </main>
 
 @stop
 

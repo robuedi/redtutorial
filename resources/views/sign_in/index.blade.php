@@ -14,7 +14,7 @@
 
 @section('content')
 
-    <section class="sign-in-page"  >
+    <main class="sign-in-page"  >
         <div class="top-section" style='background-image: url("/images/assets/img/contact_us.jpg?w=1200&fit=contain")'>
             <h1>Sign In / Register</h1>
         </div>
@@ -86,6 +86,6 @@
                 </section>
             </form>
         </div>
-    </section>
+    </main>
 
 @stop

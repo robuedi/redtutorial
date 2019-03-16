@@ -9,9 +9,10 @@ $font-family-monospace: 'MonoFont', monospace;
 $font-font-awesome: "Font Awesome 5 Free";
 $text-color: #000;
 
-
-$full-height-minus-footer-header: calc(100vh - 115px);
-$homepage-full-height-minus-footer-header: calc(100vh - 74px);
+$footer-height: 48px;
+$header-height: 74px;
+$full-height-minus-footer-header: calc(100vh - 145px);
+$full-height-minus-header: calc(100vh - 74px);
 
 //Grid breakpoints:
 // Small screen / phone

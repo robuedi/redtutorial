@@ -14,11 +14,11 @@
 
 @section('content')
 
-    <section class="contact-us-page-content"  >
-        <div class="top-section" style='background-image: url("/images/assets/img/contact_us.jpg?w=1200&fit=contain")'>
+    <main class="contact-us-page-content"  >
+        <section class="top-section" style='background-image: url("/images/assets/img/contact_us.jpg?w=1200&fit=contain")'>
             <h1>Contact Us</h1>
-        </div>
-        <div class="content">
+        </section>
+        <section class="content">
             <div class="feedback-container">
                 <div class="feedback">
                     {!! \App\Libraries\UIMessage::get() !!}
@@ -57,7 +57,7 @@
                     <button class="btn-s-one">Submit</button>
                 </section>
             </form>
-        </div>
-    </section>
+        </section>
+    </main>
 
 @stop
