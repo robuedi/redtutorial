@@ -60,7 +60,16 @@ class UserRegisterController extends Controller
 
             UIMessage::set('success', "Account created successfully.");
 
-            return redirect('/sign-in');
+            //redirect back
+            $return_to = $request->session()->get('return-back-to');
+            if($return_to)
+            {
+                return redirect($return_to);
+            }
+            else
+            {
+                return redirect('/user/profile');
+            }
         }
     }
 }

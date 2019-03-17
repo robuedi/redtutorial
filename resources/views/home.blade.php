@@ -12,7 +12,7 @@
 @section('content')
     <main id="home_container">
         <section class="page-title">
-            <h1><span class="part-one">Step by step tutorials</span> <span class="part-two"> <strong>Clear</strong> and <strong>easy</strong> to understand </span></h1>
+            <h1><span class="part-one">Step by step tutorials</span> <span class="part-two"> <strong>Clear</strong> and <strong>easy</strong> to understand, <strong>track your progress</strong> through the courses </span></h1>
         </section>
 
 

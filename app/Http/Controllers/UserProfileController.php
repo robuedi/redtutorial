@@ -27,7 +27,7 @@ class UserProfileController extends Controller
 {
     public function profile()
     {
-        if (Sentinel::check() && (Sentinel::hasAccess('client')))
+        if (Sentinel::check())
         {
             $user = Sentinel::getUser();
 

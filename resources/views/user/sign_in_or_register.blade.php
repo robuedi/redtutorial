@@ -22,10 +22,10 @@
 
             <section class="choose-action" data-role="choose-action">
                 <div>
-                    <h2 class="active" data-action="register">
+                    <h2 class="@if(!isset($sign_in)) active @endif" data-action="register">
                         Register
                     </h2>
-                    <h2 data-action="sign-in">
+                    <h2 class="@if(isset($sign_in)) active @endif" data-action="sign-in">
                         Sign In
                     </h2>
                 </div>
@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-            <form class="sign-in-forms form-item active" data-role="choose-action-container" data-type="register" enctype="application/x-www-form-urlencoded" action="/user/register" method="POST">
+            <form class="sign-in-forms form-item @if(!isset($sign_in)) active @endif" data-role="choose-action-container" data-type="register" enctype="application/x-www-form-urlencoded" action="/user/register" method="POST">
                 {{ csrf_field() }}
                 <section class="form-input">
                     <label>First name <span class="required-status"></span></label>
@@ -69,7 +69,7 @@
                 </section>
             </form>
 
-            <form class="sign-in-forms form-item" data-role="choose-action-container" data-type="sign-in" enctype="application/x-www-form-urlencoded" action="/user/sign-in" method="POST">
+            <form class="sign-in-forms form-item @if(isset($sign_in)) active @endif" data-role="choose-action-container" data-type="sign-in" enctype="application/x-www-form-urlencoded" action="/user/sign-in" method="POST">
                 {{ csrf_field() }}
                 <section class="form-input">
                     <label>Email <span class="required-status"></span></label>

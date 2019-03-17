@@ -10,7 +10,7 @@ namespace App\Http\Controllers\admin;
 
 use View;
 use App\Http\Controllers\Controller;
-use Sentinel;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -19,6 +19,7 @@ use Request;
 use Session;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use App\Libraries\UIMessage;
+use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 
 class AuthenticationController extends Controller
 {

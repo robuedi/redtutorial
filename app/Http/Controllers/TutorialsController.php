@@ -55,7 +55,8 @@ class TutorialsController extends Controller
             'meta'          => $meta,
             'course_id'     => $course->id,
             'chapters'      => $chapters,
-            'course_image'  => $course_image
+            'course_image'  => $course_image,
+            'user'          => $user
         ]);
     }
 
