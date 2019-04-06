@@ -6,7 +6,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-color: #fcfcfc;
+  background-color: #f8f8f8;
 
   @media (min-width: $screen-md) {
     &:after {
@@ -47,6 +47,7 @@
         color: $brand-primary;
         display: block;
         font-size: 45px;
+        font-weight: 400;
 
         @media (min-width: $screen-md) {
           text-align: left;
@@ -117,16 +118,24 @@
         background: repeating-linear-gradient(45deg,  rgba(#fcfcfc, 0.9),  rgba(#fcfcfc, 0.9) 1px, rgba(#fcfcfc, 0.7) 2px, rgba(#fcfcfc, 0.7) 3px);
         margin-bottom: 50px;
 
+        @media (min-width: $screen-md) {
+          margin: 0px 10px 50px;
+        }
+
+        @media (min-width: $screen-xl) {
+          background: transparent;
+        }
+
         @media (max-width: 2000px) {
-          width: 25%;
+          width: calc(25% - 20px);
         }
 
         @media (max-width: 1675px) {
-          width: 33.33%;
+          width: calc(33.33% - 20px);
         }
 
         @media (max-width: 1390px) {
-          width: 50%;
+          width: calc(50% - 20px);
         }
 
         @media (max-width: 800px) {

@@ -109,3 +109,19 @@ Route::group(array('namespace' => 'Api', 'prefix' => 'ajax/v1'), function(){
     Route::post('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}/{quiz_id}', 'TutorialsLessonsQuizzesController@validateQuiz');
 });
 
+Route::get('send_test_email', function(){
+    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+    {
+        \Illuminate\Support\Facades\Log::info('test');
+        $message->to('robu.edi@gmail.com');
+    });
+});
+
+Route::get('send_test_email2', function(){
+    Mail::raw('RED Tutorial te saluta!', function($message)
+    {
+        $message->subject('Ce mai faci Ioana?');
+        $message->from('no-reply@redtutorial.com', 'RED Tutorial');
+        $message->to('galioana92@gmail.com');
+    });
+});

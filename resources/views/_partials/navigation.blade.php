@@ -2,7 +2,7 @@
 
     <div class="nav-inner">
         <a href="/" class="logo-txt">
-            <span class="red">RED</span><span class="tutorial">Tutorial</span>
+            <span class="red"><span class="inner-red">red</span></span><span class="tutorial">Tutorial</span>
         </a>
 
         <div class="trigger-sidebar" ></div>

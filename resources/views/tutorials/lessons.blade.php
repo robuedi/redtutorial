@@ -28,14 +28,17 @@
 
         <section class="chapter-container">
             <div class="lesson-choosing">
-                @foreach($lessons as $lesson)
+                @foreach($lessons as $index => $lesson)
                     <article class="option-container">
                         <a href="/tutorial/{{$chapter->course_slug.'/'.$chapter->chapter_slug.'/'.$lesson->slug}}" class="option" >
                             <header class="top-txt" >
                                 <h4>{{$lesson->name}}</h4>
                             </header>
                             <footer class="go-link" >
-                                <span class="lesson-number">{{$lesson->index}}</span>
+                                <span class="lesson-number">
+                                    {{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}
+                                    {{--{{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}. <small>&empty;</small>--}}
+                                </span>
                                 <i class="fas fa-chevron-circle-right"></i>
                             </footer>
                         </a>

@@ -86,15 +86,6 @@ class TutorialsController extends Controller
             ->orderBy('order_weight')
             ->get();
 
-        //set index
-        $lesson_i       = 1;
-        $lesson_count   = count($lessons);
-        foreach ($lessons as $lesson)
-        {
-            $lesson->index = $lesson_i.'/'.$lesson_count;
-            $lesson_i++;
-        }
-
         //get image
         $course_image = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')
             ->where('item_id', $lesson_info->course_id)

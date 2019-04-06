@@ -24,7 +24,7 @@
         <section class="tutorial-content" >
 
             @if(!$user)
-                <p class="register-here">Register <a href="/user/sign-in?return=true">here</a> in only 2 minutes so you can track you're progress<br> <smal>(don't worry we will bring you back to this page after)</smal></p>
+                <p class="register-here">Register <a href="/user/sign-in?return=true">here</a> in only 2 minutes so you can track your progress</p>
             @endif
 
             <div class="list-container">
