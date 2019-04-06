@@ -64,6 +64,12 @@
                     <input type="password" name="password_confirmation" autocomplete="off">
                 </section>
 
+                <p class="info-paragraph">
+                    By clicking Register, you accept our <a class="info-link" href="/info/terms-and-conditions">Terms and Conditions</a>.
+                    <br/>
+                    Find out about our <a class="info-link" href="/info/privacy-and-cookies-policy">Privacy and Cookies Policy</a>.
+                </p>
+
                 <section  class="form-input">
                     <button class="btn-s-one">Register</button>
                 </section>

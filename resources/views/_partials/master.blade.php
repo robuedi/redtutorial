@@ -44,7 +44,7 @@
     <body>
 
         <aside class="cookie-message">
-            This website uses cookies to improve user experience. By using this website you consent to all cookies in accordance with our Cookie Policy.
+            This website uses cookies to improve user experience. By using this website you consent to all cookies in accordance with our <a class="link" href="/info/privacy-and-cookies-policy">Privacy and Cookie Policy</a>.
         </aside>
 
         @include('_partials.navigation', array('static_pages' => \App\Libraries\MenuClientStatic::getStaticMenu()))
