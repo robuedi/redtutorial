@@ -87,9 +87,9 @@
                     <input type="password" name="password" autocomplete="off">
                 </section>
 
-                <p class="info-paragraph">
-                    <a class="info-link" href="/user/reset-password">Forgot password?</a>
-                </p>
+{{--                <p class="info-paragraph">--}}
+{{--                    <a class="info-link" href="/user/reset-password">Forgot password?</a>--}}
+{{--                </p>--}}
 
                 <section  class="form-input">
                     <button class="btn-s-one float-right">Sign In</button>

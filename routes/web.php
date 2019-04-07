@@ -97,6 +97,9 @@ Route::post('/user/register', 'UserRegisterController@register');
 Route::post('/user/update-profile', 'UserProfileController@updateProfile');
 Route::get('/user/profile', 'UserProfileController@profile');
 
+//User Reset Password
+Route::get('/user/reset-password', 'UserResetPasswordController@index');
+
 //Contact Us
 Route::get('/contact-us', 'ContactController@index');
 Route::post('/contact-us', 'ContactController@saveMessage');
@@ -122,6 +125,6 @@ Route::get('send_test_email2', function(){
     {
         $message->subject('Ce mai faci Ioana?');
         $message->from('no-reply@redtutorial.com', 'RED Tutorial');
-        $message->to('galioana92@gmail.com');
+        $message->to('robu.edi@gmail.com');
     });
 });

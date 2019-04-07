@@ -61,6 +61,10 @@
         &:first-child {
           border-right: 1px solid $text-color;
         }
+
+        &:last-child:first-child{
+          border: none;
+        }
       }
     }
 
