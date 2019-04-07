@@ -69,7 +69,7 @@
                 @endforeach
             </ul>
             <p class="copyright-container">
-                &copy; 2019 REDTutorial.com
+               Copyright &copy; 2019 REDTutorial.com
             </p>
         </footer>
 
