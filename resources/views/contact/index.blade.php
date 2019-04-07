@@ -54,7 +54,7 @@
                 </section>
 
                 <section  class="form-input">
-                    <button class="btn-s-one">Submit</button>
+                    <button class="btn-s-one float-right">Submit</button>
                 </section>
             </form>
         </section>

@@ -65,13 +65,13 @@
                 </section>
 
                 <p class="info-paragraph">
-                    By clicking Register, you accept our <a class="info-link" href="/info/terms-and-conditions">Terms and Conditions</a>.
+                    By clicking Register, you accept our <a class="info-link" target="_blank" href="/info/terms-and-conditions">Terms and Conditions</a>.
                     <br/>
-                    Find out about our <a class="info-link" href="/info/privacy-and-cookies-policy">Privacy and Cookies Policy</a>.
+                    Find out about our <a class="info-link" target="_blank" href="/info/privacy-and-cookies-policy">Privacy and Cookies Policy</a>.
                 </p>
 
                 <section  class="form-input">
-                    <button class="btn-s-one">Register</button>
+                    <button class="btn-s-one float-right">Register</button>
                 </section>
             </form>
 
@@ -87,8 +87,12 @@
                     <input type="password" name="password" autocomplete="off">
                 </section>
 
+                <p class="info-paragraph">
+                    <a class="info-link" href="/user/reset-password">Forgot password?</a>
+                </p>
+
                 <section  class="form-input">
-                    <button class="btn-s-one">Sign In</button>
+                    <button class="btn-s-one float-right">Sign In</button>
                 </section>
             </form>
         </div>

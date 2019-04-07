@@ -21,6 +21,16 @@
             <p class="error-description">
                 We couldn't find the page you are looking for.
             </p>
+            <p class="error-description">
+                <small>
+                    Try something else below here?
+                </small>
+            </p>
+            <br/>
+            <a class="btn-s-one" href="/">Home</a>
+            @foreach(\App\Course::getPageNotFoundActiveCourses() as $course)
+                <a class="btn-s-one" href="/tutorial/{{$course->slug}}">{{$course->name}}</a>
+            @endforeach
         </div>
     </section>
 

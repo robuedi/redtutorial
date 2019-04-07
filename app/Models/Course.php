@@ -62,6 +62,13 @@ class Course extends Model
 
         return $completion_percentage;
     }
+
+    public static function getPageNotFoundActiveCourses()
+    {
+        return Course::where('status', 1)
+            ->select('name', 'slug')
+            ->get();
+    }
 }
 
 
