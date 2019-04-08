@@ -197,7 +197,10 @@
             color: $brand-primary;
 
             box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
-            transition: background-color 0.5s;
+
+            @media (min-width: $screen-md) {
+              transition: background-color 0.5s;
+            }
 
             span{
               z-index: 2;
