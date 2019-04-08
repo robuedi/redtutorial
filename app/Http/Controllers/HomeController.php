@@ -38,8 +38,8 @@ class HomeController extends Controller
             }
         }
 
-        $meta['keywords'] = 'PHP, SQL, JavaScript, design patterns, SOLID principles';
-        $meta['description'] = 'Learn programing, design patterns, SOLID principles';
+        $meta['keywords'] = 'PHP, Step by step, SQL, JavaScript, design patterns, SOLID principles';
+        $meta['description'] = 'Learn programing step by step.';
 
         return View::make('home', [
             'meta'              => $meta,
