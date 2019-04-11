@@ -71,6 +71,18 @@
       &.active{
         display: inline-block;
       }
+
+      .course {
+        .name{
+          font-size: 34px;
+          font-weight: 600;
+        }
+
+        .percentage {
+          font-size: 34px;
+          color: $brand-primary;
+        }
+      }
     }
 
     .profile-info-content{

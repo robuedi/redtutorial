@@ -47,7 +47,7 @@ class Course extends Model
 
         if($all_sections == 0 || $user_sections == 0)
         {
-            $completion_percentage = -1;
+            $completion_percentage = 0;
         }
         else
         {

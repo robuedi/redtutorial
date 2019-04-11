@@ -39,12 +39,14 @@
 
 
             <section class="progress-content active" data-role="choose-action-container" data-type="progress">
-                @if($course_started)
-                    @foreach($course_started as $course)
-                        <h3>{{$course->name}}: {{$course->completion_percentage}}%</h3>
+                @if($courses_started)
+                    @foreach($courses_started as $course)
+                        <p class="course">
+                            <span class="name">{{$course->name}}&nbsp;&nbsp;-</span>&nbsp;&nbsp;<span class="percentage">{{$course->completion_percentage}}%</span>
+                        </p>
                     @endforeach
                 @else
-                    Try some courses and return here to see the overall progress
+                    Try some courses <a class="link" href="/">here</a> and return here to see the overall progress
                 @endif
             </section>
 

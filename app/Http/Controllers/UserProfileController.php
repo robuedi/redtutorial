@@ -32,9 +32,21 @@ class UserProfileController extends Controller
             $user = Sentinel::getUser();
 
             //get info about courses
-            $course_started = User::getUserCoursesStatus($user->id);
+            $courses_started_temp = User::getUserCoursesStatus($user->id);
 
-            return View::make('user.profile', array('user' =>$user, 'course_started' => $course_started));
+            //show only started
+            $courses_started = [];
+            foreach ($courses_started_temp as $course)
+            {
+                if($course->completion_percentage === 0)
+                {
+                    continue;
+                }
+
+                $courses_started[] = $course;
+            }
+
+            return View::make('user.profile', array('user' =>$user, 'courses_started' => $courses_started));
         }
         else
         {
