@@ -33,3 +33,12 @@
     }
   }
 }
+
+
+form .g-recaptcha {
+  text-align: right;
+
+  > * {
+    display: inline-block;
+  }
+}

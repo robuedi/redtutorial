@@ -9,6 +9,10 @@
 @section('stylesheets')
 @stop
 
+@section('head_end')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@stop
+
 @section('scripts')
 @stop
 
@@ -46,12 +50,7 @@
                     <textarea rows="5" name="message">{{old('message')}}</textarea>
                 </section>
 
-                <section class="form-input">
-                    <label>Verification <span class="required-status"></span></label>
-                    <div class="verification-input-container">
-                        <span class="verification-text">{{$verification_nr[0]}} + {{$verification_nr[1]}} = </span><input class="verification-input" type="text" name="verification" >
-                    </div>
-                </section>
+                <div class="g-recaptcha form-input" data-sitekey="{{env('RECAPTCHA_SITE_KEY')}}"></div>
 
                 <section  class="form-input">
                     <button class="btn-s-one float-right">Submit</button>

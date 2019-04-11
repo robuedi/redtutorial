@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\Captcha;
 use View;
 use App\User;
 use Sentinel;
@@ -28,7 +29,8 @@ class UserRegisterController extends Controller
             'first_name'       =>'required|min:2',
             'last_name'        =>'required|min:2',
             'email'            =>'required|email|unique:users,email',
-            'password'         =>'confirmed|min:6',
+            'password'         =>'confirmed|min:4',
+            'g-recaptcha-response'=>new Captcha()
         );
 
         $validator = Validator::make($request->all(), $rules);

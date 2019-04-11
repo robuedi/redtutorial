@@ -44,28 +44,6 @@
     form{
       text-align: left;
       display: inline-block;
-
-      .form-input {
-        input {
-
-          &.verification-input{
-            margin-left: 55px;
-            width: calc(100% - 55px);
-          }
-        }
-
-        .verification-input-container {
-          position: relative;
-
-          .verification-text {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 0;
-          }
-        }
-
-      }
     }
 
   }

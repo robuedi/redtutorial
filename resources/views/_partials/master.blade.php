@@ -48,6 +48,8 @@
         <script>
             var site_url = "{{ url('') }}";
         </script>
+
+        @yield('head_end')
     </head>
 
     <body>

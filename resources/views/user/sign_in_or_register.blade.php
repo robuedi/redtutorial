@@ -9,6 +9,10 @@
 @section('stylesheets')
 @stop
 
+@section('head_end')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@stop
+
 @section('scripts')
 @stop
 
@@ -63,6 +67,8 @@
                     <label>Confirm Password <span class="required-status"></span></label>
                     <input type="password" name="password_confirmation" autocomplete="off">
                 </section>
+
+                <div class="g-recaptcha form-input" data-sitekey="{{env('RECAPTCHA_SITE_KEY')}}"></div>
 
                 <p class="info-paragraph">
                     By clicking Register, you accept our <a class="info-link" target="_blank" href="/info/terms-and-conditions">Terms and Conditions</a>.

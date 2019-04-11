@@ -9,14 +9,13 @@
 namespace App\Http\Controllers;
 
 use App\ContactMessageToUser;
-use App\Rules\CustomSumVerification;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Libraries\UIMessage;
-use Illuminate\Support\Facades\Session;
+use App\Rules\Captcha;
 use App\ContactMessage;
 use Sentinel;
 use Log;
@@ -25,14 +24,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        //verification input
-        $verification_nr[0] = rand(0, 9);
-        $verification_nr[1] = rand(0, 9);
-
-        //store the key
-        Session::put('contact_verification', array_sum($verification_nr));
-
-        return View::make('contact.index', ['verification_nr' => $verification_nr]);
+        return View::make('contact.index');
     }
 
     public function saveMessage(Request $request)
@@ -42,7 +34,7 @@ class ContactController extends Controller
             'name'      => 'required|max:255',
             'email'     => 'required|max:255|email',
             'message'   => 'required|max:1500',
-            'verification' => ['required', 'integer', 'max:255', new CustomSumVerification('Verification', Session::get('contact_verification'))]
+            'g-recaptcha-response'=>new Captcha()
         ];
 
         $validator = Validator::make(Input::all(), $rules);
