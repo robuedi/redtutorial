@@ -22,4 +22,11 @@ class Lesson extends Model
     {
         return $this->lessonSections()->where('is_public',1);
     }
+
+    public function scopePublicLessons($query)
+    {
+        return $query->where('is_public', 1)
+            ->whereNotNull('slug')
+            ->orderBy('order_weight');
+    }
 }

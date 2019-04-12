@@ -22,4 +22,9 @@
     RewriteBase /
     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
     RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+    # Redirect to non-index.php url.
+    RewriteCond %{THE_REQUEST} ^.*/index\.php
+    RewriteRule ^index.php(.*)$ /$1 [R=301,L]
+
 </IfModule>

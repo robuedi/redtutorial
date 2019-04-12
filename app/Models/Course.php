@@ -14,6 +14,11 @@ class Course extends Model
         return $this->hasMany(Chapter::class, 'course_id', 'id');
     }
 
+    public function publicChapters()
+    {
+        return $this->chapters()->publicChapters();
+    }
+
     public static function getChapterCompletionStatus(int $course_id, int $user_id, bool $floor_rounded = true)
     {
         //get all the sections completed be user for the course
@@ -65,9 +70,16 @@ class Course extends Model
 
     public static function getPageNotFoundActiveCourses()
     {
-        return Course::where('status', 1)
+        return Course::publicCourses()
             ->select('name', 'slug')
             ->get();
+    }
+
+    public function scopePublicCourses($query)
+    {
+        return $query->where('status', 1)
+                        ->whereNotNull('slug')
+                        ->orderBy('order_weight');
     }
 }
 

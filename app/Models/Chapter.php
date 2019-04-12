@@ -24,7 +24,14 @@ class Chapter extends Model
 
     public function  publicLessons()
     {
-        return $this->lessons()->where('is_public', 1);
+        return $this->lessons()->publicLessons();
+    }
+
+    public function scopePublicChapters($query)
+    {
+        return $query->where('is_public', 1)
+            ->whereNotNull('slug')
+            ->orderBy('order_weight');
     }
 
     public static function addCurrentUserCompletionStatus(int $user_id, Collection $chapters, bool $floor_rounded_percentage = true) : Collection
