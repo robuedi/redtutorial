@@ -2,6 +2,8 @@
 
 @section('meta')
     <meta name="description" content="{{$meta['description']}}">
+
+    <meta name="msvalidate.01" content="AAF79968C8444CA0CFB2975641549FF5" />
 @stop
 
 @section('title') Home @parent @stop
