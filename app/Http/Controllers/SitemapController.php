@@ -26,7 +26,7 @@ class SitemapController
         //set courses
         foreach($courses as $course)
         {
-            Sitemap::setItem('/tutorial/'.$course->slug, $course->updated_at, 1, 'always');
+            Sitemap::setItem('/tutorial/'.$course->slug, $course->updated_at, 1, 'hourly');
 
             //set chapters
             foreach ($course->publicChapters as $chapter)
