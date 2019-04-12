@@ -20,7 +20,7 @@ class Sitemap
 
         //check lastmod
         if ($lastmod) {
-            self::$sitemap[Request::root() . $url]['lastmod'] = Carbon::createFromFormat('Y-m-d H:i:s', $lastmod)->toIso8601String();
+            self::$sitemap[Request::root() . $url]['lastmod'] = Carbon::createFromFormat('Y-m-d H:i:s', $lastmod)->format('Y-m-d');
         }
 
         //set priority
