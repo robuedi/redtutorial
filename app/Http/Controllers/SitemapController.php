@@ -41,10 +41,10 @@ class SitemapController
             }
         }
 
-        Sitemap::setItem('/user/sign-in', null, 0.7, 'weekly');
+        Sitemap::setItem('/user/sign-in', null, 0.5, 'weekly');
 
         //static pages
-        Sitemap::setItem('/contact', null, 0.5, 'monthly');
+        Sitemap::setItem('/contact', null, 0.4, 'monthly');
 
         //set other static pages
         foreach(MenuClientStatic::getStaticMenu() as $page)
