@@ -14,7 +14,7 @@
         <meta charset="utf-8">
         <title>
             @section('title')
-                | {{config('app.name')}}
+                - {{config('app.name')}}
             @show
         </title>
 

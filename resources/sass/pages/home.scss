@@ -34,39 +34,36 @@
     @media (min-width: $screen-md) {
       padding-top: 100px;
       padding-bottom: 10px;
+      padding-left: 75px;
     }
 
-    h1 {
+
+    .part-one {
       margin: 0;
+      text-align: center;
+      color: $brand-primary;
+      display: block;
+      font-size: 45px;
+      font-weight: 400;
+
       @media (min-width: $screen-md) {
-        padding-left: 75px;
+        text-align: left;
+        font-size: 52px;
       }
+    }
 
-      .part-one {
-        text-align: center;
-        color: $brand-primary;
-        display: block;
-        font-size: 45px;
-        font-weight: 400;
+    .part-two {
+      margin-top: 10px;
+      margin-bottom: 0;
+      font-weight: 100;
+      font-size: 26px;
+      text-align: center;
+      display: block;
 
-        @media (min-width: $screen-md) {
-          text-align: left;
-          font-size: 52px;
-        }
-      }
-
-      .part-two {
-        margin-top: 10px;
-        font-weight: 100;
-        font-size: 26px;
-        text-align: center;
-        display: block;
-
-        @media (min-width: $screen-md) {
-          text-align: left;
-          font-size: 30px;
-          padding-left: 150px;
-        }
+      @media (min-width: $screen-md) {
+        text-align: left;
+        font-size: 30px;
+        padding-left: 150px;
       }
     }
   }
