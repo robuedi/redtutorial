@@ -37,7 +37,7 @@
                                 {{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}
                             </span>
                             <div class="top-level" >
-                                <h3>{{$chapter->name}}</h3>
+                                <h2>{{$chapter->name}}</h2>
                                 <span class="line-completion-indicator" style="width: {{$chapter->completion_percentage ?? 0}}%;"></span>
                                 <span class="dot-completion-indicator" style="left: {{$chapter->completion_percentage ?? 0}}%;"></span>
                                 <span class="route">

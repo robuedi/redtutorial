@@ -28,33 +28,6 @@
       z-index: 1;
     }
 
-
-    .subtitle{
-      display: inline-block;
-      background-color: $white-color;
-
-      h2 {
-        position: relative;
-        z-index: 2;
-        padding: 20px 40px 20px 75px;
-        margin: 0px 0px 0px 0px;
-        color: lighten($text-color, 75%);
-        font-size: 22px;
-        font-weight: 800;
-        display: inline-block;
-
-        a {
-          color: lighten($text-color, 25%);
-          text-decoration: none;
-
-          &:hover{
-            color: $white-color;
-          }
-        }
-
-      }
-    }
-
     .heading-inner-container {
       position: relative;
       z-index: 2;
@@ -177,7 +150,7 @@
               box-sizing: border-box;
               padding-left: 10px;
 
-              h3 {
+              h2 {
                 font-size: 20px;
                 font-weight: 400;
                 margin: 0;

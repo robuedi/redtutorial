@@ -5,7 +5,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
 
-@section('title') {{$lesson->course_name}} @parent @stop
+@section('title') {{$lesson->course_name.' '.$lesson->lesson_name}} @parent @stop
 
 @section('stylesheets')
     {{--<link rel="stylesheet" type="text/css" href="/assets/js/libs/prism/prism.css?v=1">--}}
@@ -23,9 +23,9 @@
     <main class="lesson-main-container">
         <section class="tutorial-name" @if($course_image) style='background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif >
             <div class="subtitle">
-                <h2>
+                <p class="inner-container">
                     <a href="/tutorial/{{$lesson->course_slag.'/'.$lesson->chapter_slag}}"><i class="fas fa-angle-left"></i> Lessons</a>
-                </h2>
+                </p>
             </div>
             <div class="heading-inner-container">
                 <h1>{{$lesson->lesson_name}}</h1>
@@ -47,7 +47,7 @@
                 @foreach($lesson_sections as $index => $lesson_section)
                     <div class="lesson-container @if($index == 0) active @endif">
                         @if(!empty($lesson_section->name))
-                            <h3>{{$lesson_section->name}}</h3>
+                            <h2>{{$lesson_section->name}}</h2>
                         @endif
                         {!! $lesson_section->content !!}
 
