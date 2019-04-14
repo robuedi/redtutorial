@@ -67,14 +67,15 @@
         position: relative;
         z-index: 1;
         margin: 0px;
+        font-size: 34px;
+        color: $brand-primary;
+        font-weight: 400;
 
         @media (min-width: $screen-sm) {
           padding-right: 75px;
+          font-size: 40px;
         }
-
-        @include main-page-header();
       }
-
     }
   }
 
