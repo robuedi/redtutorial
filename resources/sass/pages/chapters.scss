@@ -3,7 +3,7 @@
   background-color: $white-color;
 
   .header-section{
-    padding: 150px 75px 150px 0px;
+    padding: 145px 75px 145px 0px;
     margin: 0px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -11,6 +11,10 @@
     position: relative;
     font-family: $font-family;
     flex: 1;
+
+    @media (min-width: $screen-sm) {
+      padding: 160px 75px 160px 0px;
+    }
 
 
     &:after {
