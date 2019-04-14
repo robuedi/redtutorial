@@ -84,6 +84,11 @@
 
         @media (min-width: $screen-md) {
           display: inline-block;
+          padding: 22px 10px;
+        }
+
+        @media (min-width: $screen-lg) {
+          display: inline-block;
           padding: 22px;
         }
 
@@ -93,10 +98,14 @@
           color: $text-color;
           text-decoration: none;
           transition: color .5s;
-          font-size: 22px;
+          font-size: 20px;
           text-transform: uppercase;
           letter-spacing: 1px;
           font-weight: 400;
+
+          @media (min-width: $screen-lg) {
+            font-size: 22px;
+          }
 
           &.active, &:hover {
             color: $brand-primary;
