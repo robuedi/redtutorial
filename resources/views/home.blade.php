@@ -4,7 +4,7 @@
     <meta name="description" content="{{$meta['description']}}">
 @stop
 
-@section('title') Step by step tutorials, all for free @parent @stop
+@section('title') Step by step tutorials @parent @stop
 
 @section('stylesheets')
 @stop
@@ -12,7 +12,7 @@
 @section('content')
     <main id="home_container">
         <section class="page-title">
-            <h1 class="part-one">Step by step tutorials, all for free</h1>
+            <h1 class="part-one">Step by step tutorials</h1>
             <h3 class="part-two"> <strong>Clear</strong> and <strong>easy</strong> to understand, <strong>track your progress</strong> through the courses </h3>
         </section>
 
