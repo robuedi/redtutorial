@@ -27,7 +27,7 @@
         <meta name="theme-color" content="#e62c33">
 
         <link rel="icon" href="/assets/img/logo.ico">
-        <link rel="stylesheet" type="text/css" href="/assets/css/app.min.css?v=7">
+        <link rel="stylesheet" type="text/css" href="/assets/css/app.min.css?v=8">
 
         @yield('stylesheets')
 
