@@ -70,3 +70,15 @@
     color: lighten($brand-primary, 10%);
   }
 }
+
+.info-paragraph {
+  margin: 0 0 25px;
+
+  a{
+    @extend .link;
+  }
+
+  &.txt-lg {
+    font-size: 18px;
+  }
+}

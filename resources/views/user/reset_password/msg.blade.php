@@ -20,15 +20,7 @@
         </div>
         <div class="content">
 
-            <section class="choose-action" data-role="choose-action">
-                <div>
-                    <h2 class="active" data-action="register">
-                        Reset Password
-                    </h2>
-                </div>
-            </section>
-
-           <p>
+           <p class="info-paragraph txt-lg">
                We just sent an email to your account, if we found it.
                <br>
                Please take notice that in special situations it may take couple of minutes for the email to arrive.

@@ -49,25 +49,28 @@
 
   .tutorial-content {
     overflow: hidden;
-    padding: 75px 0px;
+    padding: 40px 10px;
     text-align: center;
     z-index: 2;
     position: relative;
     background-color: $white-color;
     box-sizing: border-box;
 
+    @media (min-width: $screen-sm) {
+      padding: 75px 50px;
+    }
+
+    .register-here {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+
     .list-container {
       text-align: center;
       width: 900px;
-      padding: 0px 10px;
       max-width: 100%;
       display: inline-block;
       box-sizing: border-box;
-
-      @media (min-width: $screen-md) {
-        padding: 30px 50px;
-      }
-
 
       .list-items {
         text-align: left;

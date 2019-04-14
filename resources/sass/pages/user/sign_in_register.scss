@@ -69,21 +69,14 @@
     }
 
     form.sign-in-forms{
-      text-align: left;
-      max-width: 100%;
       display: none;
 
       &.active{
         display: inline-block;
       }
 
-      .info-paragraph {
-        margin: 0 0 25px;
-
-        .info-link {
-          color: $brand-primary;
-
-        }
+      .info-paragraph{
+        margin-bottom: 35px;
       }
     }
   }

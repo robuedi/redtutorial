@@ -41,7 +41,7 @@ class UserProfileController extends Controller
                 $courses_started[] = $course;
             }
 
-            return View::make('user.profile', array('user' =>$user, 'courses_started' => $courses_started, 'code' => $code));
+            return View::make('user.profile', array('user' =>$user, 'courses_started' => $courses_started));
         }
         else
         {

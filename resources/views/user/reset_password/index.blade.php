@@ -20,25 +20,19 @@
         </div>
         <div class="content">
 
-            <section class="choose-action" data-role="choose-action">
-                <div>
-                    <h2 class="active" data-action="register">
-                        Reset Password
-                    </h2>
-                </div>
-            </section>
-
             <div class="feedback-container">
                 <div class="feedback">
                     {!! \App\Libraries\UIMessage::get() !!}
                 </div>
             </div>
 
-            <form class="sign-in-forms form-item active " data-role="choose-action-container" data-type="register" enctype="application/x-www-form-urlencoded" action="/user/reset-password" method="POST">
+            <form class="form-item" enctype="application/x-www-form-urlencoded" action="/user/reset-password" method="POST">
                 {{ csrf_field() }}
-                <p class="info-paragraph">
+
+                <p class="info-paragraph txt-lg">
                     Enter the email address you used when you joined and we’ll send you an email to reset your password.
                 </p>
+
                 <section class="form-input">
                     <label>Email <span class="required-status"></span></label>
                     <input type="text" name="email" value="{{old('email')}}">
