@@ -35,12 +35,16 @@
       .inner-container {
         position: relative;
         z-index: 2;
-        padding: 20px 10px;
+        padding: 20px 50px 20px 40px;
         margin: 0px 0px 0px 0px;
         color: lighten($text-color, 75%);
         font-size: 22px;
         font-weight: 800;
         display: inline-block;
+
+        @media (min-width: $screen-sm) {
+          padding-right: 75px;
+        }
 
         a {
           color: lighten($text-color, 25%);
@@ -51,22 +55,6 @@
           }
         }
 
-        &:first-child{
-          padding-left: 75px;
-          font-size: 24px;
-
-          @media (max-width: $screen-md-max) {
-            padding-left: 50px;
-          }
-        }
-        &:last-child{
-          padding-right: 40px;
-
-
-          @media (max-width: $screen-md-max) {
-            padding-right: 20px;
-          }
-        }
       }
     }
 
@@ -75,7 +63,7 @@
       z-index: 2;
 
       h1 {
-        padding: 20px 40px 20px 75px;
+        padding: 20px 50px 20px 40px;
         background-color: $white-color;
         display: inline-block;
         position: relative;
@@ -85,7 +73,9 @@
         color: $brand-primary;
         font-weight: 400;
 
-        @include main-page-header-left-padding();
+        @media (min-width: $screen-sm) {
+          padding-right: 75px;
+        }
       }
 
     }
@@ -111,6 +101,7 @@
         display: inline-block;
         text-align: left;
         margin-bottom: 10px;
+        box-sizing: border-box;
 
         .quiz-sign, .text-sign{
           font-size: 16px;
