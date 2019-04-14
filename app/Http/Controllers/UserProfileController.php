@@ -8,11 +8,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Chapter;
-use App\Course;
-use App\Lesson;
-use App\LessonSection;
-use App\UserToLessonSection;
 use View;
 use App\User;
 use Sentinel;
@@ -20,8 +15,8 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Libraries\UIMessage;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Input;
 use Log;
+use Cartalyst\Sentinel\Laravel\Facades\Reminder;
 
 class UserProfileController extends Controller
 {
@@ -46,7 +41,12 @@ class UserProfileController extends Controller
                 $courses_started[] = $course;
             }
 
-            return View::make('user.profile', array('user' =>$user, 'courses_started' => $courses_started));
+//            $user = Sentry::findUserByLogin($request->input('email'));
+            $user = Sentinel::findByCredentials(['login'=>$user->email]);
+            $code = Reminder::create($user);
+            Log::info($code);
+
+            return View::make('user.profile', array('user' =>$user, 'courses_started' => $courses_started, 'code' => $code));
         }
         else
         {
@@ -63,7 +63,7 @@ class UserProfileController extends Controller
         $rules = array(
             'first_name'       =>'required|min:2',
             'last_name'        =>'required|min:2',
-            'email'            =>'required|email',
+            'email'            =>'required|email|unique:users,email',
         );
 
         $password = $request->input('password');
@@ -71,7 +71,7 @@ class UserProfileController extends Controller
         $messages = [];
         if ( ! empty($password))
         {
-            $rules['password']      = 'confirmed';
+            $rules['password']      = 'confirmed|min:6';
 
             //get user pass hash
             $hasher = Sentinel::getHasher();
@@ -112,6 +112,7 @@ class UserProfileController extends Controller
                 $credentials = ['password' => $password];
                 Sentinel::update($current_user, $credentials);
             }
+
             UIMessage::set('success', "Your profile was updated successfully.");
             return Redirect::back();
         }

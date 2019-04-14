@@ -46,7 +46,7 @@
                         </p>
                     @endforeach
                 @else
-                    Try some courses <a class="link" href="/">here</a> and return here to see the overall progress
+                    Try some courses <a class="link" href="/">here</a> and return to see the overall progress
                 @endif
             </section>
 

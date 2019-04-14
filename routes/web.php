@@ -99,6 +99,9 @@ Route::get('/user/profile', 'UserProfileController@profile');
 
 //User Reset Password
 Route::get('/user/reset-password', 'UserResetPasswordController@index');
+Route::post('/user/reset-password', 'UserResetPasswordController@sendResetEmail');
+Route::get('/user/reset-password/{user_id}/{reset_code}', 'UserResetPasswordController@getResetPassword');
+Route::post('/user/reset-password/confirm', 'UserResetPasswordController@resetPassword');
 
 //Contact Us
 Route::get('/contact-us', 'ContactController@index');

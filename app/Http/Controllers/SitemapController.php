@@ -42,6 +42,7 @@ class SitemapController
         }
 
         Sitemap::setItem('/user/sign-in', null, 0.5, 'weekly');
+        Sitemap::setItem('/user/reset-password', null, 0.2, 'monthly');
 
         //static pages
         Sitemap::setItem('/contact', null, 0.4, 'monthly');

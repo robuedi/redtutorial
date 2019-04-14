@@ -10,13 +10,11 @@ namespace App\Http\Controllers;
 
 use App\Rules\Captcha;
 use View;
-use App\User;
 use Sentinel;
 use Illuminate\Http\Request;
 use Validator;
 use App\Libraries\UIMessage;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Input;
 use Log;
 
 class UserRegisterController extends Controller
@@ -29,7 +27,7 @@ class UserRegisterController extends Controller
             'first_name'       =>'required|min:2',
             'last_name'        =>'required|min:2',
             'email'            =>'required|email|unique:users,email',
-            'password'         =>'confirmed|min:4',
+            'password'         =>'confirmed|min:6',
             'g-recaptcha-response'=>new Captcha()
         );
 
