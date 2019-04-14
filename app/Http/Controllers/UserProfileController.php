@@ -41,11 +41,6 @@ class UserProfileController extends Controller
                 $courses_started[] = $course;
             }
 
-//            $user = Sentry::findUserByLogin($request->input('email'));
-            $user = Sentinel::findByCredentials(['login'=>$user->email]);
-            $code = Reminder::create($user);
-            Log::info($code);
-
             return View::make('user.profile', array('user' =>$user, 'courses_started' => $courses_started, 'code' => $code));
         }
         else
