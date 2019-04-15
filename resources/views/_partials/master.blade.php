@@ -26,6 +26,8 @@
 
         <meta name="theme-color" content="#e62c33">
 
+        <link rel="canonical" href="{{ url()->current() }}" />
+
         <link rel="icon" href="/assets/img/logo.ico">
         <link rel="stylesheet" type="text/css" href="/assets/css/app.min.css?v=13">
 
@@ -54,10 +56,6 @@
 
     <body>
 
-        <aside class="cookie-message">
-            This website uses cookies to improve user experience. By using this website you consent to all cookies in accordance with our <a class="link" href="/info/privacy-and-cookies-policy">Privacy and Cookie Policy</a>.
-        </aside>
-
         @include('_partials.navigation', array('static_pages' => \App\Libraries\MenuClientStatic::getStaticMenu()))
 
         @yield('content')
@@ -74,6 +72,10 @@
                Copyright &copy; 2019 REDTutorial.com
             </p>
         </footer>
+
+        <aside class="cookie-message">
+            This website uses cookies to improve user experience. By using this website you consent to all cookies in accordance with our <a class="link" href="/info/privacy-and-cookies-policy">Privacy and Cookie Policy</a>.
+        </aside>
 
         <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

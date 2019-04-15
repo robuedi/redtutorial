@@ -1,10 +1,10 @@
 
-class LessonContentModule {
+export default class LessonContentModule {
     
     constructor(){
         
-        this.container          = $('.lessons-list');
-        this.progressBar        = $('.lesson-progress');
+        this.container          = document.querySelector('[data-role="lessons-list"]');
+        this.progressBar        = document.querySelector('[data-role="lesson-progress"]');
         this.lessonProgress     = this.progressBar.find('> span');
         this.sections           = this.container.find('.lesson-container');
         this.prevBtn            = this.container.find('.prev-load');

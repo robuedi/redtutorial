@@ -2,6 +2,7 @@
 
 @section('meta')
     <meta name="description" content="{{$meta['description']}}">
+    <link rel="home" href="{{ url()->current() }}" />
 @stop
 
 @section('title') Step by step tutorials @parent @stop

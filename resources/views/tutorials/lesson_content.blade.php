@@ -33,7 +33,7 @@
         </section>
         <section class="tutorial-container" id="lessons_content">
             <div class="lesson-progress-container"  >
-                <div class="lesson-progress">
+                <div class="lesson-progress" data-role="lesson-progress">
                     @foreach($lesson_sections as $index => $lesson_section)
                         @if($lesson_section->type == 'quiz')
                             <span class="@if($index == 0) active @endif quiz-sign"><i>?</i></span>
@@ -43,7 +43,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="lessons-list" id="lessons_list">
+            <div class="lessons-list" id="lessons_list" data-role="lessons-list">
                 @foreach($lesson_sections as $index => $lesson_section)
                     <div class="lesson-container @if($index == 0) active @endif">
                         @if(!empty($lesson_section->name))

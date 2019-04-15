@@ -39,7 +39,7 @@ class HomeController extends Controller
         }
 
         $meta['keywords'] = 'PHP, Step by step, SQL, JavaScript, design patterns, SOLID principles';
-        $meta['description'] = 'Learn programing step by step.';
+        $meta['description'] = 'Free PHP tutorial and SQL tutorial. They are step by step tutorials, clear and easy to understand, you can also track your progress through the courses.';
 
         return View::make('home', [
             'meta'              => $meta,

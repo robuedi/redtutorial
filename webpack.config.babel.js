@@ -1,25 +1,25 @@
 
 // I.
-// npm install --save-dev webpack
-// npm install --save-dev webpack@4
-// npm install --save-dev webpack-cli
-// npm install --save-dev css-loader
-// npm install --save-dev sass-loader
-// npm install --save-dev babel-loader
-// npm install --save-dev json-loader
+// npm install -g --save-dev webpack
+// npm install -g --save-dev webpack@4
+// npm install -g --save-dev webpack-cli
+// npm install -g --save-dev css-loader
+// npm install -g --save-dev sass-loader
+// npm install -g --save-dev babel-loader
+
 
 // this are specifically for IE
-// npm install --save-dev babel-polyfill
-// npm install --save isomorphic-fetch
+// npm install -g --save-dev babel-polyfill
+// npm install -g --save isomorphic-fetch
 
 import path               from 'path'; //request to node core module (no install needed)
 
 // II.
-//npm install --save-dev browser-sync-webpack-plugin
+//npm install -g --save-dev browser-sync-webpack-plugin
 import BrowserSyncPlugin  from 'browser-sync-webpack-plugin';
 
 // III.
-//npm install --save-dev mini-css-extract-plugin
+//npm install -g --save-dev mini-css-extract-plugin
 import MiniCssExtractPlugin  from 'mini-css-extract-plugin';
 
 // FINAL
@@ -28,7 +28,7 @@ import MiniCssExtractPlugin  from 'mini-css-extract-plugin';
 module.exports = {
     entry: {
         //the left property will also be used for the bundle location/name
-        'js/bundle.min.js':  ['babel-polyfill', 'isomorphic-fetch', './resources/js/nms/index.js'],
+        'js/bundle.min.js':  ['babel-polyfill', 'isomorphic-fetch', './resources/js/index.js'],
         'css/bundle':                 './resources/sass/app.scss',
     },
     output: {
