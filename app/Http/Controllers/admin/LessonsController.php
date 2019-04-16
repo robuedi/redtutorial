@@ -176,6 +176,17 @@ class LessonsController extends Controller
             $lesson->chapter_id = $request->input('chapter_id');
             $lesson->save();
 
+            //update chapter for sitemap.xml
+            $current_date = date('Y-m-d G:i:s');
+            $chapter = Chapter::find($lesson->chapter_id);
+            $chapter->updated_at = $current_date;
+            $chapter->save();
+
+            //update course
+            $course = Course::find($chapter->course_id);
+            $course->updated_at = $current_date;
+            $course->save();
+
             //send user back
             UIMessage::set('success', 'Lesson updated successfully.');
             if (Input::get('save_and_continue')) //redirect to the same page
@@ -224,6 +235,17 @@ class LessonsController extends Controller
             }
             $lesson->chapter_id = $request->input('chapter_id');
             $lesson->save();
+
+            //update chapter for sitemap.xml
+            $current_date = date('Y-m-d G:i:s');
+            $chapter = Chapter::find($lesson->chapter_id);
+            $chapter->updated_at = $current_date;
+            $chapter->save();
+
+            //update course
+            $course = Course::find($chapter->course_id);
+            $course->updated_at = $current_date;
+            $course->save();
 
             //send user back
             UIMessage::set('success', "Lesson created successfully.");

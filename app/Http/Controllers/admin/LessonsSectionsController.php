@@ -9,6 +9,9 @@
 namespace App\Http\Controllers\admin;
 
 
+use App\Chapter;
+use App\Course;
+use App\Lesson;
 use App\LessonSection;
 use App\LessonSectionOption;
 use App\Http\Controllers\Controller;
@@ -138,6 +141,22 @@ class LessonsSectionsController extends Controller
                     $i++;
                 }
             }
+
+            //update lesson update date for sitemap.xml
+            $current_date = date('Y-m-d G:i:s');
+            $lesson = Lesson::find($lesson_section->lesson_id);
+            $lesson->updated_at = $current_date;
+            $lesson->save();
+
+            //update chapter
+            $chapter = Chapter::find($lesson->chapter_id);
+            $chapter->updated_at = $current_date;
+            $chapter->save();
+
+            //update course
+            $course = Course::find($chapter->course_id);
+            $course->updated_at = $current_date;
+            $course->save();
 
             //send user back
             UIMessage::set('success', 'Lesson updated successfully.');

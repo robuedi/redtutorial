@@ -158,6 +158,11 @@ class ChaptersController extends Controller
             }
             $chapter->save();
 
+            //update course for sitemap.xml
+            $course = Course::find($chapter->course_id);
+            $course->updated_at = date('Y-m-d G:i:s');
+            $course->save();
+
             //send user back
             UIMessage::set('success', "Course created successfully.");
             if (Input::get('save_and_continue')) //redirect to the same page
@@ -220,6 +225,11 @@ class ChaptersController extends Controller
                 $chapter->slug          = $request->input('slug');
             }
             $chapter->save();
+
+            //update course for sitemap.xml
+            $course = Course::find($chapter->course_id);
+            $course->updated_at = date('Y-m-d G:i:s');
+            $course->save();
 
             //send user back
             UIMessage::set('success', "Chapter updated successfully.");
