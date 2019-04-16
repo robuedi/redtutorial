@@ -82,7 +82,7 @@ class LessonsSectionsController extends Controller
         foreach ( (array)$request->input('option_data.value') as $key => $value)
         {
             //check if they have label and value
-            if(empty((string)$value) || empty((string)$request->input('option_data.label')[$key]))
+            if(trim((string)$value) === '' || trim((string)$request->input('option_data.label')[$key]) === '')
             {
                 $rules['both_option_label_and_value'] = 'required';
             }
