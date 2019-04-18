@@ -33,16 +33,6 @@
 
         @yield('stylesheets')
 
-        <!-- Main Font -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
-
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-
-        {{-- FOR LOGO REMOVE IT--}}
-        <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
-
         {{--<!--[if lt IE 9]>--}}
         {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>--}}
         {{--<![endif]-->--}}

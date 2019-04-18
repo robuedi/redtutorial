@@ -1,4 +1,5 @@
 // Variables
+@import "base/fonts";
 @import "base/variables";
 @import "base/mixin";
 
@@ -28,6 +29,10 @@
 @import "pages/lesson_content";
 @import "pages/user/sign_in_register";
 @import "pages/user/profile";
+
+//awesome fonts
+@import url("https://use.fontawesome.com/releases/v5.7.0/css/all.css");
+
 
 
 
