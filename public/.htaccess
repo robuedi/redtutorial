@@ -27,4 +27,7 @@
     RewriteCond %{THE_REQUEST} ^.*/index\.php
     RewriteRule ^index.php(.*)$ /$1 [R=301,L]
 
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 </IfModule>
