@@ -54,7 +54,10 @@ class UserResetPasswordController extends Controller
                 });
             }
 
-            return view('user.reset_password.msg');
+            return view('user.msg', [
+                'title' => 'Reset Password',
+                'msg'   => ' We just <strong>sent an email</strong> to your account, if we found it. <br/><br/>Please take notice that sometimes it may take <strong>couple of minutes for the email to arrive</strong>.'
+            ]);
         }
 
     }

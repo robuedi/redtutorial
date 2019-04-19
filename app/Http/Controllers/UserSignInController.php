@@ -100,7 +100,7 @@ class UserSignInController extends Controller
 
             $errors = 'Invalid login or password.';
         } catch (NotActivatedException $e) {
-            $errors = 'Account is not activated!';
+            $errors = 'Your account is not activated yet.';
         } catch (ThrottlingException $e) {
             $delay = $e->getDelay();
 

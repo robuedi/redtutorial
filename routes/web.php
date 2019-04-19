@@ -92,6 +92,7 @@ Route::get('/user/logout', 'UserSignInController@logout');
 
 //User Register
 Route::post('/user/register', 'UserRegisterController@register');
+Route::get('/user/activate-account/{user_id}/{activation_code}', 'UserRegisterController@activateAccount');
 
 //User Profile
 Route::post('/user/update-profile', 'UserProfileController@updateProfile');

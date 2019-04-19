@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Password Reset</title>
+        <title>Activate Account</title>
 
     </head>
     <body>
@@ -13,7 +13,7 @@
 
             <br/>
 
-            Follow this link to reset your password: <a href="{{$reset_url}}">{{$reset_url}}</a>.<br/>
+            Follow this link to activate your account: <a href="{{$activation_url}}">{{$activation_url}}</a>.<br/>
 
             <br/>
 

@@ -20,14 +20,6 @@
         </div>
         <div class="content">
 
-            <section class="choose-action" data-role="choose-action">
-                <div>
-                    <h2 class="active" data-action="register">
-                        Reset Password
-                    </h2>
-                </div>
-            </section>
-
             <div class="feedback-container">
                 <div class="feedback">
                     {!! \App\Libraries\UIMessage::get() !!}
