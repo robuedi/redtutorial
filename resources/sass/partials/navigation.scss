@@ -107,7 +107,7 @@
             font-size: 22px;
           }
 
-          &.active, &:hover {
+          &.active:not(.twitter-account), &:focus, &:hover {
             color: $brand-primary;
           }
         }
