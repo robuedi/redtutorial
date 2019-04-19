@@ -16,6 +16,7 @@
             @else
                 <li><a href="/user/sign-in" class="@if(url()->current() === url('/user/sign-in')) active @endif" >Sign In / Register</a></li>
             @endif
+            <li><a href="https://twitter.com/red_tutorial" target="_blank" class="twitter-account" ><i class="fab fa-twitter"></i></a></li>
         </ul>
     </div>
 
