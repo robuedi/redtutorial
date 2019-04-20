@@ -29,7 +29,7 @@
         <link rel="canonical" href="{{ url()->current() }}" />
 
         <link rel="icon" href="/assets/img/logo.ico">
-        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=1">
+        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=2">
 
         @yield('stylesheets')
 
