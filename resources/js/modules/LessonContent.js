@@ -1,35 +1,55 @@
 
-export default class LessonContentModule {
+export default class LessonContent {
     
     constructor(){
         
-        this.container          = document.querySelector('[data-role="lessons-list"]');
-        this.progressBar        = document.querySelector('[data-role="lesson-progress"]');
-        this.lessonProgress     = this.progressBar.find('> span');
-        this.sections           = this.container.find('.lesson-container');
-        this.prevBtn            = this.container.find('.prev-load');
-        this.nextBtn            = this.container.find('.next-load');
-        this.nextLessonLink     = site_url + this.nextBtn.attr('data-next-lesson');
+        this.container,
+        this.progressBar,
+        this.lessonProgress,
+        this.sections,
+        this.prevBtn,
+        this.nextBtn,
+        this.nextLessonLink = undefined;
 
-        this.events();
+    }
+
+    load(){
+        let container = document.querySelector('[data-role="lessons-content"]');
+
+        if(container !== undefined)
+        {
+            this.fetchDOM(container);
+            this.events();
+        }
+    }
+
+    fetchDOM(container)
+    {
+        this.lessonsList        = container.querySelector('[data-role="lessons-list"]');
+        this.progressBar        = container.querySelector('[data-role="lesson-progress"]');
+        this.lessonProgress     = this.progressBar.querySelectorAll(':scope > span');
+        this.sections           = this.lessonsList.querySelectorAll('.lesson-container');
+        this.prevBtn            = this.lessonsList.querySelector('.prev-load');
+        this.nextBtn            = this.lessonsList.querySelector('.next-load');
+        this.nextLessonLink     = site_url + this.nextBtn.getAttribute('data-next-lesson');
     }
     
     events(){
         let that = this;
 
         //next btn clicked
-        this.nextBtn.on('click', () => {
-            that.nextSection();
+        this.nextBtn.addEventListener('click', () => {
+            that.nextSection('right');
         });
 
         //next btn clicked
-        this.prevBtn.on('click', () => {
+        this.prevBtn.addEventListener('click', () => {
             that.prevSection();
         });
 
         //click on top nav
-        this.lessonProgress.on('click', () =>  {
-            that.navigateByProgressBar(this);
+        this.lessonProgress.forEach((clickedBtn) => {
+            that.navigateByProgressBar(clickedBtn);
         })
     }
 
@@ -37,11 +57,12 @@ export default class LessonContentModule {
     {
 
         //check if activated before
-        if($(clickedBtn).hasClass('pre-active')){
+        if(clickedBtn.classList.contains('pre-active')){
 
             //check direction
-            let currentIndex = this.progressBar.find('> span.active').index();
-            let nextIndex = $(clickedBtn).index();
+            let activeBtn = this.progressBar.querySelector(':scope > span.active');
+            let currentIndex = Array.from(this.progressBar.parentNode.children).indexOf(activeBtn);
+            let nextIndex = Array.from(this.progressBar.parentNode.children).indexOf(clickedBtn);
 
             let direction = 'right';
             if(currentIndex > nextIndex)
@@ -50,8 +71,8 @@ export default class LessonContentModule {
             }
 
             //get sections
-            let currentContent  = this.container.find('.lesson-container.active');
-            let nextContent     = this.sections.eq(nextIndex);
+            let currentContent  = this.lessonsList.querySelector('.lesson-container.active');
+            let nextContent     = this.sections[nextIndex];
 
             //move to content
             this.navigateTo(currentContent, nextContent, direction);
@@ -59,11 +80,84 @@ export default class LessonContentModule {
 
     }
 
-    nextSection()
+    navigateSections(direction)
+    {
+        //get current active section
+        let currentActiveSection = this.getCurrentActiveSection();
+
+        //do we have one?
+        if(!currentActiveSection)
+        {
+            return;
+        }
+
+        //check if the current section is a quiz
+        //and we need to submit it first
+        let sectionType = this.getSectionType(currentActiveSection);
+
+        if(sectionType === 'quiz')
+        {
+            this.submitQuiz();
+        }
+        else
+        {
+            this.navigateToRequestedSection(currentActiveSection, direction);
+        }
+    }
+
+    submitQuiz()
     {
 
+    }
+
+    navigateToRequestedSection(currentActiveSection, direction)
+    {
+
+    }
+
+    getCurrentActiveSection()
+    {
+        //get active section
+        let currentActiveSectionArr = [...this.sections].filter(item => {
+            if(item.classList.contains('active'))
+            {
+                return item;
+            }
+        });
+
+        //check if the number of current section is only one
+        // else something is not right
+        if(currentActiveSectionArr.length <= 0)
+        {
+            return false;
+        }
+
+        return currentActiveSectionArr[0];
+    }
+
+    getSectionType(currentActiveSection)
+    {
+        let sectionType = currentActiveSection.getAttribute('data-type');
+        if(sectionType === 'q')
+        {
+            return 'quiz';
+        }
+        else if (sectionType === 't')
+        {
+            return 'text';
+        }
+    }
+
+    nextSection2()
+    {
         //get current active
-        let currentActive = this.sections.filter('.active');
+        let currentActive = [...this.sections].filter(item => {
+            if(item.classList.contains('active'))
+            {
+                return item;
+            }
+        });
+
         if(currentActive.length === 0) //something wrong if here
         {
             return;
@@ -98,15 +192,15 @@ export default class LessonContentModule {
         }
     }
 
-    submitQuiz(quizForm) {
+    submitQuiz2(quizForm) {
         let checkedOptions = $(quizForm).find('input:checked');
         let that = this;
 
         if(checkedOptions.length > 0)
         {
             let arrValues = [];
-            checkedOptions.each(() =>  {
-                arrValues.push($(this).val());
+            checkedOptions.each((index, element) =>  {
+                arrValues.push($(element).val());
             })
 
             let verification_quiz = quizForm.attr('data-quiz');
@@ -205,6 +299,8 @@ export default class LessonContentModule {
     }
 
     navigateTo(from, to, directionTo) {
+
+        console.log('test');
 
         //check movement direction
         let fromClass = 'remove-to-left';

@@ -24,8 +24,6 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <meta name="theme-color" content="#e62c33">
-
         <link rel="canonical" href="{{ url()->current() }}" />
 
         <link rel="icon" href="/assets/img/logo.ico">
@@ -75,10 +73,11 @@
             }
         </script>
 
-        <!-- JS -->
-        <script src="/assets/js/scripts.min.js?v=1"></script>
 
         @yield('scripts')
+
+        <!-- JS -->
+        <script src="/assets/js/bundle.min.js?v=1"></script>
 
     </body>
 </html>

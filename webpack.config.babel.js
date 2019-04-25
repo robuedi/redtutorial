@@ -22,15 +22,17 @@
 // npm i --save-dev browser-sync-webpack-plugin
 // npm i --save-dev mini-css-extract-plugin
 // npm i --save-dev optimize-css-assets-webpack-plugin
+// npm i --save-dev terser-webpack-plugin
 
 // this are specifically for IE
-// npm install -g --save-dev babel-polyfill
-// npm install -g --save isomorphic-fetch
+// npm i --save-dev babel-polyfill
+// npm i --save-dev isomorphic-fetch
 
 import path                     from 'path'; //request to node core module (no install needed)
 import BrowserSyncPlugin        from 'browser-sync-webpack-plugin';
 import MiniCssExtractPlugin     from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin  from 'optimize-css-assets-webpack-plugin';
+import TerserPlugin             from 'terser-webpack-plugin';
 import IconfontWebpackPlugin    from 'iconfont-webpack-plugin';
 
 
@@ -46,16 +48,17 @@ module.exports = {
     mode: 'production',
     entry: {
 //         //the left property will also be used for the bundle location/name
-//         // 'js/bundle.min.js':  ['babel-polyfill', 'isomorphic-fetch', './resources/js/index.js'],
+        'js/bundle.min.js':  ['babel-polyfill', 'isomorphic-fetch', './resources/js/index.js'],
         'css/bundle':                 './resources/sass/app.scss',
     },
+    watch: true,
     output: {
         //set the path and name depending on the entry property name
         path: path.resolve(__dirname, './public/assets/'),
         filename: '[name]'
     },
     optimization: {
-        minimizer: [new OptimizeCSSAssetsPlugin({})],
+        minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
     module: {
         rules : [
