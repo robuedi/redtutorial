@@ -7,16 +7,7 @@
 
 @section('title') {{$lesson->course_name.' '.$lesson->lesson_name}} @parent @stop
 
-@section('stylesheets')
-    {{--<link rel="stylesheet" type="text/css" href="/assets/js/libs/prism/prism.css?v=1">--}}
-    <link rel="stylesheet" type="text/css" href="/assets/js/libs/highlightjs/styles/idea.css?v=1">
-@stop
-
 @section('scripts')
-    {{--<script src="/assets/js/libs/prism/prism.js?v=1"></script>--}}
-    <script src="/assets/js/libs/highlightjs/highlight.pack.js?v=1"></script>
-
-    <script>hljs.initHighlightingOnLoad();</script>
 @stop
 
 @section('content')
@@ -31,7 +22,7 @@
                 <h1>{{$lesson->lesson_name}}</h1>
             </div>
         </section>
-        <section class="tutorial-container" id="lessons_content">
+        <section class="tutorial-container" id="lessons_content" data-role="lessons-content">
             <div class="lesson-progress-container"  >
                 <div class="lesson-progress" data-role="lesson-progress">
                     @foreach($lesson_sections as $index => $lesson_section)
@@ -45,7 +36,7 @@
             </div>
             <div class="lessons-list" id="lessons_list" data-role="lessons-list">
                 @foreach($lesson_sections as $index => $lesson_section)
-                    <div class="lesson-container @if($index == 0) active @endif">
+                    <div class="lesson-container @if($index == 0) active @endif" @if($lesson_section->type == 'quiz' && isset($quiz_answers[$lesson_section->id])) data-type="q" @else data-type="t" @endif>
                         @if(!empty($lesson_section->name))
                             <h2>{{$lesson_section->name}}</h2>
                         @endif

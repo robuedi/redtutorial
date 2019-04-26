@@ -12,7 +12,7 @@
 @section('scripts')
     <script src="/assets/_admin/js/general.js"></script>
     <script src="/assets/_admin/js/libs/ckeditor_4.10.0_full/ckeditor.js"></script>
-    <script src="/assets/js/libs/prism/prism.js"></script>
+    <script src="/assets/_admin/js/libs/prism/prism.js"></script>
     <script>
         $(function (){
             CKEDITOR.editorConfig = function( config )
@@ -91,7 +91,7 @@
 @stop
 
 @section('stylesheets')
-    <link rel="stylesheet" type="text/css" href="/assets/js/libs/prism/prism.css">
+    <link rel="stylesheet" type="text/css" href="/assets/_admin/js/libs/prism/prism.css">
     <style>
         .sortable-handler {
             position: relative;
