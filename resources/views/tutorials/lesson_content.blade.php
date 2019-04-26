@@ -8,8 +8,6 @@
 @section('title') {{$lesson->course_name.' '.$lesson->lesson_name}} @parent @stop
 
 @section('scripts')
-    {{--<script src="/assets/js/libs/prism/prism.js?v=1"></script>--}}
-    <script src="/assets/js/libs/highlightjs/highlight.pack.js?v=1"></script>
 @stop
 
 @section('content')
