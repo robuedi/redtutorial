@@ -19,15 +19,15 @@ class Sitemap
         self::$sitemap[Request::root() . $url] = [];
 
         //check lastmod
-        if ($lastmod) {
-            self::$sitemap[Request::root() . $url]['lastmod'] = Carbon::createFromFormat('Y-m-d H:i:s', $lastmod)->toIso8601String();
-        }
+        //if ($lastmod) {
+        //    self::$sitemap[Request::root() . $url]['lastmod'] = Carbon::createFromFormat('Y-m-d H:i:s', $lastmod)->toIso8601String();
+        //}
 
         //set priority
         self::$sitemap[Request::root() . $url]['priority'] = $priority ?? 0.5;
 
         //check changefreq
-        self::$sitemap[Request::root() . $url]['changefreq'] = $changefreq ?? 'daily';
+        //self::$sitemap[Request::root() . $url]['changefreq'] = $changefreq ?? 'daily';
     }
 
     public static function getSitemap()

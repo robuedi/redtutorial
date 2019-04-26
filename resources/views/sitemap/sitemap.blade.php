@@ -6,7 +6,9 @@
         @if(isset($params['lastmod']))
             <lastmod>{{$params['lastmod']}}</lastmod>
         @endif
+        @if(isset($params['changefreq']))
         <changefreq>{{$params['changefreq']}}</changefreq>
+        @endif
         <priority>{{$params['priority']}}</priority>
     </url>
     @endforeach

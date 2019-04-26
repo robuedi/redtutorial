@@ -26,17 +26,17 @@ class SitemapController
         //set courses
         foreach($courses as $course)
         {
-            Sitemap::setItem('/tutorial/'.$course->slug, $course->updated_at, 1, 'hourly');
+            Sitemap::setItem('/tutorial/'.$course->slug, $course->updated_at, 0.6, 'hourly');
 
             //set chapters
             foreach ($course->publicChapters as $chapter)
             {
-                Sitemap::setItem('/tutorial/'.$course->slug.'/'.$chapter->slug, $chapter->updated_at, 0.9, 'hourly');
+                Sitemap::setItem('/tutorial/'.$course->slug.'/'.$chapter->slug, $chapter->updated_at, 0.8, 'hourly');
 
                 //set lessons
                 foreach ($chapter->publicLessons as $lesson)
                 {
-                    Sitemap::setItem('/tutorial/'.$course->slug.'/'.$chapter->slug.'/'.$lesson->slug, $lesson->updated_at, 0.8, 'daily');
+                    Sitemap::setItem('/tutorial/'.$course->slug.'/'.$chapter->slug.'/'.$lesson->slug, $lesson->updated_at, 1, 'daily');
                 }
             }
         }
