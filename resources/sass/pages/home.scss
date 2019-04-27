@@ -140,6 +140,8 @@
           padding: 15px;
         }
 
+
+
         .inner-container{
           height: 100%;
           text-align: left;
@@ -148,7 +150,22 @@
           padding-bottom: 55px;
           position: relative;
           border: 1px dashed $text-color;
+          text-decoration: none;
+          display: block;
 
+          &:hover, &:focus, &:active {
+            .start-course {
+              background-color: $brand-primary;
+              color: $white-color;
+
+              i{
+                &:before{
+                  color: $white-color ;
+                }
+
+              }
+            }
+          }
 
           h2{
             position: relative;
@@ -176,7 +193,7 @@
             }
           }
 
-          a.start-course{
+          .start-course{
             z-index: 2;
             font-family: $font-family;
             letter-spacing: 1px;
@@ -233,20 +250,6 @@
 
               }
             }
-
-            &:hover, &:focus, &:active {
-              background-color: $brand-primary;
-              color: $white-color;
-
-              i{
-                &:before{
-                  color: $white-color ;
-                }
-
-              }
-
-            }
-
           }
         }
 

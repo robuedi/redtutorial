@@ -20,15 +20,15 @@
 
         <section class="page-content" >
             @foreach($courses as $course)
-                <div class="course-item" >
-                    <div class="inner-container" >
+                <div class="course-item"  >
+                    <a class="inner-container" href="/{{$course->slug}}" >
                         <h2 >{{$course->name}} <small>Course</small></h2>
                         <div class="txt-content">
                             {!! $course->description !!}
                         </div>
 
                         @if($course->status === 1)
-                        <a class="start-course" href="/{{$course->slug}}">
+                        <p class="start-course" >
                             <span>
                                 @if(isset($course->completion_status)&&$course->completion_status>0)
                                     Continue the course
@@ -36,9 +36,9 @@
                                     Start now
                                 @endif
                             </span> <i class="fas fa-chevron-circle-right"></i>
-                        </a>
+                        </p>
                         @endif
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </section>
