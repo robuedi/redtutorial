@@ -18,7 +18,7 @@
         <section class="header-section" @if($course_image) style='background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif>
             <div class="subtitle">
                 <p class="inner-container">
-                    <a href="/tutorial/{{$chapter->course_slug}}"><i class="fas fa-angle-left"></i> Chapters</a>
+                    <a href="/{{$chapter->course_slug}}"><i class="fas fa-angle-left"></i> Chapters</a>
                 </p>
             </div>
             <div class="heading-inner-container">
@@ -30,7 +30,7 @@
             <div class="lesson-choosing">
                 @foreach($lessons as $index => $lesson)
                     <article class="option-container">
-                        <a href="/tutorial/{{$chapter->course_slug.'/'.$chapter->chapter_slug.'/'.$lesson->slug}}" class="option" >
+                        <a href="/{{$chapter->course_slug.'/'.$chapter->chapter_slug.'/'.$lesson->slug}}" class="option" >
                             <header class="top-txt" >
                                 <h2>{{$lesson->name}}</h2>
                             </header>

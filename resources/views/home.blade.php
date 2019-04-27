@@ -28,7 +28,7 @@
                         </div>
 
                         @if($course->status === 1)
-                        <a class="start-course" href="/tutorial/{{$course->slug}}">
+                        <a class="start-course" href="/{{$course->slug}}">
                             <span>
                                 @if(isset($course->completion_status)&&$course->completion_status>0)
                                     Continue the course

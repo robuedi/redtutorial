@@ -15,7 +15,7 @@
         <section class="tutorial-name" @if($course_image) style='background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif >
             <div class="subtitle">
                 <p class="inner-container">
-                    <a href="/tutorial/{{$lesson->course_slag.'/'.$lesson->chapter_slag}}"><i class="fas fa-angle-left"></i> Lessons</a>
+                    <a href="/{{$lesson->course_slag.'/'.$lesson->chapter_slag}}"><i class="fas fa-angle-left"></i> Lessons</a>
                 </p>
             </div>
             <div class="heading-inner-container">
@@ -59,7 +59,7 @@
                     </div>
                 @endforeach
                 <span class="prev-load"><i class="fas fa-chevron-circle-left"></i></span>
-                <span data-next-lesson="/tutorial/{{$lesson->course_slag}}@if($next_slug)/{{$lesson->chapter_slag}}@endif" class="next-load"><i class="fas fa-chevron-circle-right"></i></span>
+                <span data-next-lesson="/{{$lesson->course_slag}}@if($next_slug)/{{$lesson->chapter_slag}}@endif" class="next-load"><i class="fas fa-chevron-circle-right"></i></span>
             </div>
         </section>
     </main>

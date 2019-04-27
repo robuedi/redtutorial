@@ -22,6 +22,17 @@
                     uiColor : '#F5F5F5'
                 });
         })
+
+        //add course slug 'tutorial-' prefix
+        $("input[name='slug']").keydown(function(e) {
+            var oldvalue=$(this).val();
+            var field=this;
+            setTimeout(function () {
+                if(field.value.indexOf('tutorial-') !== 0) {
+                    $(field).val(oldvalue);
+                }
+            }, 1);
+        });
     </script>
 @stop
 

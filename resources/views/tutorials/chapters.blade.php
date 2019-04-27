@@ -32,7 +32,7 @@
                 <ol class="list-items">
                 @foreach($chapters as $index => $chapter)
                     <li >
-                        <a href="/tutorial/{{$course->slug.'/'.$chapter->slug}}" class="option" >
+                        <a href="/{{$course->slug.'/'.$chapter->slug}}" class="option" >
                             <span class="course-number">
                                 {{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}
                             </span>

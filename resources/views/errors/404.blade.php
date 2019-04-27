@@ -29,7 +29,7 @@
             <br/>
             <a class="btn-s-one" href="/">Home</a>
             @foreach(\App\Course::getPageNotFoundActiveCourses() as $course)
-                <a class="btn-s-one" href="/tutorial/{{$course->slug}}">{{$course->name}}</a>
+                <a class="btn-s-one" href="/{{$course->slug}}">{{$course->name}}</a>
             @endforeach
         </div>
     </section>

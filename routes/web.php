@@ -77,10 +77,10 @@ Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')
 Route::get('/', 'HomeController@index');
 
 //Tutorials
-Route::get('/tutorials', 'TutorialsController@index');
-Route::get('/tutorial/{course_slag}', 'TutorialsController@showChapters');
-Route::get('/tutorial/{course_slag}/{chapter_slag}', 'TutorialsController@showLessons');
-Route::get('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsController@showLessonContent');
+Route::get('/{course_slag}', 'TutorialsController@showChapters')->where('course_slag', '^tutorial-([^\s\/]+)');
+Route::get('/{course_slag}/{chapter_slag}', 'TutorialsController@showLessons')->where('course_slag', '^tutorial-([^\s\/]+)');
+Route::get('/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsController@showLessonContent')->where('course_slag', '^tutorial-([^\s\/]+)');
+
 
 //Info pages
 Route::get('/info/{url}', 'StaticPagesController@index');
