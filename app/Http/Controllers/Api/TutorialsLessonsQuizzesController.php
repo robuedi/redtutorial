@@ -145,7 +145,7 @@ class TutorialsLessonsQuizzesController
                 ];
             }
 
-            return json_encode($api_response);
+            return response()->json($api_response);
 
         }
     }

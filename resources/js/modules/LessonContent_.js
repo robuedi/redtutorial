@@ -3,30 +3,32 @@ export default class LessonContent_ {
     
     constructor(){
         
-        this.container,
-        this.progressBar,
-        this.lessonProgress,
-        this.sections,
-        this.prevBtn,
-        this.nextBtn,
-        this.nextLessonLink = undefined;
+        this.container      = '';
+        this.progressBar    = '';
+        this.lessonProgress = '';
+        this.sections       = '';
+        this.prevBtn        = '';
+        this.nextBtn        = '';
+        this.nextLessonLink = '';
+        this.currentActiveSection = '';
+        this.sectionChangingLocked = false;
 
     }
 
     load(){
-        let container = document.querySelector('[data-role="lessons-content"]');
+        this.container = document.querySelector('[data-role="lessons-content"]');
 
-        if(container !== undefined)
+        if(this.container !== null)
         {
-            this.fetchDOM(container);
+            this.fetchDOM();
             this.events();
         }
     }
 
-    fetchDOM(container)
+    fetchDOM()
     {
-        this.lessonsList        = container.querySelector('[data-role="lessons-list"]');
-        this.progressBar        = container.querySelector('[data-role="lesson-progress"]');
+        this.lessonsList        = this.container.querySelector('[data-role="lessons-list"]');
+        this.progressBar        = this.container.querySelector('[data-role="lesson-progress"]');
         this.lessonProgress     = this.progressBar.querySelectorAll(':scope > span');
         this.sections           = this.lessonsList.querySelectorAll('.lesson-container');
         this.prevBtn            = this.lessonsList.querySelector('.prev-load');
@@ -39,86 +41,102 @@ export default class LessonContent_ {
 
         //next btn clicked
         this.nextBtn.addEventListener('click', () => {
-            that.nextSection('right');
+            if(!this.sectionChangingLocked)
+            {
+                that.moveToSection('next');
+            }
         });
 
         //next btn clicked
         this.prevBtn.addEventListener('click', () => {
-            that.prevSection();
+            if(!this.sectionChangingLocked)
+            {
+                that.moveToSection('prev');
+            }
         });
 
         //click on top nav
-        this.lessonProgress.forEach((clickedBtn) => {
-            that.navigateByProgressBar(clickedBtn);
+        this.lessonProgress.forEach((clickedBtn, index) => {
+            clickedBtn.addEventListener('click', (e) => {
+                if(!this.sectionChangingLocked)
+                {
+                    that.navigateByProgressBar(clickedBtn, index);
+                }
+            });
+
         })
     }
 
-    navigateByProgressBar(clickedBtn)
+    moveToSection(direction)
     {
+        //get current active
+        this.setCurrentActiveSection();
 
-        //check if activated before
-        if(clickedBtn.classList.contains('pre-active')){
-
-            //check direction
-            let activeBtn = this.progressBar.querySelector(':scope > span.active');
-            let currentIndex = Array.from(this.progressBar.parentNode.children).indexOf(activeBtn);
-            let nextIndex = Array.from(this.progressBar.parentNode.children).indexOf(clickedBtn);
-
-            let direction = 'right';
-            if(currentIndex > nextIndex)
-            {
-                direction = 'left';
-            }
-
-            //get sections
-            let currentContent  = this.lessonsList.querySelector('.lesson-container.active');
-            let nextContent     = this.sections[nextIndex];
-
-            //move to content
-            this.navigateTo(currentContent, nextContent, direction);
-        }
-
-    }
-
-    navigateSections(direction)
-    {
-        //get current active section
-        let currentActiveSection = this.getCurrentActiveSection();
-
-        //do we have one?
-        if(!currentActiveSection)
+        //nothing active, something's wrong
+        if(!this.currentActiveSection)
         {
             return;
         }
 
-        //check if the current section is a quiz
-        //and we need to submit it first
-        let sectionType = this.getSectionType(currentActiveSection);
-
-        if(sectionType === 'quiz')
+        if(direction === 'next')
         {
-            this.submitQuiz();
+            const sectionType = this.getSectionType();
+            if(sectionType === 'quiz')
+            {
+                this.submitQuiz();
+                return;
+            }
+        }
+
+        //this applies also for prev and next
+        this.moveToSectionByDirection(direction);
+    }
+
+    moveToSectionByDirection(direction)
+    {
+        //check any next or go to next lesson
+        const nextSection = this.getNextSection(direction);
+
+        if(nextSection)
+        {
+            this.navigateTo(this.currentActiveSection, nextSection, direction);
         }
         else
         {
-            this.navigateToRequestedSection(currentActiveSection, direction);
+            window.location.href = this.nextLessonLink;
         }
     }
 
-    submitQuiz()
+    getCurrentSectionIndex()
     {
-
+        return this.getSectionIndex(this.currentActiveSection);
     }
 
-    navigateToRequestedSection(currentActiveSection, direction)
+    getSectionIndex(section)
     {
-
+        return Array.from(this.sections).indexOf(section);
     }
 
-    getCurrentActiveSection()
+    getNextSection(direction)
+    {
+        const currentIndex = this.getCurrentSectionIndex();
+        let nextIndex = currentIndex;
+        if(direction === 'next')
+        {
+            nextIndex++;
+        }
+        else
+        {
+            nextIndex--;
+        }
+
+        return this.sections[nextIndex];
+    }
+
+    setCurrentActiveSection()
     {
         //get active section
-        let currentActiveSectionArr = [...this.sections].filter(item => {
+        const currentActiveSectionArr = [...this.sections].filter(item => {
             if(item.classList.contains('active'))
             {
                 return item;
@@ -132,12 +150,174 @@ export default class LessonContent_ {
             return false;
         }
 
-        return currentActiveSectionArr[0];
+        this.currentActiveSection = currentActiveSectionArr[0];
     }
 
-    getSectionType(currentActiveSection)
+    submitQuiz()
     {
-        let sectionType = currentActiveSection.getAttribute('data-type');
+        const checkedOptions = this.getQuizResponses();
+        const quizIdentification = this.getQuizIdentification();
+
+        if(!quizIdentification)
+        {
+            this.showFeedback('warning', 'Something went wrong');
+
+            return;
+        };
+
+        if(checkedOptions.length < 1)
+        {
+            this.showFeedback('warning', 'No option selected');
+
+            return;
+        };
+
+        const that = this;
+
+        //lock any other user action
+        this.sectionChangingLocked = true;
+
+        fetch('/ajax/v1'+window.location.pathname+window.location.search + '/' + quizIdentification, {
+            method: "POST",
+            credentials: "same-origin", // include, *same-origin, omit
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                response: checkedOptions,
+                _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            })
+        })
+        //validate response
+        .then(response => {
+           const validate = that.validateAjaxResponse(response);
+           if(validate)
+           {
+               return validate;
+           }
+           else
+           {
+               this.sectionChangingLocked = false;
+           }
+        })
+        .then(response => {
+            that.processAjaxResponse(response);
+        })
+        .catch(error => {
+            that.showFeedback('warning', 'Something went wrong');
+            this.sectionChangingLocked = false;
+        });
+    }
+
+    validateAjaxResponse(response)
+    {
+        const contentType = response.headers.get("content-type");
+        if(contentType && contentType.includes("application/json"))
+        {
+            return response.json();
+        }
+        else
+        {
+            this.showFeedback('warning', 'Something went wrong');
+            return '';
+        }
+    }
+
+    processAjaxResponse(response)
+    {
+        if(response.status != 'success')
+        {
+            this.showFeedback('warning', 'Something went wrong')
+            this.sectionChangingLocked = false;
+            return;
+        }
+
+        //incorrect response
+        if(response.response.action != 'pass')
+        {
+            this.showFeedback('warning', response.response.message)
+            this.sectionChangingLocked = false;
+            return;
+        }
+
+        //correct response
+        //show feedback
+        this.showFeedback('success', response.response.message);
+
+        //move to next section
+        const that = this;
+        setTimeout(() =>  {
+            //move next
+            that.moveToSectionByDirection('next');
+        }, 1500);
+    }
+
+    getQuizIdentification()
+    {
+        const quizForm = this.currentActiveSection.querySelector('.quiz-form');
+
+        return quizForm.getAttribute('data-quiz');
+    }
+
+    getQuizResponses()
+    {
+        const quizForm = this.currentActiveSection.querySelector('.quiz-form');
+
+        if(quizForm)
+        {
+            const checkedOptions = quizForm.querySelectorAll('input:checked');
+
+            //get the values
+            let arrValues = [];
+            checkedOptions.forEach((element, index) =>  {
+                arrValues.push(element.value);
+            });
+
+            return arrValues;
+        }
+        else
+        {
+            return [];
+        }
+    }
+
+    navigateByProgressBar(clickedBtn, nextIndex)
+    {
+        //check if activated before
+        if(clickedBtn.classList.contains('pre-active')){
+
+            console.log(nextIndex);
+            //check direction
+            let direction = this.getProgressDirection(clickedBtn);
+
+            //get sections
+            let currentContent  = this.lessonsList.querySelector('.lesson-container.active');
+            let nextContent     = this.sections[nextIndex];
+
+            //move to content
+            this.navigateTo(currentContent, nextContent, direction);
+        }
+
+    }
+
+    getProgressDirection(clickedBtn)
+    {
+        let activeBtn = this.progressBar.querySelector(':scope > span.active');
+        let currentIndex = Array.from(this.progressBar.parentNode.children).indexOf(activeBtn);
+        let nextIndex = Array.from(this.progressBar.parentNode.children).indexOf(clickedBtn);
+
+        let direction = 'right';
+        if(currentIndex > nextIndex)
+        {
+            direction = 'left';
+        }
+
+        return direction;
+    }
+
+    getSectionType()
+    {
+        let sectionType = this.currentActiveSection.getAttribute('data-type');
         if(sectionType === 'q')
         {
             return 'quiz';
@@ -148,189 +328,45 @@ export default class LessonContent_ {
         }
     }
 
-    nextSection2()
-    {
-        //get current active
-        let currentActive = [...this.sections].filter(item => {
-            if(item.classList.contains('active'))
-            {
-                return item;
-            }
-        });
-
-        if(currentActive.length === 0) //something wrong if here
-        {
-            return;
-        }
-
-        //check if quiz
-        let quizForm = currentActive.find('.quiz-form');
-        if(quizForm.length > 0)
-        {
-            this.submitQuiz(quizForm);
-        }
-        else
-        {
-            //check any next or go to next lesson
-            this.moveToNextSectionOrLection();
-        }
-    }
-
-    prevSection()
-    {
-
-        //check if any is active
-        let currentActive = this.sections.filter('.active');
-        if(currentActive.length > 0)
-        {
-            let prevActive = currentActive.prev('.lesson-container');
-
-            if(prevActive.length > 0)
-            {
-                this.navigateTo(currentActive, prevActive, 'left');
-            }
-        }
-    }
-
-    submitQuiz2(quizForm) {
-        let checkedOptions = $(quizForm).find('input:checked');
-        let that = this;
-
-        if(checkedOptions.length > 0)
-        {
-            let arrValues = [];
-            checkedOptions.each((index, element) =>  {
-                arrValues.push($(element).val());
-            })
-
-            let verification_quiz = quizForm.attr('data-quiz');
-
-            //clear any existing feedback
-            this.clearFeedback();
-
-            //check response
-            $.ajax({
-                url: '/ajax/v1'+window.location.pathname+window.location.search + '/' + verification_quiz,
-                method: 'POST',
-                dataType: 'json',
-                async: true,
-                data: {response: arrValues, _token: $('meta[name="csrf-token"]').attr('content')},
-                success: (response) => {
-                    if(response.status == 'success')
-                    {
-                        //correct response
-                        if(response.response.action == 'pass')
-                        {
-                            //show feedback
-                            that.showFeedback('success', response.response.message);
-
-                            setTimeout(() =>  {
-                                //move next
-                                that.moveToNextSectionOrLection();
-                            }, 1500);
-                        }
-                        else //incorrect response
-                        {
-                            that.showFeedback('warning', response.response.message)
-                        }
-                    }
-                    else
-                    {
-                        that.showFeedback('warning', 'Something went wrong')
-                    }
-                },
-                error: () =>  {
-                    that.showFeedback('warning', 'Something went wrong')
-                }
-            })
-        }
-        else
-        {
-            that.showFeedback('warning', 'No option selected');
-        }
-    }
-
-    showFeedback(type, msg) {
-        //set message
-        let html = $('<div class="ui-feedback hidden-temp '+type+'">\n' +
-            '<span>\n' +
-            msg +
-            '</span>\n' +
-            '</div>');
-
-        //append to active section
-        this.clearFeedback();
-        let activeSection = this.sections.filter('.active');
-        activeSection.append(html);
-
-        //show message
-        setTimeout(() =>  {
-            $(html).removeClass('hidden-temp');
-        }, 20);
-
-        //hide message
-        setTimeout(() =>  {
-            $(html).addClass('hidden-temp');
-        }, 2500);
-
-        //remove message
-        setTimeout(() =>  {
-            $(html).remove();
-        }, 3050);
-    }
-
-    clearFeedback() {
-        let activeSection = this.sections.filter('.active');
-        activeSection.find('.ui-feedback').remove();
-    }
-
-    moveToNextSectionOrLection() {
-        //check any next or go to next lesson
-        let activeSection = this.sections.filter('.active');
-        let nextSection = activeSection.next('.lesson-container');
-        if(nextSection.length > 0)
-        {
-            this.navigateTo(activeSection, nextSection, 'right');
-        }
-        else
-        {
-            window.location.href = this.nextLessonLink;
-        }
-    }
-
     navigateTo(from, to, directionTo) {
-
-        console.log('test');
 
         //check movement direction
         let fromClass = 'remove-to-left';
         let toClass = 'show-from-right';
-        if(directionTo === 'left')
+
+        if(directionTo === 'prev')
         {
             fromClass = 'remove-to-right';
             toClass = 'show-from-left';
         }
 
         //hide the current one
-        from.addClass(fromClass);
-        from.removeClass('active');
+        from.classList.add(fromClass);
+        from.classList.remove('active');
         setTimeout(() =>  {
-            from.removeClass(fromClass);
+            from.classList.remove(fromClass);
         }, 500);
 
         //show the next one
-        setTimeout(() =>  {
-            to.addClass(toClass);
+        const classTransition = new Promise(resolve => {
             setTimeout(() =>  {
-                to.addClass('active');
-                setTimeout(() =>  {
-                    to.removeClass(toClass);
-                }, 500);
-            }, 10);
-        }, 490);
+                to.classList.add(toClass);
 
-        //scroll top
-        setTimeout(() =>  {
+                resolve();
+            }, 490);
+        });
+
+        classTransition
+        .then(()=>{
+            to.classList.add('active');
+        })
+        .then(()=>{
+            setTimeout(() =>  {
+                to.classList.remove(toClass);
+            }, 500);
+        })
+        .then(()=>{
+            //scroll top
             //check if we should scroll
             if($(window).scrollTop() > ($('#lessons_list').offset().top - 20))
             {
@@ -338,10 +374,83 @@ export default class LessonContent_ {
                     scrollTop: $('#lessons_content').offset().top - 20
                 }, 500);
             }
-        }, 1000);
+        });
 
         //set top progress
-        this.lessonProgress.filter('.active').addClass('pre-active').removeClass('active');
-        this.lessonProgress.eq($(to).index()).removeClass('pre-active').addClass('active');
+        this.preactivateCurrentProgress();
+        const toSectionIndex = this.getSectionIndex(to);
+        this.lessonProgress[toSectionIndex].classList.remove('pre-active');
+        this.lessonProgress[toSectionIndex].classList.add('active');
+
+        //unlock actions
+        this.sectionChangingLocked = false;
+    }
+
+    preactivateCurrentProgress()
+    {
+        const currentProgress = this.getActiveLessonProgress();
+
+        if(currentProgress)
+        {
+            currentProgress.classList.add('pre-active');
+            currentProgress.classList.remove('active');
+        }
+    }
+
+    getActiveLessonProgress()
+    {
+        //get active section
+        const currentActiveProgressArr = [...this.lessonProgress].filter(item => {
+            if(item.classList.contains('active'))
+            {
+                return item;
+            }
+        });
+
+        //check if the number of current section is only one
+        // else something is not right
+        if(currentActiveProgressArr.length <= 0)
+        {
+            return false;
+        }
+
+        return  currentActiveProgressArr[0];
+    }
+
+    showFeedback(type, msg) {
+        //set message
+        let html = document.createElement("div");
+        html.classList.add('ui-feedback');
+        html.classList.add('hidden-temp');
+        html.classList.add(type);
+
+        html.innerHTML = `<span>${msg}</span>`;
+
+        //append to active section
+        this.clearFeedback();
+        this.currentActiveSection.appendChild(html);
+
+        //show message
+        setTimeout(() =>  {
+            html.classList.remove('hidden-temp');
+        }, 20);
+
+        //hide message
+        setTimeout(() =>  {
+            html.classList.add('hidden-temp');
+        }, 2500);
+
+        //remove message
+        setTimeout(() =>  {
+            html.remove();
+        }, 3050);
+    }
+
+    clearFeedback() {
+        const feedbackMsg = this.currentActiveSection.querySelector('.ui-feedback');
+        if(feedbackMsg)
+        {
+            feedbackMsg.remove();
+        }
     }
 }

@@ -116,5 +116,5 @@ Route::get('/images/assets/img/{file_name}', 'ImageController@showAssetImage');
 Route::get('/sitemap.xml', 'SitemapController@index');
 
 Route::group(array('namespace' => 'Api', 'prefix' => 'ajax/v1'), function(){
-    Route::post('/tutorial/{course_slag}/{chapter_slag}/{lesson_slag}/{quiz_id}', 'TutorialsLessonsQuizzesController@validateQuiz');
+    Route::post('/{course_slag}/{chapter_slag}/{lesson_slag}/{quiz_id}', 'TutorialsLessonsQuizzesController@validateQuiz')->where('course_slag', '^tutorial-([^\s\/]+)');
 });

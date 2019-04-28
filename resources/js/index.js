@@ -1,4 +1,4 @@
-    import LessonContent from './modules/LessonContent';
+    import LessonContent from './modules/LessonContent_';
     import CookieBar from './modules/CookieBar';
     import FeedbackMessage from './modules/FeedbackMessage';
     import MobileSidebarMenu from './modules/MobileSidebarMenu';
@@ -7,7 +7,6 @@
     import shell from './modules/libs/highlight.js/lib/languages/shell';
     import bash from './modules/libs/highlight.js/lib/languages/bash';
     import php from './modules/libs/highlight.js/lib/languages/php';
-    // import hljs from './modules/libs/highlight.pack'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -29,5 +28,5 @@ document.addEventListener('DOMContentLoaded', () => {
     hljs.initHighlightingOnLoad();
 
     let lessonContent = new LessonContent();
-    // lessonContent.load();
+    lessonContent.load();
 });
