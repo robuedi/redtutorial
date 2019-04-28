@@ -1,0 +1,11 @@
+.hljs {
+  .hljs-meta
+  {
+    color: #215bc5;
+
+  }
+
+  > .hljs-meta:last-child:not(:nth-child(2)){
+    display: none;
+  }
+}

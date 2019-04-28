@@ -283,10 +283,8 @@ export default class LessonContent_ {
 
     navigateByProgressBar(clickedBtn, nextIndex)
     {
-        //check if activated before
-        if(clickedBtn.classList.contains('pre-active')){
-
-            console.log(nextIndex);
+        if(clickedBtn.classList.contains('pre-active'))
+        {
             //check direction
             let direction = this.getProgressDirection(clickedBtn);
 
@@ -296,8 +294,17 @@ export default class LessonContent_ {
 
             //move to content
             this.navigateTo(currentContent, nextContent, direction);
+
+            return;
         }
 
+        //check if it's the next section
+        this.setCurrentActiveSection();
+        const followingIndex = this.getCurrentSectionIndex() + 1;
+        if(followingIndex === nextIndex)
+        {
+            this.moveToSection('next');
+        }
     }
 
     getProgressDirection(clickedBtn)

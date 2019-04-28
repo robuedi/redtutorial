@@ -118,6 +118,7 @@
           font-weight: 900;
           cursor: not-allowed;
           padding: 1px;
+          transition: background-color .5s;
 
           i{
             height: 22px;
@@ -128,10 +129,12 @@
             display: block;
             font-style: normal;
             box-sizing: border-box;
+            border: 1px solid #FFF;
+            transition: border-color .5s;
 
-            i {
-              border: 1px solid $white-color;
-            }
+            //i {
+            //  border: 1px solid $white-color;
+            //}
           }
 
           &.active{
@@ -139,7 +142,11 @@
             background-color: $text-color;
             color: $white-color;
             i {
-              border: 1px solid $text-color;
+              border-color: #000;
+            }
+
+            + .quiz-sign, + .text-sign {
+              cursor: pointer;
             }
           }
           &.pre-active{
@@ -147,7 +154,7 @@
             cursor: pointer;
 
             i {
-              border: 1px solid $text-color;
+              border-color: #000;
             }
           }
         }
@@ -245,10 +252,13 @@
 
           code {
             font-family: $font-family-monospace;
-            background-color: #F9F9FD;
-            padding: 25px 10px 25px 15px;
-            border-left: 2px solid #bbb;
-            box-shadow: 0 0 1px 1px rgba(100,100,100,0.2);
+            background-color: #F9F9FB;
+            padding: 20px 10px 20px 25px;
+            border: 1px solid #ccc;
+            border-left: 2px solid #ccc;
+            box-shadow: 0 0 3px 1px rgba(140,140,140,0.1);
+            border-radius: 1px;
+            font-size: 15px;
           }
         }
 
@@ -313,15 +323,15 @@
 
             .input-label{
               cursor: pointer;
-              box-shadow: 1px 1px 1px 1px rgba(150,150,150,0.2);
-              border: 1px solid #ccc;
+              box-shadow: 0px 0px 3px 1px rgba(180,180,180,0.2);
+              border: 1px solid #ddd;
               display: block;
               padding: 10px 15px 10px 30px;
               margin-bottom: 10px;
               position: relative;
 
               &:hover {
-                background-color: #eee;
+                background-color: #f7f7f7;
               }
 
               &:before {
@@ -333,6 +343,7 @@
                 left: 1px;
                 background-color: #ccc;
                 z-index: 2;
+                border-radius: 1px;
               }
             }
 
