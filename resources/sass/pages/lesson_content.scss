@@ -257,8 +257,8 @@
             border: 1px solid #ccc;
             border-left: 2px solid #ccc;
             box-shadow: 0 0 3px 1px rgba(140,140,140,0.1);
-            border-radius: 1px;
             font-size: 15px;
+            border-radius: 3px;
           }
         }
 
@@ -330,6 +330,7 @@
               margin-bottom: 15px;
               position: relative;
               transition: border-color .5s;
+              border-radius: 2px;
 
               &:hover {
                 border: 1px solid #333;
@@ -409,24 +410,22 @@
         display: inline-block;
         padding: 15px;
         font-size: 20px;
-        border: 1px solid $text-color;
         font-weight: 600;
         position: relative;
         transform: translateY(0);
-        transition: transform .4s, opacity 1.5s;
+        transition: transform .4s, opacity .6s;
         opacity: 1;
       }
 
       &.hidden-temp{
-
         span{
           opacity: 0;
-          transform: translateY(calc(-100% - 10px));
+          transform: translateY(-15px);
         }
       }
 
       &.warning span{
-        border: 1px solid $brand-primary;
+        color: $brand-primary;
       }
     }
   }

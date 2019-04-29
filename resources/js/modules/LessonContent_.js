@@ -438,19 +438,25 @@ export default class LessonContent_ {
         this.currentActiveSection.appendChild(html);
 
         //show message
-        setTimeout(() =>  {
-            html.classList.remove('hidden-temp');
-        }, 20);
+        const feedbackMsg = new Promise((resolve => {
+            setTimeout(() => {
+                html.classList.remove('hidden-temp');
+                resolve();
+            }, 20);
+        }));
 
-        //hide message
-        setTimeout(() =>  {
-            html.classList.add('hidden-temp');
-        }, 2500);
-
-        //remove message
-        setTimeout(() =>  {
-            html.remove();
-        }, 3050);
+        feedbackMsg.then(()=>{
+            //hide message
+            setTimeout(() =>  {
+                html.classList.add('hidden-temp');
+            }, 1500);
+        })
+        .then(()=>{
+            //remove message
+            setTimeout(() =>  {
+                html.remove();
+            }, 3000);
+        })
     }
 
     clearFeedback() {
