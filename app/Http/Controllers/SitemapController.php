@@ -45,7 +45,7 @@ class SitemapController
         Sitemap::setItem('/user/reset-password', null, 0.2, 'monthly');
 
         //static pages
-        Sitemap::setItem('/contact', null, 0.4, 'monthly');
+        Sitemap::setItem('/contact-us', null, 0.4, 'monthly');
 
         //set other static pages
         foreach(MenuClientStatic::getStaticMenu() as $page)
