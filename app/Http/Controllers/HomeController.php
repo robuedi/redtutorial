@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\LessonSection;
+use App\MediaFileToItem;
 use View;
 use App\Course;
 use Log;
@@ -26,16 +27,17 @@ class HomeController extends Controller
                     ->get();
 
         $user = Sentinel::getUser();
-        //add progress
-        if($user)
+        //add info
+        foreach ($courses as $course)
         {
-            foreach ($courses as $course)
-            {
-                if($course->status == 2)
-                    continue;
+            //add image
+            $course->image_url = MediaFileToItem::getCourseImageURL($course->id);
 
-                $course->completion_status = Course::getChapterCompletionStatus($course->id, $user->id);
-            }
+            //add progress
+            if($course->status == 2||!$user)
+                continue;
+
+            $course->completion_status = Course::getChapterCompletionStatus($course->id, $user->id);
         }
 
         $meta['keywords'] = 'PHP, Step by step, SQL, JavaScript, design patterns, SOLID principles';

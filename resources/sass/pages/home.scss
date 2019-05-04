@@ -184,10 +184,27 @@
             font-size: 70px;
             color: $text-color;
             margin: 0 0 35px ;
+            font-weight: 900;
+
+            .course-name {
+              @media (min-width: $screen-md) {
+                background-image: var(--background);
+                font-size: 90px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: rgba(188,81,158,0.4);
+              }
+            }
 
             small {
+              font-weight: 600;
+              background: none;
               display: block;
               font-size: 26px;
+              -webkit-background-clip: initial;
+              -webkit-text-fill-color: #000;
             }
           }
 
