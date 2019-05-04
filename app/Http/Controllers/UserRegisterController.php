@@ -71,7 +71,7 @@ class UserRegisterController extends Controller
             Mail::send('emails.activate_account', ['activation_url' => $activation_url, 'user' => $user], function ($m) use ($user) {
                 $m->from('no-reply@redtutorial.com', config('app.name'));
 
-                $m->to($user->email, $user->first_name.''.$user->last_name)->subject('Password Reset');
+                $m->to($user->email, $user->first_name.''.$user->last_name)->subject('Activate Account');
             });
 
             //show feedback

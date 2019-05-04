@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Redirect;
 use App\Libraries\UIMessage;
 use App\Rules\Captcha;
 use App\ContactMessage;
+use Illuminate\Support\Facades\Mail;
+use DateTime;
+use DateTimeZone;
 use Sentinel;
 use Log;
 
@@ -72,6 +75,27 @@ class ContactController extends Controller
                 $message_to_user->user_id       = $user->id;
                 $message_to_user->save();
             }
+
+
+            //send email to admin
+
+            //get date time
+            $date = new DateTime("now", new DateTimeZone('Europe/London') );
+            $current_date = $date->format('Y-m-d H:i:s');
+
+            $email_data = [
+                'created_at' => $current_date,
+                'name' => $contact_message->name,
+                'email' => $contact_message->email,
+                'subject' => $contact_message->subject,
+                'content' => $contact_message->content
+            ];
+
+            Mail::send('emails.contact_msg', $email_data, function ($m) {
+                $m->from('no-reply@redtutorial.com', config('app.name'));
+
+                $m->to(config('app.admin_email'), 'Admin User')->subject('New Contact Us message');
+            });
 
             UIMessage::set('success', 'Message sent successfully. Thank you.');
             return Redirect::back();
