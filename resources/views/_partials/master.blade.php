@@ -77,7 +77,7 @@
         @yield('scripts')
 
         <!-- JS -->
-        <script src="/assets/js/bundle.min.js?v=4"></script>
+        <script src="/assets/js/bundle.min.js?v=5"></script>
 
     </body>
 </html>
