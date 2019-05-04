@@ -181,22 +181,10 @@
           h2{
             position: relative;
             z-index: 2;
-            font-size: 70px;
+            font-size: 65px;
             color: $text-color;
             margin: 0 0 35px ;
             font-weight: 900;
-
-            .course-name {
-              @media (min-width: $screen-md) {
-                background-image: var(--background);
-                font-size: 90px;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: rgba(188,81,158,0.4);
-              }
-            }
 
             small {
               font-weight: 600;
@@ -285,3 +273,12 @@
 
     }
 }
+@-webkit-keyframes move-bg-up {
+  0% {
+    background-position-y: 0;
+  }
+  100% {
+    background-position-y: 120px;
+  }
+}
+

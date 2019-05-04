@@ -30,9 +30,6 @@ class HomeController extends Controller
         //add info
         foreach ($courses as $course)
         {
-            //add image
-            $course->image_url = MediaFileToItem::getCourseImageURL($course->id);
-
             //add progress
             if($course->status == 2||!$user)
                 continue;

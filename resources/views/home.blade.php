@@ -24,7 +24,7 @@
             @foreach($courses as $course)
                 <div class="course-item"  >
                     <a class="inner-container" href="/{{$course->slug}}" >
-                        <h2 ><span @if($course->image_url) style="--background: url('/images/{{$course->image_url}}?w=180&fit=contain&filt=greyscale')" @endif class="course-name">{{$course->name}}</span> <small>Tutorial</small></h2>
+                        <h2 ><span class="course-name">{{$course->name}}</span> <small>Tutorial</small></h2>
                         <div class="txt-content">
                             {!! $course->description !!}
                         </div>
