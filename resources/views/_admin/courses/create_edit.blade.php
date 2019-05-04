@@ -24,12 +24,12 @@
         })
 
         //add course slug 'tutorial-' prefix
-        $("input[name='slug']").keydown(function(e) {
+        $("input[name='slug']").focusout(function(e) {
             var oldvalue=$(this).val();
             var field=this;
             setTimeout(function () {
-                if(field.value.indexOf('tutorial-') !== 0) {
-                    $(field).val(oldvalue);
+                if(field.value.indexOf('-tutorial') === -1) {
+                    $(field).val(oldvalue+'-tutorial');
                 }
             }, 1);
         });
