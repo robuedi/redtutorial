@@ -51,7 +51,10 @@
                                     <hr class="simple"/>
                                 @endif
                                 <h3>{{$message->name}}</h3>
-                                <a href="mailto:{{$message->email}}">{{$message->email}}</a>
+                                <p>
+                                    <a href="mailto:{{$message->email}}">{{$message->email}}</a>
+                                </p>
+                                <p>{{$message->created_at}}</p>
                             </div>
                         </div>
                     </div>

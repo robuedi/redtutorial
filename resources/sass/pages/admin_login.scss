@@ -28,11 +28,10 @@ body#admin_authentication {
 
       button.submit {
         display: block;
-        background-color: #666;
+        background-color: $brand-primary;
         color: $white-color;
         width: 100%;
         border: none;
-        border-radius: 0;
         padding: 5px 10px;
         font-size: 15px;
         font-weight: 400;
@@ -40,9 +39,11 @@ body#admin_authentication {
         text-transform: uppercase;
         letter-spacing: 1px;
         cursor: pointer;
+        transition: background-color .5s;
+        border-radius: 3px;
 
-        &:hover {
-          animation: submit-hover .3s forwards;
+        &:hover, &:focus {
+          background-color: darken($brand-primary, 15%);
         }
 
       }
@@ -75,27 +76,6 @@ body#admin_authentication {
           border-radius: 10%;
           height: 100px;
           width: auto;
-        }
-      }
-    }
-
-    footer {
-      box-sizing: border-box;
-      height: 100px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      max-width: 100vw;
-      padding: 30px 10px 10px;
-
-      ul{
-        text-align: left;
-        display: inline-block;
-        
-        .warning{
-          color: #777;
         }
       }
     }
