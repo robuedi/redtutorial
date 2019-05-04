@@ -19,7 +19,7 @@
                 </p>
             </div>
             <div class="heading-inner-container">
-                <h1>{{$lesson->lesson_name}}</h1>
+                <h1>{{$lesson->course_name.' | '.$lesson->lesson_name}}</h1>
             </div>
         </section>
         <section class="tutorial-container" id="lessons_content" data-role="lessons-content">

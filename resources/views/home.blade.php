@@ -22,7 +22,7 @@
             @foreach($courses as $course)
                 <div class="course-item"  >
                     <a class="inner-container" href="/{{$course->slug}}" >
-                        <h2 >{{$course->name}} <small>Course</small></h2>
+                        <h2 >{{$course->name}} <small>Tutorial</small></h2>
                         <div class="txt-content">
                             {!! $course->description !!}
                         </div>

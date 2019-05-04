@@ -22,7 +22,7 @@
                 </p>
             </div>
             <div class="heading-inner-container">
-                <h1>{{$chapter->chapter_name}}</h1>
+                <h1>{{$chapter->course_name.' | '.$chapter->chapter_name}}</h1>
             </div>
         </section>
 
