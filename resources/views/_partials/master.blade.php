@@ -27,7 +27,7 @@
         <link rel="canonical" href="{{ url()->current() }}" />
 
         <link rel="icon" href="/assets/img/logo.ico">
-        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=7">
+        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=8">
 
         @yield('stylesheets')
 
@@ -42,7 +42,7 @@
         @yield('head_end')
     </head>
 
-    <body>
+    <body class="@yield('body_class')">
 
         @include('_partials.navigation', array('static_pages' => \App\Libraries\MenuClientStatic::getStaticMenu()))
 
@@ -77,7 +77,7 @@
         @yield('scripts')
 
         <!-- JS -->
-        <script src="/assets/js/bundle.min.js?v=5"></script>
+        <script src="/assets/js/bundle.min.js?v=8"></script>
 
     </body>
 </html>

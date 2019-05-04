@@ -22,13 +22,13 @@
 
   input, textarea {
     -webkit-appearance: none;
-    border-radius: unset;
     transition: border .5s;
     padding: 8px;
     width: 100%;
     font-size: 18px;
     box-sizing: border-box;
     border: 1px solid $text-color;
+    border-radius: 2px;
 
     &:hover, &:focus {
       border-color: $brand-primary;

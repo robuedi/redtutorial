@@ -10,6 +10,8 @@
 @section('stylesheets')
 @stop
 
+@section('body_class') body-home @stop
+
 @section('content')
     <main id="home_container">
         <section class="page-title">
