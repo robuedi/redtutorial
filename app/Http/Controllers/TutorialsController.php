@@ -29,6 +29,7 @@ class TutorialsController extends Controller
         $chapters = Chapter::getChaptersByCourseID($course->id);
 
         $user = Sentinel::getUser();
+
         if($user)
         {
             $chapters = UserProgressStatus::addCurrentUserChaptersStatus($user->id, $chapters);
@@ -90,11 +91,12 @@ class TutorialsController extends Controller
         $meta['description'] = 'Learn '.$lesson_info->course_name.' - '.$lesson_info->chapter_name;
 
         return View::make('tutorials.lessons', [
-            'chapter'   => $lesson_info,
-            'meta'      => $meta,
-            'course_id' => $lesson_info->course_id,
-            'lessons'   => $lessons,
-            'course_image'   => $course_image
+            'chapter'       => $lesson_info,
+            'meta'          => $meta,
+            'course_id'     => $lesson_info->course_id,
+            'lessons'       => $lessons,
+            'course_image'  => $course_image,
+            'user'          => Sentinel::getUser()
         ]);
     }
 
@@ -160,7 +162,8 @@ class TutorialsController extends Controller
             'course_id'         => $lesson->course_id,
             'next_slug'         => $next_slug,
             'quiz_answers'      => $quiz_answers,
-            'course_image'      => $course_image
+            'course_image'      => $course_image,
+            'user'              => Sentinel::getUser()
         ]);
     }
 

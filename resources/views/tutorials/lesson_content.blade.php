@@ -23,6 +23,11 @@
             </div>
         </section>
         <section class="tutorial-container" id="lessons_content" data-role="lessons-content">
+
+            @if(!$user)
+                <p class="register-here-label">Register <a class="link" href="/user/sign-in">here</a> to save your progress</p>
+            @endif
+
             <div class="lesson-progress-container"  >
                 <div class="lesson-progress" data-role="lesson-progress">
                     @foreach($lesson_sections as $index => $lesson_section)
