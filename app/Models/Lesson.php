@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Lesson extends Model
 {
@@ -42,5 +43,31 @@ class Lesson extends Model
             ->whereNotNull('slug')
             ->orderBy('order_weight')
             ->get();
+    }
+
+    public static function getLessonByCourseChapterLessonSlugs($course_slug, $chapter_slug, $lesson_slug)
+    {
+        return DB::table('courses as co')
+            ->join('chapters as ch', 'co.id', '=', 'ch.course_id')
+            ->join('lessons as le', 'ch.id', '=', 'le.chapter_id')
+            ->where('co.slug', $course_slug)
+            ->where('ch.slug', $chapter_slug)
+            ->where('le.slug', $lesson_slug)
+            ->where('co.status', 1)
+            ->where('ch.is_public', 1)
+            ->where('le.is_public', 1)
+            ->selectRaw('co.id as course_id, co.name as course_name, co.slug as course_slag, ch.name as chapter_name, ch.slug as chapter_slag, le.chapter_id as chapter_id, le.order_weight as lesson_order, le.id as lesson_id, le.name as lesson_name, le.description as lesson_description')
+            ->first();
+    }
+
+    public static function getNextLesson($lesson_order, $chapter_id)
+    {
+        return self::where('lessons.order_weight', '>', $lesson_order)
+            ->where('lessons.chapter_id', $chapter_id)
+            ->where('lessons.is_public',1)
+            ->join('lessons_sections', 'lessons_sections.lesson_id', '=', 'lessons.id')
+            ->where('lessons_sections.is_public', 1)
+            ->orderBy('lessons.order_weight')
+            ->first();
     }
 }

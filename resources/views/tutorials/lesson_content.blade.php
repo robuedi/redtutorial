@@ -27,16 +27,16 @@
                 <div class="lesson-progress" data-role="lesson-progress">
                     @foreach($lesson_sections as $index => $lesson_section)
                         @if($lesson_section->type == 'quiz')
-                            <span class="@if($index == 0) active @endif quiz-sign"><i>?</i></span>
+                            <span class="@if($lesson_section->completion_status == 1) active @elseif($lesson_section->completion_status == 2) pre-active @endif quiz-sign"><i>?</i></span>
                         @elseif($lesson_section->type == 'text')
-                            <span class="@if($index == 0) active @endif text-sign"><i class="fas fa-caret-right"></i></span>
+                            <span class="@if($lesson_section->completion_status == 1) active @elseif($lesson_section->completion_status == 2) pre-active @endif text-sign"><i class="fas fa-caret-right"></i></span>
                         @endif
                     @endforeach
                 </div>
             </div>
             <div class="lessons-list" id="lessons_list" data-role="lessons-list">
                 @foreach($lesson_sections as $index => $lesson_section)
-                    <div class="lesson-container @if($index == 0) active @endif" @if($lesson_section->type == 'quiz' && isset($quiz_answers[$lesson_section->id])) data-type="q" @else data-type="t" @endif>
+                    <div data-text="{{$lesson_section->completion_status}}" class="lesson-container @if($lesson_section->completion_status == 1) active @endif" @if($lesson_section->type == 'quiz' && isset($quiz_answers[$lesson_section->id])) data-type="q" @else data-type="t" @endif>
                         @if(!empty($lesson_section->name))
                             <h2>{{$lesson_section->name}}</h2>
                         @endif
