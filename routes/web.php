@@ -76,10 +76,48 @@ Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')
 //Home
 Route::get('/', 'HomeController@index');
 
+
+
+//Route::get('/{course_slag}/{chapter_slag}', function($course_slag, $chapter_slag){
+//
+//    $course_name = explode('-',$course_slag);
+//    if(!isset($course_name[1]))
+//    {
+//        abort(404);
+//    }
+//
+//    return Redirect::to('/'.$course_name[1].'-tutorial/'.$chapter_slag, 301);
+//})->where('course_slag', '^tutorial-([^\s\/]+)');
+//
+//Route::get('/{course_slag}/{chapter_slag}/{lesson_slag}', function($course_slag, $chapter_slag, $lesson_slag){
+//
+//    $course_name = explode('-',$course_slag);
+//    if(!isset($course_name[1]))
+//    {
+//        abort(404);
+//    }
+//
+//    return Redirect::to('/'.$course_name[1].'-tutorial/'.$chapter_slag.'/'.$lesson_slag, 301);
+//})->where('course_slag', '^tutorial-([^\s\/]+)');
+
+//Old Redirect Tutorials
+//Route::get('/{course_slag}', function($course_slag){
+//
+//    Log::info('test');
+//    $course_name = explode('-', $course_slag);
+//    if(!isset($course_name[1]))
+//    {
+//        abort(404);
+//    }
+//
+//    return Redirect::to('/'.$course_name[1].'-tutorial', 301);
+//})->where('course_slag', '^tutorial-([^\s\/]+)');
+
 //Tutorials
 Route::get('/{course_slag}', 'TutorialsController@showChapters')->where('course_slag', '^([^\s\/]+)-tutorial$');
 Route::get('/{course_slag}/{chapter_slag}', 'TutorialsController@showLessons')->where('course_slag', '^([^\s\/]+)-tutorial$');
 Route::get('/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsController@showLessonContent')->where('course_slag', '^([^\s\/]+)-tutorial$');
+
 
 //Old Redirect Tutorials
 Route::get('/{tutorial_label}/{course_slag}', function($tutorial_label, $course_slag){
@@ -93,7 +131,6 @@ Route::get('/{tutorial_label}/{course_slag}/{chapter_slag}', function($tutorial_
 Route::get('/{tutorial_label}/{course_slag}/{chapter_slag}/{lesson_slag}', function($tutorial_label, $course_slag, $chapter_slag, $lesson_slag){
     return Redirect::to('/'.$course_slag.'-tutorial/'.$chapter_slag.'/'.$lesson_slag, 301);
 })->where('tutorial_label', '^tutorial$');
-
 
 //Info pages
 Route::get('/info/{url}', 'StaticPagesController@index');
