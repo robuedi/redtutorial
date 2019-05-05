@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Chapter;
 use App\LessonSection;
 use App\LessonSectionOption;
+use App\Libraries\UserCourseStatus;
 use View;
 use App\Course;
 use App\Lesson;
@@ -79,12 +80,11 @@ class TutorialsController extends Controller
             abort(404);
         }
 
-        //get chapters
-        $lessons = Lesson::where('chapter_id', $lesson_info->chapter_id)
-            ->where('is_public', 1)
-            ->whereNotNull('slug')
-            ->orderBy('order_weight')
-            ->get();
+        //get public lessons by chapter id
+        $lessons = Lesson::getPublicLessonsByChapter($lesson_info->chapter_id);
+
+        //get use status for completion
+        $lessons = UserCourseStatus::addStatusToLessons($lessons);
 
         //get image
         $course_image = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')

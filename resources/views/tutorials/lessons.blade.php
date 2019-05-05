@@ -34,10 +34,12 @@
                             <header class="top-txt" >
                                 <h2>{{$lesson->name}}</h2>
                             </header>
+                            @if($lesson->completion_status&&$lesson->completion_status > 0)
+                                <span class="lesson-completion">@if($lesson->completion_status == 100)<i class="fas fa-check"></i>@else{{$lesson->completion_status}}%@endif</span>
+                            @endif
                             <footer class="go-link" >
                                 <span class="lesson-number">
                                     {{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}
-                                    {{--{{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}. <small>&empty;</small>--}}
                                 </span>
                                 <i class="fas fa-chevron-circle-right"></i>
                             </footer>

@@ -29,4 +29,18 @@ class Lesson extends Model
             ->whereNotNull('slug')
             ->orderBy('order_weight');
     }
+
+    public static function getPublicLessonsByChapter($chapter_id)
+    {
+        if(!$chapter_id)
+        {
+            return collect([]);
+        }
+
+        return self::where('chapter_id', $chapter_id)
+            ->where('is_public', 1)
+            ->whereNotNull('slug')
+            ->orderBy('order_weight')
+            ->get();
+    }
 }
