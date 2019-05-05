@@ -1,16 +1,15 @@
 <?php
 
 
-namespace App\Libraries;
+namespace App\Libraries\UserProgressStatus;
 
 use App\LessonSection;
 use App\UserToLessonSection;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 
-class UserCourseStatus
+class UserLessonsStatus
 {
-
-    public static function getLessonStatus($user_id, $lesson_id, $floor_rounded = true)
+    public static function getStatus(int $user_id, int $lesson_id, $floor_rounded = true)
     {
         if(!$user_id || !$lesson_id)
         {
@@ -69,7 +68,7 @@ class UserCourseStatus
 
         foreach ($lessons as $lesson)
         {
-            $lesson->completion_status = self::getLessonStatus($user->id, $lesson->id);
+            $lesson->completion_status = self::getStatus($user->id, $lesson->id);
         }
 
         return $lessons;

@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\LessonSection;
+use App\Libraries\UserProgressStatus;
 use App\MediaFileToItem;
 use View;
 use App\Course;
@@ -34,7 +35,7 @@ class HomeController extends Controller
             if($course->status == 2||!$user)
                 continue;
 
-            $course->completion_status = Course::getChapterCompletionStatus($course->id, $user->id);
+            $course->completion_status = UserProgressStatus::getCourseStatus($course->id, $user->id);
         }
 
         $meta['keywords'] = 'PHP, Step by step, SQL, JavaScript, design patterns, SOLID principles';
