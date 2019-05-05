@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\UserProgressStatus;
 use View;
 use App\User;
 use Sentinel;
@@ -22,12 +23,13 @@ class UserProfileController extends Controller
 {
     public function profile()
     {
-        if (Sentinel::check())
+        $user = Sentinel::getUser();
+
+        if ($user)
         {
-            $user = Sentinel::getUser();
 
             //get info about courses
-            $courses_started_temp = User::getUserCoursesStatus($user->id);
+            $courses_started_temp = UserProgressStatus::getCurrentUserCoursesStatus();
 
             //show only started
             $courses_started = [];

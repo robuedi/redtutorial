@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Chapter;
 use App\LessonSection;
 use App\LessonSectionOption;
-use App\Libraries\UserCourseStatus;
+use App\Libraries\UserProgressStatus;
 use View;
 use App\Course;
 use App\Lesson;
@@ -38,7 +38,7 @@ class TutorialsController extends Controller
         $user = Sentinel::getUser();
         if($user)
         {
-            $chapters = Chapter::addCurrentUserCompletionStatus($user->id, $chapters);
+            $chapters = UserProgressStatus::addCurrentUserChaptersStatus($user->id, $chapters);
         }
 
         //get image
@@ -84,7 +84,7 @@ class TutorialsController extends Controller
         $lessons = Lesson::getPublicLessonsByChapter($lesson_info->chapter_id);
 
         //get use status for completion
-        $lessons = UserCourseStatus::addStatusToLessons($lessons);
+        $lessons = UserProgressStatus::addStatusToLessons($lessons);
 
         //get image
         $course_image = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')
