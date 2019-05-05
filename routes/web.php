@@ -81,6 +81,19 @@ Route::get('/{course_slag}', 'TutorialsController@showChapters')->where('course_
 Route::get('/{course_slag}/{chapter_slag}', 'TutorialsController@showLessons')->where('course_slag', '^([^\s\/]+)-tutorial$');
 Route::get('/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsController@showLessonContent')->where('course_slag', '^([^\s\/]+)-tutorial$');
 
+//Old Redirect Tutorials
+Route::get('/{tutorial_label}/{course_slag}', function($tutorial_label, $course_slag){
+    return Redirect::to('/'.$course_slag.'-tutorial', 301);
+})->where('tutorial_label', '^tutorial$');
+
+Route::get('/{tutorial_label}/{course_slag}/{chapter_slag}', function($tutorial_label,$course_slag, $chapter_slag){
+    return Redirect::to('/'.$course_slag.'-tutorial/'.$chapter_slag, 301);
+})->where('tutorial_label', '^tutorial$');
+
+Route::get('/{tutorial_label}/{course_slag}/{chapter_slag}/{lesson_slag}', function($tutorial_label, $course_slag, $chapter_slag, $lesson_slag){
+    return Redirect::to('/'.$course_slag.'-tutorial/'.$chapter_slag.'/'.$lesson_slag, 301);
+})->where('tutorial_label', '^tutorial$');
+
 
 //Info pages
 Route::get('/info/{url}', 'StaticPagesController@index');
