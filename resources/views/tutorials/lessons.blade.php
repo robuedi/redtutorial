@@ -26,7 +26,8 @@
             </div>
         </section>
 
-        <section class="chapter-container">
+        <section class="lessons-container">
+
             <div class="lesson-choosing">
                 @foreach($lessons as $index => $lesson)
                     <article class="option-container">
