@@ -7,6 +7,7 @@ use App\Chapter;
 use App\LessonSection;
 use App\LessonSectionOption;
 use App\Libraries\UserProgressStatus;
+use App\UserToLessonSection;
 use View;
 use App\Course;
 use App\Lesson;
@@ -25,15 +26,7 @@ class TutorialsController extends Controller
                     ->firstOrFail();
 
         //get chapters
-        $chapters = Chapter::join('lessons', 'chapters.id', '=', 'lessons.chapter_id')
-                        ->where('chapters.course_id', $course->id)
-                        ->where('chapters.is_public', 1)
-                        ->where('lessons.is_public', 1)
-                        ->whereNotNull('chapters.slug')
-                        ->groupBy('chapters.id')
-                        ->selectRaw('chapters.id, chapters.name, chapters.slug, COUNT(lessons.id) AS lessons_number')
-                        ->orderBy('chapters.order_weight')
-                        ->get();
+        $chapters = Chapter::getChaptersByCourseID($course->id);
 
         $user = Sentinel::getUser();
         if($user)
@@ -108,17 +101,7 @@ class TutorialsController extends Controller
     public function showLessonContent(string $course_slug, string $chapter_slug, string $lesson_slug)
     {
         //get the lesson
-        $lesson = DB::table('courses as co')
-                ->join('chapters as ch', 'co.id', '=', 'ch.course_id')
-                ->join('lessons as le', 'ch.id', '=', 'le.chapter_id')
-                ->where('co.slug', $course_slug)
-                ->where('ch.slug', $chapter_slug)
-                ->where('le.slug', $lesson_slug)
-                ->where('co.status', 1)
-                ->where('ch.is_public', 1)
-                ->where('le.is_public', 1)
-                ->selectRaw('co.id as course_id, co.name as course_name, co.slug as course_slag, ch.name as chapter_name, ch.slug as chapter_slag, le.chapter_id as chapter_id, le.order_weight as lesson_order, le.id as lesson_id, le.name as lesson_name, le.description as lesson_description')
-                ->first();
+        $lesson = Lesson::getLessonByCourseChapterLessonSlugs($course_slug, $chapter_slug, $lesson_slug);
 
         //return 404 if not found
         if(!$lesson)
@@ -150,15 +133,8 @@ class TutorialsController extends Controller
                             ->all();
         }
 
-
         //get the next lesson
-        $next_lesson = Lesson::where('lessons.order_weight', '>', $lesson->lesson_order)
-                        ->where('lessons.chapter_id', $lesson->chapter_id)
-                        ->where('lessons.is_public',1)
-                        ->join('lessons_sections', 'lessons_sections.lesson_id', '=', 'lessons.id')
-                        ->where('lessons_sections.is_public', 1)
-                        ->orderBy('lessons.order_weight')
-                        ->first();
+        $next_lesson = Lesson::getNextLesson($lesson->lesson_order, $lesson->chapter_id);
 
         //next lesson slug
         $next_slug = '';
@@ -171,6 +147,8 @@ class TutorialsController extends Controller
             ->where('item_type', 'course')
             ->first();
 
+        $lesson_sections = UserToLessonSection::checkSectionsStatus($lesson_sections_ids, $lesson_sections);
+
         //set meta
         $meta['keywords'] = 'course, learn, '.$lesson->course_name.' '.$lesson->chapter_name.' '.$lesson->lesson_name;
         $meta['description'] = 'Learn '.$lesson->course_name.' '.$lesson->chapter_name.':  '.$lesson->lesson_name;
@@ -182,7 +160,7 @@ class TutorialsController extends Controller
             'course_id'         => $lesson->course_id,
             'next_slug'         => $next_slug,
             'quiz_answers'      => $quiz_answers,
-            'course_image'   => $course_image
+            'course_image'      => $course_image
         ]);
     }
 

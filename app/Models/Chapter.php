@@ -33,5 +33,18 @@ class Chapter extends Model
             ->whereNotNull('slug')
             ->orderBy('order_weight');
     }
+
+    public static function getChaptersByCourseID($course_id)
+    {
+        return self::join('lessons', 'chapters.id', '=', 'lessons.chapter_id')
+            ->where('chapters.course_id', $course_id)
+            ->where('chapters.is_public', 1)
+            ->where('lessons.is_public', 1)
+            ->whereNotNull('chapters.slug')
+            ->groupBy('chapters.id')
+            ->selectRaw('chapters.id, chapters.name, chapters.slug, COUNT(lessons.id) AS lessons_number')
+            ->orderBy('chapters.order_weight')
+            ->get();
+    }
 }
 
