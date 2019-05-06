@@ -32,7 +32,7 @@ class TutorialsController extends Controller
 
         if($user)
         {
-            $chapters = UserProgressStatus::addCurrentUserChaptersStatus($user->id, $chapters);
+            $chapters = UserProgressStatus::addCurrentUserChaptersStatus($user->id, $chapters, false);
         }
 
         //get image

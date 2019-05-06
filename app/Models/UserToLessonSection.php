@@ -10,7 +10,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
-use Log;
 
 class UserToLessonSection extends Model
 {

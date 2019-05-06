@@ -20,26 +20,19 @@ class UserChaptersStatus
             $chapters_ids = (clone $chapters)->pluck('id');
 
             //get lessons
-            $lessons = Lesson::whereIn('chapter_id', $chapters_ids)
-                ->where('is_public', 1)
-                ->select('id', 'chapter_id')
-                ->get();
+            $lessons = Lesson::getPublicLessonByChaptersIDs($chapters_ids);
 
             //check if we have lessons
+            $lessons_sections = [];
             if ($lessons) {
                 //get lesson_sections
-                $lessons_sections = LessonSection::whereIn('lesson_id', (clone $lessons)->pluck('id'))
-                    ->where('is_public', 1)
-                    ->select('id', 'lesson_id')
-                    ->where('type', 'quiz')
-                    ->get()
-                    ->groupBy('lesson_id');
+                $lessons_sections = LessonSection::getPublicLessonsSectionsByLessonsIDs((clone $lessons)->pluck('id'));
             }
 
             //group lessons by chapter
             $lessons = $lessons->groupBy('chapter_id');
 
-            //get user's achived sections
+            //get user's completed sections
             $sections_to_user = UserToLessonSection::where('user_id', $user_id)
                 ->select('lesson_section_id')
                 ->get()
@@ -72,7 +65,8 @@ class UserChaptersStatus
                         continue;
 
                     //add sections to chapters list
-                    $chapter_lesson_section += ($lessons_sections[$lesson->id])->pluck('id')->toArray();
+                    $sections_ids = ($lessons_sections[$lesson->id])->pluck('id')->toArray();
+                    $chapter_lesson_section = array_unique(array_merge($sections_ids, $chapter_lesson_section));
                 }
 
                 //uncompleted sections by user

@@ -70,4 +70,12 @@ class Lesson extends Model
             ->orderBy('lessons.order_weight')
             ->first();
     }
+
+    public static function getPublicLessonByChaptersIDs($chapters_ids)
+    {
+        return self::whereIn('chapter_id', $chapters_ids)
+            ->where('is_public', 1)
+            ->select('id', 'chapter_id')
+            ->get();
+    }
 }

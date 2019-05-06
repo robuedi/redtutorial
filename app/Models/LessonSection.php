@@ -29,4 +29,14 @@ class LessonSection extends Model
     {
         return $this->belongsToMany(User::class,'users_to_lessons_sections', 'lesson_section_id', 'user_id');
     }
+
+    public static function getPublicLessonsSectionsByLessonsIDs($lessons_ids)
+    {
+        return self::whereIn('lesson_id', $lessons_ids)
+            ->where('is_public', 1)
+            ->select('id', 'lesson_id')
+            ->where('type', 'quiz')
+            ->get()
+            ->groupBy('lesson_id');
+    }
 }
