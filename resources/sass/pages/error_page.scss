@@ -18,6 +18,12 @@
     }
   }
 
+  .propose-pages .btn-s-one {
+    display: inline-block;
+    margin-right: 13px;
+    margin-bottom: 15px;
+  }
+
   .inner-container{
 
     @include container-sizing();
