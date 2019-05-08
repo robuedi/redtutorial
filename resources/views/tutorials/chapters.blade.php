@@ -19,15 +19,14 @@
             <div class="heading-inner-container">
                 <h1>{{$course->name}}<br/><small>Tutorial</small></h1>
             </div>
+            @if($course->description)
+                <div class="course-description">
+                    {!! $course->description !!}
+                </div>
+            @endif
         </section>
 
         <section class="tutorial-content" >
-
-            @if($course->description)
-            <div class="course-description">
-                {!! $course->description !!}
-            </div>
-            @endif
 
             @if(!$user)
                 <p class="register-here-label">Register <a class="link" href="/user/sign-in">here</a> to save your progress</p>
