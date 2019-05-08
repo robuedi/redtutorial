@@ -65,8 +65,11 @@
     }
 
     .course-description {
-      margin-bottom: 30px;
+      margin: 0 auto 30px auto;
       text-align: left;
+      width: 800px;
+      max-width: 100%;
+      box-sizing: border-box;
 
       @media (min-width: $screen-md) {
         text-align: right;
@@ -75,7 +78,7 @@
       p {
         margin-top: 0;
         line-height: 1.5;
-        font-size: 16px;
+        font-size: 18px;
       }
 
     }
