@@ -23,6 +23,12 @@
 
         <section class="tutorial-content" >
 
+            @if($course->description)
+            <div class="course-description">
+                {!! $course->description !!}
+            </div>
+            @endif
+
             @if(!$user)
                 <p class="register-here-label">Register <a class="link" href="/user/sign-in">here</a> to save your progress</p>
             @endif

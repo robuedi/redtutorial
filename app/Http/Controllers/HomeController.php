@@ -24,7 +24,7 @@ class HomeController extends Controller
     {
 
         $courses = Course::whereIn('status', [1,2])
-                    ->select('id','name', 'slug', 'description', 'status')
+                    ->select('id','name', 'slug', 'short_description', 'status')
                     ->get();
 
         $user = Sentinel::getUser();

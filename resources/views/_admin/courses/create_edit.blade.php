@@ -15,6 +15,13 @@
     <script src="/assets/_admin/js/libs/ckeditor/ckeditor.js"></script>
     <script>
         $(function () {
+            //short description editor
+            CKEDITOR.replace( 'short_description_editor' ,
+                {
+                    toolbar : 'deadsimple',
+                    uiColor : '#F5F5F5'
+                });
+
             //description editor
             CKEDITOR.replace( 'description_editor' ,
                 {
@@ -162,6 +169,13 @@
                                 <label class="input">
                                     <input type="text" name="name" placeholder="Name" class="form-control input-sm" value="{{old('name', $course->name)}}">
                                 </label>
+                            </section>
+
+                            <section>
+                                    <label class="label">Short description</label>
+                                    <label class="textarea textarea-resizable">
+                                        <textarea rows="3" type="text" id="short_description_editor" name="short_description" placeholder="Short description" class="custom-scroll" >{{old('short_description', $course->short_description)}}</textarea>
+                                    </label>
                             </section>
 
                             <section>
