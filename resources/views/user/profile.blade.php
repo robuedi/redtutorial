@@ -85,9 +85,9 @@
                     </section>
                 </section>
 
-                <section  class="form-input">
-                    <a class="btn-s-one" href="/user/logout" style="float: left;" >Log Out</a>
-                    <button class="btn-s-one float-right">Update profile</button>
+                <section  class="form-input user-profile-btns">
+                    <a class="btn-s-one float-left profile-btn" href="/user/logout"  >Log Out</a>
+                    <button class="btn-s-one float-right profile-btn">Update profile</button>
                 </section>
             </form>
 

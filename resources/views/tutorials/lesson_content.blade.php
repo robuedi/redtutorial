@@ -32,9 +32,9 @@
                 <div class="lesson-progress" data-role="lesson-progress">
                     @foreach($lesson_sections as $index => $lesson_section)
                         @if($lesson_section->type == 'quiz')
-                            <span class="@if($lesson_section->completion_status == 1) active @elseif($lesson_section->completion_status == 2) pre-active @endif quiz-sign"><i>?</i></span>
+                            <span title="Quiz" class="@if($lesson_section->completion_status == 1) active @elseif($lesson_section->completion_status == 2) pre-active @endif quiz-sign"><i>?</i></span>
                         @elseif($lesson_section->type == 'text')
-                            <span class="@if($lesson_section->completion_status == 1) active @elseif($lesson_section->completion_status == 2) pre-active @endif text-sign"><i class="fas fa-caret-right"></i></span>
+                            <span @if(!empty($lesson_section->name)) title="{{$lesson_section->name}}" @endif class="@if($lesson_section->completion_status == 1) active @elseif($lesson_section->completion_status == 2) pre-active @endif text-sign"><i class="fas fa-caret-right"></i></span>
                         @endif
                     @endforeach
                 </div>

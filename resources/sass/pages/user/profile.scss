@@ -117,6 +117,18 @@
         display: none;
         margin-bottom: 25px;
       }
+
+
+      @media (max-width: $screen-sm){
+        .user-profile-btns{
+          padding-bottom: 25px;
+
+          .profile-btn{
+            padding-left: 25px;
+            padding-right: 25px;
+          }
+        }
+      }
     }
 
   }
