@@ -25,7 +25,7 @@
         <section class="tutorial-container" id="lessons_content" data-role="lessons-content">
 
             @if(!$user)
-                <p class="register-here-label">Register <a class="link" href="/user/sign-in">here</a> to save your progress</p>
+                <p class="register-here-label"><a class="link" href="/user/sign-in">Register here</a> to save your progress</p>
             @endif
 
             <div class="lesson-progress-container"  >
