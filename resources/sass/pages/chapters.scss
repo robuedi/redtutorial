@@ -3,7 +3,7 @@
   background-color: $white-color;
 
   .header-section{
-    padding: 120px 10px 120px 0px;
+    padding: 120px 10px 50px 0px;
     margin: 0px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -12,7 +12,7 @@
     font-family: $font-family;
 
     @media (min-width: $screen-sm) {
-      padding: 160px 10px 160px 0px;
+      padding: 160px 10px 90px 0px;
     }
 
 
@@ -66,8 +66,17 @@
       p {
         margin-top: 0;
         line-height: 1.5;
-        font-weight: 600;
-        font-size: 19px;
+        font-weight: 400;
+        font-size: 17px;
+
+        @media (min-width: $screen-md) {
+          font-weight: 600;
+          font-size: 19px;
+        }
+
+        strong{
+          font-weight: 700;
+        }
 
         &:last-child{
           margin-bottom: 0;
