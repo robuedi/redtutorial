@@ -140,20 +140,20 @@ class LessonsController extends Controller
             'order_weight' => 'required',
         );
 
-        //if not draft and no slug
+        //if public and no slug
         $messages = [];
         if(
-            //is not draft and no slug input and no slug saved
+            //is public  and no slug input and no slug saved
             (
                 (empty($request->input('slug'))&& empty($lesson->slug))
                 ||
                 (empty($request->input('slug'))&& $request->input('enabled_slug_edit'))
             )
-            && !$request->input('is_draft')
+            && $request->input('is_public')
         )
         {
             $rules['slug'] = 'required|max:100';
-            $messages['slug.required']  = 'Field slug required if not draft';
+            $messages['slug.required']  = 'Field slug required if public';
         }
 
         $validator = Validator::make(Input::all(), $rules, $messages);
@@ -169,6 +169,7 @@ class LessonsController extends Controller
             $lesson->name           = $request->input('name');
             $lesson->description    = $request->input('description');
             $lesson->is_public      = $request->input('is_public') ? 1 : 0;
+            $lesson->is_draft      = $request->input('is_draft') ? 1 : 0;
             $lesson->order_weight   = $request->input('order_weight');
             if($request->input('enabled_slug_edit')){
                 $lesson->slug       = $request->input('slug');
@@ -229,6 +230,7 @@ class LessonsController extends Controller
             $lesson->name           = $request->input('name');
             $lesson->description    = $request->input('description');
             $lesson->is_public      = $request->input('is_public') ? 1 : 0;
+            $lesson->is_draft      = $request->input('is_draft') ? 1 : 0;
             $lesson->order_weight   = $request->input('order_weight');
             if($request->input('enabled_slug_edit')){
                 $lesson->slug       = $request->input('slug');
