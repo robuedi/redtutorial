@@ -16,8 +16,7 @@
     }
   }
 
-
-  @media (min-width: $screen-md) {
+  @media (min-width: 808px) {
     height: 74px;
     text-align: center;
     position: relative;
@@ -61,11 +60,11 @@
       box-sizing: border-box;
 
 
-      @media (min-width: $screen-md) {
+      @media (min-width: 808px) {
         background-color: transparent;
       }
 
-      @media (min-width: $screen-md) {
+      @media (min-width: 808px) {
         position: relative;
         vertical-align: middle;
         display: inline-block;
@@ -86,7 +85,7 @@
 
         }
 
-        @media (min-width: $screen-md) {
+        @media (min-width: 808px) {
           display: inline-block;
           padding: 22px 10px;
         }
@@ -128,7 +127,7 @@
       top: 5px;
       cursor: pointer;
 
-      @media (min-width: $screen-md) {
+      @media (min-width: 808px) {
         display: none;
       }
 
