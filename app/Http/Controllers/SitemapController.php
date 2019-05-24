@@ -27,16 +27,31 @@ class SitemapController
         foreach($courses as $course)
         {
             Sitemap::setItem('/'.$course->slug, $course->updated_at, 0.6, 'hourly');
+            if($course->slug == 'php-tutorial')
+            {
+                Sitemap::setItem('/tutorial-php', $course->updated_at, 0.1, 'hourly');
+                Sitemap::setItem('/tutorial/php', $course->updated_at, 0.1, 'hourly');
+            }
 
             //set chapters
             foreach ($course->publicChapters as $chapter)
             {
                 Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug, $chapter->updated_at, 0.8, 'hourly');
+                if($course->slug == 'php-tutorial')
+                {
+                    Sitemap::setItem('/tutorial-php/'.$chapter->slug, $chapter->updated_at, 0.1, 'hourly');
+                    Sitemap::setItem('/tutorial/php/'.$chapter->slug, $chapter->updated_at, 0.1, 'hourly');
+                }
 
                 //set lessons
                 foreach ($chapter->publicLessons as $lesson)
                 {
                     Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug.'/'.$lesson->slug, $lesson->updated_at, 1, 'daily');
+                    if($course->slug == 'php-tutorial')
+                    {
+                        Sitemap::setItem('/tutorial-php/'.$chapter->slug.'/'.$lesson->slug, $lesson->updated_at, 0.1, 'daily');
+                        Sitemap::setItem('/tutorial/php/'.$chapter->slug.'/'.$lesson->slug, $lesson->updated_at, 0.1, 'daily');
+                    }
                 }
             }
         }

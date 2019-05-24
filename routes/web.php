@@ -38,6 +38,12 @@ Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')
         Route::get('/lesson-section/create/{parent_id}', 'LessonsSectionsController@create');
         Route::resource('/lesson-section', 'LessonsSectionsController');
 
+        //Blog
+        Route::resource('/blog', 'BlogController');
+
+        //Tags
+        Route::resource('/tags', 'TagsController');
+
         //Media Library
         Route::get('/media-library/', 'MediaLibraryController@index');
         Route::get('/media-library/add', 'MediaLibraryController@add');

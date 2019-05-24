@@ -64,6 +64,42 @@ return array(
             ),
         ),
         array(
+            "name"      => "Blog",
+            "url"       => "#",
+            "aliases"   => array(),
+            "class"     => "fa-edit",
+            "submenus"  => array(
+                "1" => array(
+                    "name"  => "All articles",
+                    "url"   => "/blog",
+                    "aliases"   => array('\/blog\/[a-zA-Z0-9]+\/edit', '\/blog\/[a-zA-Z0-9]+\/edit', '\/blog\/create\/[a-zA-Z0-9]+'),
+                ),
+                "2" => array(
+                    "name"  => "Add new",
+                    "url"   => "/blog/create",
+                    "aliases"   => array('\/blog\/create'),
+                )
+            ),
+        ),
+        array(
+            "name"      => "Tags",
+            "url"       => "#",
+            "aliases"   => array(),
+            "class"     => "fa-tags",
+            "submenus"  => array(
+                "1" => array(
+                    "name"  => "All",
+                    "url"   => "/tags",
+                    "aliases"   => array('\/tags\/[a-zA-Z0-9]+\/edit', '\/tags\/[a-zA-Z0-9]+\/edit', '\/tags\/create\/[a-zA-Z0-9]+'),
+                ),
+                "2" => array(
+                    "name"  => "Add new",
+                    "url"   => "/tags/create",
+                    "aliases"   => array('\/tags\/create'),
+                )
+            ),
+        ),
+        array(
             "name"      => "Contact Messages",
             "url"       => "/contact-messages",
             "aliases"   => array('\/contact-messages\/[a-zA-Z0-9]+\/edit'),
