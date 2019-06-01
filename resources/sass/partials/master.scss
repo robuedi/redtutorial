@@ -67,8 +67,12 @@ textarea:focus, input:focus, button:focus{
   height: 44px;
   vertical-align: middle;
   line-height: 44px;
-  font-size: 30px;
+  font-size: 28px;
   text-transform: capitalize;
+
+  @media (min-width: $screen-md) {
+      font-size: 30px;
+  }
 
   .red{
     display: inline-block;
