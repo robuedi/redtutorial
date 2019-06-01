@@ -15,7 +15,7 @@ class SitemapController
     {
 
         //homepage
-        Sitemap::setItem('/',  null, 1, 'weekly');
+        Sitemap::setItem('/',   1);
 
         //courses, chapters, lessons
         $courses = Course::publicCourses()
@@ -26,46 +26,46 @@ class SitemapController
         //set courses
         foreach($courses as $course)
         {
-            Sitemap::setItem('/'.$course->slug, $course->updated_at, 0.6, 'hourly');
-            if($course->slug == 'php-tutorial')
-            {
-                Sitemap::setItem('/tutorial-php', $course->updated_at, 0.1, 'hourly');
-                Sitemap::setItem('/tutorial/php', $course->updated_at, 0.1, 'hourly');
-            }
+            Sitemap::setItem('/'.$course->slug, 0.6);
 
             //set chapters
             foreach ($course->publicChapters as $chapter)
             {
-                Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug, $chapter->updated_at, 0.8, 'hourly');
-                if($course->slug == 'php-tutorial')
-                {
-                    Sitemap::setItem('/tutorial-php/'.$chapter->slug, $chapter->updated_at, 0.1, 'hourly');
-                    Sitemap::setItem('/tutorial/php/'.$chapter->slug, $chapter->updated_at, 0.1, 'hourly');
-                }
+                Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug,0.8);
 
                 //set lessons
                 foreach ($chapter->publicLessons as $lesson)
                 {
-                    Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug.'/'.$lesson->slug, $lesson->updated_at, 1, 'daily');
-                    if($course->slug == 'php-tutorial')
-                    {
-                        Sitemap::setItem('/tutorial-php/'.$chapter->slug.'/'.$lesson->slug, $lesson->updated_at, 0.1, 'daily');
-                        Sitemap::setItem('/tutorial/php/'.$chapter->slug.'/'.$lesson->slug, $lesson->updated_at, 0.1, 'daily');
-                    }
+                    Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug.'/'.$lesson->slug,1);
                 }
             }
         }
 
-        Sitemap::setItem('/user/sign-in', null, 0.5, 'weekly');
-        Sitemap::setItem('/user/reset-password', null, 0.2, 'monthly');
+        //routes to fix
+        Sitemap::setItem('/tutorial-php/variables/data-types-part-2', 0.1);
+        Sitemap::setItem('/tutorial-php/operators/logical-operators', 0.1);
+        Sitemap::setItem('/tutorial-php/variables', 0.1);
+        Sitemap::setItem('/tutorial/php/operators/logical-operators', 0.1);
+        Sitemap::setItem('/tutorial/php/operators', 0.1);
+        Sitemap::setItem('/tutorial/php/overview/syntax', 0.1);
+        Sitemap::setItem('/tutorial-ubuntu-linux/apache-web-server/how-to-install-the-apache-web-server', 0.1);
+        Sitemap::setItem('/tutorial-ubuntu-linux/apache-web-server', 0.1);
+        Sitemap::setItem('/tutorial-ubuntu-linux', 0.1);
+        Sitemap::setItem('/tutorial/linux-ubuntu/apache-web-server/how-to-install-the-apache-web-server', 0.1);
+        Sitemap::setItem('/tutorial/linux-ubuntu', 0.1);
+        Sitemap::setItem('/tutorial/linux-ubuntu/apache-web-server', 0.1);
+
+        //user urls
+        Sitemap::setItem('/user/sign-in',0.5);
+        Sitemap::setItem('/user/reset-password',0.2);
 
         //static pages
-        Sitemap::setItem('/contact-us', null, 0.4, 'monthly');
+        Sitemap::setItem('/contact-us',0.4);
 
         //set other static pages
         foreach(MenuClientStatic::getStaticMenu() as $page)
         {
-            Sitemap::setItem('/info/'.$page->slug, $page->updated_at, 0.3, 'monthly');
+            Sitemap::setItem('/info/'.$page->slug,0.3);
         }
 
         //get the sitemap

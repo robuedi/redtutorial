@@ -8,26 +8,30 @@ use Carbon\Carbon;
 class Sitemap
 {
     private static $sitemap = [];
+    private static $root_url = '';
 
-    public static function setItem($url, $lastmod = null, $priority = null, $changefreq = null)
+    public static function setItem($url, $priority = null)
     {
         //check url
         if (!$url) {
             return;
         }
 
-        self::$sitemap[Request::root() . $url] = [];
+        self::$sitemap[] = [
+            'url'           => self::getRootUrl() . $url,
+            'priority'      => $priority ?? 0.5
+        ];
+    }
 
-        //check lastmod
-        //if ($lastmod) {
-        //    self::$sitemap[Request::root() . $url]['lastmod'] = Carbon::createFromFormat('Y-m-d H:i:s', $lastmod)->toIso8601String();
-        //}
+    private static function getRootUrl()
+    {
+        if(self::$root_url)
+        {
+            return self::$root_url;
+        }
 
-        //set priority
-        self::$sitemap[Request::root() . $url]['priority'] = $priority ?? 0.5;
-
-        //check changefreq
-        //self::$sitemap[Request::root() . $url]['changefreq'] = $changefreq ?? 'daily';
+        self::$root_url = Request::root();
+        return self::$root_url;
     }
 
     public static function getSitemap()
