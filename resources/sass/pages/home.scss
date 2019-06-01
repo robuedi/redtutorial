@@ -5,7 +5,8 @@
 
 
     @media (min-width: 823px) {
-      background: repeating-linear-gradient(45deg,  rgba(#fcfcfc, 0.9),  rgba(#fcfcfc, 0.9) 1px, rgba(#fcfcfc, 0.7) 2px, rgba(#fcfcfc, 0.7) 3px);
+      background-color: rgba(255,255,255,0.7);
+      //background: repeating-linear-gradient(45deg,  rgba(#fcfcfc, 0.9),  rgba(#fcfcfc, 0.9) 1px, rgba(#fcfcfc, 0.7) 2px, rgba(#fcfcfc, 0.7) 3px);
     }
 
     .navigation-links {
@@ -36,7 +37,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background-position: 100% 100%;
+      background-position: top;
       background-image: url("/assets/img/adt-bar-businessman-1308625_small.png?w=1000&fit=contain");
       background-repeat: no-repeat;
       content: '';
@@ -52,9 +53,9 @@
     position: relative;
 
     @media (min-width: $screen-md) {
-      background: repeating-linear-gradient(45deg,  rgba(#fcfcfc, 0.9),  rgba(#fcfcfc, 0.9) 1px, rgba(#fcfcfc, 0.7) 2px, rgba(#fcfcfc, 0.7) 3px);
-      margin-top: 100px;
-      padding-top: 0;
+      background-color: rgba(255,255,255,0.7);
+      //background: repeating-linear-gradient(45deg,  rgba(#fcfcfc, 0.9),  rgba(#fcfcfc, 0.9) 1px, rgba(#fcfcfc, 0.7) 2px, rgba(#fcfcfc, 0.7) 3px);
+      padding-top: 100px;
       padding-bottom: 10px;
       padding-left: 75px;
     }
@@ -103,8 +104,7 @@
       z-index: 2;
 
       @media (min-width: $screen-md) {
-        padding-left: 75px;
-        padding-right: 75px;
+        padding: 140px 75px 75px;
       }
 
       &:after {
@@ -130,12 +130,14 @@
         color: $text-color;
         position: relative;
         overflow: auto;
-        width: 20%;
+        width: 35%;
         box-sizing: border-box;
         min-height: 200px;
         padding: 25px ;
-        background: repeating-linear-gradient(45deg,  rgba(#fcfcfc, 0.9),  rgba(#fcfcfc, 0.9) 1px, rgba(#fcfcfc, 0.7) 2px, rgba(#fcfcfc, 0.7) 3px);
+        background-color: rgba(255,255,255,0.8);
+        //background: repeating-linear-gradient(45deg,  rgba(#fcfcfc, 0.9),  rgba(#fcfcfc, 0.9) 1px, rgba(#fcfcfc, 0.7) 2px, rgba(#fcfcfc, 0.7) 3px);
         margin-bottom: 50px;
+        border-radius: 4px;
 
         @media (min-width: $screen-md) {
           margin: 0px 10px 50px;
@@ -144,10 +146,6 @@
         //@media (min-width: $screen-xl) {
         //  background: transparent;
         //}
-
-        @media (max-width: 2000px) {
-          width: calc(25% - 20px);
-        }
 
         @media (max-width: 1675px) {
           width: calc(33.33% - 20px);
@@ -192,7 +190,7 @@
           h2{
             position: relative;
             z-index: 2;
-            font-size: 55px;
+            font-size: 50px;
             color: $text-color;
             margin: 0 0 35px ;
             font-weight: 700;
@@ -236,7 +234,7 @@
             bottom: 25px;
             background-color: $white-color;
             color: $brand-primary;
-            border-radius: 2px;
+            border-radius: 4px;
             box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
 
             @media (min-width: $screen-md) {
