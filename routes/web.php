@@ -124,6 +124,9 @@ Route::get('/user/sign-in', 'UserSignInController@index');
 Route::post('/user/sign-in', 'UserSignInController@doSignIn');
 Route::get('/user/logout', 'UserSignInController@logout');
 
+Route::get('/articles', 'BlogController@index');
+Route::get('/user/logout', 'UserSignInController@logout');
+
 //User Register
 Route::post('/user/register', 'UserRegisterController@register');
 Route::get('/user/activate-account/{user_id}/{activation_code}', 'UserRegisterController@activateAccount');

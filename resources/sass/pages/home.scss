@@ -3,8 +3,17 @@
   #main_navigation{
     background-color: #fafafa;
 
+
+    @media (min-width: 823px) {
+      background: repeating-linear-gradient(45deg,  rgba(#fcfcfc, 0.9),  rgba(#fcfcfc, 0.9) 1px, rgba(#fcfcfc, 0.7) 2px, rgba(#fcfcfc, 0.7) 3px);
+    }
+
     .navigation-links {
       background-color: #fafafa;
+
+      @media (min-width: 823px) {
+        background-color: transparent;
+      }
     }
   }
 }
@@ -23,15 +32,15 @@
     &:after {
       z-index: 0;
       position: absolute;
-      top: 0;
+      top: -174px;
       bottom: 0;
       left: 0;
       right: 0;
-      background-position: right bottom;
-      background-image: url("/assets/img/architecture-building-city-1123982_s3.png");
+      background-position: 100% 100%;
+      background-image: url("/assets/img/adt-bar-businessman-1308625_small.png?w=1000&fit=contain");
       background-repeat: no-repeat;
       content: '';
-      background-size: auto 100%;
+      background-size: cover;
     }
   }
 
@@ -43,7 +52,9 @@
     position: relative;
 
     @media (min-width: $screen-md) {
-      padding-top: 100px;
+      background: repeating-linear-gradient(45deg,  rgba(#fcfcfc, 0.9),  rgba(#fcfcfc, 0.9) 1px, rgba(#fcfcfc, 0.7) 2px, rgba(#fcfcfc, 0.7) 3px);
+      margin-top: 100px;
+      padding-top: 0;
       padding-bottom: 10px;
       padding-left: 75px;
     }
@@ -85,7 +96,7 @@
       font-size: 18px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-start;
+      justify-content: space-evenly;
       width: 100%;
       box-sizing: border-box;
       position: relative;
@@ -130,9 +141,9 @@
           margin: 0px 10px 50px;
         }
 
-        @media (min-width: $screen-xl) {
-          background: transparent;
-        }
+        //@media (min-width: $screen-xl) {
+        //  background: transparent;
+        //}
 
         @media (max-width: 2000px) {
           width: calc(25% - 20px);
@@ -181,7 +192,7 @@
           h2{
             position: relative;
             z-index: 2;
-            font-size: 65px;
+            font-size: 55px;
             color: $text-color;
             margin: 0 0 35px ;
             font-weight: 700;

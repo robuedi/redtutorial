@@ -10,6 +10,7 @@ use App\Libraries\Listing;
 use App\Libraries\UIMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Validator;
 use View;
 
 class BlogController extends Controller
@@ -118,6 +119,7 @@ class BlogController extends Controller
         {
             //save article
             $article->title             = $request->input('title');
+            $article->meta_description  = $request->input('meta_description');
             $article->content           = $request->input('content');
             $article->is_public         = $request->input('is_public') ? 1 : 0;
             $article->is_draft          = $request->input('is_draft') ? 1 : 0;
@@ -171,6 +173,7 @@ class BlogController extends Controller
             //save article
             $article                    = new BlogArticle();
             $article->title             = $request->input('title');
+            $article->meta_description  = $request->input('meta_description');
             $article->content           = $request->input('content');
             $article->is_public         = $request->input('is_public') ? 1 : 0;
             $article->is_draft          = $request->input('is_draft') ? 1 : 0;
