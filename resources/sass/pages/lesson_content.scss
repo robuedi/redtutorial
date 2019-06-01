@@ -41,6 +41,7 @@
         font-size: 22px;
         font-weight: 800;
         display: inline-block;
+        border-radius: 0 4px 0 0;
 
         @media (min-width: $screen-sm) {
           padding-right: 75px;
@@ -72,6 +73,7 @@
         font-size: 30px;
         color: $brand-primary;
         font-weight: 400;
+        border-radius: 0 4px 4px 0;
 
         @media (min-width: $screen-sm) {
           padding-right: 75px;
@@ -122,6 +124,7 @@
           padding: 1px;
           transition: background-color .5s;
           vertical-align: top;
+          border-radius: 2px;
 
           i{
             height: 22px;

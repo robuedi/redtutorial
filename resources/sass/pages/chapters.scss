@@ -30,7 +30,7 @@
       background: linear-gradient(to left top , #bc519e, #3d6098);
       z-index: 1;
     }
-
+    
     .heading-inner-container {
       position: relative;
       z-index: 2;
@@ -41,7 +41,8 @@
         display: inline-block;
         position: relative;
         z-index: 1;
-        margin: 0px;
+        margin: 0;
+        border-radius: 0 4px 4px 0;
 
         @include main-page-header();
         @include main-page-header-left-padding();
