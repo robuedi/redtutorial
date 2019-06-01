@@ -5,7 +5,7 @@
 
 
     @media (min-width: 823px) {
-      background-color: rgba(255,255,255,0.7);
+      background-color: rgba(255,255,255,0.8);
       //background: repeating-linear-gradient(45deg,  rgba(#fcfcfc, 0.9),  rgba(#fcfcfc, 0.9) 1px, rgba(#fcfcfc, 0.7) 2px, rgba(#fcfcfc, 0.7) 3px);
     }
 
@@ -53,7 +53,7 @@
     position: relative;
 
     @media (min-width: $screen-md) {
-      background-color: rgba(255,255,255,0.7);
+      background-color: rgba(255,255,255,0.8);
       //background: repeating-linear-gradient(45deg,  rgba(#fcfcfc, 0.9),  rgba(#fcfcfc, 0.9) 1px, rgba(#fcfcfc, 0.7) 2px, rgba(#fcfcfc, 0.7) 3px);
       padding-top: 100px;
       padding-bottom: 10px;
@@ -70,7 +70,6 @@
       font-weight: 400;
 
       @media (min-width: $screen-md) {
-        text-align: left;
         font-size: 52px;
       }
     }
@@ -84,7 +83,6 @@
       display: block;
 
       @media (min-width: $screen-md) {
-        text-align: left;
         font-size: 30px;
         padding-left: 150px;
       }
@@ -141,6 +139,7 @@
 
         @media (min-width: $screen-md) {
           margin: 0px 10px 50px;
+          padding: 0px ;
         }
 
         //@media (min-width: $screen-xl) {
