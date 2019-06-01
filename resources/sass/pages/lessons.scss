@@ -25,10 +25,11 @@
       background: linear-gradient(to left top , #bc519e, #3d6098);
       z-index: 1;
     }
-
+    
     .subtitle{
       display: inline-block;
       background-color: $white-color;
+      border-radius: 0 4px 0 0;
 
       .inner-container {
         position: relative;
@@ -39,7 +40,6 @@
         font-size: 22px;
         font-weight: 800;
         display: inline-block;
-        border-radius: 0 4px 0 0;
 
         @media (min-width: $screen-sm) {
           padding-right: 75px;
