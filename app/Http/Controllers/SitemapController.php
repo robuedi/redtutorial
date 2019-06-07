@@ -42,12 +42,6 @@ class SitemapController
         }
 
         //routes to fix
-        Sitemap::setItem('/tutorial-php/variables/data-types-part-2', 0.1);
-        Sitemap::setItem('/tutorial-php/operators/logical-operators', 0.1);
-        Sitemap::setItem('/tutorial-php/variables', 0.1);
-        Sitemap::setItem('/tutorial/php/operators/logical-operators', 0.1);
-        Sitemap::setItem('/tutorial/php/operators', 0.1);
-        Sitemap::setItem('/tutorial/php/overview/syntax', 0.1);
         Sitemap::setItem('/tutorial-ubuntu-linux/apache-web-server/how-to-install-the-apache-web-server', 0.1);
         Sitemap::setItem('/tutorial-ubuntu-linux/apache-web-server', 0.1);
         Sitemap::setItem('/tutorial-ubuntu-linux', 0.1);
