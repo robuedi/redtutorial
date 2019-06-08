@@ -9,7 +9,7 @@ body {
   }
 
   > main {
-    margin-top: 50px;
+    margin-top: 40px;
 
     @media (min-width: $screen-md) {
       margin-top: 0;
@@ -64,10 +64,10 @@ textarea:focus, input:focus, button:focus{
   display: inline-block;
   text-align: right;
   text-decoration: none;
-  height: 44px;
+  height: 40px;
   vertical-align: middle;
-  line-height: 44px;
-  font-size: 28px;
+  line-height: 40px;
+  font-size: 26px;
   text-transform: capitalize;
 
   @media (min-width: $screen-md) {
