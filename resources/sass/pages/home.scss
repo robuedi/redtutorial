@@ -38,7 +38,7 @@
       left: 0;
       right: 0;
       background-position: top;
-      background-image: url("/assets/img/laptop-notebook-working-outside_sm.png?w=1000&fit=contain");
+      background-image: url("/assets/img/cup-desk-drink-434337.jpg?w=1000&fit=contain");
       background-repeat: no-repeat;
       content: '';
       background-size: cover;
@@ -138,6 +138,7 @@
         border-radius: 4px;
 
         @media (min-width: $screen-md) {
+          background-color: transparent;
           margin: 0px 10px 50px;
           padding: 0px ;
         }
@@ -171,6 +172,11 @@
           border: 1px dashed $text-color;
           text-decoration: none;
           display: block;
+
+
+          @media (min-width: $screen-md) {
+            border: 1px dashed #777;
+          }
 
           &:hover, &:focus, &:active {
             .start-course {
