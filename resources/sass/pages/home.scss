@@ -174,8 +174,8 @@
           display: block;
 
 
-          @media (min-width: $screen-md) {
-            border: 1px dashed #777;
+          @media (min-width: $screen-sm) {
+            border: none
           }
 
           &:hover, &:focus, &:active {
@@ -207,6 +207,10 @@
               font-size: 26px;
               -webkit-background-clip: initial;
               -webkit-text-fill-color: #000;
+            }
+
+            @media (min-width: $screen-sm) {
+              text-align: center;
             }
           }
 
@@ -242,8 +246,9 @@
             border-radius: 4px;
             box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
 
-            @media (min-width: $screen-md) {
+            @media (min-width: $screen-sm) {
               transition: background-color 0.5s;
+              box-shadow: 0 0 1px 1px rgba(200, 200, 200,0.1);
             }
 
             span{
