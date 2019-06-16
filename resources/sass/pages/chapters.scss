@@ -44,6 +44,10 @@
         margin: 0;
         border-radius: 0 3px 3px 0;
 
+        small{
+          font-size: 70%;
+        }
+
         @include main-page-header();
         @include main-page-header-left-padding();
       }
@@ -209,6 +213,10 @@
 
                 @media (min-width: $screen-md) {
                   font-size: 22px;
+                }
+
+                small{
+                  font-size: 70%;
                 }
               }
 
