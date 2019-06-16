@@ -17,7 +17,7 @@
     <main class="courses-section" >
         <section class="header-section" @if($course_image) style='background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif>
             <div class="heading-inner-container">
-                <h1>{{$course->name}} Tutorial</h1>
+                <h1>{!! $course->name !!} Tutorial</h1>
             </div>
             @if($course->description)
                 <div class="course-description">
@@ -38,7 +38,7 @@
                                 {{\App\Libraries\NumericLib::numberToRomanRepresentation($index+1)}}
                             </span>
                             <div class="top-level" >
-                                <h2>{{$chapter->name}}</h2>
+                                <h2>{!! $chapter->name !!}</h2>
                                 <span class="line-completion-indicator" style="width: {{$chapter->completion_percentage ?? 0}}%;"></span>
                                 <span class="dot-completion-indicator" style="left: {{$chapter->completion_percentage ?? 0}}%;"></span>
                                 <span class="route">

@@ -20,8 +20,8 @@
             </div>
             <div class="heading-inner-container">
                 <h1>
-                    <span class="course">{{$lesson->course_name}}</span>
-                    {{$lesson->lesson_name}}
+                    <span class="course">{!! $lesson->course_name !!}</span>
+                    {!! $lesson->lesson_name !!}
                 </h1>
             </div>
         </section>
@@ -46,7 +46,7 @@
                 @foreach($lesson_sections as $index => $lesson_section)
                     <div data-text="{{$lesson_section->completion_status}}" class="lesson-container @if($lesson_section->completion_status == 1) active @endif" @if($lesson_section->type == 'quiz' && isset($quiz_answers[$lesson_section->id])) data-type="q" @else data-type="t" @endif>
                         @if(!empty($lesson_section->name))
-                            <h2>{{$lesson_section->name}}</h2>
+                            <h2>{!! $lesson_section->name !!}</h2>
                         @endif
                         {!! $lesson_section->content !!}
 

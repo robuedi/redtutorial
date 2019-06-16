@@ -23,8 +23,8 @@
             </div>
             <div class="heading-inner-container">
                 <h1>
-                    <span class="course">{{$chapter->course_name}}</span>
-                    {{$chapter->chapter_name}}
+                    <span class="course">{!! $chapter->course_name !!}</span>
+                    {!! $chapter->chapter_name !!}
                 </h1>
             </div>
         </section>
@@ -36,7 +36,7 @@
                     <article class="option-container">
                         <a href="/{{$chapter->course_slug.'/'.$chapter->chapter_slug.'/'.$lesson->slug}}" class="option" >
                             <header class="top-txt" >
-                                <h2>{{$lesson->name}}</h2>
+                                <h2>{!! $lesson->name !!}</h2>
                             </header>
                             @if($lesson->completion_status&&$lesson->completion_status > 0)
                                 <span class="lesson-completion">@if($lesson->completion_status == 100)<i class="fas fa-check"></i>@else{{$lesson->completion_status}}%@endif</span>
