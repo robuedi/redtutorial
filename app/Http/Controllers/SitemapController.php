@@ -41,14 +41,6 @@ class SitemapController
             }
         }
 
-        //routes to fix
-        Sitemap::setItem('/tutorial-ubuntu-linux/apache-web-server/how-to-install-the-apache-web-server', 0.1);
-        Sitemap::setItem('/tutorial-ubuntu-linux/apache-web-server', 0.1);
-        Sitemap::setItem('/tutorial-ubuntu-linux', 0.1);
-        Sitemap::setItem('/tutorial/linux-ubuntu/apache-web-server/how-to-install-the-apache-web-server', 0.1);
-        Sitemap::setItem('/tutorial/linux-ubuntu', 0.1);
-        Sitemap::setItem('/tutorial/linux-ubuntu/apache-web-server', 0.1);
-
         //user urls
         Sitemap::setItem('/user/sign-in',0.5);
         Sitemap::setItem('/user/reset-password',0.2);

@@ -28,7 +28,7 @@
 
     .subtitle{
       display: inline-block;
-      background-color: $white-color;
+      background-color: transparent;
       border-radius: 0 3px 0 0;
 
       .inner-container {
@@ -36,7 +36,6 @@
         z-index: 2;
         padding: 20px 50px 20px 40px;
         margin: 0;
-        color: lighten($text-color, 75%);
         font-size: 21px;
         font-weight: 600;
         display: inline-block;
@@ -46,7 +45,7 @@
         }
 
         a {
-          color: lighten($text-color, 25%);
+          color: #FFF;
           text-decoration: none;
 
           &:hover{
