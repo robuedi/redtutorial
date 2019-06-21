@@ -44,7 +44,9 @@
                                 <span class="route">
                                     <span class="inner-route"></span>
                                 </span>
-                                <span class="completion-percentage" >@if($chapter->completion_percentage ?? false){{$chapter->completion_percentage}}% @else <span title="Symbol for empty">&empty;</span> @endif</span>
+                                @if($chapter->completion_percentage ?? false)
+                                    <span class="completion-percentage" >{{$chapter->completion_percentage}}%</span>
+                                @endif
                             </div>
                             <p class="sub-details">
                                 <span class="lessons-count">{{$chapter->lessons_number}} Lessons</span>
