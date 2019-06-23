@@ -43,7 +43,29 @@ class TutorialsController extends Controller
 
         //set meta
         $meta['keywords'] = 'course, learn, '.$course->name;
-        $meta['description'] = 'Learn '.$course->name;
+        $meta['description'] = 'Learn '.$course->name.'. ';
+
+        //put in meta description the description or the chapters
+        if(!empty($course->description))
+        {
+            $meta['description'] .= $course->description;
+        }
+        else
+        {
+            //add chapters
+            $meta['description'] .= 'Topics of the course are: ';
+
+            $chapters_titles = [];
+            foreach ($chapters as $chapter) 
+            {
+                $chapters_titles[] = $chapter->name;
+            } 
+
+            $meta['description'] .= implode(', ', $chapters_titles).'.';
+        }
+
+        $meta['description'] = strip_tags($meta['description']);
+        
 
         return View::make('tutorials.chapters', [
             'course'        => $course,
@@ -88,7 +110,16 @@ class TutorialsController extends Controller
 
         //set meta
         $meta['keywords'] = 'course, learn, '.$lesson_info->course_name.' '.$lesson_info->chapter_name;
-        $meta['description'] = 'Learn '.$lesson_info->course_name.' - '.$lesson_info->chapter_name;
+        $meta['description'] = 'Learn about '.$lesson_info->chapter_name.' in '.$lesson_info->course_name.'.';
+
+        //add lesson names to the seo description
+        $lessons_names = [];
+        foreach ($lessons as $lesson) 
+        {
+           $lessons_names[] = $lesson->name; 
+        }
+
+        $meta['description'] .= ' In this chapter we will explain topics like: '.implode(', ', $lessons_names);
 
         return View::make('tutorials.lessons', [
             'chapter'       => $lesson_info,
