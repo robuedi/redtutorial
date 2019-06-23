@@ -120,6 +120,7 @@ class TutorialsController extends Controller
         }
 
         $meta['description'] .= ' In this chapter we will explain topics like: '.implode(', ', $lessons_names);
+        $meta['description'] = strip_tags($meta['description']);
 
         return View::make('tutorials.lessons', [
             'chapter'       => $lesson_info,
