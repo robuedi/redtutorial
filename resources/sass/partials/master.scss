@@ -24,7 +24,7 @@ body {
       box-sizing: border-box;
       text-align: center;
       margin: 0;
-      padding-top: 10px;
+      line-height: 2;  
     }
 
     .footer-links{
@@ -47,6 +47,8 @@ body {
           font-size: 18px;
           letter-spacing: 1px;
           font-weight: 100;
+          line-height: 2;
+          display: inline-block;
 
           &.active, &:hover {
             color: $brand-primary;
