@@ -1,4 +1,4 @@
-    import LessonContent from './modules/LessonContent_';
+    import LessonContent from './modules/LessonContent';
     import CookieBar from './modules/CookieBar';
     import FeedbackMessage from './modules/FeedbackMessage';
     import MobileSidebarMenu from './modules/MobileSidebarMenu';
@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     feedbackMessage.load();
 
     let mobileSidebarMenu = new MobileSidebarMenu();
-    mobileSidebarMenu.load();
 
     let signIn = new SignIn();
     signIn.load();
