@@ -1,3 +1,4 @@
+import Utilities from './Utilities';
 
 export default class LessonContent {
     
@@ -12,6 +13,7 @@ export default class LessonContent {
         this.nextLessonLink = '';
         this.currentActiveSection = '';
         this.sectionChangingLocked = false;
+        this.utilities      = new Utilities();
 
     }
 
@@ -375,11 +377,10 @@ export default class LessonContent {
         .then(()=>{
             //scroll top
             //check if we should scroll
-            if($(window).scrollTop() > ($('#lessons_list').offset().top - 20))
+            let lessonsOffsetTop = document.getElementById("lessons_list").offsetTop;
+            if(window.pageYOffset > (lessonsOffsetTop- 20))
             {
-                $('html, body').animate({
-                    scrollTop: $('#lessons_content').offset().top - 20
-                }, 500);
+                this.utilities.scrollTo(document.documentElement, lessonsOffsetTop, 500)
             }
         });
 

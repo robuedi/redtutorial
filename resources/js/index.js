@@ -11,15 +11,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     let cookieBar = new CookieBar();
-    cookieBar.load();
 
     let feedbackMessage = new FeedbackMessage();
-    feedbackMessage.load();
 
     let mobileSidebarMenu = new MobileSidebarMenu();
 
     let signIn = new SignIn();
-    signIn.load();
 
     hljs.registerLanguage('php', php);
     hljs.registerLanguage('shell', shell);

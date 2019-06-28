@@ -61,19 +61,6 @@
             </p>
         </footer>
 
-        <aside class="cookie-message">
-            This website uses cookies to improve user experience. By using this website you consent to all cookies in accordance with our <a class="link" href="/info/privacy-and-cookies-policy">Privacy and Cookie Policy</a>.
-        </aside>
-
-        <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script>
-            if (!window.jQuery) {
-                document.write('<script src="/assets/js/libs/jquery-3.3.1.min.js"><\/script>');
-            }
-        </script>
-
-
         @yield('scripts')
 
         <!-- JS -->

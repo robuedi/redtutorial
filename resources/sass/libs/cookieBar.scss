@@ -1,55 +1,85 @@
-/*!
- * jQuery Cookiebar Plugin
- * https://github.com/carlwoodhouse/jquery.cookieBar
- *
- * Copyright 2012, Carl Woodhouse
- * Disclaimer: if you still get fined for not complying with the eu cookielaw, it's not our fault.
+/**
+ * cookiebar - It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.
+ * Date 2018-12-25T03:13:56Z
+ * 
+ * @author Tamás András Horváth <htomy92@gmail.com> (https://icetee.hu)
+ * @version v1.0.0
+ * @link https://github.com/icetee/cookiebar#readme
+ * @license MIT
  */
- 
-.cookie-message {
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  padding:10px;
-  background:$white-color;
-  border-bottom:1px solid #ccc;
-  box-shadow:0px 0px 3px #ccc;
-  z-index: 1000;
-  display: none;
-  font-size: 16px;
 
-  @media (min-width: $screen-md){
-    font-size: 20px;
-  }
+.cookiebar {
+  background-color: #FFF;
+  bottom: 0;
+  -webkit-box-sizing: initial;
+  box-sizing: initial;
+  color: #000;
+  min-height: 50px;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+}
 
-  @media (min-width: $screen-md-max) {
-    padding-right: 100px;
-  }
+.cookiebar-wrapper {
+  height: 100%;
+  overflow: hidden;
+  padding: 14px;
+}
 
-  @media (max-width: $screen-md-max) {
-    padding-bottom: 35px;
-  }
+.cookiebar-content {
+  display: inline-block;
+  width: 90%;
+  vertical-align: middle;
+}
 
-  a{
-    color: $brand-primary;
+.cookiebar-actions {
+  width: 10%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.cookiebar-desciption {
+  display: inline;
+  font-size: 18px;
+}
+
+.cookiebar-link {
+  display:inline-block;
+  a {
     font-weight: 800;
+    color: $brand-primary;
+    font-size: 19px
+  } 
+}
 
-    &:not(.link){
-      cursor: pointer;
-      position: absolute;
-      right: 10px;
-      font-weight: 800;
-      font-size: 20px;
+.cookiebar-link a:hover {
+  text-decoration: underline;
+}
 
-      @media (min-width: $screen-lg) {
-        top: 10px;
-      }
+.cookiebar-button {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+}
 
-      @media (max-width: $screen-md-max) {
-        bottom: 9px;
-        right: 10px;
-      }
-    }
+.cookiebar-btn {
+  background-color: #FFF;
+  border: 0 none;
+  cursor: pointer;
+  height: 28px;
+  padding: 0 10px 2px;
+  margin: auto;
+  font-weight: 800;
+  color: $brand-primary;
+  font-size: 20px;   
+}
+
+@media screen and (max-width: 767px) {
+  .cookiebar-actions {
+    width: 100%;
+    text-align: right;
+    margin: 8px 0 0 0;
   }
 }

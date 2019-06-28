@@ -33,9 +33,12 @@ export default class MobileSidebarMenu {
         });
 
         //sidebar mobile
-        this.triggerSidebar.addEventListener('click', () => {
-            this.toggleMobileSidebar();
-        });
+        if(this.triggerSidebar)
+        {
+            this.triggerSidebar.addEventListener('click', () => {
+                this.toggleMobileSidebar();
+            });    
+        }
     }
 
     toggleMobileSidebar()
@@ -82,8 +85,6 @@ export default class MobileSidebarMenu {
 
         let st = window.pageYOffset;
 
-        console.log(st)
-        console.log('ddd')
         //if less then 100 scroll show menu
         if(st < 100)
         {
@@ -107,8 +108,6 @@ export default class MobileSidebarMenu {
         }
 
         this.lastScrollTop = st;
-
-        
     }
 }
 

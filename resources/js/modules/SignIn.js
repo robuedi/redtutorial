@@ -1,35 +1,75 @@
 export default class SignIn {
 
-    load(){
-        $(function () {
-            //change active form
-            $('[data-role="choose-action"] [data-action]').on('click', function () {
-                //make only this button active
-                $(this).parent().find('[data-action]').removeClass('active');
-                $(this).addClass('active');
+    constructor()
+    {
+        //get DOM
+        this.formSectionBtns = document.querySelectorAll('[data-role="choose-action"] [data-action]');
+        this.selfAddingClass = document.querySelectorAll('[data-self-add-class]');
+        
+        //bind events to DOM
+        this.bindEvents();
+    }
 
-                //change active form
-                //hide form
-                $('[data-role="choose-action-container"][data-type]').removeClass('active');
+    bindEvents()
+    {
+        //on click activate section
+        for(let formSectionBtn of this.formSectionBtns)
+        {
+            formSectionBtn.addEventListener('click', (e) => {
+                this.activateSection(e.target);
+            });   
+        }
+    
+        for(let selfAddingClassElement of this.selfAddingClass)
+        {
+            selfAddingClassElement.addEventListener('click', (e) => {
+                this.selfAddClass(e.target);
+            });  
+        };
+               
+        
+    }
 
-                //show form
-                var currentActiveForm = $(this).data('action');
-                $('[data-role="choose-action-container"][data-type="'+currentActiveForm+'"]').addClass('active');
-            })
+    activateSection(target)
+    { 
+        //diactivate all buttons
+        const targetBtns = target.parentNode.querySelectorAll(':scope > [data-action]')
+        for(let targetBtn of targetBtns)
+        {
+            targetBtn.classList.remove('active');
+        }
 
-            //tag that class on click to itself
-            $('[data-self-add-class]').on('click', function () {
-                var className = $(this).data('self-add-class');
+        //activate only this button
+        target.classList.add('active');
 
-                if($(this).hasClass(className))
-                {
-                    $(this).removeClass(className);
-                }
-                else
-                {
-                    $(this).addClass(className);
-                }
-            })
-        });
+        //change active form
+        //hide forms
+        const forms = document.querySelectorAll('[data-role="choose-action-container"][data-type]');
+        if(forms)
+        {
+            forms.forEach((form) => {
+                form.classList.remove('active');
+            })   
+        }
+
+        //show button's form
+        const currentActiveForm = target.getAttribute('data-action');
+        document.querySelector('[data-role="choose-action-container"][data-type="'+currentActiveForm+'"]').classList.add('active');
+    }
+
+    selfAddClass(target)
+    {
+        const className = target.getAttribute('data-self-add-class');
+
+        //check if class already added
+        //toggle class
+        if(target.classList.contains(className))
+        {
+            target.classList.remove(className);
+        }
+        else
+        {
+            target.classList.add(className);
+        }
     }
 }
