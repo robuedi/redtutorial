@@ -27,7 +27,7 @@
         <link rel="canonical" href="https://redtutorial.com{{request()->path() !== '/' ? '/'.request()->path() : ''}}" />
 
         <link rel="icon" href="/assets/img/logo.ico">
-        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=18">
+        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=20">
 
         @yield('stylesheets')
 
@@ -57,14 +57,14 @@
                 @endforeach
             </ul>
             <p class="copyright-container">
-               Copyright &copy; 2019 REDTutorial.com
+               Copyright &copy; 2019 RedTutorial.com
             </p>
         </footer>
 
         @yield('scripts')
 
         <!-- JS -->
-        <script src="/assets/js/bundle.min.js?v=8"></script>
+        <script src="/assets/js/bundle.min.js?v=10"></script>
 
     </body>
 </html>
