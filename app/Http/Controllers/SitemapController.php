@@ -28,15 +28,38 @@ class SitemapController
         {
             Sitemap::setItem('/'.$course->slug, 0.6);
 
+            //to be removed
+            if($course->slug == 'php-tutorial')
+            {
+                Sitemap::setItem('/tutorial-php', 0.1);
+                Sitemap::setItem('/tutorial/php', 0.1);
+            }
+
             //set chapters
             foreach ($course->publicChapters as $chapter)
             {
                 Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug,0.8);
 
+                //to be removed
+                if($course->slug == 'php-tutorial')
+                {
+                    Sitemap::setItem('/tutorial-php/'.$chapter->slug, 0.1);
+                    Sitemap::setItem('/tutorial/php/'.$chapter->slug, 0.1);
+                }
+
+
                 //set lessons
                 foreach ($chapter->publicLessons as $lesson)
                 {
-                    Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug.'/'.$lesson->slug,1);
+                    Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug.'/'.$lesson->slug, 1);
+
+                    //to be removed
+                    if($course->slug == 'php-tutorial')
+                    {
+                        Sitemap::setItem('/tutorial-php/'.$chapter->slug.'/'.$lesson->slug, 0.1);
+                        Sitemap::setItem('/tutorial/php/'.$chapter->slug.'/'.$lesson->slug, 0.1);
+                    }
+
                 }
             }
         }
