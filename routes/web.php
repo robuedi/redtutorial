@@ -92,6 +92,32 @@ Route::get('/{course_slag}', 'TutorialsController@showChapters')->where('course_
 Route::get('/{course_slag}/{chapter_slag}', 'TutorialsController@showLessons')->where('course_slag', '^([^\s\/]+)-tutorial$');
 Route::get('/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsController@showLessonContent')->where('course_slag', '^([^\s\/]+)-tutorial$');
 
+
+//Old Redirect Tutorials
+Route::get('/tutorial-{course_slag}', function($course_slag){
+    return response()->view('errors.410')->setStatusCode(410);
+});
+Route::get('/tutorial-{course_slag}/{chapter_slag}', function($course_slag, $chapter_slag){
+    return response()->view('errors.410')->setStatusCode(410);
+});
+Route::get('/tutorial-{course_slag}/{chapter_slag}/{lesson_slag}', function($course_slag, $chapter_slag, $lesson_slag){
+    return response()->view('errors.410')->setStatusCode(410);
+});
+
+//Old Redirect Tutorials
+Route::get('/{tutorial_label}/{course_slag}', function($tutorial_label, $course_slag){
+    return response()->view('errors.410')->setStatusCode(410);
+})->where('tutorial_label', '^tutorial$');
+
+Route::get('/{tutorial_label}/{course_slag}/{chapter_slag}', function($tutorial_label,$course_slag, $chapter_slag){
+    return response()->view('errors.410')->setStatusCode(410);
+})->where('tutorial_label', '^tutorial$');
+
+Route::get('/{tutorial_label}/{course_slag}/{chapter_slag}/{lesson_slag}', function($tutorial_label, $course_slag, $chapter_slag, $lesson_slag){
+    return response()->view('errors.410')->setStatusCode(410);
+})->where('tutorial_label', '^tutorial$');
+
+
 //Old Redirect Contact
 Route::get('/contact', function(){
     return Redirect::to('/contact-us', 301);

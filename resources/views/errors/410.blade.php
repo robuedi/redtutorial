@@ -1,11 +1,11 @@
 @extends('_partials.master')
 
 @section('meta')
-    <meta name="description" content="404 - Page not found">
+    <meta name="description" content="410 - Page not found">
     <meta name="robots" content="noindex, follow">
 @stop
 
-@section('title') 404 Page not found @parent @stop
+@section('title') 410 Page not found @parent @stop
 
 @section('stylesheets')
 @stop
@@ -16,7 +16,7 @@
 @section('content')
 
     <section class="exception-page-content" >
-        <h1><span class="error-code">404</span> Page not found</h1>
+        <h1><span class="error-code">410</span> Page not found</h1>
 
         <div class="inner-container">
             <p class="error-description">
