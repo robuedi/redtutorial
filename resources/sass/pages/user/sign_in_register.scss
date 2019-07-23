@@ -31,6 +31,7 @@
       margin: 0;
       display: inline-block;
       background-color: $white-color;
+      border-radius: 0 3px 3px 0;
 
       @include main-page-header();
       @include main-page-header-left-padding();
