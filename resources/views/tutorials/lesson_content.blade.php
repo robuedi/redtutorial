@@ -67,7 +67,7 @@
                     </div>
                 @endforeach
                 <span class="prev-load"><i class="fas fa-chevron-circle-left"></i></span>
-                <span data-next-lesson="/{{$lesson->course_slag}}@if($next_slug)/{{$lesson->chapter_slag}}@endif" class="next-load"><i class="fas fa-chevron-circle-right"></i></span>
+                <span data-next-lesson="/{{$lesson->course_slag}}" class="next-load"><i class="fas fa-chevron-circle-right"></i></span>
             </div>
         </section>
     </main>
