@@ -31,8 +31,6 @@ class SitemapController
             //set chapters
             foreach ($course->publicChapters as $chapter)
             {
-                Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug,0.8);
-
                 //set lessons
                 foreach ($chapter->publicLessons as $lesson)
                 {

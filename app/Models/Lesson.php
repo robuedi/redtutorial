@@ -31,6 +31,20 @@ class Lesson extends Model
             ->orderBy('order_weight');
     }
 
+    public static function getPublicLessonsByMultipleChapters($chapters_ids)
+    {
+        if(!$chapters_ids)
+        {
+            return collect([]);
+        }
+
+        return self::whereIn('chapter_id', $chapters_ids)
+            ->where('is_public', 1)
+            ->whereNotNull('slug')
+            ->orderBy('order_weight')
+            ->get();
+    }
+
     public static function getPublicLessonsByChapter($chapter_id)
     {
         if(!$chapter_id)

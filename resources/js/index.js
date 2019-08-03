@@ -7,6 +7,8 @@
     import shell from './modules/libs/highlight.js/lib/languages/shell';
     import bash from './modules/libs/highlight.js/lib/languages/bash';
     import php from './modules/libs/highlight.js/lib/languages/php';
+    import CourseContent from './modules/CourseContent';
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -17,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let mobileSidebarMenu = new MobileSidebarMenu();
 
     let signIn = new SignIn();
+
+    let courseCotent = new CourseContent();
 
     hljs.registerLanguage('php', php);
     hljs.registerLanguage('shell', shell);

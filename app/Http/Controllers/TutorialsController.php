@@ -28,8 +28,13 @@ class TutorialsController extends Controller
         //get chapters
         $chapters = Chapter::getChaptersByCourseID($course->id);
 
-        $user = Sentinel::getUser();
+        //get lessons
+        $chapters_ids = $chapters->map->only(['id']);
+        $lessons = Lesson::getPublicLessonsByMultipleChapters($chapters_ids);
+        $lessons = UserProgressStatus::addStatusToLessons($lessons);
+        $lessons = $lessons->groupBy('chapter_id');
 
+        $user = Sentinel::getUser();
         if($user)
         {
             $chapters = UserProgressStatus::addCurrentUserChaptersStatus($user->id, $chapters, false);
@@ -72,6 +77,7 @@ class TutorialsController extends Controller
             'meta'          => $meta,
             'course_id'     => $course->id,
             'chapters'      => $chapters,
+            'lessons'       => $lessons,
             'course_image'  => $course_image,
             'user'          => $user
         ]);
@@ -188,6 +194,7 @@ class TutorialsController extends Controller
         $meta['description'] = 'Learn '.$lesson->course_name.' '.$lesson->chapter_name.':  '.$lesson->lesson_name;
 
         return View::make('tutorials.lesson_content', [
+            'course_slug'       => '/'.$course_slug,
             'lesson'            => $lesson,
             'lesson_sections'   => $lesson_sections,
             'meta'              => $meta,

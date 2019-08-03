@@ -15,7 +15,7 @@
         <section class="tutorial-name" @if($course_image) style='background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif >
             <div class="subtitle">
                 <p class="inner-container">
-                    <a href="/{{$lesson->course_slag.'/'.$lesson->chapter_slag}}"><i class="fas fa-angle-left"></i> Lessons</a>
+                    <a href="{{$course_slug}}"><i class="fas fa-angle-left"></i> Back</a>
                 </p>
             </div>
             <div class="heading-inner-container">
