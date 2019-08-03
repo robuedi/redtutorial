@@ -207,15 +207,11 @@
               padding-left: 10px;
 
               h2 {
-                font-size: 20px;
+                font-size: 24px;
                 font-weight: 400;
                 margin: 0;
                 display: inline-block;
                 padding-right: 40px;
-
-                @media (min-width: $screen-md) {
-                  font-size: 22px;
-                }
 
                 small{
                   font-size: 70%;
@@ -306,7 +302,7 @@
             opacity: 0.3;
             overflow: hidden;
             padding: 0;
-            transition: all .3s linear, opacity .8s linear;
+            transition: all .3s linear, opacity .6s linear;
 
             .lesson-choosing {
               max-width: 100%;
