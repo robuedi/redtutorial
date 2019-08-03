@@ -175,27 +175,6 @@
               }
             }
 
-            .sub-details{
-              margin-top: 4px;
-              padding-left: 8px;
-              overflow: auto;
-              margin-bottom: 0;
-
-              @media (min-width: $screen-md) {
-                margin-top: 8px;
-              }
-
-              .lessons-count{
-                font-size: 16px;
-                margin-right: 10px;
-                float: right;
-
-                @media (min-width: $screen-md) {
-                  margin-right: 30px;
-                }
-              }
-            }
-
             .top-level{
               line-height: 29px;
               padding-bottom: 4px;
@@ -414,9 +393,6 @@
           &.active {
             .option {
               padding-bottom: 10px;
-              .sub-details {
-                display: none;
-              }
             }
 
             .lessons-container{

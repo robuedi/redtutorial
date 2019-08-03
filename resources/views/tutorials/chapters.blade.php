@@ -48,9 +48,6 @@
                                     <span class="completion-percentage" >{{$chapter->completion_percentage}}%</span>
                                 @endif
                             </div>
-                            <p class="sub-details">
-                                <span class="lessons-count">{{$chapter->lessons_number}} Lessons</span>
-                            </p>
                         </span>
                         @if(isset($lessons[$chapter->id]))
                         <section class="lessons-container">
