@@ -304,10 +304,9 @@
           .lessons-container {
             text-align: center;
             opacity: 0.3;
-            max-height: 0;
             overflow: hidden;
             padding: 0;
-            transition: opacity 0.8s ease-in, max-height 0.8s ease-out, padding 0.8s ease-out;
+            transition: all .3s linear, opacity .8s linear;
 
             .lesson-choosing {
               max-width: 100%;
@@ -325,24 +324,14 @@
 
 
               .option-container{
-                min-height: 215px;
-                padding: 20px;
+                height: 0;
+                padding: 0;
                 width: 25%;
+                transition: all .3s linear;
                 box-sizing: border-box;
-                //transform: translateY(-10px);
-                //transition: transform .8s ease-in;
-
-                @media (max-width: 1150px) {
-                  padding: 15px;
-                }
 
                 @media (max-width: 1000px) {
                   width: 33.33%;
-                  min-height: 180px;
-                }
-
-                @media (max-width: 620px) {
-                  padding: 10px;
                 }
 
                 @media (max-width: 550px) {
@@ -440,7 +429,6 @@
 
             .lessons-container{
               opacity: 1;
-              max-height: 10000px;
 
               @media (max-width: 860px) {
                 padding: 40px;
@@ -448,6 +436,23 @@
 
               @media (max-width: 700px) {
                 padding: 15px 5px;
+              }
+
+              .option-container{
+                height: 215px;
+                padding: 20px;
+
+                @media (max-width: 1150px) {
+                  padding: 15px;
+                }
+
+                @media (max-width: 1000px) {
+                  height: 180px;
+                }
+
+                @media (max-width: 620px) {
+                  padding: 10px;
+                }
               }
             }
           }

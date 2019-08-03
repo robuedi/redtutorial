@@ -31,7 +31,7 @@
         @endif
 
         <link rel="icon" href="/assets/img/logo.ico">
-        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=6">
+        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=7">
 
         @yield('stylesheets')
 
@@ -68,7 +68,7 @@
         @yield('scripts')
 
         <!-- JS -->
-        <script src="/assets/js/bundle.min.js?v=11"></script>
+        <script src="/assets/js/bundle.min.js?v=12"></script>
 
     </body>
 </html>
