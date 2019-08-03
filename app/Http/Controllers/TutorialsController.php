@@ -129,6 +129,7 @@ class TutorialsController extends Controller
         $meta['description'] = strip_tags($meta['description']);
 
         return View::make('tutorials.lessons', [
+            'custom_meta_link'     => true,
             'chapter'       => $lesson_info,
             'meta'          => $meta,
             'course_id'     => $lesson_info->course_id,

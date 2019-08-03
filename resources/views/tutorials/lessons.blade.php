@@ -2,6 +2,7 @@
 
 @section('meta')
     <meta name="description" content="{{$meta['description']}}">
+    <link rel="canonical" href="https://redtutorial.com/{{$chapter->course_slug}}" />           
 @stop
 
 @section('title') {{$chapter->course_name.' '.$chapter->chapter_name}} @parent @stop

@@ -26,7 +26,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        @if(!(isset($exception) && in_array($exception->getStatusCode(), [404, 410])) )
+        @if(isset($custom_meta_link)||(!(isset($exception) && in_array($exception->getStatusCode() ?? [], [404, 410])) ))
             <link rel="canonical" href="https://redtutorial.com{{request()->path() !== '/' ? '/'.request()->path() : ''}}" />
         @endif
 
