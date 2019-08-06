@@ -89,7 +89,9 @@ Route::get('/php-tutorial/operators/arithmetic-operators', function(){
 
 //Tutorials
 Route::get('/{course_slag}', 'TutorialsController@showChapters')->where('course_slag', '^([^\s\/]+)-tutorial$');
-Route::get('/{course_slag}/{chapter_slag}', 'TutorialsController@showLessons')->where('course_slag', '^([^\s\/]+)-tutorial$');
+Route::get('/{course_slag}-tutorial/{chapter_slag}', function($course_slag){
+    return response()->view('errors.410')->setStatusCode(410);
+});
 Route::get('/{course_slag}/{chapter_slag}/{lesson_slag}', 'TutorialsController@showLessonContent')->where('course_slag', '^([^\s\/]+)-tutorial$');
 
 

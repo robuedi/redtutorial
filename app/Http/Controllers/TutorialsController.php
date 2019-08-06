@@ -83,62 +83,6 @@ class TutorialsController extends Controller
         ]);
     }
 
-    public function showLessons(string $course_slug, string $chapter_slug)
-    {
-
-        //get the chapter
-        $lesson_info = DB::table('courses as co')
-                    ->join('chapters as ch', 'co.id', '=', 'ch.course_id')
-                    ->where('co.slug', $course_slug)
-                    ->where('ch.slug', $chapter_slug)
-                    ->where('co.status', 1)
-                    ->where('ch.is_public', 1)
-                    ->selectRaw('co.id as course_id, co.name as course_name, ch.id as chapter_id, co.slug as course_slug, ch.name as chapter_name, ch.description as chapter_description, ch.slug as chapter_slug')
-                    ->first();
-
-        //return 404 if not found
-        if(!$lesson_info)
-        {
-            abort(404);
-        }
-
-        //get public lessons by chapter id
-        $lessons = Lesson::getPublicLessonsByChapter($lesson_info->chapter_id);
-
-        //get use status for completion
-        $lessons = UserProgressStatus::addStatusToLessons($lessons);
-
-        //get image
-        $course_image = MediaFileToItem::join('media_files', 'media_files_to_items.file_id', '=', 'media_files.id')
-            ->where('item_id', $lesson_info->course_id)
-            ->where('item_type', 'course')
-            ->first();
-
-        //set meta
-        $meta['keywords'] = 'course, learn, '.$lesson_info->course_name.' '.$lesson_info->chapter_name;
-        $meta['description'] = 'Learn about '.$lesson_info->chapter_name.' in '.$lesson_info->course_name.'.';
-
-        //add lesson names to the seo description
-        $lessons_names = [];
-        foreach ($lessons as $lesson) 
-        {
-           $lessons_names[] = $lesson->name; 
-        }
-
-        $meta['description'] .= ' In this chapter we will explain topics like: '.implode(', ', $lessons_names).'.';
-        $meta['description'] = strip_tags($meta['description']);
-
-        return View::make('tutorials.lessons', [
-            'custom_meta_link'     => true,
-            'chapter'       => $lesson_info,
-            'meta'          => $meta,
-            'course_id'     => $lesson_info->course_id,
-            'lessons'       => $lessons,
-            'course_image'  => $course_image,
-            'user'          => Sentinel::getUser()
-        ]);
-    }
-
     public function showLessonContent(string $course_slug, string $chapter_slug, string $lesson_slug)
     {
         //get the lesson
