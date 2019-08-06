@@ -1,11 +1,11 @@
 @extends('_partials.master')
 
 @section('meta')
-    <meta name="description" content="410 - Page not found">
-    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="410 - Page removed">
+    <meta name="robots" content="noindex, nofollow">
 @stop
 
-@section('title') 410 Page not found @parent @stop
+@section('title') 410 Page removed@parent @stop
 
 @section('stylesheets')
 @stop
@@ -16,11 +16,11 @@
 @section('content')
 
     <section class="exception-page-content" >
-        <h1><span class="error-code">410</span> Page not found</h1>
+        <h1><span class="error-code">410</span> Page removed</h1>
 
         <div class="inner-container">
             <p class="error-description">
-                We couldn't find the page you are looking for.
+                The page has been removed.
             </p>
             <p class="error-description">
                 <small>
