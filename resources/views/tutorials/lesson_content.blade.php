@@ -5,7 +5,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
 
-@section('title') {{$lesson->course_name.' '.$lesson->lesson_name}} @parent @stop
+@section('title') {{$lesson->course_name.' Tutorial: '.$lesson->lesson_name}} @parent @stop
 
 @section('scripts')
 @stop
@@ -20,7 +20,7 @@
             </div>
             <div class="heading-inner-container">
                 <h1>
-                    <span class="course">{!! $lesson->course_name !!}</span>
+                    <span class="course">{!! $lesson->course_name !!} Tutorial </span>
                     {!! $lesson->lesson_name !!}
                 </h1>
             </div>

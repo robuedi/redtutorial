@@ -135,7 +135,6 @@ class TutorialsController extends Controller
         $lesson_sections = UserToLessonSection::checkSectionsStatus($lesson_sections_ids, $lesson_sections);
 
         //set meta
-        $meta['keywords'] = 'course, learn, '.$lesson->course_name.' '.$lesson->chapter_name.' '.$lesson->lesson_name;
         $meta['description'] = 'Learn '.$lesson->course_name.' '.$lesson->chapter_name.':  '.$lesson->lesson_name;
 
         return View::make('tutorials.lesson_content', [
