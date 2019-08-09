@@ -138,6 +138,7 @@ class CoursesController extends Controller
             //save course
             $course = new Course();
             $course->name = $request->input('name');
+            $course->meta_description = $request->input('meta_description');
             $course->short_description = $request->input('short_description');
             $course->description = $request->input('description');
             $course->status = $request->input('status');
@@ -198,6 +199,7 @@ class CoursesController extends Controller
         {
             //save course
             $course->name = $request->input('name');
+            $course->meta_description = $request->input('meta_description');
             $course->short_description = $request->input('short_description');
             $course->description = $request->input('description');
             $course->status = $request->input('status');

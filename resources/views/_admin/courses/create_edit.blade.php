@@ -172,6 +172,13 @@
                             </section>
 
                             <section>
+                                <label class="label">Meta description </label>
+                                <label class="textarea textarea-resizable">
+                                    <textarea rows="3" type="text" name="meta_description" placeholder="Meta description" class="custom-scroll" >{{old('meta_description', $course->meta_description)}}</textarea>
+                                </label>
+                            </section>
+
+                            <section>
                                     <label class="label">Short description</label>
                                     <label class="textarea textarea-resizable">
                                         <textarea rows="3" type="text" id="short_description_editor" name="short_description" placeholder="Short description" class="custom-scroll" >{{old('short_description', $course->short_description)}}</textarea>

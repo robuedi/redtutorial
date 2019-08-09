@@ -54,7 +54,7 @@ class TutorialsLessonsQuizzesController
                 ->where('co.status', 1)
                 ->where('ch.is_public', 1)
                 ->where('le.is_public', 1)
-                ->selectRaw('le.id as lesson_id, le.name as lesson_name, le.description as lesson_description')
+                ->selectRaw('le.id as lesson_id, le.name as lesson_name')
                 ->first();
 
             //return that there is a problem

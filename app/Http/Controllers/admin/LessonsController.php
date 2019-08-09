@@ -167,7 +167,7 @@ class LessonsController extends Controller
         {
             //save course
             $lesson->name           = $request->input('name');
-            $lesson->description    = $request->input('description');
+            $lesson->meta_description    = $request->input('meta_description');
             $lesson->is_public      = $request->input('is_public') ? 1 : 0;
             $lesson->is_draft      = $request->input('is_draft') ? 1 : 0;
             $lesson->order_weight   = $request->input('order_weight');
@@ -228,7 +228,7 @@ class LessonsController extends Controller
             //save lesson
             $lesson = new Lesson();
             $lesson->name           = $request->input('name');
-            $lesson->description    = $request->input('description');
+            $lesson->meta_description    = $request->input('meta_description');
             $lesson->is_public      = $request->input('is_public') ? 1 : 0;
             $lesson->is_draft      = $request->input('is_draft') ? 1 : 0;
             $lesson->order_weight   = $request->input('order_weight');

@@ -70,7 +70,7 @@ class Lesson extends Model
             ->where('co.status', 1)
             ->where('ch.is_public', 1)
             ->where('le.is_public', 1)
-            ->selectRaw('co.id as course_id, co.name as course_name, co.slug as course_slag, ch.name as chapter_name, ch.slug as chapter_slag, le.chapter_id as chapter_id, le.order_weight as lesson_order, le.id as lesson_id, le.name as lesson_name, le.description as lesson_description')
+            ->selectRaw('co.id as course_id, co.name as course_name, co.slug as course_slag, ch.name as chapter_name, ch.slug as chapter_slag, le.chapter_id as chapter_id, le.order_weight as lesson_order, le.id as lesson_id, le.name as lesson_name, le.meta_description as lesson_meta_description')
             ->first();
     }
 

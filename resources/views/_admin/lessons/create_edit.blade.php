@@ -98,9 +98,9 @@
                                     </section>
 
                                     <section>
-                                        <label class="label">Description <small>(for admin only)</small></label>
+                                        <label class="label">Meta description </label>
                                         <label class="textarea textarea-resizable">
-                                            <textarea rows="3" type="text" id="description_editor" name="description" placeholder="Description" class="custom-scroll" >{{old('description', $lesson->description)}}</textarea>
+                                            <textarea rows="3" type="text" id="description_editor" name="meta_description" placeholder="Meta description" class="custom-scroll" >{{old('meta_description', $lesson->meta_description)}}</textarea>
                                         </label>
                                     </section>
 
