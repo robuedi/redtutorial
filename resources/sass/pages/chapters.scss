@@ -275,13 +275,13 @@
               }
             }
           }
-
+          
           .lessons-container {
             text-align: center;
             opacity: 0.3;
             overflow: hidden;
+            padding: 0;
             transition: all .3s linear, opacity .6s linear;
-            padding: 10px;
 
             .lesson-choosing {
               max-width: 100%;
@@ -399,6 +399,7 @@
 
             .lessons-container{
               opacity: 1;
+              padding: 10px;
 
               .option-container{
                 height: 180px;
