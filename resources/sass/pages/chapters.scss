@@ -280,8 +280,8 @@
             text-align: center;
             opacity: 0.3;
             overflow: hidden;
-            padding: 0;
             transition: all .3s linear, opacity .6s linear;
+            padding: 10px;
 
             .lesson-choosing {
               max-width: 100%;
@@ -305,8 +305,12 @@
                 transition: all .3s linear;
                 box-sizing: border-box;
 
-                @media (min-width: 411px) {
-                  width: 195px;
+                @media (min-width: 445px) {
+                  width: 200px;
+                }
+
+                @media (min-width: 1000px) {
+                  width: 205px;
                 }
 
                 .option {
@@ -315,12 +319,12 @@
                   box-sizing: border-box;
                   position: relative;
                   text-decoration: none;
-                  font-size: 22px;
                   color: $text-color;
                   max-width: 100%;
                   border-radius: 8px;
-                  border: 1px solid #bfbfbf;
-                  box-shadow: 0 0 1px 1px rgba(150,150,150,0.1);
+                  //border: 1px solid #bfbfbf;
+                  //box-shadow: 0 0 1px 1px rgba(150,150,150,0.1);
+                  box-shadow: 0 3px 13px rgba(0,0,0,.15), 0 2px 4px rgba(0,0,0,.15);
 
                   .top-txt{
                     background-repeat: repeat;
@@ -362,6 +366,8 @@
                     left: 0px;
                     bottom: 0px;
                     padding: 15px;
+                    border-top: 1px solid #ecf0f5;
+
 
                     .lesson-number {
                       color: $text-color;
@@ -395,11 +401,11 @@
               opacity: 1;
 
               .option-container{
-                height: 190px;
+                height: 180px;
                 padding: 10px;
 
-                @media (max-width: 1000px) {
-                  height: 180px;
+                @media (min-width: 1000px) {
+                  height: 190px;
                 }
 
               }
