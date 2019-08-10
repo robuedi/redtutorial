@@ -116,32 +116,30 @@
         .quiz-sign, .text-sign{
           font-size: 16px;
           text-align: center;
-          height: 26px;
-          width: 26px;
+          height: 28px;
+          width: 28px;
           box-sizing: border-box;
           display: inline-block;
           position: relative;
-          margin-right: 5px;
-          color: $text-color;
-          border: 1px solid $text-color;
-          background-color: $white-color;
+          margin-right: 10px;
+          color: #777;
+          background-color: #fff;
           font-weight: 900;
           cursor: not-allowed;
-          padding: 1px;
           transition: background-color .5s;
           vertical-align: top;
           border-radius: 8px;
+          box-shadow: 0 1px 3px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.1);
 
           i{
-            height: 22px;
-            width: 22px;
-            line-height: 20px;
+            height: 28px;
+            width: 28px;
+            line-height: 28px;
             vertical-align: middle;
             text-align: center;
             display: block;
             font-style: normal;
             box-sizing: border-box;
-            border: 1px solid #FFF;
             transition: border-color .5s;
             border-radius: 7px;
 
@@ -153,10 +151,7 @@
           &.active{
             cursor: pointer;
             background-color: $text-color;
-            color: $white-color;
-            i {
-              border-color: #000;
-            }
+            color: $white-color; 
 
             + .quiz-sign, + .text-sign {
               cursor: pointer;
@@ -165,10 +160,6 @@
           &.pre-active{
             color: $text-color;
             cursor: pointer;
-
-            i {
-              border-color: #000;
-            }
           }
         }
       }
