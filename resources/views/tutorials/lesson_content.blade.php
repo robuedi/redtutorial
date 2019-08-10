@@ -64,7 +64,7 @@
                         @endif
                     </div>
                 @endforeach
-                <span class="lesson-nav-btn prev-load">Previous</span>
+                <span class="lesson-nav-btn prev-load"><i class="fas fa-chevron-left"></i></span>
                 <span data-next-lesson="/{{$lesson->course_slag}}" class="lesson-nav-btn next-load">Next</span>
             </div>
         </section>
