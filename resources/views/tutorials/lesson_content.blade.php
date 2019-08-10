@@ -53,21 +53,19 @@
                         @if($lesson_section->type == 'quiz' && isset($quiz_answers[$lesson_section->id]))
                         <div class="quiz-form" data-quiz="{{$lesson_section->id}}">
                             @foreach($quiz_answers[$lesson_section->id] as $quiz_answer)
-                                <div>
                                     <label class="input-container">
                                         <input name="quiz_{{$lesson_section->id}}" type="{{$lesson_section->options_type}}" value="{{$quiz_answer->value}}">
                                         <div class="input-label">
                                             {{$quiz_answer->label}}
                                         </div>
                                     </label>
-                                </div>
                             @endforeach
                         </div>
                         @endif
                     </div>
                 @endforeach
-                <span class="prev-load"><i class="fas fa-chevron-circle-left"></i></span>
-                <span data-next-lesson="/{{$lesson->course_slag}}" class="next-load"><i class="fas fa-chevron-circle-right"></i></span>
+                <span class="lesson-nav-btn prev-load">Previous</span>
+                <span data-next-lesson="/{{$lesson->course_slag}}" class="lesson-nav-btn next-load">Next</span>
             </div>
         </section>
     </main>
