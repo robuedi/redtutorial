@@ -135,7 +135,9 @@ class TutorialsController extends Controller
         $lesson_sections = UserToLessonSection::checkSectionsStatus($lesson_sections_ids, $lesson_sections);
 
         //set meta
-        $meta['description'] = 'Learn '.$lesson->course_name.' '.$lesson->chapter_name.':  '.$lesson->lesson_name;
+        $meta['description'] = !empty($lesson->lesson_meta_description) ? $lesson->course_name.' tutorial: '.$lesson->lesson_name.'. '.$lesson->lesson_meta_description : $lesson->course_name.' tutorial: '.$lesson->chapter_name.', learn '.$lesson->lesson_name;
+
+        $meta['description'] = strip_tags($meta['description']);
 
         return View::make('tutorials.lesson_content', [
             'course_slug'       => '/'.$course_slug,
