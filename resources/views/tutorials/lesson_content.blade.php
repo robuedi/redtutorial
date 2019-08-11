@@ -56,6 +56,7 @@
                                     <label class="input-container">
                                         <input name="quiz_{{$lesson_section->id}}" type="{{$lesson_section->options_type}}" value="{{$quiz_answer->value}}">
                                         <div class="input-label">
+                                            <span class="input-selection"></span>
                                             {{$quiz_answer->label}}
                                         </div>
                                     </label>
