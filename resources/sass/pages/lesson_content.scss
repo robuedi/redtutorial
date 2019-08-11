@@ -366,7 +366,6 @@
       .lesson-nav-btn {
         border-radius: 8px;
         font-size: 17px;
-        cursor: pointer;
         background-color: $white-color;
         font-weight: 600;
         transition: border-color .5s;
@@ -380,13 +379,13 @@
         padding: 12px 10px;
 
         &.prev-load {
-          width: 25px;
+          width: 47px;
           right: 95px;
           color: #777;
         }
 
         &.next-load {
-          width: 60px;
+          width: 82px;
           right: 5px;
         }
       }
