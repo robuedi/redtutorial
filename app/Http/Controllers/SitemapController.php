@@ -38,7 +38,7 @@ class SitemapController
             //set chapters
             foreach ($course->publicChapters as $chapter)
             {
-                if($chapter->slug === 'Arrays')
+                if($chapter->slug === 'arrays')
                 {
                    $chapter_seo_clean = true;
                 }
