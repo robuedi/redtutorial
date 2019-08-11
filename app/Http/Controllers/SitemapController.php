@@ -23,6 +23,8 @@ class SitemapController
             ->with('publicChapters.publicLessons')
             ->get();
 
+        $chapter_seo_clean = false;
+
         //set courses
         foreach($courses as $course)
         {
@@ -36,19 +38,26 @@ class SitemapController
             //set chapters
             foreach ($course->publicChapters as $chapter)
             {
-
-                Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug, 0.1);
-                if($course->slug == 'php-tutorial')
+                if($chapter->slug === 'Arrays')
                 {
-                    Sitemap::setItem('/tutorial-php/'.$chapter->slug, 0.1);
-                    Sitemap::setItem('/tutorial/php/'.$chapter->slug, 0.1);
+                   $chapter_seo_clean = true;
                 }
 
+                if(!$chapter_seo_clean)
+                {
+                    Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug, 0.1);
+                    if($course->slug == 'php-tutorial')
+                    {
+                        Sitemap::setItem('/tutorial-php/'.$chapter->slug, 0.1);
+                        Sitemap::setItem('/tutorial/php/'.$chapter->slug, 0.1);
+                    }  
+                }
+                
                 //set lessons
                 foreach ($chapter->publicLessons as $lesson)
                 {
                     Sitemap::setItem('/'.$course->slug.'/'.$chapter->slug.'/'.$lesson->slug, 1);
-                    if($course->slug == 'php-tutorial')
+                    if($course->slug == 'php-tutorial'&&!$chapter_seo_clean)
                     {
                         Sitemap::setItem('/tutorial-php/'.$chapter->slug.'/'.$lesson->slug, 0.1);
                         Sitemap::setItem('/tutorial/php/'.$chapter->slug.'/'.$lesson->slug,0.1);
