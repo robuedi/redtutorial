@@ -32,7 +32,9 @@
     </filesmatch>
     <filesMatch "\.(x?html?|php)$">
         Header set Cache-Control "max-age=600, private, must-revalidate"
-      </filesMatch>
+    </filesMatch>
+
+    Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=strict
 </IfModule>
 
 <IfModule mod_rewrite.c>
