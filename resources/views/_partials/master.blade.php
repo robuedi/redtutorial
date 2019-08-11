@@ -22,6 +22,8 @@
 
         <meta name="theme-color" content="#FFFFFF"/>
 
+        <meta name="69a809c7d75a9566ec7ba40fd67de118258c6f0d" content="b8fafd3ebfc100b33b4c3bf00542d391ba5fb875" />
+
         <meta name="author" content="{{config('app.name')}}">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
