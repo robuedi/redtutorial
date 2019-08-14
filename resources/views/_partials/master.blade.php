@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -11,7 +11,13 @@
 
             gtag('config', 'UA-137856014-1');
         </script>
+        
         <meta charset="utf-8">
+        <meta name="theme-color" content="#FFFFFF"/>
+        <meta name="author" content="{{config('app.name')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
         <title>
             @section('title')
                 - {{config('app.name')}}
@@ -20,17 +26,13 @@
 
         @yield('meta')
 
-        <meta name="theme-color" content="#FFFFFF"/>
 
-        <meta name="author" content="{{config('app.name')}}">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         @if(isset($custom_meta_link)||(!(isset($exception) && in_array($exception->getStatusCode() ?? [], [404, 410])) ))
             <link rel="canonical" href="https://redtutorial.com{{request()->path() !== '/' ? '/'.request()->path() : ''}}" />
         @endif
 
-        <link rel="icon" href="/assets/img/logo.ico">
+        <link rel="icon" href="/assets/img/logo_new.ico">
         <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=34">
 
         @yield('stylesheets')
