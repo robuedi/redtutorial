@@ -18,7 +18,7 @@
         <header>
             <h1>{{$page->heading}}</h1>
         </header>
-        <section class="content">
+        <section class="contenta">
             {!! $page->content !!}
         </section>
 

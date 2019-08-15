@@ -15,20 +15,27 @@
 @section('content')
 
     <main class="courses-section" >
-        <section class="header-section" @if($course_image) style='background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif>
-            <div class="heading-inner-container">
-                <h1>{!! $course->name !!} Tutorial</h1>
+        <section class="header-section content-parent" @if($course_image) style='background-image: url("/images/{{$course_image->url}}?w=1000&fit=contain&filt=greyscale")' @endif>
+            <div class="background-color" style="
+                    background: linear-gradient(to left top , rgba({{rand(200, 255).', '.rand(200, 255).', '.rand(200, 255)}},0.7), rgba({{rand(200, 255).', '.rand(200, 255).', '.rand(200, 255)}},0.7));
+                    background: -moz-linear-gradient(to left top , rgba({{rand(200, 255).', '.rand(200, 255).', '.rand(200, 255)}},0.7), rgba({{rand(200, 255).', '.rand(200, 255).', '.rand(200, 255)}},0.7));
+                    background: -o-linear-gradient(to left top , rgba({{rand(200, 255).', '.rand(200, 255).', '.rand(200, 255)}},0.7), rgba({{rand(200, 255).', '.rand(200, 255).', '.rand(200, 255)}},0.7));
+                    background: -webkit-linear-gradient(to left top , rgba({{rand(200, 255).', '.rand(200, 255).', '.rand(200, 255)}},0.7), rgba({{rand(200, 255).', '.rand(200, 255).', '.rand(200, 255)}},0.7));
+                    ">
             </div>
-            @if($course->description)
-                <div class="course-description">
-                    {!! $course->description !!}
-                </div>
-            @endif
+            <div class="heading-inner-container content">
+                <h1>{!! $course->name !!} Tutorial</h1>
+                @if($course->description)
+                    <div class="course-description">
+                        {!! $course->description !!}
+                    </div>
+                @endif
+            </div>
         </section>
 
-        <section class="tutorial-content" >
+        <section class="tutorial-content content-parent" >
 
-            <div class="list-container">
+            <div class="list-container content">
 
                 <ol class="chapters-list">
                 @foreach($chapters as $index => $chapter)

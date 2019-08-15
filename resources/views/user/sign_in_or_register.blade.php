@@ -22,7 +22,7 @@
         <div class="top-section" style='background-image: url("/images/assets/img/contact_us.jpg?w=1200&fit=contain")'>
             <h1>Sign In / Register</h1>
         </div>
-        <div class="content">
+        <div class="contenta">
 
             <section class="choose-action" data-role="choose-action">
                 <div>
@@ -72,7 +72,6 @@
 
                 <p class="info-paragraph">
                     By clicking Register, you accept our <a class="info-link" target="_blank" href="/info/terms-and-conditions">Terms and Conditions</a>.
-                    <br/>
                     Find out about our <a class="info-link" target="_blank" href="/info/privacy-and-cookies-policy">Privacy and Cookies Policy</a>.
                 </p>
 

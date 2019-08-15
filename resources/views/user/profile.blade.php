@@ -18,7 +18,7 @@
         <section class="top-section" style='background-image: url("/images/assets/img/contact_us.jpg?w=1200&fit=contain")'>
             <h1>Profile</h1>
         </section>
-        <section class="content">
+        <section class="contenta">
 
             <section class="choose-action" data-role="choose-action">
                 <div>

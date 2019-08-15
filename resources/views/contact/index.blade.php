@@ -22,7 +22,7 @@
         <section class="top-section" style='background-image: url("/images/assets/img/contact_us.jpg?w=1200&fit=contain")'>
             <h1>Contact Us</h1>
         </section>
-        <section class="content">
+        <section class="contenta">
             <div class="feedback-container">
                 <div class="feedback">
                     {!! \App\Libraries\UIMessage::get() !!}

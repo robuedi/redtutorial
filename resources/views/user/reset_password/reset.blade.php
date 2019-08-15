@@ -18,7 +18,7 @@
         <div class="top-section" style='background-image: url("/images/assets/img/contact_us.jpg?w=1200&fit=contain")'>
             <h1>Reset Password</h1>
         </div>
-        <div class="content">
+        <div class="contenta">
 
             <div class="feedback-container">
                 <div class="feedback">
