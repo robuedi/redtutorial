@@ -33,7 +33,8 @@
         @endif
 
         <link rel="icon" href="/assets/img/logo_new.ico">
-        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=35">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,500,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=36">
 
         @yield('stylesheets')
 
