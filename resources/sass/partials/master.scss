@@ -78,7 +78,9 @@ textarea:focus, input:focus, button:focus{
   font-size: 26px;
   text-transform: capitalize;
 
-  @media (min-width: $screen-md) {
+  @media (min-width: 808px) {
+      height: 65px;
+      line-height: 65px;
       font-size: 28px;
   }
 

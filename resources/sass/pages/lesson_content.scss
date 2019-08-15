@@ -181,7 +181,7 @@
         display: none;
         background-color: transparent;
         position: relative;
-        font-size: 18px;
+        font-size: 17px;
         line-height: 1.5;
 
         h2 {
@@ -191,7 +191,7 @@
         }
 
         p, li, ol{
-          font-size: 18px;
+          font-size: 17px;
           line-height: 1.5;
         }
 
@@ -340,15 +340,18 @@
                 background-color: #eee;
                 line-height: 25px;
                 vertical-align: middle;
-                border-radius: 50%;
                 margin-right: 20px;
                 box-shadow: 0 1px 3px rgba(0,0,0,.1), 0 0px 3px rgba(0,0,0,.25);
                 transition: background-color .3s;
               }
+            }
 
-              &:hover .input-selection{
-                background-color: #777;
-              }
+            input[type="radio"] + .input-label .input-selection{
+              border-radius: 50%;
+            }
+
+            input[type="checkbox"] + .input-label .input-selection{
+              border-radius: 8px;
             }
 
             input:checked + .input-label{

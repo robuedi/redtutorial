@@ -8,16 +8,22 @@
         <div class="trigger-sidebar" ></div>
 
         <ul class="navigation-links">
-            <li><a href="/" class="@if(url()->current() === url('/')) active @endif" >Tutorials</a></li>
-            <li><a href="/contact-us" class="@if(url()->current() === url('/contact-us')) active @endif" >Contact Us</a></li>
+            @foreach(\App\Course::getPublicCourses() as $course)
+                <li>
+                    <a class=" option @if(url()->current() === url('/'.$course->slug)) active @endif" href="/{{$course->slug}}">
+                        {{$course->name}} Tutorial
+                    </a>
+                </li>
+            @endforeach
+            <li><a href="/contact-us" class="option @if(url()->current() === url('/contact-us')) active @endif" >Contact Us</a></li>
             @if(\Cartalyst\Sentinel\Laravel\Facades\Sentinel::check())
-                <li><a href="/user/profile" class="@if(url()->current() === url('/user/profile')) active @endif" ><i class="far fa-user-circle"></i> {{\Cartalyst\Sentinel\Laravel\Facades\Sentinel::getUser()->first_name}}</a></li>
+                <li><a href="/user/profile" class=" option @if(url()->current() === url('/user/profile')) active @endif" ><i class="far fa-user-circle"></i> {{\Cartalyst\Sentinel\Laravel\Facades\Sentinel::getUser()->first_name}}</a></li>
             @else
-                <li><a href="/user/sign-in" class="@if(url()->current() === url('/user/sign-in')) active @endif" >Sign In / Register</a></li>
+                <li><a href="/user/sign-in" class=" option @if(url()->current() === url('/user/sign-in')) active @endif" >Sign In / Register</a></li>
             @endif
-            <li class="display-inline-block" ><a href="https://twitter.com/_redtutorial" aria-label="Twitter" target="_blank" rel="noopener" class="twitter-account" ><i class="fab fa-twitter"></i></a></li>
-            <li class="display-inline-block" ><a href="https://www.youtube.com/channel/UCdiASKn5toBvQZV_TJKCM8A" aria-label="YouTube" target="_blank" rel="noopener" ><i class="fab fa-youtube"></i></a></li>
-            <li class="display-inline-block" ><a href="https://www.facebook.com/com.RedTutorial" aria-label="Facebook" target="_blank" rel="noopener" ><i class="fab fa-facebook-square"></i></a></li>
+            <li class="display-inline-block" ><a href="https://twitter.com/_redtutorial" aria-label="Twitter" target="_blank" rel="noopener" class="twitter-account option" ><i class="fab fa-twitter"></i></a></li>
+            {{--<li class="display-inline-block" ><a href="https://www.youtube.com/channel/UCdiASKn5toBvQZV_TJKCM8A" aria-label="YouTube" target="_blank" rel="noopener" ><i class="fab fa-youtube"></i></a></li>--}}
+            {{--<li class="display-inline-block" ><a href="https://www.facebook.com/com.RedTutorial" aria-label="Facebook" target="_blank" rel="noopener" ><i class="fab fa-facebook-square"></i></a></li>--}}
         </ul>
     </div>
 

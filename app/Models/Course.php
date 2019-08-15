@@ -32,6 +32,11 @@ class Course extends Model
                         ->whereNotNull('slug')
                         ->orderBy('order_weight');
     }
+
+    public static function getPublicCourses()
+    {
+        return self::publicCourses()->get();
+    }
 }
 
 

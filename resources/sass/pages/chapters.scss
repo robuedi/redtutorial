@@ -185,7 +185,7 @@
               padding-left: 10px;
 
               h2 {
-                font-size: 20px;
+                font-size: 18px;
                 font-weight: 600;
                 margin: 0;
                 display: inline-block;
@@ -340,13 +340,8 @@
                       z-index: 2;
                       margin: 0;
                       font-weight: 400;
-                      font-size: 18px;
+                      font-size: 17px;
                       color: $text-color;
-
-                      @media (max-width: 600px) {
-                        font-size: 18px;
-                      }
-
                     }
                   }
 
