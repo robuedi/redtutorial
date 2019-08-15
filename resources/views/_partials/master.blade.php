@@ -34,7 +34,7 @@
 
         <link rel="icon" href="/assets/img/logo_new.ico">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900|Roboto:400,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=39">
+        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=40">
 
         @yield('stylesheets')
 
