@@ -33,7 +33,7 @@
         @endif
 
         <link rel="icon" href="/assets/img/logo_new.ico">
-        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=42">
+        <link rel="stylesheet" type="text/css" href="/assets/css/bundle.min.css?v=43">
 
         @yield('stylesheets')
 
