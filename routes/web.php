@@ -82,11 +82,6 @@ Route::group(array('namespace' => 'admin', 'prefix' => config('app.admin_route')
 //Home
 Route::get('/', 'HomeController@index');
 
-//Old Redirect Tutorials
-Route::get('/php-tutorial/operators/arithmetic-operators', function(){
-    return Redirect::to('/php-tutorial/operators/numeric-values-operators', 301);
-});
-
 //Tutorials
 Route::get('/{course_slag}', 'TutorialsController@showChapters')->where('course_slag', '^([^\s\/]+)-tutorial$');
 Route::get('/{course_slag}-tutorial/{chapter_slag}', function($course_slag){
