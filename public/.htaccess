@@ -35,6 +35,8 @@
     </filesMatch>
 
     Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=strict
+    Header set X-Frame-Options DENY
+
 </IfModule>
 
 <IfModule mod_rewrite.c>
