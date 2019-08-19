@@ -56,11 +56,13 @@ class UserProfileController extends Controller
         // current user logged in
         $current_user = Sentinel::getUser();
 
+        Log::info($current_user->email);
+
         // validate
         $rules = array(
             'first_name'       =>'required|min:2',
             'last_name'        =>'required|min:2',
-            'email'            =>'required|email|unique:users,email',
+            'email'            =>'required|email|unique:users,email,'.$current_user->id,
         );
 
         $password = $request->input('password');

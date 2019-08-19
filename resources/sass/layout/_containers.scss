@@ -1,5 +1,6 @@
 .content-parent{
   text-align: center;
+  position: relative;
 }
 .content {
   display: inline-block;
@@ -8,4 +9,16 @@
   max-width: 100%;
   text-align: left;
   box-sizing: border-box;
+}
+.default-background-color {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(255,255,255,0.6);
+}
+.default-page-header{
+  font-weight: 800;
+  font-size: 40px;
 }

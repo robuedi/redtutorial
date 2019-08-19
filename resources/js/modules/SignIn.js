@@ -33,7 +33,7 @@ export default class SignIn {
     activateSection(target)
     { 
         //diactivate all buttons
-        const targetBtns = target.parentNode.querySelectorAll(':scope > [data-action]')
+        const targetBtns = target.parentNode.querySelectorAll(':scope > [data-action]');
         for(let targetBtn of targetBtns)
         {
             targetBtn.classList.remove('active');
@@ -48,13 +48,13 @@ export default class SignIn {
         if(forms)
         {
             forms.forEach((form) => {
-                form.classList.remove('active');
+                form.classList.add('inactive');
             })   
         }
 
         //show button's form
         const currentActiveForm = target.getAttribute('data-action');
-        document.querySelector('[data-role="choose-action-container"][data-type="'+currentActiveForm+'"]').classList.add('active');
+        document.querySelector('[data-role="choose-action-container"][data-type="'+currentActiveForm+'"]').classList.remove('inactive');
     }
 
     selfAddClass(target)
