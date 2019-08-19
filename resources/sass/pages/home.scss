@@ -102,6 +102,7 @@
       box-sizing: border-box;
       position: relative;
       z-index: 2;
+      min-height: auto;
 
       @media (min-width: $screen-md) {
         padding: 130px 75px 75px;
