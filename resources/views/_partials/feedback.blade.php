@@ -1,5 +1,3 @@
 <div class="feedback-container">
-    <div class="feedback">
-        {!! \App\Libraries\UIMessage::get() !!}
-    </div>
+    {!! \App\Libraries\UIMessage::get() !!}
 </div>
